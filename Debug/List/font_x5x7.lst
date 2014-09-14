@@ -1,0 +1,1684 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             05/Aug/2014  14:51:17 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Evaluation license - IAR Embedded Workbench for Renesas RL78, Evaluation version 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Glyph\Fonts\font_x5x7.c                    #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Glyph\Fonts\font_x5x7.c" --core rl78_2     #
+#                    --code_model near --data_model near                      #
+#                    --near_const_location rom0 -o "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy\Debug\Obj\" --dlib_config      #
+#                    "C:\Program Files (x86)\IAR Systems\Embedded Workbench   #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\font_x5x7.lst                   #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\font_x5x7.r87                    #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\Glyph\Fonts\font_x5x7.c
+      1          /******************************************************************************
+      2          * DISCLAIMER
+      3          * This software is supplied by Renesas Electronics Corporation and is only
+      4          * intended for use with Renesas products. No other uses are authorized.
+      5          * This software is owned by Renesas Electronics Corporation and is protected under
+      6          * all applicable laws, including copyright laws.
+      7          * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES
+      8          * REGARDING THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY,
+      9          * INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+     10          * PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY
+     11          * DISCLAIMED.
+     12          * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS
+     13          * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE
+     14          * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES
+     15          * FOR ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS
+     16          * AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+     17          * Renesas reserves the right, without notice, to make changes to this
+     18          * software and to discontinue the availability of this software.
+     19          * By using this software, you agree to the additional terms and
+     20          * conditions found by accessing the following link:
+     21          * http://www.renesas.com/disclaimer
+     22          ******************************************************************************/
+     23          /* Copyright (C) 2010 Renesas Electronics Corporation. All rights reserved. */
+     24          /* Code written for Renesas by Future Designs, Inc. www.teamfdi.com */
+     25          
+     26          /******************************************************************************
+     27          * File Name : font_x5x7.c
+     28          * Version : 1.00
+     29          * Tool-Chain : Glyph - The Generic API for Graphics LCD API
+     30          * H/W Platform : RX62N Group
+     31          * Description : An 5 x 7 Font.
+     32          ******************************************************************************
+     33          * History :
+     34          * : 21.07.2010 1.00 First Release
+     35          ******************************************************************************/
+     36          
+     37          /******************************************************************************
+     38          Includes “Glyph config Include”
+     39          ******************************************************************************/
+     40          #include "..\glyph_cfg.h"
+     41          
+
+   \                                 In  segment NEAR_CONST, align 2
+     42          const uint8_t Fontx5x7_char_0[] = {
+   \                     Fontx5x7_char_0:
+   \   000000 05073F3F3F3F          DB 5, 7, 63, 63, 63, 63, 0, 0
+     43              0x05, 0x07, // width=5, height=7
+     44              0x3F, 0x3F, 0x3F, 0x3F, 0x00, 
+     45          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     46          const uint8_t Fontx5x7_char_1[] = {
+   \                     Fontx5x7_char_1:
+   \   000000 0507081C3E1C          DB 5, 7, 8, 28, 62, 28, 8, 0
+     47              0x05, 0x07, // width=5, height=7
+     48              0x08, 0x1C, 0x3E, 0x1C, 0x08, 
+     49          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     50          const uint8_t Fontx5x7_char_2[] = {
+   \                     Fontx5x7_char_2:
+   \   000000 05072A152A15          DB 5, 7, 42, 21, 42, 21, 0, 0
+     51              0x05, 0x07, // width=5, height=7
+     52              0x2A, 0x15, 0x2A, 0x15, 0x00, 
+     53          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     54          const uint8_t Fontx5x7_char_3[] = {
+   \                     Fontx5x7_char_3:
+   \   000000 05070F127F10          DB 5, 7, 15, 18, 127, 16, 0, 0
+     55              0x05, 0x07, // width=5, height=7
+     56              0x0F, 0x12, 0x7F, 0x10, 0x00, 
+     57          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     58          const uint8_t Fontx5x7_char_4[] = {
+   \                     Fontx5x7_char_4:
+   \   000000 05070F057828          DB 5, 7, 15, 5, 120, 40, 0, 0
+     59              0x05, 0x07, // width=5, height=7
+     60              0x0F, 0x05, 0x78, 0x28, 0x00, 
+     61          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     62          const uint8_t Fontx5x7_char_5[] = {
+   \                     Fontx5x7_char_5:
+   \   000000 0507077D2850          DB 5, 7, 7, 125, 40, 80, 0, 0
+     63              0x05, 0x07, // width=5, height=7
+     64              0x07, 0x7D, 0x28, 0x50, 0x00, 
+     65          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     66          const uint8_t Fontx5x7_char_6[] = {
+   \                     Fontx5x7_char_6:
+   \   000000 050707047828          DB 5, 7, 7, 4, 120, 40, 0, 0
+     67              0x05, 0x07, // width=5, height=7
+     68              0x07, 0x04, 0x78, 0x28, 0x00, 
+     69          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     70          const uint8_t Fontx5x7_char_7[] = {
+   \                     Fontx5x7_char_7:
+   \   000000 050700020502          DB 5, 7, 0, 2, 5, 2, 0, 0
+     71              0x05, 0x07, // width=5, height=7
+     72              0x00, 0x02, 0x05, 0x02, 0x00, 
+     73          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     74          const uint8_t Fontx5x7_char_8[] = {
+   \                     Fontx5x7_char_8:
+   \   000000 050700121712          DB 5, 7, 0, 18, 23, 18, 0, 0
+     75              0x05, 0x07, // width=5, height=7
+     76              0x00, 0x12, 0x17, 0x12, 0x00, 
+     77          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     78          const uint8_t Fontx5x7_char_9[] = {
+   \                     Fontx5x7_char_9:
+   \   000000 05070F02744F          DB 5, 7, 15, 2, 116, 79, 0, 0
+     79              0x05, 0x07, // width=5, height=7
+     80              0x0F, 0x02, 0x74, 0x4F, 0x00, 
+     81          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     82          const uint8_t Fontx5x7_char_10[] = {
+   \                     Fontx5x7_char_10:
+   \   000000 050707187710          DB 5, 7, 7, 24, 119, 16, 0, 0
+     83              0x05, 0x07, // width=5, height=7
+     84              0x07, 0x18, 0x77, 0x10, 0x00, 
+     85          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     86          const uint8_t Fontx5x7_char_11[] = {
+   \                     Fontx5x7_char_11:
+   \   000000 050708080F00          DB 5, 7, 8, 8, 15, 0, 0, 0
+     87              0x05, 0x07, // width=5, height=7
+     88              0x08, 0x08, 0x0F, 0x00, 0x00, 
+     89          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     90          const uint8_t Fontx5x7_char_12[] = {
+   \                     Fontx5x7_char_12:
+   \   000000 050708087800          DB 5, 7, 8, 8, 120, 0, 0, 0
+     91              0x05, 0x07, // width=5, height=7
+     92              0x08, 0x08, 0x78, 0x00, 0x00, 
+     93          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     94          const uint8_t Fontx5x7_char_13[] = {
+   \                     Fontx5x7_char_13:
+   \   000000 050700007808          DB 5, 7, 0, 0, 120, 8, 8, 0
+     95              0x05, 0x07, // width=5, height=7
+     96              0x00, 0x00, 0x78, 0x08, 0x08, 
+     97          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     98          const uint8_t Fontx5x7_char_14[] = {
+   \                     Fontx5x7_char_14:
+   \   000000 050700000F08          DB 5, 7, 0, 0, 15, 8, 8, 0
+     99              0x05, 0x07, // width=5, height=7
+    100              0x00, 0x00, 0x0F, 0x08, 0x08, 
+    101          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    102          const uint8_t Fontx5x7_char_15[] = {
+   \                     Fontx5x7_char_15:
+   \   000000 050708087F08          DB 5, 7, 8, 8, 127, 8, 8, 0
+    103              0x05, 0x07, // width=5, height=7
+    104              0x08, 0x08, 0x7F, 0x08, 0x08, 
+    105          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    106          const uint8_t Fontx5x7_char_16[] = {
+   \                     Fontx5x7_char_16:
+   \   000000 050702020202          DB 5, 7, 2, 2, 2, 2, 2, 0
+    107              0x05, 0x07, // width=5, height=7
+    108              0x02, 0x02, 0x02, 0x02, 0x02, 
+    109          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    110          const uint8_t Fontx5x7_char_17[] = {
+   \                     Fontx5x7_char_17:
+   \   000000 050704040404          DB 5, 7, 4, 4, 4, 4, 4, 0
+    111              0x05, 0x07, // width=5, height=7
+    112              0x04, 0x04, 0x04, 0x04, 0x04, 
+    113          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    114          const uint8_t Fontx5x7_char_18[] = {
+   \                     Fontx5x7_char_18:
+   \   000000 050708080808          DB 5, 7, 8, 8, 8, 8, 8, 0
+    115              0x05, 0x07, // width=5, height=7
+    116              0x08, 0x08, 0x08, 0x08, 0x08, 
+    117          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    118          const uint8_t Fontx5x7_char_19[] = {
+   \                     Fontx5x7_char_19:
+   \   000000 050710101010          DB 5, 7, 16, 16, 16, 16, 16, 0
+    119              0x05, 0x07, // width=5, height=7
+    120              0x10, 0x10, 0x10, 0x10, 0x10, 
+    121          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    122          const uint8_t Fontx5x7_char_20[] = {
+   \                     Fontx5x7_char_20:
+   \   000000 050720202020          DB 5, 7, 32, 32, 32, 32, 32, 0
+    123              0x05, 0x07, // width=5, height=7
+    124              0x20, 0x20, 0x20, 0x20, 0x20, 
+    125          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    126          const uint8_t Fontx5x7_char_21[] = {
+   \                     Fontx5x7_char_21:
+   \   000000 050700007F08          DB 5, 7, 0, 0, 127, 8, 8, 0
+    127              0x05, 0x07, // width=5, height=7
+    128              0x00, 0x00, 0x7F, 0x08, 0x08, 
+    129          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    130          const uint8_t Fontx5x7_char_22[] = {
+   \                     Fontx5x7_char_22:
+   \   000000 050708087F00          DB 5, 7, 8, 8, 127, 0, 0, 0
+    131              0x05, 0x07, // width=5, height=7
+    132              0x08, 0x08, 0x7F, 0x00, 0x00, 
+    133          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    134          const uint8_t Fontx5x7_char_23[] = {
+   \                     Fontx5x7_char_23:
+   \   000000 050708080F08          DB 5, 7, 8, 8, 15, 8, 8, 0
+    135              0x05, 0x07, // width=5, height=7
+    136              0x08, 0x08, 0x0F, 0x08, 0x08, 
+    137          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    138          const uint8_t Fontx5x7_char_24[] = {
+   \                     Fontx5x7_char_24:
+   \   000000 050708087808          DB 5, 7, 8, 8, 120, 8, 8, 0
+    139              0x05, 0x07, // width=5, height=7
+    140              0x08, 0x08, 0x78, 0x08, 0x08, 
+    141          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    142          const uint8_t Fontx5x7_char_25[] = {
+   \                     Fontx5x7_char_25:
+   \   000000 050700007F00          DB 5, 7, 0, 0, 127, 0, 0, 0
+    143              0x05, 0x07, // width=5, height=7
+    144              0x00, 0x00, 0x7F, 0x00, 0x00, 
+    145          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    146          const uint8_t Fontx5x7_char_26[] = {
+   \                     Fontx5x7_char_26:
+   \   000000 050700242A31          DB 5, 7, 0, 36, 42, 49, 0, 0
+    147              0x05, 0x07, // width=5, height=7
+    148              0x00, 0x24, 0x2A, 0x31, 0x00, 
+    149          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    150          const uint8_t Fontx5x7_char_27[] = {
+   \                     Fontx5x7_char_27:
+   \   000000 050700312A24          DB 5, 7, 0, 49, 42, 36, 0, 0
+    151              0x05, 0x07, // width=5, height=7
+    152              0x00, 0x31, 0x2A, 0x24, 0x00, 
+    153          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    154          const uint8_t Fontx5x7_char_28[] = {
+   \                     Fontx5x7_char_28:
+   \   000000 0507003C043C          DB 5, 7, 0, 60, 4, 60, 0, 0
+    155              0x05, 0x07, // width=5, height=7
+    156              0x00, 0x3C, 0x04, 0x3C, 0x00, 
+    157          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    158          const uint8_t Fontx5x7_char_29[] = {
+   \                     Fontx5x7_char_29:
+   \   000000 050700341C16          DB 5, 7, 0, 52, 28, 22, 0, 0
+    159              0x05, 0x07, // width=5, height=7
+    160              0x00, 0x34, 0x1C, 0x16, 0x00, 
+    161          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    162          const uint8_t Fontx5x7_char_30[] = {
+   \                     Fontx5x7_char_30:
+   \   000000 0507281C2A22          DB 5, 7, 40, 28, 42, 34, 0, 0
+    163              0x05, 0x07, // width=5, height=7
+    164              0x28, 0x1C, 0x2A, 0x22, 0x00, 
+    165          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    166          const uint8_t Fontx5x7_char_31[] = {
+   \                     Fontx5x7_char_31:
+   \   000000 050700000800          DB 5, 7, 0, 0, 8, 0, 0, 0
+    167              0x05, 0x07, // width=5, height=7
+    168              0x00, 0x00, 0x08, 0x00, 0x00, 
+    169          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    170          const uint8_t Fontx5x7_char_32[] = {
+   \                     Fontx5x7_char_32:
+   \   000000 050700000000          DB 5, 7, 0, 0, 0, 0, 0, 0
+    171              0x05, 0x07, // width=5, height=7
+    172              0x00, 0x00, 0x00, 0x00, 0x00, 
+    173          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    174          const uint8_t Fontx5x7_char_33[] = {
+   \                     Fontx5x7_char_33:
+   \   000000 050700002F00          DB 5, 7, 0, 0, 47, 0, 0, 0
+    175              0x05, 0x07, // width=5, height=7
+    176              0x00, 0x00, 0x2F, 0x00, 0x00, 
+    177          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    178          const uint8_t Fontx5x7_char_34[] = {
+   \                     Fontx5x7_char_34:
+   \   000000 050700070007          DB 5, 7, 0, 7, 0, 7, 0, 0
+    179              0x05, 0x07, // width=5, height=7
+    180              0x00, 0x07, 0x00, 0x07, 0x00, 
+    181          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    182          const uint8_t Fontx5x7_char_35[] = {
+   \                     Fontx5x7_char_35:
+   \   000000 0507143E143E          DB 5, 7, 20, 62, 20, 62, 20, 0
+    183              0x05, 0x07, // width=5, height=7
+    184              0x14, 0x3E, 0x14, 0x3E, 0x14, 
+    185          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    186          const uint8_t Fontx5x7_char_36[] = {
+   \                     Fontx5x7_char_36:
+   \   000000 0507042A3E2A          DB 5, 7, 4, 42, 62, 42, 16, 0
+    187              0x05, 0x07, // width=5, height=7
+    188              0x04, 0x2A, 0x3E, 0x2A, 0x10, 
+    189          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    190          const uint8_t Fontx5x7_char_37[] = {
+   \                     Fontx5x7_char_37:
+   \   000000 050713080432          DB 5, 7, 19, 8, 4, 50, 0, 0
+    191              0x05, 0x07, // width=5, height=7
+    192              0x13, 0x08, 0x04, 0x32, 0x00, 
+    193          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    194          const uint8_t Fontx5x7_char_38[] = {
+   \                     Fontx5x7_char_38:
+   \   000000 0507142A1420          DB 5, 7, 20, 42, 20, 32, 0, 0
+    195              0x05, 0x07, // width=5, height=7
+    196              0x14, 0x2A, 0x14, 0x20, 0x00, 
+    197          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    198          const uint8_t Fontx5x7_char_39[] = {
+   \                     Fontx5x7_char_39:
+   \   000000 050704030100          DB 5, 7, 4, 3, 1, 0, 0, 0
+    199              0x05, 0x07, // width=5, height=7
+    200              0x04, 0x03, 0x01, 0x00, 0x00, 
+    201          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    202          const uint8_t Fontx5x7_char_40[] = {
+   \                     Fontx5x7_char_40:
+   \   000000 0507001E2100          DB 5, 7, 0, 30, 33, 0, 0, 0
+    203              0x05, 0x07, // width=5, height=7
+    204              0x00, 0x1E, 0x21, 0x00, 0x00, 
+    205          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    206          const uint8_t Fontx5x7_char_41[] = {
+   \                     Fontx5x7_char_41:
+   \   000000 050700211E00          DB 5, 7, 0, 33, 30, 0, 0, 0
+    207              0x05, 0x07, // width=5, height=7
+    208              0x00, 0x21, 0x1E, 0x00, 0x00, 
+    209          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    210          const uint8_t Fontx5x7_char_42[] = {
+   \                     Fontx5x7_char_42:
+   \   000000 05072A1C2A00          DB 5, 7, 42, 28, 42, 0, 0, 0
+    211              0x05, 0x07, // width=5, height=7
+    212              0x2A, 0x1C, 0x2A, 0x00, 0x00, 
+    213          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    214          const uint8_t Fontx5x7_char_43[] = {
+   \                     Fontx5x7_char_43:
+   \   000000 050708083E08          DB 5, 7, 8, 8, 62, 8, 8, 0
+    215              0x05, 0x07, // width=5, height=7
+    216              0x08, 0x08, 0x3E, 0x08, 0x08, 
+    217          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    218          const uint8_t Fontx5x7_char_44[] = {
+   \                     Fontx5x7_char_44:
+   \   000000 050740301000          DB 5, 7, 64, 48, 16, 0, 0, 0
+    219              0x05, 0x07, // width=5, height=7
+    220              0x40, 0x30, 0x10, 0x00, 0x00, 
+    221          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    222          const uint8_t Fontx5x7_char_45[] = {
+   \                     Fontx5x7_char_45:
+   \   000000 050708080808          DB 5, 7, 8, 8, 8, 8, 0, 0
+    223              0x05, 0x07, // width=5, height=7
+    224              0x08, 0x08, 0x08, 0x08, 0x00, 
+    225          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    226          const uint8_t Fontx5x7_char_46[] = {
+   \                     Fontx5x7_char_46:
+   \   000000 050700303000          DB 5, 7, 0, 48, 48, 0, 0, 0
+    227              0x05, 0x07, // width=5, height=7
+    228              0x00, 0x30, 0x30, 0x00, 0x00, 
+    229          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    230          const uint8_t Fontx5x7_char_47[] = {
+   \                     Fontx5x7_char_47:
+   \   000000 050710080402          DB 5, 7, 16, 8, 4, 2, 0, 0
+    231              0x05, 0x07, // width=5, height=7
+    232              0x10, 0x08, 0x04, 0x02, 0x00, 
+    233          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    234          const uint8_t Fontx5x7_char_48[] = {
+   \                     Fontx5x7_char_48:
+   \   000000 05071E211E00          DB 5, 7, 30, 33, 30, 0, 0, 0
+    235              0x05, 0x07, // width=5, height=7
+    236              0x1E, 0x21, 0x1E, 0x00, 0x00, 
+    237          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    238          const uint8_t Fontx5x7_char_49[] = {
+   \                     Fontx5x7_char_49:
+   \   000000 0507223F2000          DB 5, 7, 34, 63, 32, 0, 0, 0
+    239              0x05, 0x07, // width=5, height=7
+    240              0x22, 0x3F, 0x20, 0x00, 0x00, 
+    241          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    242          const uint8_t Fontx5x7_char_50[] = {
+   \                     Fontx5x7_char_50:
+   \   000000 050722312926          DB 5, 7, 34, 49, 41, 38, 0, 0
+    243              0x05, 0x07, // width=5, height=7
+    244              0x22, 0x31, 0x29, 0x26, 0x00, 
+    245          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    246          const uint8_t Fontx5x7_char_51[] = {
+   \                     Fontx5x7_char_51:
+   \   000000 05071125251B          DB 5, 7, 17, 37, 37, 27, 0, 0
+    247              0x05, 0x07, // width=5, height=7
+    248              0x11, 0x25, 0x25, 0x1B, 0x00, 
+    249          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    250          const uint8_t Fontx5x7_char_52[] = {
+   \                     Fontx5x7_char_52:
+   \   000000 05070C0A3F08          DB 5, 7, 12, 10, 63, 8, 0, 0
+    251              0x05, 0x07, // width=5, height=7
+    252              0x0C, 0x0A, 0x3F, 0x08, 0x00, 
+    253          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    254          const uint8_t Fontx5x7_char_53[] = {
+   \                     Fontx5x7_char_53:
+   \   000000 050717252519          DB 5, 7, 23, 37, 37, 25, 0, 0
+    255              0x05, 0x07, // width=5, height=7
+    256              0x17, 0x25, 0x25, 0x19, 0x00, 
+    257          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    258          const uint8_t Fontx5x7_char_54[] = {
+   \                     Fontx5x7_char_54:
+   \   000000 05071E252518          DB 5, 7, 30, 37, 37, 24, 0, 0
+    259              0x05, 0x07, // width=5, height=7
+    260              0x1E, 0x25, 0x25, 0x18, 0x00, 
+    261          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    262          const uint8_t Fontx5x7_char_55[] = {
+   \                     Fontx5x7_char_55:
+   \   000000 050701310D03          DB 5, 7, 1, 49, 13, 3, 0, 0
+    263              0x05, 0x07, // width=5, height=7
+    264              0x01, 0x31, 0x0D, 0x03, 0x00, 
+    265          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    266          const uint8_t Fontx5x7_char_56[] = {
+   \                     Fontx5x7_char_56:
+   \   000000 05071A25251A          DB 5, 7, 26, 37, 37, 26, 0, 0
+    267              0x05, 0x07, // width=5, height=7
+    268              0x1A, 0x25, 0x25, 0x1A, 0x00, 
+    269          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    270          const uint8_t Fontx5x7_char_57[] = {
+   \                     Fontx5x7_char_57:
+   \   000000 05070629291E          DB 5, 7, 6, 41, 41, 30, 0, 0
+    271              0x05, 0x07, // width=5, height=7
+    272              0x06, 0x29, 0x29, 0x1E, 0x00, 
+    273          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    274          const uint8_t Fontx5x7_char_58[] = {
+   \                     Fontx5x7_char_58:
+   \   000000 050700363600          DB 5, 7, 0, 54, 54, 0, 0, 0
+    275              0x05, 0x07, // width=5, height=7
+    276              0x00, 0x36, 0x36, 0x00, 0x00, 
+    277          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    278          const uint8_t Fontx5x7_char_59[] = {
+   \                     Fontx5x7_char_59:
+   \   000000 050740361600          DB 5, 7, 64, 54, 22, 0, 0, 0
+    279              0x05, 0x07, // width=5, height=7
+    280              0x40, 0x36, 0x16, 0x00, 0x00, 
+    281          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    282          const uint8_t Fontx5x7_char_60[] = {
+   \                     Fontx5x7_char_60:
+   \   000000 050708142200          DB 5, 7, 8, 20, 34, 0, 0, 0
+    283              0x05, 0x07, // width=5, height=7
+    284              0x08, 0x14, 0x22, 0x00, 0x00, 
+    285          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    286          const uint8_t Fontx5x7_char_61[] = {
+   \                     Fontx5x7_char_61:
+   \   000000 050714141414          DB 5, 7, 20, 20, 20, 20, 0, 0
+    287              0x05, 0x07, // width=5, height=7
+    288              0x14, 0x14, 0x14, 0x14, 0x00, 
+    289          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    290          const uint8_t Fontx5x7_char_62[] = {
+   \                     Fontx5x7_char_62:
+   \   000000 050722140800          DB 5, 7, 34, 20, 8, 0, 0, 0
+    291              0x05, 0x07, // width=5, height=7
+    292              0x22, 0x14, 0x08, 0x00, 0x00, 
+    293          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    294          const uint8_t Fontx5x7_char_63[] = {
+   \                     Fontx5x7_char_63:
+   \   000000 050702290600          DB 5, 7, 2, 41, 6, 0, 0, 0
+    295              0x05, 0x07, // width=5, height=7
+    296              0x02, 0x29, 0x06, 0x00, 0x00, 
+    297          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    298          const uint8_t Fontx5x7_char_64[] = {
+   \                     Fontx5x7_char_64:
+   \   000000 05071E212D0E          DB 5, 7, 30, 33, 45, 14, 0, 0
+    299              0x05, 0x07, // width=5, height=7
+    300              0x1E, 0x21, 0x2D, 0x0E, 0x00, 
+    301          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    302          const uint8_t Fontx5x7_char_65[] = {
+   \                     Fontx5x7_char_65:
+   \   000000 05073E09093E          DB 5, 7, 62, 9, 9, 62, 0, 0
+    303              0x05, 0x07, // width=5, height=7
+    304              0x3E, 0x09, 0x09, 0x3E, 0x00, 
+    305          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    306          const uint8_t Fontx5x7_char_66[] = {
+   \                     Fontx5x7_char_66:
+   \   000000 05073F25251A          DB 5, 7, 63, 37, 37, 26, 0, 0
+    307              0x05, 0x07, // width=5, height=7
+    308              0x3F, 0x25, 0x25, 0x1A, 0x00, 
+    309          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    310          const uint8_t Fontx5x7_char_67[] = {
+   \                     Fontx5x7_char_67:
+   \   000000 05071E212112          DB 5, 7, 30, 33, 33, 18, 0, 0
+    311              0x05, 0x07, // width=5, height=7
+    312              0x1E, 0x21, 0x21, 0x12, 0x00, 
+    313          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    314          const uint8_t Fontx5x7_char_68[] = {
+   \                     Fontx5x7_char_68:
+   \   000000 05073F21211E          DB 5, 7, 63, 33, 33, 30, 0, 0
+    315              0x05, 0x07, // width=5, height=7
+    316              0x3F, 0x21, 0x21, 0x1E, 0x00, 
+    317          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    318          const uint8_t Fontx5x7_char_69[] = {
+   \                     Fontx5x7_char_69:
+   \   000000 05073F252521          DB 5, 7, 63, 37, 37, 33, 0, 0
+    319              0x05, 0x07, // width=5, height=7
+    320              0x3F, 0x25, 0x25, 0x21, 0x00, 
+    321          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    322          const uint8_t Fontx5x7_char_70[] = {
+   \                     Fontx5x7_char_70:
+   \   000000 05073F050501          DB 5, 7, 63, 5, 5, 1, 0, 0
+    323              0x05, 0x07, // width=5, height=7
+    324              0x3F, 0x05, 0x05, 0x01, 0x00, 
+    325          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    326          const uint8_t Fontx5x7_char_71[] = {
+   \                     Fontx5x7_char_71:
+   \   000000 05071E21293A          DB 5, 7, 30, 33, 41, 58, 0, 0
+    327              0x05, 0x07, // width=5, height=7
+    328              0x1E, 0x21, 0x29, 0x3A, 0x00, 
+    329          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    330          const uint8_t Fontx5x7_char_72[] = {
+   \                     Fontx5x7_char_72:
+   \   000000 05073F04043F          DB 5, 7, 63, 4, 4, 63, 0, 0
+    331              0x05, 0x07, // width=5, height=7
+    332              0x3F, 0x04, 0x04, 0x3F, 0x00, 
+    333          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    334          const uint8_t Fontx5x7_char_73[] = {
+   \                     Fontx5x7_char_73:
+   \   000000 0507213F2100          DB 5, 7, 33, 63, 33, 0, 0, 0
+    335              0x05, 0x07, // width=5, height=7
+    336              0x21, 0x3F, 0x21, 0x00, 0x00, 
+    337          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    338          const uint8_t Fontx5x7_char_74[] = {
+   \                     Fontx5x7_char_74:
+   \   000000 05071020201F          DB 5, 7, 16, 32, 32, 31, 0, 0
+    339              0x05, 0x07, // width=5, height=7
+    340              0x10, 0x20, 0x20, 0x1F, 0x00, 
+    341          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    342          const uint8_t Fontx5x7_char_75[] = {
+   \                     Fontx5x7_char_75:
+   \   000000 05073F0C1221          DB 5, 7, 63, 12, 18, 33, 0, 0
+    343              0x05, 0x07, // width=5, height=7
+    344              0x3F, 0x0C, 0x12, 0x21, 0x00, 
+    345          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    346          const uint8_t Fontx5x7_char_76[] = {
+   \                     Fontx5x7_char_76:
+   \   000000 05073F202020          DB 5, 7, 63, 32, 32, 32, 0, 0
+    347              0x05, 0x07, // width=5, height=7
+    348              0x3F, 0x20, 0x20, 0x20, 0x00, 
+    349          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    350          const uint8_t Fontx5x7_char_77[] = {
+   \                     Fontx5x7_char_77:
+   \   000000 05073F06063F          DB 5, 7, 63, 6, 6, 63, 0, 0
+    351              0x05, 0x07, // width=5, height=7
+    352              0x3F, 0x06, 0x06, 0x3F, 0x00, 
+    353          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    354          const uint8_t Fontx5x7_char_78[] = {
+   \                     Fontx5x7_char_78:
+   \   000000 05073F06183F          DB 5, 7, 63, 6, 24, 63, 0, 0
+    355              0x05, 0x07, // width=5, height=7
+    356              0x3F, 0x06, 0x18, 0x3F, 0x00, 
+    357          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    358          const uint8_t Fontx5x7_char_79[] = {
+   \                     Fontx5x7_char_79:
+   \   000000 05071E21211E          DB 5, 7, 30, 33, 33, 30, 0, 0
+    359              0x05, 0x07, // width=5, height=7
+    360              0x1E, 0x21, 0x21, 0x1E, 0x00, 
+    361          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    362          const uint8_t Fontx5x7_char_80[] = {
+   \                     Fontx5x7_char_80:
+   \   000000 05073F090906          DB 5, 7, 63, 9, 9, 6, 0, 0
+    363              0x05, 0x07, // width=5, height=7
+    364              0x3F, 0x09, 0x09, 0x06, 0x00, 
+    365          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    366          const uint8_t Fontx5x7_char_81[] = {
+   \                     Fontx5x7_char_81:
+   \   000000 05071E31215E          DB 5, 7, 30, 49, 33, 94, 0, 0
+    367              0x05, 0x07, // width=5, height=7
+    368              0x1E, 0x31, 0x21, 0x5E, 0x00, 
+    369          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    370          const uint8_t Fontx5x7_char_82[] = {
+   \                     Fontx5x7_char_82:
+   \   000000 05073F091926          DB 5, 7, 63, 9, 25, 38, 0, 0
+    371              0x05, 0x07, // width=5, height=7
+    372              0x3F, 0x09, 0x19, 0x26, 0x00, 
+    373          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    374          const uint8_t Fontx5x7_char_83[] = {
+   \                     Fontx5x7_char_83:
+   \   000000 050712252912          DB 5, 7, 18, 37, 41, 18, 0, 0
+    375              0x05, 0x07, // width=5, height=7
+    376              0x12, 0x25, 0x29, 0x12, 0x00, 
+    377          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    378          const uint8_t Fontx5x7_char_84[] = {
+   \                     Fontx5x7_char_84:
+   \   000000 0507013F0100          DB 5, 7, 1, 63, 1, 0, 0, 0
+    379              0x05, 0x07, // width=5, height=7
+    380              0x01, 0x3F, 0x01, 0x00, 0x00, 
+    381          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    382          const uint8_t Fontx5x7_char_85[] = {
+   \                     Fontx5x7_char_85:
+   \   000000 05071F20201F          DB 5, 7, 31, 32, 32, 31, 0, 0
+    383              0x05, 0x07, // width=5, height=7
+    384              0x1F, 0x20, 0x20, 0x1F, 0x00, 
+    385          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    386          const uint8_t Fontx5x7_char_86[] = {
+   \                     Fontx5x7_char_86:
+   \   000000 05070F30300F          DB 5, 7, 15, 48, 48, 15, 0, 0
+    387              0x05, 0x07, // width=5, height=7
+    388              0x0F, 0x30, 0x30, 0x0F, 0x00, 
+    389          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    390          const uint8_t Fontx5x7_char_87[] = {
+   \                     Fontx5x7_char_87:
+   \   000000 05073F18183F          DB 5, 7, 63, 24, 24, 63, 0, 0
+    391              0x05, 0x07, // width=5, height=7
+    392              0x3F, 0x18, 0x18, 0x3F, 0x00, 
+    393          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    394          const uint8_t Fontx5x7_char_88[] = {
+   \                     Fontx5x7_char_88:
+   \   000000 0507330C0C33          DB 5, 7, 51, 12, 12, 51, 0, 0
+    395              0x05, 0x07, // width=5, height=7
+    396              0x33, 0x0C, 0x0C, 0x33, 0x00, 
+    397          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    398          const uint8_t Fontx5x7_char_89[] = {
+   \                     Fontx5x7_char_89:
+   \   000000 050707380700          DB 5, 7, 7, 56, 7, 0, 0, 0
+    399              0x05, 0x07, // width=5, height=7
+    400              0x07, 0x38, 0x07, 0x00, 0x00, 
+    401          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    402          const uint8_t Fontx5x7_char_90[] = {
+   \                     Fontx5x7_char_90:
+   \   000000 050731292523          DB 5, 7, 49, 41, 37, 35, 0, 0
+    403              0x05, 0x07, // width=5, height=7
+    404              0x31, 0x29, 0x25, 0x23, 0x00, 
+    405          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    406          const uint8_t Fontx5x7_char_91[] = {
+   \                     Fontx5x7_char_91:
+   \   000000 05073F212100          DB 5, 7, 63, 33, 33, 0, 0, 0
+    407              0x05, 0x07, // width=5, height=7
+    408              0x3F, 0x21, 0x21, 0x00, 0x00, 
+    409          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    410          const uint8_t Fontx5x7_char_92[] = {
+   \                     Fontx5x7_char_92:
+   \   000000 050702040810          DB 5, 7, 2, 4, 8, 16, 0, 0
+    411              0x05, 0x07, // width=5, height=7
+    412              0x02, 0x04, 0x08, 0x10, 0x00, 
+    413          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    414          const uint8_t Fontx5x7_char_93[] = {
+   \                     Fontx5x7_char_93:
+   \   000000 050721213F00          DB 5, 7, 33, 33, 63, 0, 0, 0
+    415              0x05, 0x07, // width=5, height=7
+    416              0x21, 0x21, 0x3F, 0x00, 0x00, 
+    417          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    418          const uint8_t Fontx5x7_char_94[] = {
+   \                     Fontx5x7_char_94:
+   \   000000 050702010200          DB 5, 7, 2, 1, 2, 0, 0, 0
+    419              0x05, 0x07, // width=5, height=7
+    420              0x02, 0x01, 0x02, 0x00, 0x00, 
+    421          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    422          const uint8_t Fontx5x7_char_95[] = {
+   \                     Fontx5x7_char_95:
+   \   000000 050720202020          DB 5, 7, 32, 32, 32, 32, 0, 0
+    423              0x05, 0x07, // width=5, height=7
+    424              0x20, 0x20, 0x20, 0x20, 0x00, 
+    425          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    426          const uint8_t Fontx5x7_char_96[] = {
+   \                     Fontx5x7_char_96:
+   \   000000 050701030400          DB 5, 7, 1, 3, 4, 0, 0, 0
+    427              0x05, 0x07, // width=5, height=7
+    428              0x01, 0x03, 0x04, 0x00, 0x00, 
+    429          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    430          const uint8_t Fontx5x7_char_97[] = {
+   \                     Fontx5x7_char_97:
+   \   000000 05071824143C          DB 5, 7, 24, 36, 20, 60, 0, 0
+    431              0x05, 0x07, // width=5, height=7
+    432              0x18, 0x24, 0x14, 0x3C, 0x00, 
+    433          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    434          const uint8_t Fontx5x7_char_98[] = {
+   \                     Fontx5x7_char_98:
+   \   000000 05073F242418          DB 5, 7, 63, 36, 36, 24, 0, 0
+    435              0x05, 0x07, // width=5, height=7
+    436              0x3F, 0x24, 0x24, 0x18, 0x00, 
+    437          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    438          const uint8_t Fontx5x7_char_99[] = {
+   \                     Fontx5x7_char_99:
+   \   000000 050718242400          DB 5, 7, 24, 36, 36, 0, 0, 0
+    439              0x05, 0x07, // width=5, height=7
+    440              0x18, 0x24, 0x24, 0x00, 0x00, 
+    441          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    442          const uint8_t Fontx5x7_char_100[] = {
+   \                     Fontx5x7_char_100:
+   \   000000 05071824243F          DB 5, 7, 24, 36, 36, 63, 0, 0
+    443              0x05, 0x07, // width=5, height=7
+    444              0x18, 0x24, 0x24, 0x3F, 0x00, 
+    445          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    446          const uint8_t Fontx5x7_char_101[] = {
+   \                     Fontx5x7_char_101:
+   \   000000 050718342C08          DB 5, 7, 24, 52, 44, 8, 0, 0
+    447              0x05, 0x07, // width=5, height=7
+    448              0x18, 0x34, 0x2C, 0x08, 0x00, 
+    449          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    450          const uint8_t Fontx5x7_char_102[] = {
+   \                     Fontx5x7_char_102:
+   \   000000 0507083E0902          DB 5, 7, 8, 62, 9, 2, 0, 0
+    451              0x05, 0x07, // width=5, height=7
+    452              0x08, 0x3E, 0x09, 0x02, 0x00, 
+    453          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    454          const uint8_t Fontx5x7_char_103[] = {
+   \                     Fontx5x7_char_103:
+   \   000000 05072854544C          DB 5, 7, 40, 84, 84, 76, 0, 0
+    455              0x05, 0x07, // width=5, height=7
+    456              0x28, 0x54, 0x54, 0x4C, 0x00, 
+    457          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    458          const uint8_t Fontx5x7_char_104[] = {
+   \                     Fontx5x7_char_104:
+   \   000000 05073F040438          DB 5, 7, 63, 4, 4, 56, 0, 0
+    459              0x05, 0x07, // width=5, height=7
+    460              0x3F, 0x04, 0x04, 0x38, 0x00, 
+    461          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    462          const uint8_t Fontx5x7_char_105[] = {
+   \                     Fontx5x7_char_105:
+   \   000000 0507243D2000          DB 5, 7, 36, 61, 32, 0, 0, 0
+    463              0x05, 0x07, // width=5, height=7
+    464              0x24, 0x3D, 0x20, 0x00, 0x00, 
+    465          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    466          const uint8_t Fontx5x7_char_106[] = {
+   \                     Fontx5x7_char_106:
+   \   000000 050720403D00          DB 5, 7, 32, 64, 61, 0, 0, 0
+    467              0x05, 0x07, // width=5, height=7
+    468              0x20, 0x40, 0x3D, 0x00, 0x00, 
+    469          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    470          const uint8_t Fontx5x7_char_107[] = {
+   \                     Fontx5x7_char_107:
+   \   000000 05073F081420          DB 5, 7, 63, 8, 20, 32, 0, 0
+    471              0x05, 0x07, // width=5, height=7
+    472              0x3F, 0x08, 0x14, 0x20, 0x00, 
+    473          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    474          const uint8_t Fontx5x7_char_108[] = {
+   \                     Fontx5x7_char_108:
+   \   000000 0507213F2000          DB 5, 7, 33, 63, 32, 0, 0, 0
+    475              0x05, 0x07, // width=5, height=7
+    476              0x21, 0x3F, 0x20, 0x00, 0x00, 
+    477          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    478          const uint8_t Fontx5x7_char_109[] = {
+   \                     Fontx5x7_char_109:
+   \   000000 05073C080C38          DB 5, 7, 60, 8, 12, 56, 0, 0
+    479              0x05, 0x07, // width=5, height=7
+    480              0x3C, 0x08, 0x0C, 0x38, 0x00, 
+    481          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    482          const uint8_t Fontx5x7_char_110[] = {
+   \                     Fontx5x7_char_110:
+   \   000000 05073C040438          DB 5, 7, 60, 4, 4, 56, 0, 0
+    483              0x05, 0x07, // width=5, height=7
+    484              0x3C, 0x04, 0x04, 0x38, 0x00, 
+    485          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    486          const uint8_t Fontx5x7_char_111[] = {
+   \                     Fontx5x7_char_111:
+   \   000000 050718242418          DB 5, 7, 24, 36, 36, 24, 0, 0
+    487              0x05, 0x07, // width=5, height=7
+    488              0x18, 0x24, 0x24, 0x18, 0x00, 
+    489          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    490          const uint8_t Fontx5x7_char_112[] = {
+   \                     Fontx5x7_char_112:
+   \   000000 05077C242418          DB 5, 7, 124, 36, 36, 24, 0, 0
+    491              0x05, 0x07, // width=5, height=7
+    492              0x7C, 0x24, 0x24, 0x18, 0x00, 
+    493          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    494          const uint8_t Fontx5x7_char_113[] = {
+   \                     Fontx5x7_char_113:
+   \   000000 05071824247C          DB 5, 7, 24, 36, 36, 124, 0, 0
+    495              0x05, 0x07, // width=5, height=7
+    496              0x18, 0x24, 0x24, 0x7C, 0x00, 
+    497          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    498          const uint8_t Fontx5x7_char_114[] = {
+   \                     Fontx5x7_char_114:
+   \   000000 05073C040408          DB 5, 7, 60, 4, 4, 8, 0, 0
+    499              0x05, 0x07, // width=5, height=7
+    500              0x3C, 0x04, 0x04, 0x08, 0x00, 
+    501          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    502          const uint8_t Fontx5x7_char_115[] = {
+   \                     Fontx5x7_char_115:
+   \   000000 0507282C3414          DB 5, 7, 40, 44, 52, 20, 0, 0
+    503              0x05, 0x07, // width=5, height=7
+    504              0x28, 0x2C, 0x34, 0x14, 0x00, 
+    505          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    506          const uint8_t Fontx5x7_char_116[] = {
+   \                     Fontx5x7_char_116:
+   \   000000 0507041F2420          DB 5, 7, 4, 31, 36, 32, 0, 0
+    507              0x05, 0x07, // width=5, height=7
+    508              0x04, 0x1F, 0x24, 0x20, 0x00, 
+    509          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    510          const uint8_t Fontx5x7_char_117[] = {
+   \                     Fontx5x7_char_117:
+   \   000000 05071C20203C          DB 5, 7, 28, 32, 32, 60, 0, 0
+    511              0x05, 0x07, // width=5, height=7
+    512              0x1C, 0x20, 0x20, 0x3C, 0x00, 
+    513          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    514          const uint8_t Fontx5x7_char_118[] = {
+   \                     Fontx5x7_char_118:
+   \   000000 05071C201C00          DB 5, 7, 28, 32, 28, 0, 0, 0
+    515              0x05, 0x07, // width=5, height=7
+    516              0x1C, 0x20, 0x1C, 0x00, 0x00, 
+    517          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    518          const uint8_t Fontx5x7_char_119[] = {
+   \                     Fontx5x7_char_119:
+   \   000000 05073C30303C          DB 5, 7, 60, 48, 48, 60, 0, 0
+    519              0x05, 0x07, // width=5, height=7
+    520              0x3C, 0x30, 0x30, 0x3C, 0x00, 
+    521          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    522          const uint8_t Fontx5x7_char_120[] = {
+   \                     Fontx5x7_char_120:
+   \   000000 050724181824          DB 5, 7, 36, 24, 24, 36, 0, 0
+    523              0x05, 0x07, // width=5, height=7
+    524              0x24, 0x18, 0x18, 0x24, 0x00, 
+    525          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    526          const uint8_t Fontx5x7_char_121[] = {
+   \                     Fontx5x7_char_121:
+   \   000000 05070C50201C          DB 5, 7, 12, 80, 32, 28, 0, 0
+    527              0x05, 0x07, // width=5, height=7
+    528              0x0C, 0x50, 0x20, 0x1C, 0x00, 
+    529          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    530          const uint8_t Fontx5x7_char_122[] = {
+   \                     Fontx5x7_char_122:
+   \   000000 050724342C24          DB 5, 7, 36, 52, 44, 36, 0, 0
+    531              0x05, 0x07, // width=5, height=7
+    532              0x24, 0x34, 0x2C, 0x24, 0x00, 
+    533          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    534          const uint8_t Fontx5x7_char_123[] = {
+   \                     Fontx5x7_char_123:
+   \   000000 0507041E2100          DB 5, 7, 4, 30, 33, 0, 0, 0
+    535              0x05, 0x07, // width=5, height=7
+    536              0x04, 0x1E, 0x21, 0x00, 0x00, 
+    537          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    538          const uint8_t Fontx5x7_char_124[] = {
+   \                     Fontx5x7_char_124:
+   \   000000 0507003F0000          DB 5, 7, 0, 63, 0, 0, 0, 0
+    539              0x05, 0x07, // width=5, height=7
+    540              0x00, 0x3F, 0x00, 0x00, 0x00, 
+    541          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    542          const uint8_t Fontx5x7_char_125[] = {
+   \                     Fontx5x7_char_125:
+   \   000000 0507211E0400          DB 5, 7, 33, 30, 4, 0, 0, 0
+    543              0x05, 0x07, // width=5, height=7
+    544              0x21, 0x1E, 0x04, 0x00, 0x00, 
+    545          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    546          const uint8_t Fontx5x7_char_126[] = {
+   \                     Fontx5x7_char_126:
+   \   000000 050702010201          DB 5, 7, 2, 1, 2, 1, 0, 0
+    547              0x05, 0x07, // width=5, height=7
+    548              0x02, 0x01, 0x02, 0x01, 0x00, 
+    549          };
+    550          // const uint8_t Fontx5x7_char_127[] = {};
+    551          // const uint8_t Fontx5x7_char_128[] = {};
+    552          // const uint8_t Fontx5x7_char_129[] = {};
+    553          // const uint8_t Fontx5x7_char_130[] = {};
+    554          // const uint8_t Fontx5x7_char_131[] = {};
+    555          // const uint8_t Fontx5x7_char_132[] = {};
+    556          // const uint8_t Fontx5x7_char_133[] = {};
+    557          // const uint8_t Fontx5x7_char_134[] = {};
+    558          // const uint8_t Fontx5x7_char_135[] = {};
+    559          // const uint8_t Fontx5x7_char_136[] = {};
+    560          // const uint8_t Fontx5x7_char_137[] = {};
+    561          // const uint8_t Fontx5x7_char_138[] = {};
+    562          // const uint8_t Fontx5x7_char_139[] = {};
+    563          // const uint8_t Fontx5x7_char_140[] = {};
+    564          // const uint8_t Fontx5x7_char_141[] = {};
+    565          // const uint8_t Fontx5x7_char_142[] = {};
+    566          // const uint8_t Fontx5x7_char_143[] = {};
+    567          // const uint8_t Fontx5x7_char_144[] = {};
+    568          // const uint8_t Fontx5x7_char_145[] = {};
+    569          // const uint8_t Fontx5x7_char_146[] = {};
+    570          // const uint8_t Fontx5x7_char_147[] = {};
+    571          // const uint8_t Fontx5x7_char_148[] = {};
+    572          // const uint8_t Fontx5x7_char_149[] = {};
+    573          // const uint8_t Fontx5x7_char_150[] = {};
+    574          // const uint8_t Fontx5x7_char_151[] = {};
+    575          // const uint8_t Fontx5x7_char_152[] = {};
+    576          // const uint8_t Fontx5x7_char_153[] = {};
+    577          // const uint8_t Fontx5x7_char_154[] = {};
+    578          // const uint8_t Fontx5x7_char_155[] = {};
+    579          // const uint8_t Fontx5x7_char_156[] = {};
+    580          // const uint8_t Fontx5x7_char_157[] = {};
+    581          // const uint8_t Fontx5x7_char_158[] = {};
+    582          // const uint8_t Fontx5x7_char_159[] = {};
+    583          // const uint8_t Fontx5x7_char_160[] = {};
+    584          // const uint8_t Fontx5x7_char_161[] = {};
+    585          // const uint8_t Fontx5x7_char_162[] = {};
+    586          // const uint8_t Fontx5x7_char_163[] = {};
+    587          // const uint8_t Fontx5x7_char_164[] = {};
+    588          // const uint8_t Fontx5x7_char_165[] = {};
+    589          // const uint8_t Fontx5x7_char_166[] = {};
+    590          // const uint8_t Fontx5x7_char_167[] = {};
+    591          // const uint8_t Fontx5x7_char_168[] = {};
+    592          // const uint8_t Fontx5x7_char_169[] = {};
+    593          // const uint8_t Fontx5x7_char_170[] = {};
+    594          // const uint8_t Fontx5x7_char_171[] = {};
+    595          // const uint8_t Fontx5x7_char_172[] = {};
+    596          // const uint8_t Fontx5x7_char_173[] = {};
+    597          // const uint8_t Fontx5x7_char_174[] = {};
+    598          // const uint8_t Fontx5x7_char_175[] = {};
+    599          // const uint8_t Fontx5x7_char_176[] = {};
+    600          // const uint8_t Fontx5x7_char_177[] = {};
+    601          // const uint8_t Fontx5x7_char_178[] = {};
+    602          // const uint8_t Fontx5x7_char_179[] = {};
+    603          // const uint8_t Fontx5x7_char_180[] = {};
+    604          // const uint8_t Fontx5x7_char_181[] = {};
+    605          // const uint8_t Fontx5x7_char_182[] = {};
+    606          // const uint8_t Fontx5x7_char_183[] = {};
+    607          // const uint8_t Fontx5x7_char_184[] = {};
+    608          // const uint8_t Fontx5x7_char_185[] = {};
+    609          // const uint8_t Fontx5x7_char_186[] = {};
+    610          // const uint8_t Fontx5x7_char_187[] = {};
+    611          // const uint8_t Fontx5x7_char_188[] = {};
+    612          // const uint8_t Fontx5x7_char_189[] = {};
+    613          // const uint8_t Fontx5x7_char_190[] = {};
+    614          // const uint8_t Fontx5x7_char_191[] = {};
+    615          // const uint8_t Fontx5x7_char_192[] = {};
+    616          // const uint8_t Fontx5x7_char_193[] = {};
+    617          // const uint8_t Fontx5x7_char_194[] = {};
+    618          // const uint8_t Fontx5x7_char_195[] = {};
+    619          // const uint8_t Fontx5x7_char_196[] = {};
+    620          // const uint8_t Fontx5x7_char_197[] = {};
+    621          // const uint8_t Fontx5x7_char_198[] = {};
+    622          // const uint8_t Fontx5x7_char_199[] = {};
+    623          // const uint8_t Fontx5x7_char_200[] = {};
+    624          // const uint8_t Fontx5x7_char_201[] = {};
+    625          // const uint8_t Fontx5x7_char_202[] = {};
+    626          // const uint8_t Fontx5x7_char_203[] = {};
+    627          // const uint8_t Fontx5x7_char_204[] = {};
+    628          // const uint8_t Fontx5x7_char_205[] = {};
+    629          // const uint8_t Fontx5x7_char_206[] = {};
+    630          // const uint8_t Fontx5x7_char_207[] = {};
+    631          // const uint8_t Fontx5x7_char_208[] = {};
+    632          // const uint8_t Fontx5x7_char_209[] = {};
+    633          // const uint8_t Fontx5x7_char_210[] = {};
+    634          // const uint8_t Fontx5x7_char_211[] = {};
+    635          // const uint8_t Fontx5x7_char_212[] = {};
+    636          // const uint8_t Fontx5x7_char_213[] = {};
+    637          // const uint8_t Fontx5x7_char_214[] = {};
+    638          // const uint8_t Fontx5x7_char_215[] = {};
+    639          // const uint8_t Fontx5x7_char_216[] = {};
+    640          // const uint8_t Fontx5x7_char_217[] = {};
+    641          // const uint8_t Fontx5x7_char_218[] = {};
+    642          // const uint8_t Fontx5x7_char_219[] = {};
+    643          // const uint8_t Fontx5x7_char_220[] = {};
+    644          // const uint8_t Fontx5x7_char_221[] = {};
+    645          // const uint8_t Fontx5x7_char_222[] = {};
+    646          // const uint8_t Fontx5x7_char_223[] = {};
+    647          // const uint8_t Fontx5x7_char_224[] = {};
+    648          // const uint8_t Fontx5x7_char_225[] = {};
+    649          // const uint8_t Fontx5x7_char_226[] = {};
+    650          // const uint8_t Fontx5x7_char_227[] = {};
+    651          // const uint8_t Fontx5x7_char_228[] = {};
+    652          // const uint8_t Fontx5x7_char_229[] = {};
+    653          // const uint8_t Fontx5x7_char_230[] = {};
+    654          // const uint8_t Fontx5x7_char_231[] = {};
+    655          // const uint8_t Fontx5x7_char_232[] = {};
+    656          // const uint8_t Fontx5x7_char_233[] = {};
+    657          // const uint8_t Fontx5x7_char_234[] = {};
+    658          // const uint8_t Fontx5x7_char_235[] = {};
+    659          // const uint8_t Fontx5x7_char_236[] = {};
+    660          // const uint8_t Fontx5x7_char_237[] = {};
+    661          // const uint8_t Fontx5x7_char_238[] = {};
+    662          // const uint8_t Fontx5x7_char_239[] = {};
+    663          // const uint8_t Fontx5x7_char_240[] = {};
+    664          // const uint8_t Fontx5x7_char_241[] = {};
+    665          // const uint8_t Fontx5x7_char_242[] = {};
+    666          // const uint8_t Fontx5x7_char_243[] = {};
+    667          // const uint8_t Fontx5x7_char_244[] = {};
+    668          // const uint8_t Fontx5x7_char_245[] = {};
+    669          // const uint8_t Fontx5x7_char_246[] = {};
+    670          // const uint8_t Fontx5x7_char_247[] = {};
+    671          // const uint8_t Fontx5x7_char_248[] = {};
+    672          // const uint8_t Fontx5x7_char_249[] = {};
+    673          // const uint8_t Fontx5x7_char_250[] = {};
+    674          // const uint8_t Fontx5x7_char_251[] = {};
+    675          // const uint8_t Fontx5x7_char_252[] = {};
+    676          // const uint8_t Fontx5x7_char_253[] = {};
+    677          // const uint8_t Fontx5x7_char_254[] = {};
+    678          // const uint8_t Fontx5x7_char_255[] = {};
+    679          
+
+   \                                 In  segment NEAR_CONST, align 2
+    680          const uint8_t * const Fontx5x7_table[256] = {
+   \                     Fontx5x7_table:
+   \   000000 ............          DW Fontx5x7_char_0, Fontx5x7_char_1, Fontx5x7_char_2, Fontx5x7_char_3
+   \   000008 ............          DW Fontx5x7_char_4, Fontx5x7_char_5, Fontx5x7_char_6, Fontx5x7_char_7
+   \   000010 ............          DW Fontx5x7_char_8, Fontx5x7_char_9, Fontx5x7_char_10, Fontx5x7_char_11
+   \   000018 ............          DW Fontx5x7_char_12, Fontx5x7_char_13, Fontx5x7_char_14
+   \   00001E ............          DW Fontx5x7_char_15, Fontx5x7_char_16, Fontx5x7_char_17
+   \   000024 ............          DW Fontx5x7_char_18, Fontx5x7_char_19, Fontx5x7_char_20
+   \   00002A ............          DW Fontx5x7_char_21, Fontx5x7_char_22, Fontx5x7_char_23
+   \   000030 ............          DW Fontx5x7_char_24, Fontx5x7_char_25, Fontx5x7_char_26
+   \   000036 ............          DW Fontx5x7_char_27, Fontx5x7_char_28, Fontx5x7_char_29
+   \   00003C ............          DW Fontx5x7_char_30, Fontx5x7_char_31, Fontx5x7_char_32
+   \   000042 ............          DW Fontx5x7_char_33, Fontx5x7_char_34, Fontx5x7_char_35
+   \   000048 ............          DW Fontx5x7_char_36, Fontx5x7_char_37, Fontx5x7_char_38
+   \   00004E ............          DW Fontx5x7_char_39, Fontx5x7_char_40, Fontx5x7_char_41
+   \   000054 ............          DW Fontx5x7_char_42, Fontx5x7_char_43, Fontx5x7_char_44
+   \   00005A ............          DW Fontx5x7_char_45, Fontx5x7_char_46, Fontx5x7_char_47
+   \   000060 ............          DW Fontx5x7_char_48, Fontx5x7_char_49, Fontx5x7_char_50
+   \   000066 ............          DW Fontx5x7_char_51, Fontx5x7_char_52, Fontx5x7_char_53
+   \   00006C ............          DW Fontx5x7_char_54, Fontx5x7_char_55, Fontx5x7_char_56
+   \   000072 ............          DW Fontx5x7_char_57, Fontx5x7_char_58, Fontx5x7_char_59
+   \   000078 ............          DW Fontx5x7_char_60, Fontx5x7_char_61, Fontx5x7_char_62
+   \   00007E ............          DW Fontx5x7_char_63, Fontx5x7_char_64, Fontx5x7_char_65
+   \   000084 ............          DW Fontx5x7_char_66, Fontx5x7_char_67, Fontx5x7_char_68
+   \   00008A ............          DW Fontx5x7_char_69, Fontx5x7_char_70, Fontx5x7_char_71
+   \   000090 ............          DW Fontx5x7_char_72, Fontx5x7_char_73, Fontx5x7_char_74
+   \   000096 ............          DW Fontx5x7_char_75, Fontx5x7_char_76, Fontx5x7_char_77
+   \   00009C ............          DW Fontx5x7_char_78, Fontx5x7_char_79, Fontx5x7_char_80
+   \   0000A2 ............          DW Fontx5x7_char_81, Fontx5x7_char_82, Fontx5x7_char_83
+   \   0000A8 ............          DW Fontx5x7_char_84, Fontx5x7_char_85, Fontx5x7_char_86
+   \   0000AE ............          DW Fontx5x7_char_87, Fontx5x7_char_88, Fontx5x7_char_89
+   \   0000B4 ............          DW Fontx5x7_char_90, Fontx5x7_char_91, Fontx5x7_char_92
+   \   0000BA ............          DW Fontx5x7_char_93, Fontx5x7_char_94, Fontx5x7_char_95
+   \   0000C0 ............          DW Fontx5x7_char_96, Fontx5x7_char_97, Fontx5x7_char_98
+   \   0000C6 ............          DW Fontx5x7_char_99, Fontx5x7_char_100, Fontx5x7_char_101
+   \   0000CC ............          DW Fontx5x7_char_102, Fontx5x7_char_103, Fontx5x7_char_104
+   \   0000D2 ............          DW Fontx5x7_char_105, Fontx5x7_char_106, Fontx5x7_char_107
+   \   0000D8 ............          DW Fontx5x7_char_108, Fontx5x7_char_109, Fontx5x7_char_110
+   \   0000DE ............          DW Fontx5x7_char_111, Fontx5x7_char_112, Fontx5x7_char_113
+   \   0000E4 ............          DW Fontx5x7_char_114, Fontx5x7_char_115, Fontx5x7_char_116
+   \   0000EA ............          DW Fontx5x7_char_117, Fontx5x7_char_118, Fontx5x7_char_119
+   \   0000F0 ............          DW Fontx5x7_char_120, Fontx5x7_char_121, Fontx5x7_char_122
+   \   0000F6 ............          DW Fontx5x7_char_123, Fontx5x7_char_124, Fontx5x7_char_125
+   \   0000FC ....00000000          DW Fontx5x7_char_126, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000116 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000138 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   00015A 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   00017C 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   00019E 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   0001C0 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   0001E2 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+    681              Fontx5x7_char_0,
+    682              Fontx5x7_char_1,
+    683              Fontx5x7_char_2,
+    684              Fontx5x7_char_3,
+    685              Fontx5x7_char_4,
+    686              Fontx5x7_char_5,
+    687              Fontx5x7_char_6,
+    688              Fontx5x7_char_7,
+    689              Fontx5x7_char_8,
+    690              Fontx5x7_char_9,
+    691              Fontx5x7_char_10,
+    692              Fontx5x7_char_11,
+    693              Fontx5x7_char_12,
+    694              Fontx5x7_char_13,
+    695              Fontx5x7_char_14,
+    696              Fontx5x7_char_15,
+    697              Fontx5x7_char_16,
+    698              Fontx5x7_char_17,
+    699              Fontx5x7_char_18,
+    700              Fontx5x7_char_19,
+    701              Fontx5x7_char_20,
+    702              Fontx5x7_char_21,
+    703              Fontx5x7_char_22,
+    704              Fontx5x7_char_23,
+    705              Fontx5x7_char_24,
+    706              Fontx5x7_char_25,
+    707              Fontx5x7_char_26,
+    708              Fontx5x7_char_27,
+    709              Fontx5x7_char_28,
+    710              Fontx5x7_char_29,
+    711              Fontx5x7_char_30,
+    712              Fontx5x7_char_31,
+    713              Fontx5x7_char_32,
+    714              Fontx5x7_char_33,
+    715              Fontx5x7_char_34,
+    716              Fontx5x7_char_35,
+    717              Fontx5x7_char_36,
+    718              Fontx5x7_char_37,
+    719              Fontx5x7_char_38,
+    720              Fontx5x7_char_39,
+    721              Fontx5x7_char_40,
+    722              Fontx5x7_char_41,
+    723              Fontx5x7_char_42,
+    724              Fontx5x7_char_43,
+    725              Fontx5x7_char_44,
+    726              Fontx5x7_char_45,
+    727              Fontx5x7_char_46,
+    728              Fontx5x7_char_47,
+    729              Fontx5x7_char_48,
+    730              Fontx5x7_char_49,
+    731              Fontx5x7_char_50,
+    732              Fontx5x7_char_51,
+    733              Fontx5x7_char_52,
+    734              Fontx5x7_char_53,
+    735              Fontx5x7_char_54,
+    736              Fontx5x7_char_55,
+    737              Fontx5x7_char_56,
+    738              Fontx5x7_char_57,
+    739              Fontx5x7_char_58,
+    740              Fontx5x7_char_59,
+    741              Fontx5x7_char_60,
+    742              Fontx5x7_char_61,
+    743              Fontx5x7_char_62,
+    744              Fontx5x7_char_63,
+    745              Fontx5x7_char_64,
+    746              Fontx5x7_char_65,
+    747              Fontx5x7_char_66,
+    748              Fontx5x7_char_67,
+    749              Fontx5x7_char_68,
+    750              Fontx5x7_char_69,
+    751              Fontx5x7_char_70,
+    752              Fontx5x7_char_71,
+    753              Fontx5x7_char_72,
+    754              Fontx5x7_char_73,
+    755              Fontx5x7_char_74,
+    756              Fontx5x7_char_75,
+    757              Fontx5x7_char_76,
+    758              Fontx5x7_char_77,
+    759              Fontx5x7_char_78,
+    760              Fontx5x7_char_79,
+    761              Fontx5x7_char_80,
+    762              Fontx5x7_char_81,
+    763              Fontx5x7_char_82,
+    764              Fontx5x7_char_83,
+    765              Fontx5x7_char_84,
+    766              Fontx5x7_char_85,
+    767              Fontx5x7_char_86,
+    768              Fontx5x7_char_87,
+    769              Fontx5x7_char_88,
+    770              Fontx5x7_char_89,
+    771              Fontx5x7_char_90,
+    772              Fontx5x7_char_91,
+    773              Fontx5x7_char_92,
+    774              Fontx5x7_char_93,
+    775              Fontx5x7_char_94,
+    776              Fontx5x7_char_95,
+    777              Fontx5x7_char_96,
+    778              Fontx5x7_char_97,
+    779              Fontx5x7_char_98,
+    780              Fontx5x7_char_99,
+    781              Fontx5x7_char_100,
+    782              Fontx5x7_char_101,
+    783              Fontx5x7_char_102,
+    784              Fontx5x7_char_103,
+    785              Fontx5x7_char_104,
+    786              Fontx5x7_char_105,
+    787              Fontx5x7_char_106,
+    788              Fontx5x7_char_107,
+    789              Fontx5x7_char_108,
+    790              Fontx5x7_char_109,
+    791              Fontx5x7_char_110,
+    792              Fontx5x7_char_111,
+    793              Fontx5x7_char_112,
+    794              Fontx5x7_char_113,
+    795              Fontx5x7_char_114,
+    796              Fontx5x7_char_115,
+    797              Fontx5x7_char_116,
+    798              Fontx5x7_char_117,
+    799              Fontx5x7_char_118,
+    800              Fontx5x7_char_119,
+    801              Fontx5x7_char_120,
+    802              Fontx5x7_char_121,
+    803              Fontx5x7_char_122,
+    804              Fontx5x7_char_123,
+    805              Fontx5x7_char_124,
+    806              Fontx5x7_char_125,
+    807              Fontx5x7_char_126,
+    808              0,
+    809              0,
+    810              0,
+    811              0,
+    812              0,
+    813              0,
+    814              0,
+    815              0,
+    816              0,
+    817              0,
+    818              0,
+    819              0,
+    820              0,
+    821              0,
+    822              0,
+    823              0,
+    824              0,
+    825              0,
+    826              0,
+    827              0,
+    828              0,
+    829              0,
+    830              0,
+    831              0,
+    832              0,
+    833              0,
+    834              0,
+    835              0,
+    836              0,
+    837              0,
+    838              0,
+    839              0,
+    840              0,
+    841              0,
+    842              0,
+    843              0,
+    844              0,
+    845              0,
+    846              0,
+    847              0,
+    848              0,
+    849              0,
+    850              0,
+    851              0,
+    852              0,
+    853              0,
+    854              0,
+    855              0,
+    856              0,
+    857              0,
+    858              0,
+    859              0,
+    860              0,
+    861              0,
+    862              0,
+    863              0,
+    864              0,
+    865              0,
+    866              0,
+    867              0,
+    868              0,
+    869              0,
+    870              0,
+    871              0,
+    872              0,
+    873              0,
+    874              0,
+    875              0,
+    876              0,
+    877              0,
+    878              0,
+    879              0,
+    880              0,
+    881              0,
+    882              0,
+    883              0,
+    884              0,
+    885              0,
+    886              0,
+    887              0,
+    888              0,
+    889              0,
+    890              0,
+    891              0,
+    892              0,
+    893              0,
+    894              0,
+    895              0,
+    896              0,
+    897              0,
+    898              0,
+    899              0,
+    900              0,
+    901              0,
+    902              0,
+    903              0,
+    904              0,
+    905              0,
+    906              0,
+    907              0,
+    908              0,
+    909              0,
+    910              0,
+    911              0,
+    912              0,
+    913              0,
+    914              0,
+    915              0,
+    916              0,
+    917              0,
+    918              0,
+    919              0,
+    920              0,
+    921              0,
+    922              0,
+    923              0,
+    924              0,
+    925              0,
+    926              0,
+    927              0,
+    928              0,
+    929              0,
+    930              0,
+    931              0,
+    932              0,
+    933              0,
+    934              0,
+    935              0,
+    936              0,
+    937          };
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       8  Fontx5x7_char_0
+       8  Fontx5x7_char_1
+       8  Fontx5x7_char_10
+       8  Fontx5x7_char_100
+       8  Fontx5x7_char_101
+       8  Fontx5x7_char_102
+       8  Fontx5x7_char_103
+       8  Fontx5x7_char_104
+       8  Fontx5x7_char_105
+       8  Fontx5x7_char_106
+       8  Fontx5x7_char_107
+       8  Fontx5x7_char_108
+       8  Fontx5x7_char_109
+       8  Fontx5x7_char_11
+       8  Fontx5x7_char_110
+       8  Fontx5x7_char_111
+       8  Fontx5x7_char_112
+       8  Fontx5x7_char_113
+       8  Fontx5x7_char_114
+       8  Fontx5x7_char_115
+       8  Fontx5x7_char_116
+       8  Fontx5x7_char_117
+       8  Fontx5x7_char_118
+       8  Fontx5x7_char_119
+       8  Fontx5x7_char_12
+       8  Fontx5x7_char_120
+       8  Fontx5x7_char_121
+       8  Fontx5x7_char_122
+       8  Fontx5x7_char_123
+       8  Fontx5x7_char_124
+       8  Fontx5x7_char_125
+       8  Fontx5x7_char_126
+       8  Fontx5x7_char_13
+       8  Fontx5x7_char_14
+       8  Fontx5x7_char_15
+       8  Fontx5x7_char_16
+       8  Fontx5x7_char_17
+       8  Fontx5x7_char_18
+       8  Fontx5x7_char_19
+       8  Fontx5x7_char_2
+       8  Fontx5x7_char_20
+       8  Fontx5x7_char_21
+       8  Fontx5x7_char_22
+       8  Fontx5x7_char_23
+       8  Fontx5x7_char_24
+       8  Fontx5x7_char_25
+       8  Fontx5x7_char_26
+       8  Fontx5x7_char_27
+       8  Fontx5x7_char_28
+       8  Fontx5x7_char_29
+       8  Fontx5x7_char_3
+       8  Fontx5x7_char_30
+       8  Fontx5x7_char_31
+       8  Fontx5x7_char_32
+       8  Fontx5x7_char_33
+       8  Fontx5x7_char_34
+       8  Fontx5x7_char_35
+       8  Fontx5x7_char_36
+       8  Fontx5x7_char_37
+       8  Fontx5x7_char_38
+       8  Fontx5x7_char_39
+       8  Fontx5x7_char_4
+       8  Fontx5x7_char_40
+       8  Fontx5x7_char_41
+       8  Fontx5x7_char_42
+       8  Fontx5x7_char_43
+       8  Fontx5x7_char_44
+       8  Fontx5x7_char_45
+       8  Fontx5x7_char_46
+       8  Fontx5x7_char_47
+       8  Fontx5x7_char_48
+       8  Fontx5x7_char_49
+       8  Fontx5x7_char_5
+       8  Fontx5x7_char_50
+       8  Fontx5x7_char_51
+       8  Fontx5x7_char_52
+       8  Fontx5x7_char_53
+       8  Fontx5x7_char_54
+       8  Fontx5x7_char_55
+       8  Fontx5x7_char_56
+       8  Fontx5x7_char_57
+       8  Fontx5x7_char_58
+       8  Fontx5x7_char_59
+       8  Fontx5x7_char_6
+       8  Fontx5x7_char_60
+       8  Fontx5x7_char_61
+       8  Fontx5x7_char_62
+       8  Fontx5x7_char_63
+       8  Fontx5x7_char_64
+       8  Fontx5x7_char_65
+       8  Fontx5x7_char_66
+       8  Fontx5x7_char_67
+       8  Fontx5x7_char_68
+       8  Fontx5x7_char_69
+       8  Fontx5x7_char_7
+       8  Fontx5x7_char_70
+       8  Fontx5x7_char_71
+       8  Fontx5x7_char_72
+       8  Fontx5x7_char_73
+       8  Fontx5x7_char_74
+       8  Fontx5x7_char_75
+       8  Fontx5x7_char_76
+       8  Fontx5x7_char_77
+       8  Fontx5x7_char_78
+       8  Fontx5x7_char_79
+       8  Fontx5x7_char_8
+       8  Fontx5x7_char_80
+       8  Fontx5x7_char_81
+       8  Fontx5x7_char_82
+       8  Fontx5x7_char_83
+       8  Fontx5x7_char_84
+       8  Fontx5x7_char_85
+       8  Fontx5x7_char_86
+       8  Fontx5x7_char_87
+       8  Fontx5x7_char_88
+       8  Fontx5x7_char_89
+       8  Fontx5x7_char_9
+       8  Fontx5x7_char_90
+       8  Fontx5x7_char_91
+       8  Fontx5x7_char_92
+       8  Fontx5x7_char_93
+       8  Fontx5x7_char_94
+       8  Fontx5x7_char_95
+       8  Fontx5x7_char_96
+       8  Fontx5x7_char_97
+       8  Fontx5x7_char_98
+       8  Fontx5x7_char_99
+     512  Fontx5x7_table
+
+ 
+ 1 528 bytes in segment NEAR_CONST
+ 
+ 1 528 bytes of CONST memory
+
+Errors: none
+Warnings: none

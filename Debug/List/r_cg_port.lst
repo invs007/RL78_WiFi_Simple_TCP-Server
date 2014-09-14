@@ -1,0 +1,310 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             05/Aug/2014  14:51:24 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Evaluation license - IAR Embedded Workbench for Renesas RL78, Evaluation version 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_cg_port.c                  #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_cg_port.c" --core rl78_2   #
+#                    --code_model near --data_model near                      #
+#                    --near_const_location rom0 -o "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy\Debug\Obj\" --dlib_config      #
+#                    "C:\Program Files (x86)\IAR Systems\Embedded Workbench   #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\r_cg_port.lst                   #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\r_cg_port.r87                    #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\applilet3_src\r_cg_port.c
+      1          /***********************************************************************************************************************
+      2          * DISCLAIMER
+      3          * This software is supplied by Renesas Electronics Corporation and is only 
+      4          * intended for use with Renesas products. No other uses are authorized. This 
+      5          * software is owned by Renesas Electronics Corporation and is protected under 
+      6          * all applicable laws, including copyright laws.
+      7          * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING 
+      8          * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT 
+      9          * LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE 
+     10          * AND NON-INFRINGEMENT.  ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.
+     11          * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS 
+     12          * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE 
+     13          * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR 
+     14          * ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE 
+     15          * BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+     16          * Renesas reserves the right, without notice, to make changes to this software 
+     17          * and to discontinue the availability of this software.  By using this software, 
+     18          * you agree to the additional terms and conditions found by accessing the 
+     19          * following link:
+     20          * http://www.renesas.com/disclaimer
+     21          *
+     22          * Copyright (C) 2011, 2013 Renesas Electronics Corporation. All rights reserved.
+     23          ***********************************************************************************************************************/
+     24          
+     25          /***********************************************************************************************************************
+     26          * File Name    : r_cg_port.c
+     27          * Version      : Applilet3 for RL78/G14 V2.00.00.08 [12 Apr 2013]
+     28          * Device(s)    : R5F104PJ
+     29          * Tool-Chain   : IAR Systems iccrl78
+     30          * Description  : This file implements device driver for PORT module.
+     31          * Creation Date: 8/4/2014
+     32          ***********************************************************************************************************************/
+     33          
+     34          /***********************************************************************************************************************
+     35          Includes
+     36          ***********************************************************************************************************************/
+     37          #include "r_cg_macrodriver.h"
+
+   \                                 In  segment SADDR_A, at 0xfff00
+   \   union <unnamed> volatile __saddr _A_P0
+   \                     _A_P0:
+   \   000000                       DS 1
+
+   \                                 In  segment SADDR_A, at 0xfff01
+   \   union <unnamed> volatile __saddr _A_P1
+   \                     _A_P1:
+   \   000000                       DS 1
+
+   \                                 In  segment SADDR_A, at 0xfff05
+   \   union <unnamed> volatile __saddr _A_P5
+   \                     _A_P5:
+   \   000000                       DS 1
+
+   \                                 In  segment SADDR_A, at 0xfff06
+   \   union <unnamed> volatile __saddr _A_P6
+   \                     _A_P6:
+   \   000000                       DS 1
+
+   \                                 In  segment SADDR_A, at 0xfff0a
+   \   union <unnamed> volatile __saddr _A_P10
+   \                     _A_P10:
+   \   000000                       DS 1
+
+   \                                 In  segment SADDR_A, at 0xfff0d
+   \   union <unnamed> volatile __saddr _A_P13
+   \                     _A_P13:
+   \   000000                       DS 1
+
+   \                                 In  segment SADDR_A, at 0xfff0e
+   \   union <unnamed> volatile __saddr _A_P14
+   \                     _A_P14:
+   \   000000                       DS 1
+
+   \                                 In  segment SADDR_A, at 0xfff0f
+   \   union <unnamed> volatile __saddr _A_P15
+   \                     _A_P15:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff20
+   \   union <unnamed> volatile __sfr _A_PM0
+   \                     _A_PM0:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff21
+   \   union <unnamed> volatile __sfr _A_PM1
+   \                     _A_PM1:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff24
+   \   union <unnamed> volatile __sfr _A_PM4
+   \                     _A_PM4:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff25
+   \   union <unnamed> volatile __sfr _A_PM5
+   \                     _A_PM5:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff26
+   \   union <unnamed> volatile __sfr _A_PM6
+   \                     _A_PM6:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff27
+   \   union <unnamed> volatile __sfr _A_PM7
+   \                     _A_PM7:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff2a
+   \   union <unnamed> volatile __sfr _A_PM10
+   \                     _A_PM10:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff2e
+   \   union <unnamed> volatile __sfr _A_PM14
+   \                     _A_PM14:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff2f
+   \   union <unnamed> volatile __sfr _A_PM15
+   \                     _A_PM15:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xf0076
+   \   union <unnamed> volatile __no_bit_access _A_ADPC
+   \                     _A_ADPC:
+   \   000000                       DS 1
+     38          #include "r_cg_port.h"
+     39          /* Start user code for include. Do not edit comment generated here */
+     40          /* End user code. Do not edit comment generated here */
+     41          #include "r_cg_userdefine.h"
+     42          
+     43          /***********************************************************************************************************************
+     44          Global variables and functions
+     45          ***********************************************************************************************************************/
+     46          /* Start user code for global. Do not edit comment generated here */
+     47          /* End user code. Do not edit comment generated here */
+     48          
+     49          /***********************************************************************************************************************
+     50          * Function Name: R_PORT_Create
+     51          * Description  : This function initializes the Port I/O.
+     52          * Arguments    : None
+     53          * Return Value : None
+     54          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     55          void R_PORT_Create(void)
+   \                     R_PORT_Create:
+     56          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+     57              P0 = _01_Pn0_OUTPUT_1 | _20_Pn5_OUTPUT_1 | _40_Pn6_OUTPUT_1;
+   \   000000 CD0061                MOV       S:0xFFF00, #0x61   ;; 1 cycle
+     58              P1 = _00_Pn0_OUTPUT_0 | _00_Pn1_OUTPUT_0;
+   \   000003 F401                  CLRB      S:0xFFF01          ;; 1 cycle
+     59              P5 = _20_Pn5_OUTPUT_1;
+   \   000005 CD0520                MOV       S:0xFFF05, #0x20   ;; 1 cycle
+     60              P6 = _00_Pn2_OUTPUT_0 | _00_Pn3_OUTPUT_0 | _00_Pn4_OUTPUT_0 | _00_Pn5_OUTPUT_0 | _00_Pn6_OUTPUT_0 |
+     61                   _00_Pn7_OUTPUT_0;
+   \   000008 F406                  CLRB      S:0xFFF06          ;; 1 cycle
+     62              P10 = _00_Pn1_OUTPUT_0 | _00_Pn2_OUTPUT_0;
+   \   00000A F40A                  CLRB      S:0xFFF0A          ;; 1 cycle
+     63              P13 = _00_Pn0_OUTPUT_0;
+   \   00000C F40D                  CLRB      S:0xFFF0D          ;; 1 cycle
+     64              P14 = _00_Pn4_OUTPUT_0 | _00_Pn5_OUTPUT_0 | _00_Pn6_OUTPUT_0;
+   \   00000E F40E                  CLRB      S:0xFFF0E          ;; 1 cycle
+     65              P15 = _00_Pn2_OUTPUT_0;
+   \   000010 F40F                  CLRB      S:0xFFF0F          ;; 1 cycle
+     66              ADPC = _0B_ADPC_DI_ON;
+   \   000012 CF76000B              MOV       0x76, #0xB         ;; 1 cycle
+     67              PM0 = _00_PMn0_MODE_OUTPUT | _02_PMn1_NOT_USE | _04_PMn2_NOT_USE | _08_PMn3_NOT_USE | _10_PMn4_NOT_USE |
+     68                    _00_PMn5_MODE_OUTPUT | _00_PMn6_MODE_OUTPUT | _80_PM0_DEFAULT;
+   \   000016 CE209E                MOV       0xFFF20, #0x9E     ;; 1 cycle
+     69              PM1 = _00_PMn0_MODE_OUTPUT | _00_PMn1_MODE_OUTPUT | _04_PMn2_NOT_USE | _08_PMn3_NOT_USE | _10_PMn4_NOT_USE |
+     70                    _20_PMn5_NOT_USE | _40_PMn6_NOT_USE | _80_PMn7_NOT_USE;
+   \   000019 CE21FC                MOV       0xFFF21, #0xFC     ;; 1 cycle
+     71              PM4 = _01_PMn0_NOT_USE | _02_PMn1_MODE_INPUT | _04_PMn2_MODE_INPUT | _08_PMn3_MODE_INPUT | _10_PMn4_MODE_INPUT |
+     72                    _20_PMn5_MODE_INPUT | _40_PMn6_NOT_USE | _80_PMn7_NOT_USE;
+   \   00001C CE24FF                MOV       0xFFF24, #0xFF     ;; 1 cycle
+     73              PM5 = _01_PMn0_NOT_USE | _02_PMn1_NOT_USE | _04_PMn2_NOT_USE | _08_PMn3_NOT_USE | _10_PMn4_NOT_USE |
+     74                    _00_PMn5_MODE_OUTPUT | _40_PMn6_NOT_USE | _80_PMn7_NOT_USE;
+   \   00001F CE25DF                MOV       0xFFF25, #0xDF     ;; 1 cycle
+     75              PM6 = _01_PMn0_NOT_USE | _02_PMn1_NOT_USE | _00_PMn2_MODE_OUTPUT | _00_PMn3_MODE_OUTPUT | _00_PMn4_MODE_OUTPUT |
+     76                    _00_PMn5_MODE_OUTPUT | _00_PMn6_MODE_OUTPUT | _00_PMn7_MODE_OUTPUT;
+   \   000022 CE2603                MOV       0xFFF26, #0x3      ;; 1 cycle
+     77              PM7 = _01_PMn0_NOT_USE | _02_PMn1_NOT_USE | _04_PMn2_NOT_USE | _08_PMn3_NOT_USE | _10_PMn4_NOT_USE |
+     78                    _20_PMn5_NOT_USE | _40_PMn6_NOT_USE | _80_PMn7_MODE_INPUT;
+   \   000025 CE27FF                MOV       0xFFF27, #0xFF     ;; 1 cycle
+     79              PM10 = _01_PMn0_NOT_USE | _00_PMn1_MODE_OUTPUT | _00_PMn2_MODE_OUTPUT | _F8_PM10_DEFAULT;
+   \   000028 CE2AF9                MOV       0xFFF2A, #0xF9     ;; 1 cycle
+     80              PM14 = _01_PMn0_NOT_USE | _02_PMn1_NOT_USE | _04_PMn2_NOT_USE | _08_PMn3_NOT_USE | _00_PMn4_MODE_OUTPUT |
+     81                     _00_PMn5_MODE_OUTPUT | _00_PMn6_MODE_OUTPUT | _80_PMn7_NOT_USE;
+   \   00002B CE2E8F                MOV       0xFFF2E, #0x8F     ;; 1 cycle
+     82              PM15 = _01_PMn0_NOT_USE | _02_PMn1_NOT_USE | _00_PMn2_MODE_OUTPUT | _08_PMn3_NOT_USE | _10_PMn4_NOT_USE |
+     83                     _20_PMn5_NOT_USE | _40_PMn6_NOT_USE | _80_PM15_DEFAULT;
+   \   00002E CE2FFB                MOV       0xFFF2F, #0xFB     ;; 1 cycle
+     84          }
+   \   000031 D7                    RET                          ;; 6 cycles
+   \   000032                       ; ------------------------------------- Block: 24 cycles
+   \   000032                       ; ------------------------------------- Total: 24 cycles
+   \   000032                       REQUIRE ?CLRL78_V1_0_L00
+   \   000032                       REQUIRE _A_P0
+   \   000032                       REQUIRE _A_P1
+   \   000032                       REQUIRE _A_P5
+   \   000032                       REQUIRE _A_P6
+   \   000032                       REQUIRE _A_P10
+   \   000032                       REQUIRE _A_P13
+   \   000032                       REQUIRE _A_P14
+   \   000032                       REQUIRE _A_P15
+   \   000032                       REQUIRE _A_ADPC
+   \   000032                       REQUIRE _A_PM0
+   \   000032                       REQUIRE _A_PM1
+   \   000032                       REQUIRE _A_PM4
+   \   000032                       REQUIRE _A_PM5
+   \   000032                       REQUIRE _A_PM6
+   \   000032                       REQUIRE _A_PM7
+   \   000032                       REQUIRE _A_PM10
+   \   000032                       REQUIRE _A_PM14
+   \   000032                       REQUIRE _A_PM15
+     85          
+     86          /* Start user code for adding. Do not edit comment generated here */
+     87          /* End user code. Do not edit comment generated here */
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+      0   R_PORT_Create
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      50  R_PORT_Create
+       1  _A_ADPC
+       1  _A_P0
+       1  _A_P1
+       1  _A_P10
+       1  _A_P13
+       1  _A_P14
+       1  _A_P15
+       1  _A_P5
+       1  _A_P6
+       1  _A_PM0
+       1  _A_PM1
+       1  _A_PM10
+       1  _A_PM14
+       1  _A_PM15
+       1  _A_PM4
+       1  _A_PM5
+       1  _A_PM6
+       1  _A_PM7
+
+ 
+ 50 bytes in segment CODE
+ 10 bytes in segment NEAR_A
+  8 bytes in segment SADDR_A
+ 
+ 50 bytes of CODE memory
+  0 bytes of DATA memory (+ 18 bytes shared)
+
+Errors: none
+Warnings: none

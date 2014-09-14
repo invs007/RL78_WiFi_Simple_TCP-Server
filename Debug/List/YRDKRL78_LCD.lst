@@ -1,0 +1,318 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             05/Aug/2014  14:51:15 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Evaluation license - IAR Embedded Workbench for Renesas RL78, Evaluation version 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Glyph\Drivers\YRDKRL78_LCD.c               #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Glyph\Drivers\YRDKRL78_LCD.c" --core       #
+#                    rl78_2 --code_model near --data_model near               #
+#                    --near_const_location rom0 -o "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy\Debug\Obj\" --dlib_config      #
+#                    "C:\Program Files (x86)\IAR Systems\Embedded Workbench   #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\YRDKRL78_LCD.lst                #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\YRDKRL78_LCD.r87                 #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\Glyph\Drivers\YRDKRL78_LCD.c
+      1          /******************************************************************************
+      2          * DISCLAIMER
+      3          * This software is supplied by Renesas Electronics Corporation and is only
+      4          * intended for use with Renesas products. No other uses are authorized.
+      5          * This software is owned by Renesas Electronics Corporation and is protected under
+      6          * all applicable laws, including copyright laws.
+      7          * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES
+      8          * REGARDING THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY,
+      9          * INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+     10          * PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY
+     11          * DISCLAIMED.
+     12          * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS
+     13          * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE
+     14          * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES
+     15          * FOR ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS
+     16          * AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+     17          * Renesas reserves the right, without notice, to make changes to this
+     18          * software and to discontinue the availability of this software.
+     19          * By using this software, you agree to the additional terms and
+     20          * conditions found by accessing the following link:
+     21          * http://www.renesas.com/disclaimer
+     22          ******************************************************************************/
+     23          /* Copyright (C) 2010 Renesas Electronics Corporation. All rights reserved. */
+     24          /* Code written for Renesas by Future Designs, Inc. www.teamfdi.com */
+     25          
+     26          /******************************************************************************
+     27          * File Name : YRDKRL78_RSPI0.c
+     28          * Version : 1.00
+     29          * Device(s) : RSPI0 Communications
+     30          * Tool-Chain : Glyph - The Generic API for Graphics SPI API version 1.00
+     31          * H/W Platform : RL78 Group CPU
+     32          * Description : Glyph API RL78 RSPI Transmitter 0 Operation channel 3
+     33          * Routines for SPI code running on RL78 MCU, RSPI0.
+     34          * This program uses RSPI0.  The Chip Select for the flash device (LCD)
+     35          * is set to PC_2.
+     36          *       Manufacturer: Renesas
+     37          *       Communications Protocol: SPI 3-Wire
+     38          *                                Transmitt only
+     39          *                                MASTER
+     40          *       Transmitter Number: 0
+     41          *       channel: 3
+     42          *       Chip Select Port: PC.2
+     43          *       RSPI Clock Speed: 25MHz
+     44          ******************************************************************************
+     45          * History :
+     46          ******************************************************************************/
+     47          
+     48          /******************************************************************************
+     49          Includes “YRDKRL78 RSPI Includes”
+     50          ******************************************************************************/
+     51          #include "r_cg_macrodriver.h"
+
+   \                                 In  segment SADDR_A, at 0xfff0e
+   \   union <unnamed> volatile __saddr _A_P14
+   \                     _A_P14:
+   \   000000                       DS 1
+     52          #include "r_cg_serial.h"
+     53          // #include "r_cg_system.h"
+     54          #include "YRDKRL78_LCD.h"
+     55          #include "RDKRL78_spi.h"
+     56          
+     57          extern volatile uint8_t G_SPI_SendingData; //spi busy flag
+     58          
+     59          /******************************************************************************
+     60          * ID : 60.0
+     61          * Outline : YRDKRL78_RSPIOpen
+     62          * Include : YRDKRL78_RSPI0.h
+     63          * Function Name: YRDKRL78_RSPIOpen
+     64          * Description : Open and setup the communications channel RSPI0.
+     65          * Argument : aHandle - the Glyph handle to setup for the LCD and Communications.
+     66          * Return Value : 0=success, not 0= error
+     67          * Calling Functions : GlyphCommOpen
+     68          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     69          T_glyphError YRDKRL78_RSPIOpen(T_glyphHandle aHandle)
+   \                     YRDKRL78_RSPIOpen:
+     70          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+     71              SPI_Init();
+   \   000000 FD....                CALL      SPI_Init           ;; 3 cycles
+     72              
+     73              return GLYPH_ERROR_NONE ;
+   \   000003 F1                    CLRB      A                  ;; 1 cycle
+   \   000004 D7                    RET                          ;; 6 cycles
+   \   000005                       ; ------------------------------------- Block: 10 cycles
+   \   000005                       ; ------------------------------------- Total: 10 cycles
+   \   000005                       REQUIRE ?CLRL78_V1_0_L00
+     74          }
+     75          
+     76          /******************************************************************************
+     77          * ID : 66.0
+     78          * Outline : SetSendCommand
+     79          * Include : YRDKRL78_RSPI0.h
+     80          * Function Name: SetSendCommand
+     81          * Description : Set the RS line of the LCD.  The RS line is connected to 
+     82          * output port P5.1.  Setting this output to 0 will allow data flow in the LCD.
+     83          * Argument : none
+     84          * Return Value : none
+     85          * Calling Functions : CommandSend, DataSend
+     86          ******************************************************************************/
+     87          static void SetSendCommand(void)
+     88          {
+     89          		SPI_LCD_RS_PORT &= ~(1<<SPI_LCD_RS_BIT_POS); // assert LCD RS
+     90              // P1 &= ~(1<<5); // Assert P15 (LCD RS)
+     91          }
+     92          
+     93          /******************************************************************************
+     94          * ID : 67.0
+     95          * Outline : SetSendData
+     96          * Include : YRDKRL78_RSPI0.h
+     97          * Function Name: SetSendData
+     98          * Description : Clear the RS line of the LCD.  The RS line is connected to
+     99          * output port P5.1.  Setting this output to 1 will stop data flow in the LCD.
+    100          * When data flow is stopped in the LCD the data is internally copied to the
+    101          * data buffer for use.
+    102          * Argument : none
+    103          * Return Value : none
+    104          * Calling Functions : CommandSend, DataSend
+    105          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    106          static void SetSendData(void)
+   \                     SetSendData:
+    107          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+    108          		SPI_LCD_RS_PORT |= (1<<SPI_LCD_RS_BIT_POS); // Deassert LCD RS
+   \   000000 71620E                SET1      S:0xFFF0E.6        ;; 2 cycles
+    109              // P1 |= (1<<5); // Deassert P15 (LCD RS)
+    110          }
+   \   000003 D7                    RET                          ;; 6 cycles
+   \   000004                       ; ------------------------------------- Block: 8 cycles
+   \   000004                       ; ------------------------------------- Total: 8 cycles
+   \   000004                       REQUIRE ?CLRL78_V1_0_L00
+   \   000004                       REQUIRE _A_P14
+    111          
+    112          /******************************************************************************
+    113          * ID : 70.0
+    114          * Outline : YRDKRL78_CommandSend
+    115          * Include : YRDKRL78_RSPI0.h
+    116          * Function Name: YRDKRL78_CommandSend
+    117          * Description : Send a command define to the LCD.  The defines for all commands
+    118          * available to send to the ST7579 LCD controller are defined in the header
+    119          * for this file RL78_LCD.h.  The nCommand parameter should always be
+    120          * a define from that location.
+    121          * Argument : cCommand - 8 bits of data to be used as a command to the LCD
+    122          *          : aHandle - the Glyph handle setup by the LCD and Communications.
+    123          * Return Value : none
+    124          * Calling Functions : ST7579_Config, ST7579_SetSystemBiasBooster,
+    125          *                     ST7579_SetVO_Range, ST7579_SetFrameRate,
+    126          *                     ST7579_SetPage, ST7579_SetChar, ST7579_SetLine,
+    127          *                     ST7579_Send8bitsData, ST7579_Send16bitsCommand
+    128          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    129          void YRDKRL78_CommandSend(int8_t cCommand)
+   \                     YRDKRL78_CommandSend:
+    130          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C1                    PUSH      AX                 ;; 1 cycle
+   \   000002                       ; Auto size: 2
+    131              SetSendCommand() ;
+   \   000002 71630E                CLR1      S:0xFFF0E.6        ;; 2 cycles
+   \   000005                       ; ------------------------------------- Block: 4 cycles
+   \   000005                       ; ------------------------------------- Total: 4 cycles
+    132          
+    133              SPI_Send(SPI_LCD, (uint8_t *)&cCommand, 1);
+   \   000005                       REQUIRE ?CLRL78_V1_0_L00
+   \   000005                       REQUIRE ?Subroutine0
+   \   000005                       REQUIRE _A_P14
+   \   000005                       ; // Fall through to label ?Subroutine0
+    134          
+    135              SetSendData() ;
+    136          }
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000 F6                    CLRW      AX                 ;; 1 cycle
+   \   000001 C1                    PUSH      AX                 ;; 1 cycle
+   \   000002 E6                    ONEW      AX                 ;; 1 cycle
+   \   000003 C1                    PUSH      AX                 ;; 1 cycle
+   \   000004 AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000006 040500                ADDW      AX, #0x5           ;; 1 cycle
+   \   000009 12                    MOVW      BC, AX             ;; 1 cycle
+   \   00000A 5102                  MOV       A, #0x2            ;; 1 cycle
+   \   00000C FD....                CALL      SPI_Send           ;; 3 cycles
+   \   00000F FD....                CALL      SetSendData        ;; 3 cycles
+   \   000012 1002                  ADDW      SP, #0x2           ;; 1 cycle
+   \   000014 C2                    POP       BC                 ;; 1 cycle
+   \   000015 D7                    RET                          ;; 6 cycles
+   \   000016                       ; ------------------------------------- Block: 22 cycles
+   \   000016                       ; ------------------------------------- Total: 22 cycles
+   \   000016                       REQUIRE ?CLRL78_V1_0_L00
+    137          
+    138          /******************************************************************************
+    139          * ID : 71.0
+    140          * Outline : YRDKRL78_DataSend
+    141          * Include : YRDKRL78_RSPI0.h
+    142          * Function Name: YRDKRL78_DataSend
+    143          * Description : Send 8 bits of data to the LCD RAM at the current location.
+    144          * The current location is determined and set with local functions.
+    145          * Argument : cCommand - 8 bits of data to be sent to the LCD
+    146          *          : aHandle - the Glyph handle setup by the LCD and Communications.
+    147          * Return Value : none
+    148          * Calling Functions : ST7579_Config, ST7579_SetSystemBiasBooster,
+    149          *                     ST7579_SetVO_Range, ST7579_SetFrameRate,
+    150          *                     ST7579_SetPage, ST7579_SetChar, ST7579_SetLine,
+    151          *                     ST7579_Send8bitsData, ST7579_Send16bitsCommand
+    152          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    153          void YRDKRL78_DataSend(int8_t cData)
+   \                     YRDKRL78_DataSend:
+    154          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C1                    PUSH      AX                 ;; 1 cycle
+   \   000002                       ; Auto size: 2
+    155              SetSendData() ;
+   \   000002 FD....                CALL      SetSendData        ;; 3 cycles
+    156          
+    157              SPI_Send(SPI_LCD, (uint8_t *)&cData, 1);
+   \   000005 ED....                BR        N:?Subroutine0     ;; 3 cycles
+   \   000008                       ; ------------------------------------- Block: 8 cycles
+   \   000008                       ; ------------------------------------- Total: 8 cycles
+   \   000008                       REQUIRE ?CLRL78_V1_0_L00
+    158          
+    159              SetSendData() ;
+    160          }
+    161          
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+      0   SetSendData
+      8   YRDKRL78_CommandSend
+        8   -> SPI_Send
+        4   -> SetSendData
+      8   YRDKRL78_DataSend
+        8   -> SPI_Send
+        4   -> SetSendData
+      0   YRDKRL78_RSPIOpen
+        0   -> SPI_Init
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      22  ?Subroutine0
+       4  SetSendData
+       5  YRDKRL78_CommandSend
+       8  YRDKRL78_DataSend
+       5  YRDKRL78_RSPIOpen
+       1  _A_P14
+
+ 
+ 44 bytes in segment CODE
+  1 byte  in segment SADDR_A
+ 
+ 44 bytes of CODE memory
+  0 bytes of DATA memory (+ 1 byte shared)
+
+Errors: none
+Warnings: none

@@ -1,0 +1,2602 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             09/Sep/2014  00:17:23 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Standalone license - IAR Embedded Workbench for Renesas RL78, 16K KickStart Edition 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\user_src\WIFIApi.c                         #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\user_src\WIFIApi.c" --core rl78_2          #
+#                    --code_model near --data_model near                      #
+#                    --near_const_location rom0 -o "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy\Debug\Obj\" --dlib_config      #
+#                    "C:\Program Files (x86)\IAR Systems\Embedded Workbench   #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\WIFIApi.lst                     #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\WIFIApi.r87                      #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\user_src\WIFIApi.c
+      1          /***********************************************************************************************************************
+      2          * File Name    : Wifi_API.c
+      3          * Version      : V1.00 [24 Jul 2014]
+      4          * Device(s)    : R5F104PJ
+      5          * Tool-Chain   : IAR Systems iccrl78
+      6          * Description  : This file implements Wifi APIs in Simple SPI
+      7          * Creation Date: 7/24/2014
+      8          ***********************************************************************************************************************/
+      9          
+     10          /***********************************************************************************************************************
+     11          Includes
+     12          ***********************************************************************************************************************/
+     13          #include "r_cg_macrodriver.h"
+
+   \                                 In  segment SADDR_A, at 0xfff07
+   \   union <unnamed> volatile __saddr _A_P7
+   \                     _A_P7:
+   \   000000                       DS 1
+     14          #include "r_cg_serial.h"
+     15          #include "r_cg_it.h"
+     16          #include "r_cg_intc.h"
+     17          #include <stdio.h>
+     18          #include <stdarg.h>
+     19          #include <stdbool.h>
+     20          #include "lcd.h"
+     21          #include "RDKRL78_spi.h"
+     22          
+     23          #include "r_cg_userdefine.h"
+     24          #define IP 1
+     25          #define CLIENT 2
+     26          
+     27          #define DEBOUNCEDELAY 10000 
+     28          #define TIMEOUT 1000
+     29          
+     30          /***********************************************************************************************************************
+     31          Global variables and functions
+     32          ***********************************************************************************************************************/
+     33          
+     34          uint8_t Response_handle();           // Handle Basic Repsonse (OK or ERROR) 
+     35          void Data_handle(uint8_t);           // Handle Data Response
+     36          void IP_extract(uint8_t *,uint8_t);
+     37          extern void SPI_CS_Start(uint8_t);  // Enable Chipselect for Device 
+     38          extern void SPI_CS_End(uint8_t);    // Disable Chipselect for Device
+     39          void Disp_Client_Data();
+     40          uint8_t Parse_Data(char);           // Parse Client Messages
+     41          void Format_Data(char,uint8_t*,uint8_t*);  // Format Data to display on LCD
+     42          void sub_printf(char*,...);                // sprintf substitute 
+     43          
+
+   \                                 In  segment NEAR_Z, align 2, align-sorted
+     44          char outbuf[32];                    // Common String For Commands
+   \                     outbuf:
+   \   000000                       DS 32
+   \   000020                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+     45          char connection_id;
+   \                     connection_id:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+     46          extern long int tick;
+     47          extern int overflow;
+     48          extern uint8_t Switch1;
+     49          extern uint8_t WIFI_ReceiveByte(char*);
+     50          
+     51          /***********************************************************************************************************************
+     52          * Function Name: wait_for_sw()
+     53          * Description  : wait for Switch 2 press
+     54          * Arguments    : None
+     55          * Return Value : none
+     56          ***********************************************************************************************************************/
+     57          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     58           void wait_for_sw()
+   \                     wait_for_sw:
+     59           {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+     60            R_INTC8_Start();  
+   \   000000 FD....                CALL      R_INTC8_Start      ;; 3 cycles
+   \   000003                       ; ------------------------------------- Block: 3 cycles
+     61            while(Switch1 == 0);
+   \                     ??wait_for_sw_0:
+   \   000003 D5....                CMP0      N:Switch1          ;; 1 cycle
+   \   000006 DDFB                  BZ        ??wait_for_sw_0    ;; 4 cycles
+   \   000008                       ; ------------------------------------- Block: 5 cycles
+     62            R_INTC8_Stop();
+   \   000008 FD....                CALL      R_INTC8_Stop       ;; 3 cycles
+     63            Switch1 = 0;
+   \   00000B F5....                CLRB      N:Switch1          ;; 1 cycle
+     64           }
+   \   00000E D7                    RET                          ;; 6 cycles
+   \   00000F                       ; ------------------------------------- Block: 10 cycles
+   \   00000F                       ; ------------------------------------- Total: 18 cycles
+   \   00000F                       REQUIRE ?CLRL78_V1_0_L00
+     65          /***********************************************************************************************************************
+     66          * Function Name: sub_printf
+     67          * Description  : Substitute sprintf 
+     68          * Arguments    : Character pointer (buf)
+     69          * Return Value : none
+     70          ***********************************************************************************************************************/
+     71          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     72          void sub_printf (char *buf,...)
+   \                     sub_printf:
+     73          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 0
+   \   000002 12                    MOVW      BC, AX             ;; 1 cycle
+     74              va_list marker;
+     75              va_start(marker, buf);
+   \   000003 AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000005 040800                ADDW      AX, #0x8           ;; 1 cycle
+   \   000008 14                    MOVW      DE, AX             ;; 1 cycle
+     76              vsprintf(outbuf, buf, marker);
+   \   000009 30....                MOVW      AX, #outbuf        ;; 1 cycle
+   \   00000C FD....                CALL      vsprintf           ;; 3 cycles
+     77              va_end(marker);
+     78          }
+   \   00000F C4                    POP       DE                 ;; 1 cycle
+   \   000010 C2                    POP       BC                 ;; 1 cycle
+   \   000011 D7                    RET                          ;; 6 cycles
+   \   000012                       ; ------------------------------------- Block: 18 cycles
+   \   000012                       ; ------------------------------------- Total: 18 cycles
+   \   000012                       REQUIRE ?CLRL78_V1_0_L00
+     79          
+     80          
+     81          /***********************************************************************************************************************
+     82          * Function Name: Echo_Disable
+     83          * Description  : Disable Echo (Command ATE0)
+     84          * Arguments    : None
+     85          * Return Value : Boolean
+     86          ***********************************************************************************************************************/
+     87          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     88          uint8_t Echo_Disable()
+   \                     Echo_Disable:
+     89          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 0
+     90            int i = 0;
+   \   000002 F6                    CLRW      AX                 ;; 1 cycle
+   \   000003 14                    MOVW      DE, AX             ;; 1 cycle
+     91            sub_printf("ATE0\r\n");
+   \   000004 30....                MOVW      AX, #`?<Constant "ATE0\\r\\n">`  ;; 1 cycle
+   \   000007 FD....                CALL      sub_printf         ;; 3 cycles
+   \   00000A EF0B                  BR        S:??IP_extract_0   ;; 3 cycles
+   \   00000C                       ; ------------------------------------- Block: 11 cycles
+     92            while(outbuf[i] != '\0')
+     93            {
+     94              SPI_Send(SPI_WIFI,(uint8_t *) &outbuf[i], 1);
+   \                     ??Echo_Disable_0:
+   \   00000C F6                    CLRW      AX                 ;; 1 cycle
+   \   00000D C1                    PUSH      AX                 ;; 1 cycle
+   \   00000E E6                    ONEW      AX                 ;; 1 cycle
+   \   00000F C1                    PUSH      AX                 ;; 1 cycle
+   \   000010 FD....                CALL      N:?Subroutine0     ;; 3 cycles
+   \   000013                       ; ------------------------------------- Block: 7 cycles
+   \                     ??CrossCallReturnLabel_0:
+   \   000013 FD....                CALL      SPI_Send           ;; 3 cycles
+     95              i++;
+   \   000016 A5                    INCW      DE                 ;; 1 cycle
+   \   000017                       ; ------------------------------------- Block: 4 cycles
+     96            }
+   \                     ??IP_extract_0:
+   \   000017 C5                    PUSH      DE                 ;; 1 cycle
+   \   000018 C2                    POP       BC                 ;; 1 cycle
+   \   000019 FD....                CALL      N:?Subroutine1     ;; 3 cycles
+   \   00001C                       ; ------------------------------------- Block: 5 cycles
+   \                     ??CrossCallReturnLabel_9:
+   \   00001C DFEE                  BNZ       ??Echo_Disable_0   ;; 4 cycles
+   \   00001E                       ; ------------------------------------- Block: 4 cycles
+     97           if(!(Response_handle()))
+   \   00001E FD....                CALL      Response_handle    ;; 3 cycles
+   \   000021 D1                    CMP0      A                  ;; 1 cycle
+   \   000022 DF03                  BNZ       ??IP_extract_1     ;; 4 cycles
+   \   000024                       ; ------------------------------------- Block: 8 cycles
+     98                {   
+     99                    return(0);      
+   \   000024 F1                    CLRB      A                  ;; 1 cycle
+   \   000025 EF01                  BR        S:??IP_extract_2   ;; 3 cycles
+   \   000027                       ; ------------------------------------- Block: 4 cycles
+    100                } 
+    101          return(1);
+   \                     ??IP_extract_1:
+   \   000027 E1                    ONEB      A                  ;; 1 cycle
+   \   000028                       ; ------------------------------------- Block: 1 cycles
+   \                     ??IP_extract_2:
+   \   000028 C4                    POP       DE                 ;; 1 cycle
+   \   000029 C2                    POP       BC                 ;; 1 cycle
+   \   00002A D7                    RET                          ;; 6 cycles
+   \   00002B                       ; ------------------------------------- Block: 8 cycles
+   \   00002B                       ; ------------------------------------- Total: 52 cycles
+   \   00002B                       REQUIRE ?CLRL78_V1_0_L00
+    102          } 
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000 49....                MOV       A, (outbuf & 0xFFFF)[BC]  ;; 1 cycle
+   \   000003 D1                    CMP0      A                  ;; 1 cycle
+   \   000004 D7                    RET                          ;; 6 cycles
+   \   000005                       ; ------------------------------------- Block: 8 cycles
+   \   000005                       ; ------------------------------------- Total: 8 cycles
+   \   000005                       REQUIRE ?CLRL78_V1_0_L00
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000 15                    MOVW      AX, DE             ;; 1 cycle
+   \   000001 04....                ADDW      AX, #outbuf        ;; 1 cycle
+   \   000004 12                    MOVW      BC, AX             ;; 1 cycle
+   \   000005 5104                  MOV       A, #0x4            ;; 1 cycle
+   \   000007 D7                    RET                          ;; 6 cycles
+   \   000008                       ; ------------------------------------- Block: 10 cycles
+   \   000008                       ; ------------------------------------- Total: 10 cycles
+   \   000008                       REQUIRE ?CLRL78_V1_0_L00
+    103          
+    104          /***********************************************************************************************************************
+    105          * Function Name: Verbose_Enable
+    106          * Description  : Enable Verbose (Command ATV1)
+    107          * Arguments    : None
+    108          * Return Value : Succesful or Failure
+    109          ***********************************************************************************************************************/
+    110          
+    111          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    112          uint8_t Verbose_Enable()
+   \                     Verbose_Enable:
+    113          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 0
+    114            int i = 0;
+   \   000002 F6                    CLRW      AX                 ;; 1 cycle
+   \   000003 14                    MOVW      DE, AX             ;; 1 cycle
+    115            sub_printf("ATV1\r\n");
+   \   000004 30....                MOVW      AX, #`?<Constant "ATV1\\r\\n">`  ;; 1 cycle
+   \   000007 FD....                CALL      sub_printf         ;; 3 cycles
+   \   00000A EF0B                  BR        S:??IP_extract_3   ;; 3 cycles
+   \   00000C                       ; ------------------------------------- Block: 11 cycles
+    116            while(outbuf[i] != '\0')
+    117            {
+    118              SPI_Send(SPI_WIFI,(uint8_t *) &outbuf[i], 1);
+   \                     ??Verbose_Enable_0:
+   \   00000C F6                    CLRW      AX                 ;; 1 cycle
+   \   00000D C1                    PUSH      AX                 ;; 1 cycle
+   \   00000E E6                    ONEW      AX                 ;; 1 cycle
+   \   00000F C1                    PUSH      AX                 ;; 1 cycle
+   \   000010 FD....                CALL      N:?Subroutine0     ;; 3 cycles
+   \   000013                       ; ------------------------------------- Block: 7 cycles
+   \                     ??CrossCallReturnLabel_1:
+   \   000013 FD....                CALL      SPI_Send           ;; 3 cycles
+    119              i++;
+   \   000016 A5                    INCW      DE                 ;; 1 cycle
+   \   000017                       ; ------------------------------------- Block: 4 cycles
+    120            }
+   \                     ??IP_extract_3:
+   \   000017 C5                    PUSH      DE                 ;; 1 cycle
+   \   000018 C2                    POP       BC                 ;; 1 cycle
+   \   000019 FD....                CALL      N:?Subroutine1     ;; 3 cycles
+   \   00001C                       ; ------------------------------------- Block: 5 cycles
+   \                     ??CrossCallReturnLabel_10:
+   \   00001C DFEE                  BNZ       ??Verbose_Enable_0  ;; 4 cycles
+   \   00001E                       ; ------------------------------------- Block: 4 cycles
+    121            if(!(Response_handle()))
+   \   00001E FD....                CALL      Response_handle    ;; 3 cycles
+   \   000021 D1                    CMP0      A                  ;; 1 cycle
+   \   000022 DF03                  BNZ       ??IP_extract_4     ;; 4 cycles
+   \   000024                       ; ------------------------------------- Block: 8 cycles
+    122                {   
+    123                    return(0);      
+   \   000024 F1                    CLRB      A                  ;; 1 cycle
+   \   000025 EF01                  BR        S:??IP_extract_5   ;; 3 cycles
+   \   000027                       ; ------------------------------------- Block: 4 cycles
+    124                } 
+    125          return(1);
+   \                     ??IP_extract_4:
+   \   000027 E1                    ONEB      A                  ;; 1 cycle
+   \   000028                       ; ------------------------------------- Block: 1 cycles
+   \                     ??IP_extract_5:
+   \   000028 C4                    POP       DE                 ;; 1 cycle
+   \   000029 C2                    POP       BC                 ;; 1 cycle
+   \   00002A D7                    RET                          ;; 6 cycles
+   \   00002B                       ; ------------------------------------- Block: 8 cycles
+   \   00002B                       ; ------------------------------------- Total: 52 cycles
+   \   00002B                       REQUIRE ?CLRL78_V1_0_L00
+    126          } 
+    127          
+    128          /***********************************************************************************************************************
+    129          * Function Name: Echo_Confirm
+    130          * Description  : Confirm Response (Command AT)
+    131          * Arguments    : None
+    132          * Return Value : Succesful or Failure
+    133          ***********************************************************************************************************************/
+    134          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    135          uint8_t Echo_Confirm()
+   \                     Echo_Confirm:
+    136          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 0
+    137            int i = 0;
+   \   000002 F6                    CLRW      AX                 ;; 1 cycle
+   \   000003 14                    MOVW      DE, AX             ;; 1 cycle
+    138            sub_printf("AT\r\n");
+   \   000004 30....                MOVW      AX, #`?<Constant "AT\\r\\n">`  ;; 1 cycle
+   \   000007 FD....                CALL      sub_printf         ;; 3 cycles
+   \   00000A EF0B                  BR        S:??IP_extract_6   ;; 3 cycles
+   \   00000C                       ; ------------------------------------- Block: 11 cycles
+    139            while(outbuf[i] != '\0')
+    140            {
+    141             SPI_Send(SPI_WIFI,(uint8_t *) &outbuf[i], 1);
+   \                     ??Echo_Confirm_0:
+   \   00000C F6                    CLRW      AX                 ;; 1 cycle
+   \   00000D C1                    PUSH      AX                 ;; 1 cycle
+   \   00000E E6                    ONEW      AX                 ;; 1 cycle
+   \   00000F C1                    PUSH      AX                 ;; 1 cycle
+   \   000010 FD....                CALL      N:?Subroutine0     ;; 3 cycles
+   \   000013                       ; ------------------------------------- Block: 7 cycles
+   \                     ??CrossCallReturnLabel_2:
+   \   000013 FD....                CALL      SPI_Send           ;; 3 cycles
+    142             i++;
+   \   000016 A5                    INCW      DE                 ;; 1 cycle
+   \   000017                       ; ------------------------------------- Block: 4 cycles
+    143            } 
+   \                     ??IP_extract_6:
+   \   000017 C5                    PUSH      DE                 ;; 1 cycle
+   \   000018 C2                    POP       BC                 ;; 1 cycle
+   \   000019 FD....                CALL      N:?Subroutine1     ;; 3 cycles
+   \   00001C                       ; ------------------------------------- Block: 5 cycles
+   \                     ??CrossCallReturnLabel_11:
+   \   00001C DFEE                  BNZ       ??Echo_Confirm_0   ;; 4 cycles
+   \   00001E                       ; ------------------------------------- Block: 4 cycles
+    144            if(!(Response_handle()))
+   \   00001E FD....                CALL      Response_handle    ;; 3 cycles
+   \   000021 D1                    CMP0      A                  ;; 1 cycle
+   \   000022 DF03                  BNZ       ??IP_extract_7     ;; 4 cycles
+   \   000024                       ; ------------------------------------- Block: 8 cycles
+    145                {   
+    146                    return(0);      
+   \   000024 F1                    CLRB      A                  ;; 1 cycle
+   \   000025 EF01                  BR        S:??IP_extract_8   ;; 3 cycles
+   \   000027                       ; ------------------------------------- Block: 4 cycles
+    147                } 
+    148          return(1);
+   \                     ??IP_extract_7:
+   \   000027 E1                    ONEB      A                  ;; 1 cycle
+   \   000028                       ; ------------------------------------- Block: 1 cycles
+   \                     ??IP_extract_8:
+   \   000028 C4                    POP       DE                 ;; 1 cycle
+   \   000029 C2                    POP       BC                 ;; 1 cycle
+   \   00002A D7                    RET                          ;; 6 cycles
+   \   00002B                       ; ------------------------------------- Block: 8 cycles
+   \   00002B                       ; ------------------------------------- Total: 52 cycles
+   \   00002B                       REQUIRE ?CLRL78_V1_0_L00
+    149          } 
+    150          
+    151          /***********************************************************************************************************************
+    152          * Function Name: Auto_Network
+    153          * Description  : Setup Network parameters for Auto Connect 
+    154                          (Command AT+NAUTO=<1/0>,<1/0>,<Server IP>,<Port>)
+    155                            1/0 - TCP/UDP
+    156                            1/0 - Server/Client
+    157                            Server IP - if UDP/TCP Client only
+    158                            Port - Port Number
+    159          * Arguments    : None
+    160          * Return Value : Succesful or Failure
+    161          ***********************************************************************************************************************/
+    162          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    163          uint8_t Auto_Network()
+   \                     Auto_Network:
+    164          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 0
+    165              int i =0 ;
+   \   000002 F6                    CLRW      AX                 ;; 1 cycle
+   \   000003 14                    MOVW      DE, AX             ;; 1 cycle
+    166              sub_printf("AT+NAUTO=1,1,,8010\r\n");
+   \   000004 30....                MOVW      AX, #`?<Constant "AT+NAUTO=1,1,,8010\\r\\n">`  ;; 1 cycle
+   \   000007 FD....                CALL      sub_printf         ;; 3 cycles
+   \   00000A EF0B                  BR        S:??IP_extract_9   ;; 3 cycles
+   \   00000C                       ; ------------------------------------- Block: 11 cycles
+    167              while(outbuf[i] != '\0')
+    168              {
+    169                SPI_Send(SPI_WIFI,(uint8_t *) &outbuf[i], 1);
+   \                     ??Auto_Network_0:
+   \   00000C F6                    CLRW      AX                 ;; 1 cycle
+   \   00000D C1                    PUSH      AX                 ;; 1 cycle
+   \   00000E E6                    ONEW      AX                 ;; 1 cycle
+   \   00000F C1                    PUSH      AX                 ;; 1 cycle
+   \   000010 FD....                CALL      N:?Subroutine0     ;; 3 cycles
+   \   000013                       ; ------------------------------------- Block: 7 cycles
+   \                     ??CrossCallReturnLabel_3:
+   \   000013 FD....                CALL      SPI_Send           ;; 3 cycles
+    170                i++;
+   \   000016 A5                    INCW      DE                 ;; 1 cycle
+   \   000017                       ; ------------------------------------- Block: 4 cycles
+    171              }
+   \                     ??IP_extract_9:
+   \   000017 C5                    PUSH      DE                 ;; 1 cycle
+   \   000018 C2                    POP       BC                 ;; 1 cycle
+   \   000019 FD....                CALL      N:?Subroutine1     ;; 3 cycles
+   \   00001C                       ; ------------------------------------- Block: 5 cycles
+   \                     ??CrossCallReturnLabel_12:
+   \   00001C DFEE                  BNZ       ??Auto_Network_0   ;; 4 cycles
+   \   00001E                       ; ------------------------------------- Block: 4 cycles
+    172            if(!(Response_handle()))
+   \   00001E FD....                CALL      Response_handle    ;; 3 cycles
+   \   000021 D1                    CMP0      A                  ;; 1 cycle
+   \   000022 DF03                  BNZ       ??IP_extract_10    ;; 4 cycles
+   \   000024                       ; ------------------------------------- Block: 8 cycles
+    173              {   
+    174                  return(0);      
+   \   000024 F1                    CLRB      A                  ;; 1 cycle
+   \   000025 EF01                  BR        S:??IP_extract_11  ;; 3 cycles
+   \   000027                       ; ------------------------------------- Block: 4 cycles
+    175              }
+    176          return(1);
+   \                     ??IP_extract_10:
+   \   000027 E1                    ONEB      A                  ;; 1 cycle
+   \   000028                       ; ------------------------------------- Block: 1 cycles
+   \                     ??IP_extract_11:
+   \   000028 C4                    POP       DE                 ;; 1 cycle
+   \   000029 C2                    POP       BC                 ;; 1 cycle
+   \   00002A D7                    RET                          ;; 6 cycles
+   \   00002B                       ; ------------------------------------- Block: 8 cycles
+   \   00002B                       ; ------------------------------------- Total: 52 cycles
+   \   00002B                       REQUIRE ?CLRL78_V1_0_L00
+    177          }
+    178          
+    179          /***********************************************************************************************************************
+    180          * Function Name: Auto_Wifi
+    181          * Description  : Setup Wireless parameters for Auto Connect
+    182                           (Command AT+WAUTO =<1/0>,<ssid>)
+    183                            1/0 - Adhoc/Infrastructure
+    184                            ssid - Wireless SSID to host/connect to
+    185          * Arguments    : None
+    186          * Return Value : Succesful or Failure
+    187          ***********************************************************************************************************************/
+    188          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    189          uint8_t Auto_Wifi()
+   \                     Auto_Wifi:
+    190          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 0
+    191              int i = 0;
+   \   000002 F6                    CLRW      AX                 ;; 1 cycle
+   \   000003 14                    MOVW      DE, AX             ;; 1 cycle
+    192              sub_printf("AT+WAUTO=0,wifidemo\r\n");
+   \   000004 30....                MOVW      AX, #`?<Constant "AT+WAUTO=0,wifidemo\\r\\n">`  ;; 1 cycle
+   \   000007 FD....                CALL      sub_printf         ;; 3 cycles
+   \   00000A EF0B                  BR        S:??IP_extract_12  ;; 3 cycles
+   \   00000C                       ; ------------------------------------- Block: 11 cycles
+    193              while(outbuf[i] != '\0')
+    194              {
+    195                SPI_Send(SPI_WIFI,(uint8_t *) &outbuf[i], 1);
+   \                     ??Auto_Wifi_0:
+   \   00000C F6                    CLRW      AX                 ;; 1 cycle
+   \   00000D C1                    PUSH      AX                 ;; 1 cycle
+   \   00000E E6                    ONEW      AX                 ;; 1 cycle
+   \   00000F C1                    PUSH      AX                 ;; 1 cycle
+   \   000010 FD....                CALL      N:?Subroutine0     ;; 3 cycles
+   \   000013                       ; ------------------------------------- Block: 7 cycles
+   \                     ??CrossCallReturnLabel_4:
+   \   000013 FD....                CALL      SPI_Send           ;; 3 cycles
+    196                i ++;
+   \   000016 A5                    INCW      DE                 ;; 1 cycle
+   \   000017                       ; ------------------------------------- Block: 4 cycles
+    197              }
+   \                     ??IP_extract_12:
+   \   000017 C5                    PUSH      DE                 ;; 1 cycle
+   \   000018 C2                    POP       BC                 ;; 1 cycle
+   \   000019 FD....                CALL      N:?Subroutine1     ;; 3 cycles
+   \   00001C                       ; ------------------------------------- Block: 5 cycles
+   \                     ??CrossCallReturnLabel_13:
+   \   00001C DFEE                  BNZ       ??Auto_Wifi_0      ;; 4 cycles
+   \   00001E                       ; ------------------------------------- Block: 4 cycles
+    198            if(!(Response_handle()))
+   \   00001E FD....                CALL      Response_handle    ;; 3 cycles
+   \   000021 D1                    CMP0      A                  ;; 1 cycle
+   \   000022 DF03                  BNZ       ??IP_extract_13    ;; 4 cycles
+   \   000024                       ; ------------------------------------- Block: 8 cycles
+    199              {   
+    200                  return(0);      
+   \   000024 F1                    CLRB      A                  ;; 1 cycle
+   \   000025 EF01                  BR        S:??IP_extract_14  ;; 3 cycles
+   \   000027                       ; ------------------------------------- Block: 4 cycles
+    201              }
+    202          return(1);
+   \                     ??IP_extract_13:
+   \   000027 E1                    ONEB      A                  ;; 1 cycle
+   \   000028                       ; ------------------------------------- Block: 1 cycles
+   \                     ??IP_extract_14:
+   \   000028 C4                    POP       DE                 ;; 1 cycle
+   \   000029 C2                    POP       BC                 ;; 1 cycle
+   \   00002A D7                    RET                          ;; 6 cycles
+   \   00002B                       ; ------------------------------------- Block: 8 cycles
+   \   00002B                       ; ------------------------------------- Total: 52 cycles
+   \   00002B                       REQUIRE ?CLRL78_V1_0_L00
+    203          }
+    204          
+    205          /***********************************************************************************************************************
+    206          * Function Name: Auto_Enable
+    207          * Description  : Enable Auto Connect                  
+    208                           (Command ATC<1/0>)
+    209                            1/0 - Enable/Disable Auto Connect Profile
+    210          * Arguments    : None
+    211          * Return Value : Succesful or Failure
+    212          ***********************************************************************************************************************/
+    213          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    214          uint8_t Auto_Enable()
+   \                     Auto_Enable:
+    215          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 0
+    216              int i = 0;
+   \   000002 F6                    CLRW      AX                 ;; 1 cycle
+   \   000003 14                    MOVW      DE, AX             ;; 1 cycle
+    217              sub_printf("ATC1\r\n");
+   \   000004 30....                MOVW      AX, #`?<Constant "ATC1\\r\\n">`  ;; 1 cycle
+   \   000007 FD....                CALL      sub_printf         ;; 3 cycles
+   \   00000A EF0B                  BR        S:??IP_extract_15  ;; 3 cycles
+   \   00000C                       ; ------------------------------------- Block: 11 cycles
+    218              while(outbuf[i] != '\0')
+    219              {
+    220                SPI_Send(SPI_WIFI,(uint8_t *) &outbuf[i], 1);
+   \                     ??Auto_Enable_0:
+   \   00000C F6                    CLRW      AX                 ;; 1 cycle
+   \   00000D C1                    PUSH      AX                 ;; 1 cycle
+   \   00000E E6                    ONEW      AX                 ;; 1 cycle
+   \   00000F C1                    PUSH      AX                 ;; 1 cycle
+   \   000010 FD....                CALL      N:?Subroutine0     ;; 3 cycles
+   \   000013                       ; ------------------------------------- Block: 7 cycles
+   \                     ??CrossCallReturnLabel_5:
+   \   000013 FD....                CALL      SPI_Send           ;; 3 cycles
+    221                i++;
+   \   000016 A5                    INCW      DE                 ;; 1 cycle
+   \   000017                       ; ------------------------------------- Block: 4 cycles
+    222              }
+   \                     ??IP_extract_15:
+   \   000017 C5                    PUSH      DE                 ;; 1 cycle
+   \   000018 C2                    POP       BC                 ;; 1 cycle
+   \   000019 FD....                CALL      N:?Subroutine1     ;; 3 cycles
+   \   00001C                       ; ------------------------------------- Block: 5 cycles
+   \                     ??CrossCallReturnLabel_14:
+   \   00001C DFEE                  BNZ       ??Auto_Enable_0    ;; 4 cycles
+   \   00001E                       ; ------------------------------------- Block: 4 cycles
+    223            if(!(Response_handle()))
+   \   00001E FD....                CALL      Response_handle    ;; 3 cycles
+   \   000021 D1                    CMP0      A                  ;; 1 cycle
+   \   000022 DF03                  BNZ       ??IP_extract_16    ;; 4 cycles
+   \   000024                       ; ------------------------------------- Block: 8 cycles
+    224              {   
+    225                  return(0);      
+   \   000024 F1                    CLRB      A                  ;; 1 cycle
+   \   000025 EF01                  BR        S:??IP_extract_17  ;; 3 cycles
+   \   000027                       ; ------------------------------------- Block: 4 cycles
+    226              }
+    227          return(1);
+   \                     ??IP_extract_16:
+   \   000027 E1                    ONEB      A                  ;; 1 cycle
+   \   000028                       ; ------------------------------------- Block: 1 cycles
+   \                     ??IP_extract_17:
+   \   000028 C4                    POP       DE                 ;; 1 cycle
+   \   000029 C2                    POP       BC                 ;; 1 cycle
+   \   00002A D7                    RET                          ;; 6 cycles
+   \   00002B                       ; ------------------------------------- Block: 8 cycles
+   \   00002B                       ; ------------------------------------- Total: 52 cycles
+   \   00002B                       REQUIRE ?CLRL78_V1_0_L00
+    228          }
+    229          
+    230          /***********************************************************************************************************************
+    231          * Function Name: Auto_Start
+    232          * Description  : Start Auto Connect (Command ATA)
+    233          * Arguments    : None
+    234          * Return Value : Succesful or Failure
+    235          ***********************************************************************************************************************/
+    236          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    237          uint8_t Auto_Start()
+   \                     Auto_Start:
+    238          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 0
+    239              int i = 0;
+   \   000002 F6                    CLRW      AX                 ;; 1 cycle
+   \   000003 14                    MOVW      DE, AX             ;; 1 cycle
+    240              sub_printf("ATA\r\n");
+   \   000004 30....                MOVW      AX, #`?<Constant "ATA\\r\\n">`  ;; 1 cycle
+   \   000007 FD....                CALL      sub_printf         ;; 3 cycles
+   \   00000A EF0B                  BR        S:??IP_extract_18  ;; 3 cycles
+   \   00000C                       ; ------------------------------------- Block: 11 cycles
+    241              while(outbuf[i] != '\0')
+    242              {
+    243                SPI_Send(SPI_WIFI,(uint8_t *) &outbuf[i], 1);
+   \                     ??Auto_Start_0:
+   \   00000C F6                    CLRW      AX                 ;; 1 cycle
+   \   00000D C1                    PUSH      AX                 ;; 1 cycle
+   \   00000E E6                    ONEW      AX                 ;; 1 cycle
+   \   00000F C1                    PUSH      AX                 ;; 1 cycle
+   \   000010 FD....                CALL      N:?Subroutine0     ;; 3 cycles
+   \   000013                       ; ------------------------------------- Block: 7 cycles
+   \                     ??CrossCallReturnLabel_6:
+   \   000013 FD....                CALL      SPI_Send           ;; 3 cycles
+    244                i++;
+   \   000016 A5                    INCW      DE                 ;; 1 cycle
+   \   000017                       ; ------------------------------------- Block: 4 cycles
+    245              }
+   \                     ??IP_extract_18:
+   \   000017 C5                    PUSH      DE                 ;; 1 cycle
+   \   000018 C2                    POP       BC                 ;; 1 cycle
+   \   000019 FD....                CALL      N:?Subroutine1     ;; 3 cycles
+   \   00001C                       ; ------------------------------------- Block: 5 cycles
+   \                     ??CrossCallReturnLabel_15:
+   \   00001C DFEE                  BNZ       ??Auto_Start_0     ;; 4 cycles
+   \   00001E                       ; ------------------------------------- Block: 4 cycles
+    246            Data_handle(IP);
+   \   00001E E1                    ONEB      A                  ;; 1 cycle
+   \   00001F FD....                CALL      Data_handle        ;; 3 cycles
+    247          return(1);
+   \   000022 E1                    ONEB      A                  ;; 1 cycle
+   \   000023 C4                    POP       DE                 ;; 1 cycle
+   \   000024 C2                    POP       BC                 ;; 1 cycle
+   \   000025 D7                    RET                          ;; 6 cycles
+   \   000026                       ; ------------------------------------- Block: 13 cycles
+   \   000026                       ; ------------------------------------- Total: 44 cycles
+   \   000026                       REQUIRE ?CLRL78_V1_0_L00
+    248          }
+    249          
+    250          /***********************************************************************************************************************
+    251          * Function Name: Disassociate
+    252          * Description  : Disassociate from wireless networks
+    253                           (Command AT+WD)
+    254          * Arguments    : None
+    255          * Return Value : Succesful or Failure
+    256          ***********************************************************************************************************************/
+    257          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    258          uint8_t Disassociate()
+   \                     Disassociate:
+    259          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 0
+    260             int i = 0;
+   \   000002 F6                    CLRW      AX                 ;; 1 cycle
+   \   000003 14                    MOVW      DE, AX             ;; 1 cycle
+    261             sub_printf("AT+WD\r\n");
+   \   000004 30....                MOVW      AX, #`?<Constant "AT+WD\\r\\n">`  ;; 1 cycle
+   \   000007 FD....                CALL      sub_printf         ;; 3 cycles
+   \   00000A EF0B                  BR        S:??IP_extract_19  ;; 3 cycles
+   \   00000C                       ; ------------------------------------- Block: 11 cycles
+    262             while(outbuf[i] != '\0')
+    263             {
+    264               SPI_Send(SPI_WIFI,(uint8_t *) &outbuf[i], 1);
+   \                     ??Disassociate_0:
+   \   00000C F6                    CLRW      AX                 ;; 1 cycle
+   \   00000D C1                    PUSH      AX                 ;; 1 cycle
+   \   00000E E6                    ONEW      AX                 ;; 1 cycle
+   \   00000F C1                    PUSH      AX                 ;; 1 cycle
+   \   000010 FD....                CALL      N:?Subroutine0     ;; 3 cycles
+   \   000013                       ; ------------------------------------- Block: 7 cycles
+   \                     ??CrossCallReturnLabel_7:
+   \   000013 FD....                CALL      SPI_Send           ;; 3 cycles
+    265               i++;
+   \   000016 A5                    INCW      DE                 ;; 1 cycle
+   \   000017                       ; ------------------------------------- Block: 4 cycles
+    266             }
+   \                     ??IP_extract_19:
+   \   000017 C5                    PUSH      DE                 ;; 1 cycle
+   \   000018 C2                    POP       BC                 ;; 1 cycle
+   \   000019 FD....                CALL      N:?Subroutine1     ;; 3 cycles
+   \   00001C                       ; ------------------------------------- Block: 5 cycles
+   \                     ??CrossCallReturnLabel_16:
+   \   00001C DFEE                  BNZ       ??Disassociate_0   ;; 4 cycles
+   \   00001E                       ; ------------------------------------- Block: 4 cycles
+    267            if(!(Response_handle()))
+   \   00001E FD....                CALL      Response_handle    ;; 3 cycles
+   \   000021 D1                    CMP0      A                  ;; 1 cycle
+   \   000022 DF03                  BNZ       ??IP_extract_20    ;; 4 cycles
+   \   000024                       ; ------------------------------------- Block: 8 cycles
+    268              {   
+    269                  return(0);      
+   \   000024 F1                    CLRB      A                  ;; 1 cycle
+   \   000025 EF01                  BR        S:??IP_extract_21  ;; 3 cycles
+   \   000027                       ; ------------------------------------- Block: 4 cycles
+    270              }
+    271          return(1);
+   \                     ??IP_extract_20:
+   \   000027 E1                    ONEB      A                  ;; 1 cycle
+   \   000028                       ; ------------------------------------- Block: 1 cycles
+   \                     ??IP_extract_21:
+   \   000028 C4                    POP       DE                 ;; 1 cycle
+   \   000029 C2                    POP       BC                 ;; 1 cycle
+   \   00002A D7                    RET                          ;; 6 cycles
+   \   00002B                       ; ------------------------------------- Block: 8 cycles
+   \   00002B                       ; ------------------------------------- Total: 52 cycles
+   \   00002B                       REQUIRE ?CLRL78_V1_0_L00
+    272          }
+    273          
+    274          /***********************************************************************************************************************
+    275          * Function Name: DHCP_Enable
+    276          * Description  : Enable DHCP
+    277                          (Command AT+NDHCP=<1/0>)
+    278                           1/0 - Enable/Disable Dynamic IP
+    279          * Arguments    : None
+    280          * Return Value : Succesful or Failure
+    281          ***********************************************************************************************************************/
+    282          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    283          uint8_t DHCP_Enable()
+   \                     DHCP_Enable:
+    284          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 0
+    285              int i = 0;
+   \   000002 F6                    CLRW      AX                 ;; 1 cycle
+   \   000003 14                    MOVW      DE, AX             ;; 1 cycle
+    286              sub_printf("AT+NDHCP=1\r\n");
+   \   000004 30....                MOVW      AX, #`?<Constant "AT+NDHCP=1\\r\\n">`  ;; 1 cycle
+   \   000007 FD....                CALL      sub_printf         ;; 3 cycles
+   \   00000A EF0B                  BR        S:??IP_extract_22  ;; 3 cycles
+   \   00000C                       ; ------------------------------------- Block: 11 cycles
+    287              while(outbuf[i] != '\0')
+    288              {
+    289                SPI_Send(SPI_WIFI,(uint8_t *) &outbuf[i], 1);
+   \                     ??DHCP_Enable_0:
+   \   00000C F6                    CLRW      AX                 ;; 1 cycle
+   \   00000D C1                    PUSH      AX                 ;; 1 cycle
+   \   00000E E6                    ONEW      AX                 ;; 1 cycle
+   \   00000F C1                    PUSH      AX                 ;; 1 cycle
+   \   000010 FD....                CALL      N:?Subroutine0     ;; 3 cycles
+   \   000013                       ; ------------------------------------- Block: 7 cycles
+   \                     ??CrossCallReturnLabel_8:
+   \   000013 FD....                CALL      SPI_Send           ;; 3 cycles
+    290                i++;
+   \   000016 A5                    INCW      DE                 ;; 1 cycle
+   \   000017                       ; ------------------------------------- Block: 4 cycles
+    291              }
+   \                     ??IP_extract_22:
+   \   000017 C5                    PUSH      DE                 ;; 1 cycle
+   \   000018 C2                    POP       BC                 ;; 1 cycle
+   \   000019 FD....                CALL      N:?Subroutine1     ;; 3 cycles
+   \   00001C                       ; ------------------------------------- Block: 5 cycles
+   \                     ??CrossCallReturnLabel_17:
+   \   00001C DFEE                  BNZ       ??DHCP_Enable_0    ;; 4 cycles
+   \   00001E                       ; ------------------------------------- Block: 4 cycles
+    292            if(!(Response_handle()))
+   \   00001E FD....                CALL      Response_handle    ;; 3 cycles
+   \   000021 D1                    CMP0      A                  ;; 1 cycle
+   \   000022 DF03                  BNZ       ??IP_extract_23    ;; 4 cycles
+   \   000024                       ; ------------------------------------- Block: 8 cycles
+    293              {   
+    294                  return(0);      
+   \   000024 F1                    CLRB      A                  ;; 1 cycle
+   \   000025 EF01                  BR        S:??IP_extract_24  ;; 3 cycles
+   \   000027                       ; ------------------------------------- Block: 4 cycles
+    295              }
+    296          return(1);
+   \                     ??IP_extract_23:
+   \   000027 E1                    ONEB      A                  ;; 1 cycle
+   \   000028                       ; ------------------------------------- Block: 1 cycles
+   \                     ??IP_extract_24:
+   \   000028 C4                    POP       DE                 ;; 1 cycle
+   \   000029 C2                    POP       BC                 ;; 1 cycle
+   \   00002A D7                    RET                          ;; 6 cycles
+   \   00002B                       ; ------------------------------------- Block: 8 cycles
+   \   00002B                       ; ------------------------------------- Total: 52 cycles
+   \   00002B                       REQUIRE ?CLRL78_V1_0_L00
+    297          }
+    298          
+    299          
+    300          /***********************************************************************************************************************
+    301          * Function Name: Auto_Setup
+    302          * Description  : This function sets up Auto Connection
+    303          * Arguments    : type 
+    304                              0 - TCP server
+    305          * Return Value : None
+    306          ***********************************************************************************************************************/
+    307          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    308          void Auto_Setup(uint8_t type)
+   \                     Auto_Setup:
+    309          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 0
+   \   000002 72                    MOV       C, A               ;; 1 cycle
+    310            LCDPrintf(1,0,"Connecting..");
+   \   000003 34....                MOVW      DE, #`?<Constant "Connecting..">`  ;; 1 cycle
+   \   000006 F3                    CLRB      B                  ;; 1 cycle
+   \   000007 E1                    ONEB      A                  ;; 1 cycle
+   \   000008 FD....                CALL      LCDPrintf          ;; 3 cycles
+    311            switch(type)
+   \   00000B D2                    CMP0      C                  ;; 1 cycle
+   \   00000C DF4D                  BNZ       ??IP_extract_25    ;; 4 cycles
+   \   00000E                       ; ------------------------------------- Block: 14 cycles
+    312            {
+    313              case 0:
+    314                LCDClear();
+   \   00000E FD....                CALL      LCDClear           ;; 3 cycles
+    315                LCDFont(FONT_SMALL);
+   \   000011 F1                    CLRB      A                  ;; 1 cycle
+   \   000012 FD....                CALL      LCDFont            ;; 3 cycles
+    316                Echo_Disable();             // Disable Echo for each command ( easier to parse)
+   \   000015 FD....                CALL      Echo_Disable       ;; 3 cycles
+   \   000018                       ; ------------------------------------- Block: 10 cycles
+    317               while (!(Echo_Confirm()));   // Send AT command till response OK 
+   \                     ??Auto_Setup_0:
+   \   000018 FD....                CALL      Echo_Confirm       ;; 3 cycles
+   \   00001B D1                    CMP0      A                  ;; 1 cycle
+   \   00001C DDFA                  BZ        ??Auto_Setup_0     ;; 4 cycles
+   \   00001E                       ; ------------------------------------- Block: 8 cycles
+    318               if(!Disassociate())          // Disassociate if currently associated to any network
+   \   00001E FD....                CALL      Disassociate       ;; 3 cycles
+   \   000021 D1                    CMP0      A                  ;; 1 cycle
+   \   000022 DD1E                  BZ        ??IP_extract_26    ;; 4 cycles
+   \   000024                       ; ------------------------------------- Block: 8 cycles
+    319                {
+    320                 LCDPrintf(5,0,"Exit");
+    321                  break;
+    322                }
+    323                if(!DHCP_Enable())         // Enable Dynamic IP (or Dynamic Host Configuration Protocol)
+   \   000024 FD....                CALL      DHCP_Enable        ;; 3 cycles
+   \   000027 D1                    CMP0      A                  ;; 1 cycle
+   \   000028 DD18                  BZ        ??IP_extract_26    ;; 4 cycles
+   \   00002A                       ; ------------------------------------- Block: 8 cycles
+    324                {
+    325                  LCDPrintf(5,0,"Exit");
+    326                  break;
+    327                }
+    328                if(!Auto_Wifi())           // Configure Auto Connect Wifi settings
+   \   00002A FD....                CALL      Auto_Wifi          ;; 3 cycles
+   \   00002D D1                    CMP0      A                  ;; 1 cycle
+   \   00002E DD12                  BZ        ??IP_extract_26    ;; 4 cycles
+   \   000030                       ; ------------------------------------- Block: 8 cycles
+    329                {
+    330                  LCDPrintf(5,0,"Exit");
+    331                  break;
+    332                }
+    333                if(!Auto_Network())       // Configure Auto Connect Network Settings 
+   \   000030 FD....                CALL      Auto_Network       ;; 3 cycles
+   \   000033 D1                    CMP0      A                  ;; 1 cycle
+   \   000034 DD0C                  BZ        ??IP_extract_26    ;; 4 cycles
+   \   000036                       ; ------------------------------------- Block: 8 cycles
+    334                {
+    335                  LCDPrintf(5,0,"Exit");
+    336                  break;
+    337                }
+    338                if(!Auto_Enable())        // Enable Auto Connect Profile
+   \   000036 FD....                CALL      Auto_Enable        ;; 3 cycles
+   \   000039 D1                    CMP0      A                  ;; 1 cycle
+   \   00003A DD06                  BZ        ??IP_extract_26    ;; 4 cycles
+   \   00003C                       ; ------------------------------------- Block: 8 cycles
+    339                {
+    340                  LCDPrintf(5,0,"Exit");
+    341                  break;
+    342                }
+    343                if(!Auto_Start())         // Start Auto Connect
+   \   00003C FD....                CALL      Auto_Start         ;; 3 cycles
+   \   00003F D1                    CMP0      A                  ;; 1 cycle
+   \   000040 DF08                  BNZ       ??IP_extract_27    ;; 4 cycles
+   \   000042                       ; ------------------------------------- Block: 8 cycles
+    344                {
+    345                  LCDPrintf(5,0,"Exit");
+   \                     ??IP_extract_26:
+   \   000042 34....                MOVW      DE, #`?<Constant "Exit">`  ;; 1 cycle
+   \   000045 F3                    CLRB      B                  ;; 1 cycle
+   \   000046 5105                  MOV       A, #0x5            ;; 1 cycle
+   \   000048 EF0E                  BR        S:??IP_extract_28  ;; 3 cycles
+   \   00004A                       ; ------------------------------------- Block: 6 cycles
+    346                  break;
+    347                }
+    348                LCDPrintf(1,0,"Connected");
+   \                     ??IP_extract_27:
+   \   00004A 34....                MOVW      DE, #`?<Constant "Connected">`  ;; 1 cycle
+   \   00004D F3                    CLRB      B                  ;; 1 cycle
+   \   00004E E1                    ONEB      A                  ;; 1 cycle
+   \   00004F FD....                CALL      LCDPrintf          ;; 3 cycles
+    349                LCDPrintf(8,0,"SW2 to connect");
+   \   000052 34....                MOVW      DE, #`?<Constant "SW2 to connect">`  ;; 1 cycle
+   \   000055 F3                    CLRB      B                  ;; 1 cycle
+   \   000056 5108                  MOV       A, #0x8            ;; 1 cycle
+   \   000058                       ; ------------------------------------- Block: 9 cycles
+   \                     ??IP_extract_28:
+   \   000058 FD....                CALL      LCDPrintf          ;; 3 cycles
+    350                break;
+   \   00005B                       ; ------------------------------------- Block: 3 cycles
+    351              default:
+    352                break;
+    353            }
+    354          // Auto connection done 
+    355          // Now Actual Application  
+    356            wait_for_sw();
+   \                     ??IP_extract_25:
+   \   00005B FD....                CALL      wait_for_sw        ;; 3 cycles
+    357            LCDClear();
+   \   00005E FD....                CALL      LCDClear           ;; 3 cycles
+    358            LCDPrintf(1,0,"Connect Client");
+   \   000061 34....                MOVW      DE, #`?<Constant "Connect Client">`  ;; 1 cycle
+   \   000064 F3                    CLRB      B                  ;; 1 cycle
+   \   000065 E1                    ONEB      A                  ;; 1 cycle
+   \   000066 FD....                CALL      LCDPrintf          ;; 3 cycles
+    359            Data_handle(CLIENT);            // Wait For Client Connection Details
+   \   000069 5102                  MOV       A, #0x2            ;; 1 cycle
+   \   00006B FD....                CALL      Data_handle        ;; 3 cycles
+    360            wait_for_sw();
+   \   00006E FD....                CALL      wait_for_sw        ;; 3 cycles
+    361          //  Disp_Client_Data();             // Parse message sent from Client and Display the Data
+    362          }      
+   \   000071 C4                    POP       DE                 ;; 1 cycle
+   \   000072 C2                    POP       BC                 ;; 1 cycle
+   \   000073 D7                    RET                          ;; 6 cycles
+   \   000074                       ; ------------------------------------- Block: 27 cycles
+   \   000074                       ; ------------------------------------- Total: 125 cycles
+   \   000074                       REQUIRE ?CLRL78_V1_0_L00
+    363          
+    364          /***********************************************************************************************************************
+    365          * Function Name: Disp_Client_Data
+    366          * Description  : This function Displays Data from connected client
+    367          * Arguments    : None
+    368          * Return Value : None
+    369          ***********************************************************************************************************************/
+    370          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    371          void Disp_Client_Data()
+   \                     Disp_Client_Data:
+    372          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 4
+   \   000002 2004                  SUBW      SP, #0x4           ;; 1 cycle
+    373            uint8_t line = 1 ,column = 0,chk =0;
+   \   000004 E1                    ONEB      A                  ;; 1 cycle
+   \   000005 9802                  MOV       [SP+0x02], A       ;; 1 cycle
+   \   000007 F1                    CLRB      A                  ;; 1 cycle
+   \   000008 9801                  MOV       [SP+0x01], A       ;; 1 cycle
+    374            char buf;
+    375            LCDClear();
+   \   00000A FD....                CALL      LCDClear           ;; 3 cycles
+    376            LCDFont(FONT_SMALL);
+   \   00000D F1                    CLRB      A                  ;; 1 cycle
+   \   00000E FD....                CALL      LCDFont            ;; 3 cycles
+   \   000011                       ; ------------------------------------- Block: 14 cycles
+    377            while(1)
+    378            {
+    379              while(!WIFI_ReceiveByte(&buf));
+   \                     ??Disp_Client_Data_0:
+   \   000011 AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000013 FD....                CALL      WIFI_ReceiveByte   ;; 3 cycles
+   \   000016 D1                    CMP0      A                  ;; 1 cycle
+   \   000017 DDF8                  BZ        ??Disp_Client_Data_0  ;; 4 cycles
+   \   000019                       ; ------------------------------------- Block: 9 cycles
+    380              chk = Parse_Data(buf);
+    381              if(chk == 2)
+   \   000019 8800                  MOV       A, [SP]            ;; 1 cycle
+   \   00001B FD....                CALL      Parse_Data         ;; 3 cycles
+   \   00001E 4C02                  CMP       A, #0x2            ;; 1 cycle
+   \   000020 DFEF                  BNZ       ??Disp_Client_Data_0  ;; 4 cycles
+   \   000022                       ; ------------------------------------- Block: 9 cycles
+    382              {
+    383                Format_Data(buf,&line,&column);
+   \   000022 AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000024 A1                    INCW      AX                 ;; 1 cycle
+   \   000025 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000026 12                    MOVW      BC, AX             ;; 1 cycle
+   \   000027 A3                    INCW      BC                 ;; 1 cycle
+   \   000028 8800                  MOV       A, [SP]            ;; 1 cycle
+   \   00002A FD....                CALL      Format_Data        ;; 3 cycles
+    384                if(buf == 'X')
+   \   00002D 8800                  MOV       A, [SP]            ;; 1 cycle
+   \   00002F 4C58                  CMP       A, #0x58           ;; 1 cycle
+   \   000031 DFDE                  BNZ       ??Disp_Client_Data_0  ;; 4 cycles
+   \   000033                       ; ------------------------------------- Block: 15 cycles
+    385                {
+    386                  LCDClear();
+   \   000033 FD....                CALL      LCDClear           ;; 3 cycles
+    387                  LCDPrintf(1,0,"Connection Closed");
+   \   000036 34....                MOVW      DE, #`?<Constant "Connection Closed">`  ;; 1 cycle
+   \   000039 F3                    CLRB      B                  ;; 1 cycle
+   \   00003A E1                    ONEB      A                  ;; 1 cycle
+   \   00003B FD....                CALL      LCDPrintf          ;; 3 cycles
+    388                  LCDPrintf(8,0,"SW2 to Exit");
+   \   00003E 34....                MOVW      DE, #`?<Constant "SW2 to Exit">`  ;; 1 cycle
+   \   000041 F3                    CLRB      B                  ;; 1 cycle
+   \   000042 5108                  MOV       A, #0x8            ;; 1 cycle
+   \   000044 FD....                CALL      LCDPrintf          ;; 3 cycles
+    389                  wait_for_sw();
+   \   000047 FD....                CALL      wait_for_sw        ;; 3 cycles
+    390                  LCDPrintf(8,0,"Exit        ");
+   \   00004A 34....                MOVW      DE, #`?<Constant "Exit        ">`  ;; 1 cycle
+   \   00004D F3                    CLRB      B                  ;; 1 cycle
+   \   00004E 5108                  MOV       A, #0x8            ;; 1 cycle
+   \   000050 FD....                CALL      LCDPrintf          ;; 3 cycles
+    391                  break;
+    392                }
+    393                  
+    394            }
+    395          }
+    396          }
+   \   000053 1004                  ADDW      SP, #0x4           ;; 1 cycle
+   \   000055 C4                    POP       DE                 ;; 1 cycle
+   \   000056 C2                    POP       BC                 ;; 1 cycle
+   \   000057 D7                    RET                          ;; 6 cycles
+   \   000058                       ; ------------------------------------- Block: 33 cycles
+   \   000058                       ; ------------------------------------- Total: 80 cycles
+   \   000058                       REQUIRE ?CLRL78_V1_0_L00
+    397          
+    398          /***********************************************************************************************************************
+    399          * Function Name: Parse_Data
+    400          * Description  : This function Parses data from TCP Client
+    401          * Arguments    : buf (character)
+    402          * Return Value : 
+    403                            0 - Skip Character
+    404                            1 - Completed
+    405                            2 - Store Character
+    406          * Message format: <0x1B>S<CID><Data><0x1B> (0x1B = ESC_CHAR)
+    407          ***********************************************************************************************************************/
+    408          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    409          uint8_t Parse_Data(char buf)
+   \                     Parse_Data:
+    410          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 0
+    411            static uint8_t START_ESC = 0,START_S = 0;
+    412            static uint8_t END_ESC = 0, END_E = 0;
+    413            static uint8_t BODY = 0, CID = 0;
+    414                switch(buf) 
+   \   000002 D1                    CMP0      A                  ;; 1 cycle
+   \   000003 DD4D                  BZ        ??IP_extract_29    ;; 4 cycles
+   \   000005                       ; ------------------------------------- Block: 7 cycles
+   \   000005 2C1B                  SUB       A, #0x1B           ;; 1 cycle
+   \   000007 DD41                  BZ        ??IP_extract_30    ;; 4 cycles
+   \   000009                       ; ------------------------------------- Block: 5 cycles
+   \   000009 2C16                  SUB       A, #0x16           ;; 1 cycle
+   \   00000B 61F8                  SKNZ                         ;; 4 cycles
+   \   00000D ED....                BR        N:??IP_extract_31  ;; 4 cycles
+   \   000010                       ; ------------------------------------- Block: 5 cycles
+   \   000010 2C14                  SUB       A, #0x14           ;; 1 cycle
+   \   000012 DD61                  BZ        ??IP_extract_32    ;; 4 cycles
+   \   000014                       ; ------------------------------------- Block: 5 cycles
+   \   000014 2C0E                  SUB       A, #0xE            ;; 1 cycle
+   \   000016 DD4E                  BZ        ??IP_extract_33    ;; 4 cycles
+   \   000018                       ; ------------------------------------- Block: 5 cycles
+   \   000018 2CA2                  SUB       A, #0xA2           ;; 1 cycle
+   \   00001A 61E8                  SKZ                          ;; 4 cycles
+   \   00001C ED....                BR        N:??IP_extract_34  ;; 4 cycles
+   \   00001F                       ; ------------------------------------- Block: 5 cycles
+    415                {
+    416                    case SPI_CHAR_IDLE:
+    417                                if(END_E && END_ESC && BODY)
+   \   00001F 36....                MOVW      HL, #??BODY        ;; 1 cycle
+   \   000022 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   000023 5C01                  AND       A, #0x1            ;; 1 cycle
+   \   000025 70                    MOV       X, A               ;; 1 cycle
+   \   000026 36....                MOVW      HL, #??END_ESC     ;; 1 cycle
+   \   000029 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   00002A 5C01                  AND       A, #0x1            ;; 1 cycle
+   \   00002C 73                    MOV       B, A               ;; 1 cycle
+   \   00002D 36....                MOVW      HL, #??END_E       ;; 1 cycle
+   \   000030 FD....                CALL      N:??Subroutine8_0  ;; 3 cycles
+   \   000033                       ; ------------------------------------- Block: 12 cycles
+   \                     ??CrossCallReturnLabel_25:
+   \   000033 DD1D                  BZ        ??IP_extract_29    ;; 4 cycles
+   \   000035                       ; ------------------------------------- Block: 4 cycles
+    418                                {
+    419                                  START_S = 0; START_ESC = 0;
+   \   000035 F5....                CLRB      N:??START_S        ;; 1 cycle
+   \   000038 F5....                CLRB      N:??START_ESC      ;; 1 cycle
+    420                                  END_E = 0;END_ESC = 0; BODY = 0;
+   \   00003B F5....                CLRB      N:??END_E          ;; 1 cycle
+   \   00003E F5....                CLRB      N:??END_ESC        ;; 1 cycle
+   \   000041 F5....                CLRB      N:??BODY           ;; 1 cycle
+    421                                  CID = 0;
+   \   000044 F5....                CLRB      N:??CID            ;; 1 cycle
+    422                                     return (1);
+   \   000047 E1                    ONEB      A                  ;; 1 cycle
+   \   000048 EF09                  BR        S:??IP_extract_35  ;; 3 cycles
+   \   00004A                       ; ------------------------------------- Block: 10 cycles
+    423                                }
+    424                                break;
+    425                    case('\0'):
+    426                                break;
+    427                    case(ESC_CHAR):
+    428                               if(!START_ESC)
+   \                     ??IP_extract_30:
+   \   00004A D5....                CMP0      N:??START_ESC      ;; 1 cycle
+   \   00004D DF07                  BNZ       ??IP_extract_36    ;; 4 cycles
+   \   00004F                       ; ------------------------------------- Block: 5 cycles
+    429                                    {
+    430                                      START_ESC = 1;
+   \   00004F E5....                ONEB      N:??START_ESC      ;; 1 cycle
+   \   000052                       ; ------------------------------------- Block: 1 cycles
+    431                                    }
+    432                               else if(START_ESC && BODY)
+    433                                    {  
+    434                                        END_ESC = 1;
+    435                                    }
+    436                               break;
+    437                     case('S'):
+    438                            if(START_ESC && !START_S)
+    439                                {
+    440                                  START_S = 1;
+    441                                }
+    442                            else if( START_ESC && START_S && CID)
+    443                                {
+    444                                    BODY = 1;
+    445                                    return(2);
+    446                                }
+    447                            break;
+    448                      case('E'):
+    449                            if(START_ESC && !END_E && END_ESC && START_S && CID)
+    450                                {
+    451                                  END_E = 1;
+    452                                }
+    453                            else if(START_ESC && START_S && CID)
+    454                                {
+    455                                    BODY = 1;
+    456                                    return(2);
+    457                                }
+    458                            break;
+    459                       case('1'):                        // <CID> = 1 for only 1 client can be modified for multiple clients
+    460                         if(START_ESC && START_S && !CID)
+    461                                {
+    462                                  CID = 1;
+    463                                }
+    464                            else if(START_ESC && START_S && CID)
+    465                                {
+    466                                    BODY = 1;
+    467                                    return(2);
+    468                                }
+    469                         break;
+    470                      default:                    
+    471                              if(START_ESC && START_S && CID)
+    472                              {
+    473                                  BODY = 1;
+    474                                  return(2);
+    475                              }
+    476                                  break;
+    477                 }
+    478               return (0);
+   \                     ??IP_extract_29:
+   \   000052 F1                    CLRB      A                  ;; 1 cycle
+   \   000053                       ; ------------------------------------- Block: 1 cycles
+   \                     ??IP_extract_35:
+   \   000053 C4                    POP       DE                 ;; 1 cycle
+   \   000054 C2                    POP       BC                 ;; 1 cycle
+   \   000055 D7                    RET                          ;; 6 cycles
+   \   000056                       ; ------------------------------------- Block: 8 cycles
+   \                     ??IP_extract_36:
+   \   000056 36....                MOVW      HL, #??BODY        ;; 1 cycle
+   \   000059 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   00005A 5C01                  AND       A, #0x1            ;; 1 cycle
+   \   00005C FD....                CALL      N:?Subroutine4     ;; 3 cycles
+   \   00005F                       ; ------------------------------------- Block: 6 cycles
+   \                     ??CrossCallReturnLabel_23:
+   \   00005F DDF1                  BZ        ??IP_extract_29    ;; 4 cycles
+   \   000061                       ; ------------------------------------- Block: 4 cycles
+   \   000061 E5....                ONEB      N:??END_ESC        ;; 1 cycle
+   \   000064 EFEC                  BR        S:??IP_extract_29  ;; 3 cycles
+   \   000066                       ; ------------------------------------- Block: 4 cycles
+   \                     ??IP_extract_33:
+   \   000066 FD....                CALL      N:??Subroutine9_0  ;; 3 cycles
+   \   000069                       ; ------------------------------------- Block: 3 cycles
+   \                     ??CrossCallReturnLabel_29:
+   \   000069 7C01                  XOR       A, #0x1            ;; 1 cycle
+   \   00006B FD....                CALL      N:?Subroutine4     ;; 3 cycles
+   \   00006E                       ; ------------------------------------- Block: 4 cycles
+   \                     ??CrossCallReturnLabel_24:
+   \   00006E DD40                  BZ        ??IP_extract_34    ;; 4 cycles
+   \   000070                       ; ------------------------------------- Block: 4 cycles
+   \   000070 E5....                ONEB      N:??START_S        ;; 1 cycle
+   \   000073 EFDD                  BR        S:??IP_extract_29  ;; 3 cycles
+   \   000075                       ; ------------------------------------- Block: 4 cycles
+   \                     ??IP_extract_32:
+   \   000075 FD....                CALL      N:?Subroutine5     ;; 3 cycles
+   \   000078                       ; ------------------------------------- Block: 3 cycles
+   \                     ??CrossCallReturnLabel_18:
+   \   000078 FD....                CALL      N:?Subroutine6     ;; 3 cycles
+   \   00007B                       ; ------------------------------------- Block: 3 cycles
+   \                     ??CrossCallReturnLabel_30:
+   \   00007B 73                    MOV       B, A               ;; 1 cycle
+   \   00007C 36....                MOVW      HL, #??END_ESC     ;; 1 cycle
+   \   00007F 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   000080 5C01                  AND       A, #0x1            ;; 1 cycle
+   \   000082 72                    MOV       C, A               ;; 1 cycle
+   \   000083 36....                MOVW      HL, #??END_E       ;; 1 cycle
+   \   000086 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   000087 5C01                  AND       A, #0x1            ;; 1 cycle
+   \   000089 7C01                  XOR       A, #0x1            ;; 1 cycle
+   \   00008B 75                    MOV       D, A               ;; 1 cycle
+   \   00008C 36....                MOVW      HL, #??START_ESC   ;; 1 cycle
+   \   00008F 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   000090 5C01                  AND       A, #0x1            ;; 1 cycle
+   \   000092 615D                  AND       A, D               ;; 1 cycle
+   \   000094 615A                  AND       A, C               ;; 1 cycle
+   \   000096 615B                  AND       A, B               ;; 1 cycle
+   \   000098 6158                  AND       A, X               ;; 1 cycle
+   \   00009A DD14                  BZ        ??IP_extract_34    ;; 4 cycles
+   \   00009C                       ; ------------------------------------- Block: 21 cycles
+   \   00009C E5....                ONEB      N:??END_E          ;; 1 cycle
+   \   00009F EFB1                  BR        S:??IP_extract_29  ;; 3 cycles
+   \   0000A1                       ; ------------------------------------- Block: 4 cycles
+   \                     ??IP_extract_31:
+   \   0000A1 FD....                CALL      N:?Subroutine5     ;; 3 cycles
+   \   0000A4                       ; ------------------------------------- Block: 3 cycles
+   \                     ??CrossCallReturnLabel_19:
+   \   0000A4 7C01                  XOR       A, #0x1            ;; 1 cycle
+   \   0000A6 FD....                CALL      N:?Subroutine2     ;; 3 cycles
+   \   0000A9                       ; ------------------------------------- Block: 4 cycles
+   \                     ??CrossCallReturnLabel_27:
+   \   0000A9 DD05                  BZ        ??IP_extract_34    ;; 4 cycles
+   \   0000AB                       ; ------------------------------------- Block: 4 cycles
+   \   0000AB E5....                ONEB      N:??CID            ;; 1 cycle
+   \   0000AE EFA2                  BR        S:??IP_extract_29  ;; 3 cycles
+   \   0000B0                       ; ------------------------------------- Block: 4 cycles
+   \                     ??IP_extract_34:
+   \   0000B0 FD....                CALL      N:?Subroutine5     ;; 3 cycles
+   \   0000B3                       ; ------------------------------------- Block: 3 cycles
+   \                     ??CrossCallReturnLabel_20:
+   \   0000B3 FD....                CALL      N:?Subroutine2     ;; 3 cycles
+   \   0000B6                       ; ------------------------------------- Block: 3 cycles
+   \                     ??CrossCallReturnLabel_28:
+   \   0000B6 DD9A                  BZ        ??IP_extract_29    ;; 4 cycles
+   \   0000B8                       ; ------------------------------------- Block: 4 cycles
+   \   0000B8 E5....                ONEB      N:??BODY           ;; 1 cycle
+   \   0000BB 5102                  MOV       A, #0x2            ;; 1 cycle
+   \   0000BD EF94                  BR        S:??IP_extract_35  ;; 3 cycles
+   \   0000BF                       ; ------------------------------------- Block: 5 cycles
+   \   0000BF                       ; ------------------------------------- Total: 163 cycles
+   \   0000BF                       REQUIRE ?CLRL78_V1_0_L00
+    479          }
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine5:
+   \   000000 36....                MOVW      HL, #??CID         ;; 1 cycle
+   \   000003 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   000004 5C01                  AND       A, #0x1            ;; 1 cycle
+   \   000006 D7                    RET                          ;; 6 cycles
+   \   000007                       ; ------------------------------------- Block: 9 cycles
+   \   000007                       ; ------------------------------------- Total: 9 cycles
+   \   000007                       REQUIRE ?CLRL78_V1_0_L00
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine4:
+   \   000000 70                    MOV       X, A               ;; 1 cycle
+   \   000001 36....                MOVW      HL, #??START_ESC   ;; 1 cycle
+   \   000004                       ; ------------------------------------- Block: 2 cycles
+   \   000004                       ; ------------------------------------- Total: 2 cycles
+   \   000004                       REQUIRE ?CLRL78_V1_0_L00
+   \   000004                       REQUIRE ?Subroutine7
+   \   000004                       ; // Fall through to label ?Subroutine7
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine7:
+   \   000000 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   000001 5C01                  AND       A, #0x1            ;; 1 cycle
+   \   000003 6158                  AND       A, X               ;; 1 cycle
+   \   000005 D7                    RET                          ;; 6 cycles
+   \   000006                       ; ------------------------------------- Block: 9 cycles
+   \   000006                       ; ------------------------------------- Total: 9 cycles
+   \   000006                       REQUIRE ?CLRL78_V1_0_L00
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000 FD....                CALL      N:?Subroutine6     ;; 3 cycles
+   \   000003                       ; ------------------------------------- Block: 3 cycles
+   \                     ??CrossCallReturnLabel_31:
+   \   000003 73                    MOV       B, A               ;; 1 cycle
+   \   000004 36....                MOVW      HL, #??START_ESC   ;; 1 cycle
+   \   000007                       ; ------------------------------------- Block: 2 cycles
+   \   000007                       ; ------------------------------------- Total: 5 cycles
+   \   000007                       REQUIRE ?CLRL78_V1_0_L00
+   \   000007                       REQUIRE ??Subroutine8_0
+   \   000007                       ; // Fall through to label ??Subroutine8_0
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ??Subroutine8_0:
+   \   000000 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   000001 5C01                  AND       A, #0x1            ;; 1 cycle
+   \   000003 615B                  AND       A, B               ;; 1 cycle
+   \   000005 6158                  AND       A, X               ;; 1 cycle
+   \   000007 D7                    RET                          ;; 6 cycles
+   \   000008                       ; ------------------------------------- Block: 10 cycles
+   \   000008                       ; ------------------------------------- Total: 10 cycles
+   \   000008                       REQUIRE ?CLRL78_V1_0_L00
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine6:
+   \   000000 70                    MOV       X, A               ;; 1 cycle
+   \   000001                       ; ------------------------------------- Block: 1 cycles
+   \   000001                       ; ------------------------------------- Total: 1 cycles
+   \   000001                       REQUIRE ?CLRL78_V1_0_L00
+   \   000001                       REQUIRE ??Subroutine9_0
+   \   000001                       ; // Fall through to label ??Subroutine9_0
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ??Subroutine9_0:
+   \   000000 36....                MOVW      HL, #??START_S     ;; 1 cycle
+   \   000003 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   000004 5C01                  AND       A, #0x1            ;; 1 cycle
+   \   000006 D7                    RET                          ;; 6 cycles
+   \   000007                       ; ------------------------------------- Block: 9 cycles
+   \   000007                       ; ------------------------------------- Total: 9 cycles
+   \   000007                       REQUIRE ?CLRL78_V1_0_L00
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+   \                     ??START_ESC:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+   \                     ??START_S:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+   \                     ??END_ESC:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+   \                     ??END_E:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+   \                     ??BODY:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+   \                     ??CID:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+    480          
+    481          /***********************************************************************************************************************
+    482          * Function Name: Format_Data
+    483          * Description  : This function formats data for continuous input on LCD
+    484          * Arguments    : buf (Character)
+    485                           line 
+    486                           column
+    487          * Return Value : None
+    488          ***********************************************************************************************************************/
+    489          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    490          void Format_Data(char buf, uint8_t* line, uint8_t* column)
+   \                     Format_Data:
+    491          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 4
+    492            
+    493              if(buf == '\r' || buf == '\n')
+   \   000002 4C0D                  CMP       A, #0xD            ;; 1 cycle
+   \   000004 DD04                  BZ        ??IP_extract_37    ;; 4 cycles
+   \   000006                       ; ------------------------------------- Block: 7 cycles
+   \   000006 4C0A                  CMP       A, #0xA            ;; 1 cycle
+   \   000008 DF10                  BNZ       ??IP_extract_38    ;; 4 cycles
+   \   00000A                       ; ------------------------------------- Block: 5 cycles
+    494              {
+    495                if(*line == 7)
+   \                     ??IP_extract_37:
+   \   00000A C3                    PUSH      BC                 ;; 1 cycle
+   \   00000B C6                    POP       HL                 ;; 1 cycle
+   \   00000C 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   00000D 4C07                  CMP       A, #0x7            ;; 1 cycle
+   \   00000F DF3C                  BNZ       ??IP_extract_39    ;; 4 cycles
+   \   000011                       ; ------------------------------------- Block: 8 cycles
+    496                {
+    497                  *line = 1;
+   \   000011 C3                    PUSH      BC                 ;; 1 cycle
+   \   000012 C6                    POP       HL                 ;; 1 cycle
+   \   000013 E1                    ONEB      A                  ;; 1 cycle
+   \   000014 9B                    MOV       [HL], A            ;; 1 cycle
+    498                  LCDClear();
+   \   000015 FD....                CALL      LCDClear           ;; 3 cycles
+   \   000018 EF35                  BR        S:??IP_extract_40  ;; 3 cycles
+   \   00001A                       ; ------------------------------------- Block: 10 cycles
+    499                }
+    500                else
+    501                  (*line)++;
+    502              }
+    503              else if ( buf >= 'a'  || buf <= 'z' || buf >='A' || buf <= 'Z' 
+    504                          || buf >= '1' || buf <= '9')
+    505              {
+    506                  LCDPrintf(*line,*column,"%c",buf);
+   \                     ??IP_extract_38:
+   \   00001A 70                    MOV       X, A               ;; 1 cycle
+   \   00001B F1                    CLRB      A                  ;; 1 cycle
+   \   00001C C1                    PUSH      AX                 ;; 1 cycle
+   \   00001D 34....                MOVW      DE, #`?<Constant "%c">`  ;; 1 cycle
+   \   000020 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000022 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000023 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   000024 73                    MOV       B, A               ;; 1 cycle
+   \   000025 A804                  MOVW      AX, [SP+0x04]      ;; 1 cycle
+   \   000027 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000028 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   000029 FD....                CALL      LCDPrintf          ;; 3 cycles
+    507                  if(*column == 16)
+   \   00002C A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   00002E 16                    MOVW      HL, AX             ;; 1 cycle
+   \   00002F 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   000030 1002                  ADDW      SP, #0x2           ;; 1 cycle
+   \   000032 4C10                  CMP       A, #0x10           ;; 1 cycle
+   \   000034 DF17                  BNZ       ??IP_extract_39    ;; 4 cycles
+   \   000036                       ; ------------------------------------- Block: 23 cycles
+    508                  {
+    509                    if(*line == 7)
+   \   000036 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000038 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000039 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   00003A 4C07                  CMP       A, #0x7            ;; 1 cycle
+   \   00003C DF07                  BNZ       ??IP_extract_41    ;; 4 cycles
+   \   00003E                       ; ------------------------------------- Block: 8 cycles
+    510                    {
+    511                      *line = 1;
+   \   00003E E1                    ONEB      A                  ;; 1 cycle
+   \   00003F 9B                    MOV       [HL], A            ;; 1 cycle
+    512                      LCDClear();
+   \   000040 FD....                CALL      LCDClear           ;; 3 cycles
+   \   000043 EF02                  BR        S:??IP_extract_42  ;; 3 cycles
+   \   000045                       ; ------------------------------------- Block: 8 cycles
+    513                    }
+    514                    else 
+    515                      (*line)++;
+   \                     ??IP_extract_41:
+   \   000045 81                    INC       A                  ;; 1 cycle
+   \   000046 9B                    MOV       [HL], A            ;; 1 cycle
+   \   000047                       ; ------------------------------------- Block: 2 cycles
+    516                    *column = 0;
+   \                     ??IP_extract_42:
+   \   000047 A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000049 16                    MOVW      HL, AX             ;; 1 cycle
+   \   00004A F1                    CLRB      A                  ;; 1 cycle
+   \   00004B EF01                  BR        S:??IP_extract_43  ;; 3 cycles
+   \   00004D                       ; ------------------------------------- Block: 6 cycles
+    517                  }
+    518                  else
+    519                    (*column)++;
+   \                     ??IP_extract_39:
+   \   00004D 81                    INC       A                  ;; 1 cycle
+   \   00004E                       ; ------------------------------------- Block: 1 cycles
+   \                     ??IP_extract_43:
+   \   00004E 9B                    MOV       [HL], A            ;; 1 cycle
+   \   00004F                       ; ------------------------------------- Block: 1 cycles
+    520              }
+    521              else if ( buf == SPI_CHAR_IDLE);
+    522              else
+    523              {
+    524                LCDPrintf(8,0,"Invalid Char");
+    525              }
+    526          }
+   \                     ??IP_extract_40:
+   \   00004F 1004                  ADDW      SP, #0x4           ;; 1 cycle
+   \   000051 D7                    RET                          ;; 6 cycles
+   \   000052                       ; ------------------------------------- Block: 7 cycles
+   \   000052                       ; ------------------------------------- Total: 86 cycles
+   \   000052                       REQUIRE ?CLRL78_V1_0_L00
+    527          
+    528          /***********************************************************************************************************************
+    529          * Function Name: WIFI_RecieveByte
+    530          * Description  : This function Retrieves a Byte at a time from the SPI Channel
+    531          * Arguments    : buf (Character pointer)
+    532          * Return Value : True or False 
+    533          * P7.7 - WIFI_SPI_IRQ - High when Data is available to be recieved
+    534          * SPI_CHAR_IDLE - XON(0xF5) - When SPI is active idle character sent to flush message from WIFI SPI BUFFER
+    535          ***********************************************************************************************************************/
+    536          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    537          uint8_t WIFI_ReceiveByte(char* buf)
+   \                     WIFI_ReceiveByte:
+    538          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 2
+   \   000002 C1                    PUSH      AX                 ;; 1 cycle
+   \   000003 14                    MOVW      DE, AX             ;; 1 cycle
+    539            uint8_t WIFI_Idle_Char;
+    540            //G_WIFI_BufferIndex = 0;
+    541              if((P7 & (1<<7)))
+   \   000004 31740720              BF        S:0xFFF07.7, ??IP_extract_44  ;; 5 cycles
+   \   000008                       ; ------------------------------------- Block: 9 cycles
+    542                {   WIFI_Idle_Char = SPI_CHAR_IDLE; 
+   \   000008 51F5                  MOV       A, #0xF5           ;; 1 cycle
+   \   00000A 9800                  MOV       [SP], A            ;; 1 cycle
+    543                    SPI_CS_Start(SPI_WIFI);
+   \   00000C 5104                  MOV       A, #0x4            ;; 1 cycle
+   \   00000E FD....                CALL      SPI_CS_Start       ;; 3 cycles
+    544                    SPI_SendReceive(SPI_WIFI, (uint8_t *)&WIFI_Idle_Char, 1, (uint8_t *)buf);
+   \   000011 F6                    CLRW      AX                 ;; 1 cycle
+   \   000012 C1                    PUSH      AX                 ;; 1 cycle
+   \   000013 E6                    ONEW      AX                 ;; 1 cycle
+   \   000014 C1                    PUSH      AX                 ;; 1 cycle
+   \   000015 AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000017 040400                ADDW      AX, #0x4           ;; 1 cycle
+   \   00001A 12                    MOVW      BC, AX             ;; 1 cycle
+   \   00001B 5104                  MOV       A, #0x4            ;; 1 cycle
+   \   00001D FD....                CALL      SPI_SendReceive    ;; 3 cycles
+    545                    SPI_CS_End(SPI_WIFI);
+   \   000020 5104                  MOV       A, #0x4            ;; 1 cycle
+   \   000022 FD....                CALL      SPI_CS_End         ;; 3 cycles
+    546                    return true;  
+   \   000025 E1                    ONEB      A                  ;; 1 cycle
+   \   000026 EF01                  BR        S:??IP_extract_45  ;; 3 cycles
+   \   000028                       ; ------------------------------------- Block: 25 cycles
+    547                }
+    548              else 
+    549               return false;
+   \                     ??IP_extract_44:
+   \   000028 F1                    CLRB      A                  ;; 1 cycle
+   \   000029                       ; ------------------------------------- Block: 1 cycles
+   \                     ??IP_extract_45:
+   \   000029 1002                  ADDW      SP, #0x2           ;; 1 cycle
+   \   00002B C4                    POP       DE                 ;; 1 cycle
+   \   00002C C2                    POP       BC                 ;; 1 cycle
+   \   00002D D7                    RET                          ;; 6 cycles
+   \   00002E                       ; ------------------------------------- Block: 9 cycles
+   \   00002E                       ; ------------------------------------- Total: 44 cycles
+   \   00002E                       REQUIRE ?CLRL78_V1_0_L00
+   \   00002E                       REQUIRE _A_P7
+    550          }
+    551          
+    552          
+    553          /***********************************************************************************************************************
+    554          * Function Name: Recieved_Char_Handle
+    555          * Description  : This function Parses Data retrieved and Extracts only the "BODY"
+    556                           of the data
+    557          * Arguments    : Character
+    558          * Return Value : Integer return indicating state of the parsing state machine.
+    559          * Message Response from WIFI Module : \r\n<OK/ERROR/message>\r\n
+    560          ***********************************************************************************************************************/
+    561          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    562          uint8_t Received_Char_Handle(char buf)
+   \                     Received_Char_Handle:
+    563          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001                       ; Auto size: 0
+    564            static uint8_t START_LF = 0,START_CR = 0;
+    565            static uint8_t END_LF = 0, END_CR = 0;
+    566            static uint8_t BODY = 0;
+    567                switch(buf) 
+   \   000001 D1                    CMP0      A                  ;; 1 cycle
+   \   000002 DD3C                  BZ        ??IP_extract_46    ;; 4 cycles
+   \   000004                       ; ------------------------------------- Block: 6 cycles
+   \   000004 2C0A                  SUB       A, #0xA            ;; 1 cycle
+   \   000006 DD30                  BZ        ??IP_extract_47    ;; 4 cycles
+   \   000008                       ; ------------------------------------- Block: 5 cycles
+   \   000008 2C03                  SUB       A, #0x3            ;; 1 cycle
+   \   00000A DD4D                  BZ        ??IP_extract_48    ;; 4 cycles
+   \   00000C                       ; ------------------------------------- Block: 5 cycles
+   \   00000C 2CE8                  SUB       A, #0xE8           ;; 1 cycle
+   \   00000E DF60                  BNZ       ??IP_extract_49    ;; 4 cycles
+   \   000010                       ; ------------------------------------- Block: 5 cycles
+    568                {
+    569                    case SPI_CHAR_IDLE:
+    570                                if(END_LF && END_CR && BODY)
+   \   000010 36....                MOVW      HL, #??BODY_1      ;; 1 cycle
+   \   000013 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   000014 5C01                  AND       A, #0x1            ;; 1 cycle
+   \   000016 70                    MOV       X, A               ;; 1 cycle
+   \   000017 36....                MOVW      HL, #??END_CR      ;; 1 cycle
+   \   00001A 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   00001B 5C01                  AND       A, #0x1            ;; 1 cycle
+   \   00001D 73                    MOV       B, A               ;; 1 cycle
+   \   00001E 36....                MOVW      HL, #??END_LF      ;; 1 cycle
+   \   000021 FD....                CALL      N:??Subroutine8_0  ;; 3 cycles
+   \   000024                       ; ------------------------------------- Block: 12 cycles
+   \                     ??CrossCallReturnLabel_26:
+   \   000024 DD1A                  BZ        ??IP_extract_46    ;; 4 cycles
+   \   000026                       ; ------------------------------------- Block: 4 cycles
+    571                                {
+    572                                  START_LF = 0; START_CR = 0;
+   \   000026 F5....                CLRB      N:??START_LF       ;; 1 cycle
+   \   000029 F5....                CLRB      N:??START_CR       ;; 1 cycle
+    573                                  END_LF = 0;END_CR = 0; BODY = 0;
+   \   00002C F5....                CLRB      N:??END_LF         ;; 1 cycle
+   \   00002F F5....                CLRB      N:??END_CR         ;; 1 cycle
+   \   000032 F5....                CLRB      N:??BODY_1         ;; 1 cycle
+    574                                     return (1);
+   \   000035 E1                    ONEB      A                  ;; 1 cycle
+   \   000036 EF09                  BR        S:??IP_extract_50  ;; 3 cycles
+   \   000038                       ; ------------------------------------- Block: 9 cycles
+    575                                }
+    576                                break;
+    577                    case('\0'):
+    578                                break;
+    579                    case('\n'):
+    580                               if(!START_LF)
+   \                     ??IP_extract_47:
+   \   000038 D5....                CMP0      N:??START_LF       ;; 1 cycle
+   \   00003B DF06                  BNZ       ??IP_extract_51    ;; 4 cycles
+   \   00003D                       ; ------------------------------------- Block: 5 cycles
+    581                                    {
+    582                                      START_LF = 1;
+   \   00003D E5....                ONEB      N:??START_LF       ;; 1 cycle
+   \   000040                       ; ------------------------------------- Block: 1 cycles
+    583                                    }
+    584                               else if(START_LF && BODY)
+    585                                    {  
+    586                                        END_LF = 1;
+    587                                    }
+    588                               break;
+    589                     case('\r'):
+    590                               if(!START_CR)
+    591                                    {
+    592                                      START_CR = 1;
+    593                                    }
+    594                               else if(START_CR && BODY)
+    595                                    {  
+    596                                      END_CR = 1;
+    597                                    }
+    598                               break;
+    599                    default:
+    600                              if(START_CR && START_LF)
+    601                              {
+    602                                  BODY = 1;
+    603                                  return(2);
+    604                              }
+    605                                  break;
+    606                 }
+    607               return (0);
+   \                     ??IP_extract_46:
+   \   000040 F1                    CLRB      A                  ;; 1 cycle
+   \   000041                       ; ------------------------------------- Block: 1 cycles
+   \                     ??IP_extract_50:
+   \   000041 C2                    POP       BC                 ;; 1 cycle
+   \   000042 D7                    RET                          ;; 6 cycles
+   \   000043                       ; ------------------------------------- Block: 7 cycles
+   \                     ??IP_extract_51:
+   \   000043 36....                MOVW      HL, #??BODY_1      ;; 1 cycle
+   \   000046 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   000047 5C01                  AND       A, #0x1            ;; 1 cycle
+   \   000049 70                    MOV       X, A               ;; 1 cycle
+   \   00004A 36....                MOVW      HL, #??START_LF    ;; 1 cycle
+   \   00004D 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   00004E 5C01                  AND       A, #0x1            ;; 1 cycle
+   \   000050 6158                  AND       A, X               ;; 1 cycle
+   \   000052 DDEC                  BZ        ??IP_extract_46    ;; 4 cycles
+   \   000054                       ; ------------------------------------- Block: 12 cycles
+   \   000054 E5....                ONEB      N:??END_LF         ;; 1 cycle
+   \   000057 EFE7                  BR        S:??IP_extract_46  ;; 3 cycles
+   \   000059                       ; ------------------------------------- Block: 4 cycles
+   \                     ??IP_extract_48:
+   \   000059 D5....                CMP0      N:??START_CR       ;; 1 cycle
+   \   00005C DF05                  BNZ       ??IP_extract_52    ;; 4 cycles
+   \   00005E                       ; ------------------------------------- Block: 5 cycles
+   \   00005E E5....                ONEB      N:??START_CR       ;; 1 cycle
+   \   000061 EFDD                  BR        S:??IP_extract_46  ;; 3 cycles
+   \   000063                       ; ------------------------------------- Block: 4 cycles
+   \                     ??IP_extract_52:
+   \   000063 36....                MOVW      HL, #??BODY_1      ;; 1 cycle
+   \   000066 FD....                CALL      N:?Subroutine3     ;; 3 cycles
+   \   000069                       ; ------------------------------------- Block: 4 cycles
+   \                     ??CrossCallReturnLabel_21:
+   \   000069 DDD5                  BZ        ??IP_extract_46    ;; 4 cycles
+   \   00006B                       ; ------------------------------------- Block: 4 cycles
+   \   00006B E5....                ONEB      N:??END_CR         ;; 1 cycle
+   \   00006E EFD0                  BR        S:??IP_extract_46  ;; 3 cycles
+   \   000070                       ; ------------------------------------- Block: 4 cycles
+   \                     ??IP_extract_49:
+   \   000070 36....                MOVW      HL, #??START_LF    ;; 1 cycle
+   \   000073 FD....                CALL      N:?Subroutine3     ;; 3 cycles
+   \   000076                       ; ------------------------------------- Block: 4 cycles
+   \                     ??CrossCallReturnLabel_22:
+   \   000076 DDC8                  BZ        ??IP_extract_46    ;; 4 cycles
+   \   000078                       ; ------------------------------------- Block: 4 cycles
+   \   000078 E5....                ONEB      N:??BODY_1         ;; 1 cycle
+   \   00007B 5102                  MOV       A, #0x2            ;; 1 cycle
+   \   00007D EFC2                  BR        S:??IP_extract_50  ;; 3 cycles
+   \   00007F                       ; ------------------------------------- Block: 5 cycles
+   \   00007F                       ; ------------------------------------- Total: 110 cycles
+   \   00007F                       REQUIRE ?CLRL78_V1_0_L00
+    608          }
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine3:
+   \   000000 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   000001 5C01                  AND       A, #0x1            ;; 1 cycle
+   \   000003 70                    MOV       X, A               ;; 1 cycle
+   \   000004 36....                MOVW      HL, #??START_CR    ;; 1 cycle
+   \   000007 ED....                BR        N:?Subroutine7     ;; 3 cycles
+   \   00000A                       ; ------------------------------------- Block: 7 cycles
+   \   00000A                       ; ------------------------------------- Total: 7 cycles
+   \   00000A                       REQUIRE ?CLRL78_V1_0_L00
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+   \                     ??START_LF:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+   \                     ??START_CR:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+   \                     ??END_LF:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+   \                     ??END_CR:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+   \                     ??BODY_1:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+    609          
+    610          
+    611          /***********************************************************************************************************************
+    612          * Function Name: Response_Handle
+    613          * Description  : This function Handles Response to AT Commands
+    614          * Arguments    : None
+    615          * Return Value : ERROR or OK
+    616          ***********************************************************************************************************************/
+    617                   
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    618          uint8_t Response_handle()
+   \                     Response_handle:
+    619          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 70
+   \   000002 2046                  SUBW      SP, #0x46          ;; 1 cycle
+    620             uint8_t inbuf[64];
+    621             uint32_t i =0; 
+   \   000004 F6                    CLRW      AX                 ;; 1 cycle
+   \   000005 B802                  MOVW      [SP+0x02], AX      ;; 1 cycle
+   \   000007 B804                  MOVW      [SP+0x04], AX      ;; 1 cycle
+    622             uint8_t chk = 0;
+   \   000009                       ; ------------------------------------- Block: 6 cycles
+    623             char buf;
+    624            while(!(P7 & (1<<7)));
+   \                     ??Response_handle_0:
+   \   000009 317407FC              BF        S:0xFFF07.7, ??Response_handle_0  ;; 5 cycles
+   \   00000D                       ; ------------------------------------- Block: 5 cycles
+    625            while (1)
+    626            { 
+    627              while(!WIFI_ReceiveByte(&buf));   // Checks and flushes data from WIFI SPI buffer one character at a time
+   \                     ??Response_handle_1:
+   \   00000D AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   00000F FD....                CALL      WIFI_ReceiveByte   ;; 3 cycles
+   \   000012 D1                    CMP0      A                  ;; 1 cycle
+   \   000013 DDF8                  BZ        ??Response_handle_1  ;; 4 cycles
+   \   000015                       ; ------------------------------------- Block: 9 cycles
+    628              chk = Received_Char_Handle(buf);  // State Machine to Extract message from formated message response
+   \   000015 8800                  MOV       A, [SP]            ;; 1 cycle
+   \   000017 FD....                CALL      Received_Char_Handle  ;; 3 cycles
+    629                 if(chk == 2)
+   \   00001A 4C02                  CMP       A, #0x2            ;; 1 cycle
+   \   00001C DF3D                  BNZ       ??IP_extract_53    ;; 4 cycles
+   \   00001E                       ; ------------------------------------- Block: 9 cycles
+    630                 {
+    631                    inbuf[i++] = buf;
+   \   00001E 8800                  MOV       A, [SP]            ;; 1 cycle
+   \   000020 75                    MOV       D, A               ;; 1 cycle
+   \   000021 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000023 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000024 AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000026 040600                ADDW      AX, #0x6           ;; 1 cycle
+   \   000029 07                    ADDW      AX, HL             ;; 1 cycle
+   \   00002A 16                    MOVW      HL, AX             ;; 1 cycle
+   \   00002B 65                    MOV       A, D               ;; 1 cycle
+   \   00002C 9B                    MOV       [HL], A            ;; 1 cycle
+   \   00002D A804                  MOVW      AX, [SP+0x04]      ;; 1 cycle
+   \   00002F 12                    MOVW      BC, AX             ;; 1 cycle
+   \   000030 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000032 040100                ADDW      AX, #0x1           ;; 1 cycle
+   \   000035 61D8                  SKNC
+   \   000037 A3                    INCW      BC                 ;; 5 cycles
+   \   000038 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000039 B802                  MOVW      [SP+0x02], AX      ;; 1 cycle
+   \   00003B 13                    MOVW      AX, BC             ;; 1 cycle
+   \   00003C B804                  MOVW      [SP+0x04], AX      ;; 1 cycle
+    632                    if(i > 64)
+   \   00003E 17                    MOVW      AX, HL             ;; 1 cycle
+   \   00003F 33                    XCHW      AX, BC             ;; 1 cycle
+   \   000040 440000                CMPW      AX, #0x0           ;; 1 cycle
+   \   000043 13                    MOVW      AX, BC             ;; 1 cycle
+   \   000044 61F8                  SKNZ                         ;; 4 cycles
+   \   000046                       ; ------------------------------------- Block: 31 cycles
+   \   000046 444100                CMPW      AX, #0x41          ;; 1 cycle
+   \   000049                       ; ------------------------------------- Block: 1 cycles
+   \                     ??Response_handle_2:
+   \   000049 DCC2                  BC        ??Response_handle_1  ;; 4 cycles
+   \   00004B                       ; ------------------------------------- Block: 4 cycles
+    633                    {
+    634                      LCDPrintf(7,0,"OVERFLOW");   
+   \   00004B 34....                MOVW      DE, #`?<Constant "OVERFLOW">`  ;; 1 cycle
+   \   00004E F3                    CLRB      B                  ;; 1 cycle
+   \   00004F 5107                  MOV       A, #0x7            ;; 1 cycle
+   \   000051 FD....                CALL      LCDPrintf          ;; 3 cycles
+    635                      i = 0;
+   \   000054 F6                    CLRW      AX                 ;; 1 cycle
+   \   000055 B802                  MOVW      [SP+0x02], AX      ;; 1 cycle
+   \   000057 B804                  MOVW      [SP+0x04], AX      ;; 1 cycle
+   \   000059 EFB2                  BR        S:??Response_handle_1  ;; 3 cycles
+   \   00005B                       ; ------------------------------------- Block: 12 cycles
+    636                    }
+    637                 }
+    638                 else if (chk == 1)
+   \                     ??IP_extract_53:
+   \   00005B 4C01                  CMP       A, #0x1            ;; 1 cycle
+   \   00005D DFAE                  BNZ       ??Response_handle_1  ;; 4 cycles
+   \   00005F                       ; ------------------------------------- Block: 5 cycles
+    639                 { 
+    640                   break;
+    641                 }
+    642            }
+    643             inbuf[i] = '\0';
+   \   00005F A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000061 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000062 AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000064 040600                ADDW      AX, #0x6           ;; 1 cycle
+   \   000067 05                    ADDW      AX, DE             ;; 1 cycle
+   \   000068 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000069 F1                    CLRB      A                  ;; 1 cycle
+   \   00006A 99                    MOV       [DE], A            ;; 1 cycle
+    644             if(inbuf[0] == 'O')
+   \   00006B 8806                  MOV       A, [SP+0x06]       ;; 1 cycle
+   \   00006D 4C4F                  CMP       A, #0x4F           ;; 1 cycle
+   \   00006F DF03                  BNZ       ??IP_extract_54    ;; 4 cycles
+   \   000071                       ; ------------------------------------- Block: 14 cycles
+    645               return (1);
+   \   000071 E1                    ONEB      A                  ;; 1 cycle
+   \   000072 EF01                  BR        S:??IP_extract_55  ;; 3 cycles
+   \   000074                       ; ------------------------------------- Block: 4 cycles
+    646             else if(inbuf[0] == 'E')
+    647               return (0);
+    648             else
+    649             {
+    650               return (0);
+   \                     ??IP_extract_54:
+   \   000074 F1                    CLRB      A                  ;; 1 cycle
+   \   000075                       ; ------------------------------------- Block: 1 cycles
+   \                     ??IP_extract_55:
+   \   000075 1046                  ADDW      SP, #0x46          ;; 1 cycle
+   \   000077 C4                    POP       DE                 ;; 1 cycle
+   \   000078 C2                    POP       BC                 ;; 1 cycle
+   \   000079 D7                    RET                          ;; 6 cycles
+   \   00007A                       ; ------------------------------------- Block: 9 cycles
+   \   00007A                       ; ------------------------------------- Total: 110 cycles
+   \   00007A                       REQUIRE ?CLRL78_V1_0_L00
+   \   00007A                       REQUIRE _A_P7
+    651             }     
+    652          }
+    653          
+    654          /***********************************************************************************************************************
+    655          * Function Name: Data_Handle
+    656          * Description  : This function None Response Data
+    657          * Arguments    : type 
+    658                            IP - for IP address input from connection establishment
+    659                            CLIENT - Check for successful connected Client and Display IP of Client                  
+    660          * Return Value : None
+    661          ***********************************************************************************************************************/
+    662                   
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    663          void Data_handle(uint8_t type)
+   \                     Data_handle:
+    664          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002 C1                    PUSH      AX                 ;; 1 cycle
+   \   000003                       ; Auto size: 72
+   \   000003 2046                  SUBW      SP, #0x46          ;; 1 cycle
+    665             uint8_t inbuf[64];
+    666             uint32_t i =0; 
+   \   000005 F6                    CLRW      AX                 ;; 1 cycle
+   \   000006 B802                  MOVW      [SP+0x02], AX      ;; 1 cycle
+   \   000008 B804                  MOVW      [SP+0x04], AX      ;; 1 cycle
+    667             uint8_t chk = 0;
+   \   00000A                       ; ------------------------------------- Block: 7 cycles
+    668             char buf;
+    669            while(!(P7 & (1<<7)));
+   \                     ??Data_handle_0:
+   \   00000A 317407FC              BF        S:0xFFF07.7, ??Data_handle_0  ;; 5 cycles
+   \   00000E                       ; ------------------------------------- Block: 5 cycles
+    670            while (1) 
+    671            { 
+    672                  while(!WIFI_ReceiveByte(&buf));   // Checks and flushes data from WIFI SPI buffer one character at a time
+   \                     ??Data_handle_1:
+   \   00000E AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000010 FD....                CALL      WIFI_ReceiveByte   ;; 3 cycles
+   \   000013 D1                    CMP0      A                  ;; 1 cycle
+   \   000014 DDF8                  BZ        ??Data_handle_1    ;; 4 cycles
+   \   000016                       ; ------------------------------------- Block: 9 cycles
+    673                 chk = Received_Char_Handle(buf);   // State Machine to Extract message from formated message response
+   \   000016 8800                  MOV       A, [SP]            ;; 1 cycle
+   \   000018 FD....                CALL      Received_Char_Handle  ;; 3 cycles
+    674                 if(chk == 2)
+   \   00001B 4C02                  CMP       A, #0x2            ;; 1 cycle
+   \   00001D DF3D                  BNZ       ??IP_extract_56    ;; 4 cycles
+   \   00001F                       ; ------------------------------------- Block: 9 cycles
+    675                 {
+    676                    inbuf[i++] = buf;
+   \   00001F 8800                  MOV       A, [SP]            ;; 1 cycle
+   \   000021 75                    MOV       D, A               ;; 1 cycle
+   \   000022 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000024 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000025 AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000027 040600                ADDW      AX, #0x6           ;; 1 cycle
+   \   00002A 07                    ADDW      AX, HL             ;; 1 cycle
+   \   00002B 16                    MOVW      HL, AX             ;; 1 cycle
+   \   00002C 65                    MOV       A, D               ;; 1 cycle
+   \   00002D 9B                    MOV       [HL], A            ;; 1 cycle
+   \   00002E A804                  MOVW      AX, [SP+0x04]      ;; 1 cycle
+   \   000030 12                    MOVW      BC, AX             ;; 1 cycle
+   \   000031 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000033 040100                ADDW      AX, #0x1           ;; 1 cycle
+   \   000036 61D8                  SKNC
+   \   000038 A3                    INCW      BC                 ;; 5 cycles
+   \   000039 16                    MOVW      HL, AX             ;; 1 cycle
+   \   00003A B802                  MOVW      [SP+0x02], AX      ;; 1 cycle
+   \   00003C 13                    MOVW      AX, BC             ;; 1 cycle
+   \   00003D B804                  MOVW      [SP+0x04], AX      ;; 1 cycle
+    677                    if(i > 64)
+   \   00003F 17                    MOVW      AX, HL             ;; 1 cycle
+   \   000040 33                    XCHW      AX, BC             ;; 1 cycle
+   \   000041 440000                CMPW      AX, #0x0           ;; 1 cycle
+   \   000044 13                    MOVW      AX, BC             ;; 1 cycle
+   \   000045 61F8                  SKNZ                         ;; 4 cycles
+   \   000047                       ; ------------------------------------- Block: 31 cycles
+   \   000047 444100                CMPW      AX, #0x41          ;; 1 cycle
+   \   00004A                       ; ------------------------------------- Block: 1 cycles
+   \                     ??Data_handle_2:
+   \   00004A DCC2                  BC        ??Data_handle_1    ;; 4 cycles
+   \   00004C                       ; ------------------------------------- Block: 4 cycles
+    678                    {
+    679                      LCDPrintf(7,0,"OVERFLOW");   
+   \   00004C 34....                MOVW      DE, #`?<Constant "OVERFLOW">`  ;; 1 cycle
+   \   00004F F3                    CLRB      B                  ;; 1 cycle
+   \   000050 5107                  MOV       A, #0x7            ;; 1 cycle
+   \   000052 FD....                CALL      LCDPrintf          ;; 3 cycles
+    680                      i = 0;
+   \   000055 F6                    CLRW      AX                 ;; 1 cycle
+   \   000056 B802                  MOVW      [SP+0x02], AX      ;; 1 cycle
+   \   000058 B804                  MOVW      [SP+0x04], AX      ;; 1 cycle
+   \   00005A EFB2                  BR        S:??Data_handle_1  ;; 3 cycles
+   \   00005C                       ; ------------------------------------- Block: 12 cycles
+    681                    }
+    682                 }
+    683                 else if (chk == 1)
+   \                     ??IP_extract_56:
+   \   00005C 4C01                  CMP       A, #0x1            ;; 1 cycle
+   \   00005E DFAE                  BNZ       ??Data_handle_1    ;; 4 cycles
+   \   000060                       ; ------------------------------------- Block: 5 cycles
+    684                 { 
+    685                   break;
+    686                 }
+    687            }
+    688          inbuf[i] = '\0';
+   \   000060 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000062 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000063 AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000065 040600                ADDW      AX, #0x6           ;; 1 cycle
+   \   000068 05                    ADDW      AX, DE             ;; 1 cycle
+   \   000069 14                    MOVW      DE, AX             ;; 1 cycle
+   \   00006A F1                    CLRB      A                  ;; 1 cycle
+   \   00006B 99                    MOV       [DE], A            ;; 1 cycle
+    689          switch(type)
+   \   00006C 8847                  MOV       A, [SP+0x47]       ;; 1 cycle
+   \   00006E 91                    DEC       A                  ;; 1 cycle
+   \   00006F DD05                  BZ        ??IP_extract_57    ;; 4 cycles
+   \   000071                       ; ------------------------------------- Block: 14 cycles
+   \   000071 91                    DEC       A                  ;; 1 cycle
+   \   000072 DD05                  BZ        ??IP_extract_58    ;; 4 cycles
+   \   000074                       ; ------------------------------------- Block: 5 cycles
+   \   000074 EF29                  BR        S:??IP_extract_59  ;; 3 cycles
+   \   000076                       ; ------------------------------------- Block: 3 cycles
+    690          {
+    691            case IP: IP_extract(inbuf,1);break;
+   \                     ??IP_extract_57:
+   \   000076 E3                    ONEB      B                  ;; 1 cycle
+   \   000077 EF1E                  BR        S:??IP_extract_60  ;; 3 cycles
+   \   000079                       ; ------------------------------------- Block: 4 cycles
+    692            case CLIENT: 
+    693              if(inbuf[0] == 'C')
+   \                     ??IP_extract_58:
+   \   000079 8806                  MOV       A, [SP+0x06]       ;; 1 cycle
+   \   00007B 4C43                  CMP       A, #0x43           ;; 1 cycle
+   \   00007D DF20                  BNZ       ??IP_extract_59    ;; 4 cycles
+   \   00007F                       ; ------------------------------------- Block: 6 cycles
+    694              {
+    695                LCDPrintf(1,0,"Client Connected");
+   \   00007F 34....                MOVW      DE, #`?<Constant "Client Connected">`  ;; 1 cycle
+   \   000082 F3                    CLRB      B                  ;; 1 cycle
+   \   000083 E1                    ONEB      A                  ;; 1 cycle
+   \   000084 FD....                CALL      LCDPrintf          ;; 3 cycles
+    696                LCDPrintf(8,0,"SW2 for Data");
+   \   000087 34....                MOVW      DE, #`?<Constant "SW2 for Data">`  ;; 1 cycle
+   \   00008A F3                    CLRB      B                  ;; 1 cycle
+   \   00008B 5108                  MOV       A, #0x8            ;; 1 cycle
+   \   00008D FD....                CALL      LCDPrintf          ;; 3 cycles
+    697                connection_id = inbuf[10];
+   \   000090 8810                  MOV       A, [SP+0x10]       ;; 1 cycle
+   \   000092 9F....                MOV       N:connection_id, A  ;; 1 cycle
+    698                IP_extract(inbuf,2);
+   \   000095 5302                  MOV       B, #0x2            ;; 1 cycle
+   \   000097                       ; ------------------------------------- Block: 15 cycles
+   \                     ??IP_extract_60:
+   \   000097 AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000099 040600                ADDW      AX, #0x6           ;; 1 cycle
+   \   00009C FD....                CALL      IP_extract         ;; 3 cycles
+   \   00009F                       ; ------------------------------------- Block: 5 cycles
+    699              }
+    700          }
+    701          }
+   \                     ??IP_extract_59:
+   \   00009F 1048                  ADDW      SP, #0x48          ;; 1 cycle
+   \   0000A1 C4                    POP       DE                 ;; 1 cycle
+   \   0000A2 C2                    POP       BC                 ;; 1 cycle
+   \   0000A3 D7                    RET                          ;; 6 cycles
+   \   0000A4                       ; ------------------------------------- Block: 9 cycles
+   \   0000A4                       ; ------------------------------------- Total: 144 cycles
+   \   0000A4                       REQUIRE ?CLRL78_V1_0_L00
+   \   0000A4                       REQUIRE _A_P7
+    702          
+    703          
+    704          /***********************************************************************************************************************
+    705          * Function Name: IP_extract
+    706          * Description  : This function None Response Data
+    707          * Arguments    : buf (Character Pointer) 
+    708                          type 
+    709                            1 - extract IP address from connection establishment response
+    710                            2 - extract IP of Client when client connects                  
+    711          * Return Value : None
+    712          ***********************************************************************************************************************/
+    713          
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    714          void IP_extract(uint8_t * buf, uint8_t type)
+   \                     IP_extract:
+    715          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C5                    PUSH      DE                 ;; 1 cycle
+   \   000001 C1                    PUSH      AX                 ;; 1 cycle
+   \   000002                       ; Auto size: 36
+   \   000002 2022                  SUBW      SP, #0x22          ;; 1 cycle
+    716            int i,j;
+    717            char ip_address[32];
+    718            switch(type)
+   \   000004 63                    MOV       A, B               ;; 1 cycle
+   \   000005 91                    DEC       A                  ;; 1 cycle
+   \   000006 DD06                  BZ        ??IP_extract_61    ;; 4 cycles
+   \   000008                       ; ------------------------------------- Block: 9 cycles
+   \   000008 91                    DEC       A                  ;; 1 cycle
+   \   000009 DD41                  BZ        ??IP_extract_62    ;; 4 cycles
+   \   00000B                       ; ------------------------------------- Block: 5 cycles
+   \   00000B ED....                BR        N:??IP_extract_63  ;; 3 cycles
+   \   00000E                       ; ------------------------------------- Block: 3 cycles
+    719            {
+    720              case(1):
+    721                for(i = 0; buf[i] != ':';i++)    // Message Format: <IP>:<Subnet>
+   \                     ??IP_extract_61:
+   \   00000E F6                    CLRW      AX                 ;; 1 cycle
+   \   00000F 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000010 EF0A                  BR        S:??IP_extract_64  ;; 3 cycles
+   \   000012                       ; ------------------------------------- Block: 5 cycles
+    722                {
+    723                  ip_address[i] = (char)buf[i];
+   \                     ??IP_extract_65:
+   \   000012 73                    MOV       B, A               ;; 1 cycle
+   \   000013 AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000015 A1                    INCW      AX                 ;; 1 cycle
+   \   000016 A1                    INCW      AX                 ;; 1 cycle
+   \   000017 07                    ADDW      AX, HL             ;; 1 cycle
+   \   000018 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000019 63                    MOV       A, B               ;; 1 cycle
+   \   00001A 99                    MOV       [DE], A            ;; 1 cycle
+    724                }
+   \   00001B A7                    INCW      HL                 ;; 1 cycle
+   \   00001C                       ; ------------------------------------- Block: 9 cycles
+   \                     ??IP_extract_64:
+   \   00001C A822                  MOVW      AX, [SP+0x22]      ;; 1 cycle
+   \   00001E 07                    ADDW      AX, HL             ;; 1 cycle
+   \   00001F 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000020 89                    MOV       A, [DE]            ;; 1 cycle
+   \   000021 4C3A                  CMP       A, #0x3A           ;; 1 cycle
+   \   000023 DFED                  BNZ       ??IP_extract_65    ;; 4 cycles
+   \   000025                       ; ------------------------------------- Block: 9 cycles
+    725                ip_address[i]='\0';
+   \   000025 AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000027 A1                    INCW      AX                 ;; 1 cycle
+   \   000028 A1                    INCW      AX                 ;; 1 cycle
+   \   000029 07                    ADDW      AX, HL             ;; 1 cycle
+   \   00002A 16                    MOVW      HL, AX             ;; 1 cycle
+   \   00002B F1                    CLRB      A                  ;; 1 cycle
+   \   00002C 9B                    MOV       [HL], A            ;; 1 cycle
+    726                LCDPrintf(2,0,"IP:");
+   \   00002D 34....                MOVW      DE, #`?<Constant "IP:">`  ;; 1 cycle
+   \   000030 F3                    CLRB      B                  ;; 1 cycle
+   \   000031 5102                  MOV       A, #0x2            ;; 1 cycle
+   \   000033 FD....                CALL      LCDPrintf          ;; 3 cycles
+    727                LCDPrintf(3,0,"%s",ip_address);
+   \   000036 AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000038 A1                    INCW      AX                 ;; 1 cycle
+   \   000039 A1                    INCW      AX                 ;; 1 cycle
+   \   00003A C1                    PUSH      AX                 ;; 1 cycle
+   \   00003B 34....                MOVW      DE, #`?<Constant "%s">`  ;; 1 cycle
+   \   00003E F3                    CLRB      B                  ;; 1 cycle
+   \   00003F 5103                  MOV       A, #0x3            ;; 1 cycle
+   \   000041 FD....                CALL      LCDPrintf          ;; 3 cycles
+    728                LCDPrintf(4,0,"Port: 8010");
+   \   000044 34....                MOVW      DE, #`?<Constant "Port: 8010">`  ;; 1 cycle
+   \   000047 F3                    CLRB      B                  ;; 1 cycle
+   \   000048 5104                  MOV       A, #0x4            ;; 1 cycle
+   \   00004A EF44                  BR        S:??IP_extract_66  ;; 3 cycles
+   \   00004C                       ; ------------------------------------- Block: 29 cycles
+    729                break;
+    730              case(2):
+    731                for(i = 12,j=0; i<=24;i++,j++)    // From Message Buffer               
+   \                     ??IP_extract_62:
+   \   00004C 360C00                MOVW      HL, #0xC           ;; 1 cycle
+   \   00004F F6                    CLRW      AX                 ;; 1 cycle
+   \   000050 B800                  MOVW      [SP], AX           ;; 1 cycle
+   \   000052                       ; ------------------------------------- Block: 3 cycles
+    732                {                                 // Message Format = CONNECTED<CID><0/1> <IP>        
+    733                  ip_address[j] = (char)buf[i];   //                                      ^
+   \                     ??IP_extract_67:
+   \   000052 A822                  MOVW      AX, [SP+0x22]      ;; 1 cycle
+   \   000054 07                    ADDW      AX, HL             ;; 1 cycle
+   \   000055 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000056 89                    MOV       A, [DE]            ;; 1 cycle
+   \   000057 73                    MOV       B, A               ;; 1 cycle
+   \   000058 A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   00005A 14                    MOVW      DE, AX             ;; 1 cycle
+   \   00005B AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   00005D A1                    INCW      AX                 ;; 1 cycle
+   \   00005E A1                    INCW      AX                 ;; 1 cycle
+   \   00005F 05                    ADDW      AX, DE             ;; 1 cycle
+   \   000060 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000061 63                    MOV       A, B               ;; 1 cycle
+   \   000062 99                    MOV       [DE], A            ;; 1 cycle
+    734                }                                 //                                      |
+   \   000063 A7                    INCW      HL                 ;; 1 cycle
+   \   000064 A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000066 A1                    INCW      AX                 ;; 1 cycle
+   \   000067 B800                  MOVW      [SP], AX           ;; 1 cycle
+   \   000069 17                    MOVW      AX, HL             ;; 1 cycle
+   \   00006A 7C80                  XOR       A, #0x80           ;; 1 cycle
+   \   00006C 441980                CMPW      AX, #0x8019        ;; 1 cycle
+   \   00006F DCE1                  BC        ??IP_extract_67    ;; 4 cycles
+   \   000071                       ; ------------------------------------- Block: 25 cycles
+    735                ip_address[j]='\0';               //                                     12th bit 
+   \   000071 A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000073 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000074 AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000076 A1                    INCW      AX                 ;; 1 cycle
+   \   000077 A1                    INCW      AX                 ;; 1 cycle
+   \   000078 07                    ADDW      AX, HL             ;; 1 cycle
+   \   000079 16                    MOVW      HL, AX             ;; 1 cycle
+   \   00007A F1                    CLRB      A                  ;; 1 cycle
+   \   00007B 9B                    MOV       [HL], A            ;; 1 cycle
+    736                LCDPrintf(2,0,"Client IP:");
+   \   00007C 34....                MOVW      DE, #`?<Constant "Client IP:">`  ;; 1 cycle
+   \   00007F F3                    CLRB      B                  ;; 1 cycle
+   \   000080 5102                  MOV       A, #0x2            ;; 1 cycle
+   \   000082 FD....                CALL      LCDPrintf          ;; 3 cycles
+    737                LCDPrintf(3,0,"%s",ip_address);
+   \   000085 AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000087 A1                    INCW      AX                 ;; 1 cycle
+   \   000088 A1                    INCW      AX                 ;; 1 cycle
+   \   000089 C1                    PUSH      AX                 ;; 1 cycle
+   \   00008A 34....                MOVW      DE, #`?<Constant "%s">`  ;; 1 cycle
+   \   00008D F3                    CLRB      B                  ;; 1 cycle
+   \   00008E 5103                  MOV       A, #0x3            ;; 1 cycle
+   \   000090                       ; ------------------------------------- Block: 22 cycles
+   \                     ??IP_extract_66:
+   \   000090 FD....                CALL      LCDPrintf          ;; 3 cycles
+    738                break;
+   \   000093 1002                  ADDW      SP, #0x2           ;; 1 cycle
+   \   000095                       ; ------------------------------------- Block: 4 cycles
+    739                
+    740          }     
+    741          }   
+   \                     ??IP_extract_63:
+   \   000095 1024                  ADDW      SP, #0x24          ;; 1 cycle
+   \   000097 C4                    POP       DE                 ;; 1 cycle
+   \   000098 D7                    RET                          ;; 6 cycles
+   \   000099                       ; ------------------------------------- Block: 8 cycles
+   \   000099                       ; ------------------------------------- Total: 131 cycles
+   \   000099                       REQUIRE ?CLRL78_V1_0_L00
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "ATE0\\r\\n">`:
+   \   000000 415445300D0A          DB "ATE0\015\012"
+   \   000007 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "ATV1\\r\\n">`:
+   \   000000 415456310D0A          DB "ATV1\015\012"
+   \   000007 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "AT\\r\\n">`:
+   \   000000 41540D0A00            DB "AT\015\012"
+   \   000005 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "AT+NAUTO=1,1,,8010\\r\\n">`:
+   \   000000 41542B4E4155          DB "AT+NAUTO=1,1,,8010\015\012"
+   \   000015 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "AT+WAUTO=0,wifidemo\\r\\n">`:
+   \   000000 41542B574155          DB "AT+WAUTO=0,wifidemo\015\012"
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "ATC1\\r\\n">`:
+   \   000000 415443310D0A          DB "ATC1\015\012"
+   \   000007 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "ATA\\r\\n">`:
+   \   000000 4154410D0A00          DB "ATA\015\012"
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "AT+WD\\r\\n">`:
+   \   000000 41542B57440D          DB "AT+WD\015\012"
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "AT+NDHCP=1\\r\\n">`:
+   \   000000 41542B4E4448          DB "AT+NDHCP=1\015\012"
+   \   00000D 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "Connecting..">`:
+   \   000000 436F6E6E6563          DB "Connecting.."
+   \   00000D 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "Exit">`:
+   \   000000 4578697400            DB "Exit"
+   \   000005 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "Connected">`:
+   \   000000 436F6E6E6563          DB "Connected"
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "SW2 to connect">`:
+   \   000000 53573220746F          DB "SW2 to connect"
+   \   00000F 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "Connect Client">`:
+   \   000000 436F6E6E6563          DB "Connect Client"
+   \   00000F 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "Connection Closed">`:
+   \   000000 436F6E6E6563          DB "Connection Closed"
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "SW2 to Exit">`:
+   \   000000 53573220746F          DB "SW2 to Exit"
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "Exit        ">`:
+   \   000000 457869742020          DB "Exit        "
+   \   00000D 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "%c">`:
+   \   000000 256300                DB "%c"
+   \   000003 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \   000000 496E76616C69          DB "Invalid Char"
+   \   00000D 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "OVERFLOW">`:
+   \   000000 4F564552464C          DB "OVERFLOW"
+   \   000009 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "Client Connected">`:
+   \   000000 436C69656E74          DB "Client Connected"
+   \   000011 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "SW2 for Data">`:
+   \   000000 53573220666F          DB "SW2 for Data"
+   \   00000D 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "IP:">`:
+   \   000000 49503A00              DB "IP:"
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "%s">`:
+   \   000000 257300                DB "%s"
+   \   000003 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "Port: 8010">`:
+   \   000000 506F72743A20          DB "Port: 8010"
+   \   00000B 00                    DB 0
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "Client IP:">`:
+   \   000000 436C69656E74          DB "Client IP:"
+   \   00000B 00                    DB 0
+    742            
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+      8   Auto_Enable
+        4   -> Response_handle
+        8   -> SPI_Send
+        4   -> sub_printf
+      8   Auto_Network
+        4   -> Response_handle
+        8   -> SPI_Send
+        4   -> sub_printf
+      4   Auto_Setup
+        4   -> Auto_Enable
+        4   -> Auto_Network
+        4   -> Auto_Start
+        4   -> Auto_Wifi
+        4   -> DHCP_Enable
+        4   -> Data_handle
+        4   -> Disassociate
+        4   -> Echo_Confirm
+        4   -> Echo_Disable
+        4   -> LCDClear
+        4   -> LCDFont
+        4   -> LCDPrintf
+        4   -> wait_for_sw
+      8   Auto_Start
+        4   -> Data_handle
+        8   -> SPI_Send
+        4   -> sub_printf
+      8   Auto_Wifi
+        4   -> Response_handle
+        8   -> SPI_Send
+        4   -> sub_printf
+      8   DHCP_Enable
+        4   -> Response_handle
+        8   -> SPI_Send
+        4   -> sub_printf
+     76   Data_handle
+       76   -> IP_extract
+       76   -> LCDPrintf
+       76   -> Received_Char_Handle
+       76   -> WIFI_ReceiveByte
+      8   Disassociate
+        4   -> Response_handle
+        8   -> SPI_Send
+        4   -> sub_printf
+      8   Disp_Client_Data
+        8   -> Format_Data
+        8   -> LCDClear
+        8   -> LCDFont
+        8   -> LCDPrintf
+        8   -> Parse_Data
+        8   -> WIFI_ReceiveByte
+        8   -> wait_for_sw
+      8   Echo_Confirm
+        4   -> Response_handle
+        8   -> SPI_Send
+        4   -> sub_printf
+      8   Echo_Disable
+        4   -> Response_handle
+        8   -> SPI_Send
+        4   -> sub_printf
+      6   Format_Data
+        4   -> LCDClear
+        6   -> LCDPrintf
+     40   IP_extract
+       38   -> LCDPrintf
+       40   -> LCDPrintf
+      4   Parse_Data
+      2   Received_Char_Handle
+     74   Response_handle
+       74   -> LCDPrintf
+       74   -> Received_Char_Handle
+       74   -> WIFI_ReceiveByte
+      8   Verbose_Enable
+        4   -> Response_handle
+        8   -> SPI_Send
+        4   -> sub_printf
+     10   WIFI_ReceiveByte
+        6   -> SPI_CS_End
+        6   -> SPI_CS_Start
+       10   -> SPI_SendReceive
+      4   sub_printf
+        4   -> vsprintf
+      0   wait_for_sw
+        0   -> R_INTC8_Start
+        0   -> R_INTC8_Stop
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ?<Constant "%c">
+       4  ?<Constant "%s">
+      22  ?<Constant "AT+NAUTO=1,1,,8010\r\n">
+      14  ?<Constant "AT+NDHCP=1\r\n">
+      22  ?<Constant "AT+WAUTO=0,wifidemo\r\n">
+       8  ?<Constant "AT+WD\r\n">
+       6  ?<Constant "ATA\r\n">
+       8  ?<Constant "ATC1\r\n">
+       8  ?<Constant "ATE0\r\n">
+       8  ?<Constant "ATV1\r\n">
+       6  ?<Constant "AT\r\n">
+      18  ?<Constant "Client Connected">
+      12  ?<Constant "Client IP:">
+      16  ?<Constant "Connect Client">
+      10  ?<Constant "Connected">
+      14  ?<Constant "Connecting..">
+      18  ?<Constant "Connection Closed">
+      14  ?<Constant "Exit        ">
+       6  ?<Constant "Exit">
+       4  ?<Constant "IP:">
+      14  ?<Constant "Invalid Char">
+      10  ?<Constant "OVERFLOW">
+      12  ?<Constant "Port: 8010">
+      14  ?<Constant "SW2 for Data">
+      12  ?<Constant "SW2 to Exit">
+      16  ?<Constant "SW2 to connect">
+       8  ??Subroutine8_0
+       7  ??Subroutine9_0
+       8  ?Subroutine0
+       5  ?Subroutine1
+       7  ?Subroutine2
+      10  ?Subroutine3
+       4  ?Subroutine4
+       7  ?Subroutine5
+       1  ?Subroutine6
+       6  ?Subroutine7
+      43  Auto_Enable
+      43  Auto_Network
+     116  Auto_Setup
+      38  Auto_Start
+      43  Auto_Wifi
+       1  BODY
+       1  BODY
+       1  CID
+      43  DHCP_Enable
+     164  Data_handle
+      43  Disassociate
+      88  Disp_Client_Data
+       1  END_CR
+       1  END_E
+       1  END_ESC
+       1  END_LF
+      43  Echo_Confirm
+      43  Echo_Disable
+      82  Format_Data
+     153  IP_extract
+     191  Parse_Data
+     127  Received_Char_Handle
+     122  Response_handle
+       1  START_CR
+       1  START_ESC
+       1  START_LF
+       1  START_S
+      43  Verbose_Enable
+      46  WIFI_ReceiveByte
+       1  _A_P7
+       1  connection_id
+      32  outbuf
+      18  sub_printf
+      15  wait_for_sw
+
+ 
+ 1 567 bytes in segment CODE
+   300 bytes in segment NEAR_CONST
+    44 bytes in segment NEAR_Z
+     1 byte  in segment SADDR_A
+ 
+ 1 567 bytes of CODE  memory
+   300 bytes of CONST memory
+    44 bytes of DATA  memory (+ 1 byte shared)
+
+Errors: none
+Warnings: none

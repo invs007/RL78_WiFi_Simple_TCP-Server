@@ -1,0 +1,1534 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             05/Aug/2014  14:51:17 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Evaluation license - IAR Embedded Workbench for Renesas RL78, Evaluation version 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Glyph\Fonts\font_winfreesystem14x16.c      #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Glyph\Fonts\font_winfreesystem14x16.c"     #
+#                    --core rl78_2 --code_model near --data_model near        #
+#                    --near_const_location rom0 -o "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy\Debug\Obj\" --dlib_config      #
+#                    "C:\Program Files (x86)\IAR Systems\Embedded Workbench   #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\font_winfreesystem14x16.lst     #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\font_winfreesystem14x16.r87      #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\Glyph\Fonts\font_winfreesystem14x16.c
+      1          /******************************************************************************
+      2          * DISCLAIMER
+      3          * This software is supplied by Renesas Electronics Corporation and is only
+      4          * intended for use with Renesas products. No other uses are authorized.
+      5          * This software is owned by Renesas Electronics Corporation and is protected under
+      6          * all applicable laws, including copyright laws.
+      7          * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES
+      8          * REGARDING THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY,
+      9          * INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+     10          * PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY
+     11          * DISCLAIMED.
+     12          * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS
+     13          * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE
+     14          * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES
+     15          * FOR ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS
+     16          * AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+     17          * Renesas reserves the right, without notice, to make changes to this
+     18          * software and to discontinue the availability of this software.
+     19          * By using this software, you agree to the additional terms and
+     20          * conditions found by accessing the following link:
+     21          * http://www.renesas.com/disclaimer
+     22          ******************************************************************************/
+     23          /* Copyright (C) 2010 Renesas Electronics Corporation. All rights reserved. */
+     24          
+     25          /******************************************************************************
+     26          * File Name : font_winfreesystem14x16.c
+     27          * Version : 1.00
+     28          * Tool-Chain : Glyph - The Generic API for Graphics LCD API
+     29          * H/W Platform : RX62N Group
+     30          * Description : An 14 x 16 Font.
+     31          ******************************************************************************
+     32          * History :
+     33          * : 21.07.2010 1.00 First Release
+     34          ******************************************************************************/
+     35          
+     36          /******************************************************************************
+     37          Includes “Glyph config Include”
+     38          ******************************************************************************/
+     39          #include "..\glyph_cfg.h"
+     40          
+     41          // const uint8_t FontWinFreeSystem14x16_char_0[] = {};
+     42          // const uint8_t FontWinFreeSystem14x16_char_1[] = {};
+     43          // const uint8_t FontWinFreeSystem14x16_char_2[] = {};
+     44          // const uint8_t FontWinFreeSystem14x16_char_3[] = {};
+     45          // const uint8_t FontWinFreeSystem14x16_char_4[] = {};
+     46          // const uint8_t FontWinFreeSystem14x16_char_5[] = {};
+     47          // const uint8_t FontWinFreeSystem14x16_char_6[] = {};
+     48          // const uint8_t FontWinFreeSystem14x16_char_7[] = {};
+     49          // const uint8_t FontWinFreeSystem14x16_char_8[] = {};
+     50          // const uint8_t FontWinFreeSystem14x16_char_9[] = {};
+     51          // const uint8_t FontWinFreeSystem14x16_char_10[] = {};
+     52          // const uint8_t FontWinFreeSystem14x16_char_11[] = {};
+     53          // const uint8_t FontWinFreeSystem14x16_char_12[] = {};
+     54          // const uint8_t FontWinFreeSystem14x16_char_13[] = {};
+     55          // const uint8_t FontWinFreeSystem14x16_char_14[] = {};
+     56          // const uint8_t FontWinFreeSystem14x16_char_15[] = {};
+     57          // const uint8_t FontWinFreeSystem14x16_char_16[] = {};
+     58          // const uint8_t FontWinFreeSystem14x16_char_17[] = {};
+     59          // const uint8_t FontWinFreeSystem14x16_char_18[] = {};
+     60          // const uint8_t FontWinFreeSystem14x16_char_19[] = {};
+     61          // const uint8_t FontWinFreeSystem14x16_char_20[] = {};
+     62          // const uint8_t FontWinFreeSystem14x16_char_21[] = {};
+     63          // const uint8_t FontWinFreeSystem14x16_char_22[] = {};
+     64          // const uint8_t FontWinFreeSystem14x16_char_23[] = {};
+     65          // const uint8_t FontWinFreeSystem14x16_char_24[] = {};
+     66          // const uint8_t FontWinFreeSystem14x16_char_25[] = {};
+     67          // const uint8_t FontWinFreeSystem14x16_char_26[] = {};
+     68          // const uint8_t FontWinFreeSystem14x16_char_27[] = {};
+     69          // const uint8_t FontWinFreeSystem14x16_char_28[] = {};
+     70          // const uint8_t FontWinFreeSystem14x16_char_29[] = {};
+     71          // const uint8_t FontWinFreeSystem14x16_char_30[] = {};
+     72          // const uint8_t FontWinFreeSystem14x16_char_31[] = {};
+
+   \                                 In  segment NEAR_CONST, align 2
+     73          const uint8_t FontWinFreeSystem14x16_char_32[] = {
+   \                     FontWinFreeSystem14x16_char_32:
+   \   000000 030C00000000          DB 3, 12, 0, 0, 0, 0, 0, 0
+     74              0x03, 0x0C, // width=3, height=12
+     75              0x00, 0x00, 0x00, 
+     76              0x00, 0x00, 0x00, 
+     77          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     78          const uint8_t FontWinFreeSystem14x16_char_33[] = {
+   \                     FontWinFreeSystem14x16_char_33:
+   \   000000 030C00FC0000          DB 3, 12, 0, 252, 0, 0, 2, 0
+     79              0x03, 0x0C, // width=3, height=12
+     80              0x00, 0xFC, 0x00, 
+     81              0x00, 0x02, 0x00, 
+     82          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     83          const uint8_t FontWinFreeSystem14x16_char_34[] = {
+   \                     FontWinFreeSystem14x16_char_34:
+   \   000000 040C000C000C          DB 4, 12, 0, 12, 0, 12, 0, 0, 0, 0
+     84              0x04, 0x0C, // width=4, height=12
+     85              0x00, 0x0C, 0x00, 0x0C, 
+     86              0x00, 0x00, 0x00, 0x00, 
+     87          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     88          const uint8_t FontWinFreeSystem14x16_char_35[] = {
+   \                     FontWinFreeSystem14x16_char_35:
+   \   000000 060C80A0F8A0          DB 6, 12, 128, 160, 248, 160, 248, 32, 0, 3, 0, 3, 0, 0
+     89              0x06, 0x0C, // width=6, height=12
+     90              0x80, 0xA0, 0xF8, 0xA0, 0xF8, 0x20, 
+     91              0x00, 0x03, 0x00, 0x03, 0x00, 0x00, 
+     92          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     93          const uint8_t FontWinFreeSystem14x16_char_36[] = {
+   \                     FontWinFreeSystem14x16_char_36:
+   \   000000 060C3048FC48          DB 6, 12, 48, 72, 252, 72, 144, 0, 1, 2, 7, 2, 1, 0
+     94              0x06, 0x0C, // width=6, height=12
+     95              0x30, 0x48, 0xFC, 0x48, 0x90, 0x00, 
+     96              0x01, 0x02, 0x07, 0x02, 0x01, 0x00, 
+     97          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     98          const uint8_t FontWinFreeSystem14x16_char_37[] = {
+   \                     FontWinFreeSystem14x16_char_37:
+   \   000000 090C081414C8          DB 9, 12, 8, 20, 20, 200, 48, 140, 128, 0, 0, 0, 0, 3, 0, 1, 2, 2, 1, 0
+     99              0x09, 0x0C, // width=9, height=12
+    100              0x08, 0x14, 0x14, 0xC8, 0x30, 0x8C, 0x80, 0x00, 0x00, 
+    101              0x00, 0x00, 0x03, 0x00, 0x01, 0x02, 0x02, 0x01, 0x00, 
+    102          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    103          const uint8_t FontWinFreeSystem14x16_char_38[] = {
+   \                     FontWinFreeSystem14x16_char_38:
+   \   000000 080C00C03864          DB 8, 12, 0, 192, 56, 100, 152, 128, 64, 0, 0, 1, 2, 2, 1, 1, 2, 0
+    104              0x08, 0x0C, // width=8, height=12
+    105              0x00, 0xC0, 0x38, 0x64, 0x98, 0x80, 0x40, 0x00, 
+    106              0x00, 0x01, 0x02, 0x02, 0x01, 0x01, 0x02, 0x00, 
+    107          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    108          const uint8_t FontWinFreeSystem14x16_char_39[] = {
+   \                     FontWinFreeSystem14x16_char_39:
+   \   000000 030C00100C00          DB 3, 12, 0, 16, 12, 0, 0, 0
+    109              0x03, 0x0C, // width=3, height=12
+    110              0x00, 0x10, 0x0C, 
+    111              0x00, 0x00, 0x00, 
+    112          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    113          const uint8_t FontWinFreeSystem14x16_char_40[] = {
+   \                     FontWinFreeSystem14x16_char_40:
+   \   000000 040CE0180400          DB 4, 12, 224, 24, 4, 0, 1, 6, 8, 0
+    114              0x04, 0x0C, // width=4, height=12
+    115              0xE0, 0x18, 0x04, 0x00, 
+    116              0x01, 0x06, 0x08, 0x00, 
+    117          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    118          const uint8_t FontWinFreeSystem14x16_char_41[] = {
+   \                     FontWinFreeSystem14x16_char_41:
+   \   000000 040C000418E0          DB 4, 12, 0, 4, 24, 224, 0, 8, 6, 1
+    119              0x04, 0x0C, // width=4, height=12
+    120              0x00, 0x04, 0x18, 0xE0, 
+    121              0x00, 0x08, 0x06, 0x01, 
+    122          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    123          const uint8_t FontWinFreeSystem14x16_char_42[] = {
+   \                     FontWinFreeSystem14x16_char_42:
+   \   000000 040C14081400          DB 4, 12, 20, 8, 20, 0, 0, 0, 0, 0
+    124              0x04, 0x0C, // width=4, height=12
+    125              0x14, 0x08, 0x14, 0x00, 
+    126              0x00, 0x00, 0x00, 0x00, 
+    127          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    128          const uint8_t FontWinFreeSystem14x16_char_43[] = {
+   \                     FontWinFreeSystem14x16_char_43:
+   \   000000 060C4040F040          DB 6, 12, 64, 64, 240, 64, 64, 0, 0, 0, 1, 0, 0, 0
+    129              0x06, 0x0C, // width=6, height=12
+    130              0x40, 0x40, 0xF0, 0x40, 0x40, 0x00, 
+    131              0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 
+    132          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    133          const uint8_t FontWinFreeSystem14x16_char_44[] = {
+   \                     FontWinFreeSystem14x16_char_44:
+   \   000000 030C00000008          DB 3, 12, 0, 0, 0, 8, 6, 0
+    134              0x03, 0x0C, // width=3, height=12
+    135              0x00, 0x00, 0x00, 
+    136              0x08, 0x06, 0x00, 
+    137          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    138          const uint8_t FontWinFreeSystem14x16_char_45[] = {
+   \                     FontWinFreeSystem14x16_char_45:
+   \   000000 070C00404040          DB 7, 12, 0, 64, 64, 64, 64, 64, 0, 0, 0, 0, 0, 0, 0, 0
+    139              0x07, 0x0C, // width=7, height=12
+    140              0x00, 0x40, 0x40, 0x40, 0x40, 0x40, 0x00, 
+    141              0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+    142          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    143          const uint8_t FontWinFreeSystem14x16_char_46[] = {
+   \                     FontWinFreeSystem14x16_char_46:
+   \   000000 030C00000000          DB 3, 12, 0, 0, 0, 0, 2, 0
+    144              0x03, 0x0C, // width=3, height=12
+    145              0x00, 0x00, 0x00, 
+    146              0x00, 0x02, 0x00, 
+    147          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    148          const uint8_t FontWinFreeSystem14x16_char_47[] = {
+   \                     FontWinFreeSystem14x16_char_47:
+   \   000000 030C00F00C03          DB 3, 12, 0, 240, 12, 3, 0, 0
+    149              0x03, 0x0C, // width=3, height=12
+    150              0x00, 0xF0, 0x0C, 
+    151              0x03, 0x00, 0x00, 
+    152          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    153          const uint8_t FontWinFreeSystem14x16_char_48[] = {
+   \                     FontWinFreeSystem14x16_char_48:
+   \   000000 060CF8040404          DB 6, 12, 248, 4, 4, 4, 248, 0, 1, 2, 2, 2, 1, 0
+    154              0x06, 0x0C, // width=6, height=12
+    155              0xF8, 0x04, 0x04, 0x04, 0xF8, 0x00, 
+    156              0x01, 0x02, 0x02, 0x02, 0x01, 0x00, 
+    157          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    158          const uint8_t FontWinFreeSystem14x16_char_49[] = {
+   \                     FontWinFreeSystem14x16_char_49:
+   \   000000 060C0008FC00          DB 6, 12, 0, 8, 252, 0, 0, 0, 0, 0, 3, 0, 0, 0
+    159              0x06, 0x0C, // width=6, height=12
+    160              0x00, 0x08, 0xFC, 0x00, 0x00, 0x00, 
+    161              0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 
+    162          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    163          const uint8_t FontWinFreeSystem14x16_char_50[] = {
+   \                     FontWinFreeSystem14x16_char_50:
+   \   000000 060C08844444          DB 6, 12, 8, 132, 68, 68, 56, 0, 3, 2, 2, 2, 2, 0
+    164              0x06, 0x0C, // width=6, height=12
+    165              0x08, 0x84, 0x44, 0x44, 0x38, 0x00, 
+    166              0x03, 0x02, 0x02, 0x02, 0x02, 0x00, 
+    167          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    168          const uint8_t FontWinFreeSystem14x16_char_51[] = {
+   \                     FontWinFreeSystem14x16_char_51:
+   \   000000 060C08042424          DB 6, 12, 8, 4, 36, 36, 216, 0, 1, 2, 2, 2, 1, 0
+    169              0x06, 0x0C, // width=6, height=12
+    170              0x08, 0x04, 0x24, 0x24, 0xD8, 0x00, 
+    171              0x01, 0x02, 0x02, 0x02, 0x01, 0x00, 
+    172          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    173          const uint8_t FontWinFreeSystem14x16_char_52[] = {
+   \                     FontWinFreeSystem14x16_char_52:
+   \   000000 060CC0B088FC          DB 6, 12, 192, 176, 136, 252, 128, 0, 0, 0, 0, 3, 0, 0
+    174              0x06, 0x0C, // width=6, height=12
+    175              0xC0, 0xB0, 0x88, 0xFC, 0x80, 0x00, 
+    176              0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 
+    177          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    178          const uint8_t FontWinFreeSystem14x16_char_53[] = {
+   \                     FontWinFreeSystem14x16_char_53:
+   \   000000 060C3C242424          DB 6, 12, 60, 36, 36, 36, 196, 0, 1, 2, 2, 2, 1, 0
+    179              0x06, 0x0C, // width=6, height=12
+    180              0x3C, 0x24, 0x24, 0x24, 0xC4, 0x00, 
+    181              0x01, 0x02, 0x02, 0x02, 0x01, 0x00, 
+    182          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    183          const uint8_t FontWinFreeSystem14x16_char_54[] = {
+   \                     FontWinFreeSystem14x16_char_54:
+   \   000000 060CF8442424          DB 6, 12, 248, 68, 36, 36, 200, 0, 1, 2, 2, 2, 1, 0
+    184              0x06, 0x0C, // width=6, height=12
+    185              0xF8, 0x44, 0x24, 0x24, 0xC8, 0x00, 
+    186              0x01, 0x02, 0x02, 0x02, 0x01, 0x00, 
+    187          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    188          const uint8_t FontWinFreeSystem14x16_char_55[] = {
+   \                     FontWinFreeSystem14x16_char_55:
+   \   000000 060C0404C434          DB 6, 12, 4, 4, 196, 52, 12, 0, 0, 3, 0, 0, 0, 0
+    189              0x06, 0x0C, // width=6, height=12
+    190              0x04, 0x04, 0xC4, 0x34, 0x0C, 0x00, 
+    191              0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 
+    192          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    193          const uint8_t FontWinFreeSystem14x16_char_56[] = {
+   \                     FontWinFreeSystem14x16_char_56:
+   \   000000 060CD8242424          DB 6, 12, 216, 36, 36, 36, 216, 0, 1, 2, 2, 2, 1, 0
+    194              0x06, 0x0C, // width=6, height=12
+    195              0xD8, 0x24, 0x24, 0x24, 0xD8, 0x00, 
+    196              0x01, 0x02, 0x02, 0x02, 0x01, 0x00, 
+    197          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    198          const uint8_t FontWinFreeSystem14x16_char_57[] = {
+   \                     FontWinFreeSystem14x16_char_57:
+   \   000000 060C38444424          DB 6, 12, 56, 68, 68, 36, 248, 0, 1, 2, 2, 2, 1, 0
+    199              0x06, 0x0C, // width=6, height=12
+    200              0x38, 0x44, 0x44, 0x24, 0xF8, 0x00, 
+    201              0x01, 0x02, 0x02, 0x02, 0x01, 0x00, 
+    202          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    203          const uint8_t FontWinFreeSystem14x16_char_58[] = {
+   \                     FontWinFreeSystem14x16_char_58:
+   \   000000 030C00100000          DB 3, 12, 0, 16, 0, 0, 2, 0
+    204              0x03, 0x0C, // width=3, height=12
+    205              0x00, 0x10, 0x00, 
+    206              0x00, 0x02, 0x00, 
+    207          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    208          const uint8_t FontWinFreeSystem14x16_char_59[] = {
+   \                     FontWinFreeSystem14x16_char_59:
+   \   000000 030C00100008          DB 3, 12, 0, 16, 0, 8, 6, 0
+    209              0x03, 0x0C, // width=3, height=12
+    210              0x00, 0x10, 0x00, 
+    211              0x08, 0x06, 0x00, 
+    212          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    213          const uint8_t FontWinFreeSystem14x16_char_60[] = {
+   \                     FontWinFreeSystem14x16_char_60:
+   \   000000 060C0040A010          DB 6, 12, 0, 64, 160, 16, 0, 0, 0, 0, 0, 1, 0, 0
+    214              0x06, 0x0C, // width=6, height=12
+    215              0x00, 0x40, 0xA0, 0x10, 0x00, 0x00, 
+    216              0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 
+    217          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    218          const uint8_t FontWinFreeSystem14x16_char_61[] = {
+   \                     FontWinFreeSystem14x16_char_61:
+   \   000000 050CA0A0A0A0          DB 5, 12, 160, 160, 160, 160, 0, 0, 0, 0, 0, 0
+    219              0x05, 0x0C, // width=5, height=12
+    220              0xA0, 0xA0, 0xA0, 0xA0, 0x00, 
+    221              0x00, 0x00, 0x00, 0x00, 0x00, 
+    222          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    223          const uint8_t FontWinFreeSystem14x16_char_62[] = {
+   \                     FontWinFreeSystem14x16_char_62:
+   \   000000 060C0010A040          DB 6, 12, 0, 16, 160, 64, 0, 0, 0, 1, 0, 0, 0, 0
+    224              0x06, 0x0C, // width=6, height=12
+    225              0x00, 0x10, 0xA0, 0x40, 0x00, 0x00, 
+    226              0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 
+    227          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    228          const uint8_t FontWinFreeSystem14x16_char_63[] = {
+   \                     FontWinFreeSystem14x16_char_63:
+   \   000000 060C0008C424          DB 6, 12, 0, 8, 196, 36, 24, 0, 0, 0, 2, 0, 0, 0
+    229              0x06, 0x0C, // width=6, height=12
+    230              0x00, 0x08, 0xC4, 0x24, 0x18, 0x00, 
+    231              0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 
+    232          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    233          const uint8_t FontWinFreeSystem14x16_char_64[] = {
+   \                     FontWinFreeSystem14x16_char_64:
+   \   000000 0B0CE010C824          DB 11, 12, 224, 16, 200, 36, 20, 148, 100, 20, 136, 112, 0, 3, 4, 9, 10
+   \   000011 0A090A020100          DB 10, 9, 10, 2, 1, 0, 0
+    234              0x0B, 0x0C, // width=11, height=12
+    235              0xE0, 0x10, 0xC8, 0x24, 0x14, 0x94, 0x64, 0x14, 0x88, 0x70, 0x00, 
+    236              0x03, 0x04, 0x09, 0x0A, 0x0A, 0x09, 0x0A, 0x02, 0x01, 0x00, 0x00, 
+    237          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    238          const uint8_t FontWinFreeSystem14x16_char_65[] = {
+   \                     FontWinFreeSystem14x16_char_65:
+   \   000000 070C00C0B08C          DB 7, 12, 0, 192, 176, 140, 176, 192, 0, 3, 0, 0, 0, 0, 0, 3
+    239              0x07, 0x0C, // width=7, height=12
+    240              0x00, 0xC0, 0xB0, 0x8C, 0xB0, 0xC0, 0x00, 
+    241              0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 
+    242          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    243          const uint8_t FontWinFreeSystem14x16_char_66[] = {
+   \                     FontWinFreeSystem14x16_char_66:
+   \   000000 070C00FC2424          DB 7, 12, 0, 252, 36, 36, 36, 216, 0, 0, 3, 2, 2, 2, 1, 0
+    244              0x07, 0x0C, // width=7, height=12
+    245              0x00, 0xFC, 0x24, 0x24, 0x24, 0xD8, 0x00, 
+    246              0x00, 0x03, 0x02, 0x02, 0x02, 0x01, 0x00, 
+    247          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    248          const uint8_t FontWinFreeSystem14x16_char_67[] = {
+   \                     FontWinFreeSystem14x16_char_67:
+   \   000000 080C00F80404          DB 8, 12, 0, 248, 4, 4, 4, 4, 8, 0, 0, 1, 2, 2, 2, 2, 1, 0
+    249              0x08, 0x0C, // width=8, height=12
+    250              0x00, 0xF8, 0x04, 0x04, 0x04, 0x04, 0x08, 0x00, 
+    251              0x00, 0x01, 0x02, 0x02, 0x02, 0x02, 0x01, 0x00, 
+    252          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    253          const uint8_t FontWinFreeSystem14x16_char_68[] = {
+   \                     FontWinFreeSystem14x16_char_68:
+   \   000000 080C00FC0404          DB 8, 12, 0, 252, 4, 4, 4, 8, 240, 0, 0, 3, 2, 2, 2, 1, 0, 0
+    254              0x08, 0x0C, // width=8, height=12
+    255              0x00, 0xFC, 0x04, 0x04, 0x04, 0x08, 0xF0, 0x00, 
+    256              0x00, 0x03, 0x02, 0x02, 0x02, 0x01, 0x00, 0x00, 
+    257          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    258          const uint8_t FontWinFreeSystem14x16_char_69[] = {
+   \                     FontWinFreeSystem14x16_char_69:
+   \   000000 070C00FC2424          DB 7, 12, 0, 252, 36, 36, 36, 36, 0, 0, 3, 2, 2, 2, 2, 0
+    259              0x07, 0x0C, // width=7, height=12
+    260              0x00, 0xFC, 0x24, 0x24, 0x24, 0x24, 0x00, 
+    261              0x00, 0x03, 0x02, 0x02, 0x02, 0x02, 0x00, 
+    262          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    263          const uint8_t FontWinFreeSystem14x16_char_70[] = {
+   \                     FontWinFreeSystem14x16_char_70:
+   \   000000 060C00FC2424          DB 6, 12, 0, 252, 36, 36, 36, 4, 0, 3, 0, 0, 0, 0
+    264              0x06, 0x0C, // width=6, height=12
+    265              0x00, 0xFC, 0x24, 0x24, 0x24, 0x04, 
+    266              0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 
+    267          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    268          const uint8_t FontWinFreeSystem14x16_char_71[] = {
+   \                     FontWinFreeSystem14x16_char_71:
+   \   000000 080C00F80404          DB 8, 12, 0, 248, 4, 4, 4, 68, 200, 0, 0, 1, 2, 2, 2, 1, 3, 0
+    269              0x08, 0x0C, // width=8, height=12
+    270              0x00, 0xF8, 0x04, 0x04, 0x04, 0x44, 0xC8, 0x00, 
+    271              0x00, 0x01, 0x02, 0x02, 0x02, 0x01, 0x03, 0x00, 
+    272          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    273          const uint8_t FontWinFreeSystem14x16_char_72[] = {
+   \                     FontWinFreeSystem14x16_char_72:
+   \   000000 080C00FC2020          DB 8, 12, 0, 252, 32, 32, 32, 32, 252, 0, 0, 3, 0, 0, 0, 0, 3, 0
+    274              0x08, 0x0C, // width=8, height=12
+    275              0x00, 0xFC, 0x20, 0x20, 0x20, 0x20, 0xFC, 0x00, 
+    276              0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 
+    277          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    278          const uint8_t FontWinFreeSystem14x16_char_73[] = {
+   \                     FontWinFreeSystem14x16_char_73:
+   \   000000 030C00FC0000          DB 3, 12, 0, 252, 0, 0, 3, 0
+    279              0x03, 0x0C, // width=3, height=12
+    280              0x00, 0xFC, 0x00, 
+    281              0x00, 0x03, 0x00, 
+    282          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    283          const uint8_t FontWinFreeSystem14x16_char_74[] = {
+   \                     FontWinFreeSystem14x16_char_74:
+   \   000000 050C000000FC          DB 5, 12, 0, 0, 0, 252, 0, 1, 2, 2, 1, 0
+    284              0x05, 0x0C, // width=5, height=12
+    285              0x00, 0x00, 0x00, 0xFC, 0x00, 
+    286              0x01, 0x02, 0x02, 0x01, 0x00, 
+    287          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    288          const uint8_t FontWinFreeSystem14x16_char_75[] = {
+   \                     FontWinFreeSystem14x16_char_75:
+   \   000000 070C00FC2030          DB 7, 12, 0, 252, 32, 48, 200, 4, 0, 0, 3, 0, 0, 0, 3, 0
+    289              0x07, 0x0C, // width=7, height=12
+    290              0x00, 0xFC, 0x20, 0x30, 0xC8, 0x04, 0x00, 
+    291              0x00, 0x03, 0x00, 0x00, 0x00, 0x03, 0x00, 
+    292          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    293          const uint8_t FontWinFreeSystem14x16_char_76[] = {
+   \                     FontWinFreeSystem14x16_char_76:
+   \   000000 060C00FC0000          DB 6, 12, 0, 252, 0, 0, 0, 0, 0, 3, 2, 2, 2, 0
+    294              0x06, 0x0C, // width=6, height=12
+    295              0x00, 0xFC, 0x00, 0x00, 0x00, 0x00, 
+    296              0x00, 0x03, 0x02, 0x02, 0x02, 0x00, 
+    297          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    298          const uint8_t FontWinFreeSystem14x16_char_77[] = {
+   \                     FontWinFreeSystem14x16_char_77:
+   \   000000 090C00FC1860          DB 9, 12, 0, 252, 24, 96, 128, 96, 24, 252, 0, 0, 3, 0, 0, 3, 0, 0, 3
+   \   000013 00                    DB 0
+    299              0x09, 0x0C, // width=9, height=12
+    300              0x00, 0xFC, 0x18, 0x60, 0x80, 0x60, 0x18, 0xFC, 0x00, 
+    301              0x00, 0x03, 0x00, 0x00, 0x03, 0x00, 0x00, 0x03, 0x00, 
+    302          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    303          const uint8_t FontWinFreeSystem14x16_char_78[] = {
+   \                     FontWinFreeSystem14x16_char_78:
+   \   000000 080C00FC0C30          DB 8, 12, 0, 252, 12, 48, 192, 0, 252, 0, 0, 3, 0, 0, 0, 3, 3, 0
+    304              0x08, 0x0C, // width=8, height=12
+    305              0x00, 0xFC, 0x0C, 0x30, 0xC0, 0x00, 0xFC, 0x00, 
+    306              0x00, 0x03, 0x00, 0x00, 0x00, 0x03, 0x03, 0x00, 
+    307          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    308          const uint8_t FontWinFreeSystem14x16_char_79[] = {
+   \                     FontWinFreeSystem14x16_char_79:
+   \   000000 080C00F80404          DB 8, 12, 0, 248, 4, 4, 4, 4, 248, 0, 0, 1, 2, 2, 2, 2, 1, 0
+    309              0x08, 0x0C, // width=8, height=12
+    310              0x00, 0xF8, 0x04, 0x04, 0x04, 0x04, 0xF8, 0x00, 
+    311              0x00, 0x01, 0x02, 0x02, 0x02, 0x02, 0x01, 0x00, 
+    312          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    313          const uint8_t FontWinFreeSystem14x16_char_80[] = {
+   \                     FontWinFreeSystem14x16_char_80:
+   \   000000 070C00FC2424          DB 7, 12, 0, 252, 36, 36, 36, 24, 0, 0, 3, 0, 0, 0, 0, 0
+    314              0x07, 0x0C, // width=7, height=12
+    315              0x00, 0xFC, 0x24, 0x24, 0x24, 0x18, 0x00, 
+    316              0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 
+    317          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    318          const uint8_t FontWinFreeSystem14x16_char_81[] = {
+   \                     FontWinFreeSystem14x16_char_81:
+   \   000000 080C00F80404          DB 8, 12, 0, 248, 4, 4, 132, 4, 248, 0, 0, 1, 2, 2, 2, 3, 3, 4
+    319              0x08, 0x0C, // width=8, height=12
+    320              0x00, 0xF8, 0x04, 0x04, 0x84, 0x04, 0xF8, 0x00, 
+    321              0x00, 0x01, 0x02, 0x02, 0x02, 0x03, 0x03, 0x04, 
+    322          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    323          const uint8_t FontWinFreeSystem14x16_char_82[] = {
+   \                     FontWinFreeSystem14x16_char_82:
+   \   000000 070C00FC2424          DB 7, 12, 0, 252, 36, 36, 36, 216, 0, 0, 3, 0, 0, 0, 3, 0
+    324              0x07, 0x0C, // width=7, height=12
+    325              0x00, 0xFC, 0x24, 0x24, 0x24, 0xD8, 0x00, 
+    326              0x00, 0x03, 0x00, 0x00, 0x00, 0x03, 0x00, 
+    327          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    328          const uint8_t FontWinFreeSystem14x16_char_83[] = {
+   \                     FontWinFreeSystem14x16_char_83:
+   \   000000 070C00982424          DB 7, 12, 0, 152, 36, 36, 36, 200, 0, 0, 1, 2, 2, 2, 1, 0
+    329              0x07, 0x0C, // width=7, height=12
+    330              0x00, 0x98, 0x24, 0x24, 0x24, 0xC8, 0x00, 
+    331              0x00, 0x01, 0x02, 0x02, 0x02, 0x01, 0x00, 
+    332          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    333          const uint8_t FontWinFreeSystem14x16_char_84[] = {
+   \                     FontWinFreeSystem14x16_char_84:
+   \   000000 050C0404FC04          DB 5, 12, 4, 4, 252, 4, 4, 0, 0, 3, 0, 0
+    334              0x05, 0x0C, // width=5, height=12
+    335              0x04, 0x04, 0xFC, 0x04, 0x04, 
+    336              0x00, 0x00, 0x03, 0x00, 0x00, 
+    337          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    338          const uint8_t FontWinFreeSystem14x16_char_85[] = {
+   \                     FontWinFreeSystem14x16_char_85:
+   \   000000 080C00FC0000          DB 8, 12, 0, 252, 0, 0, 0, 0, 252, 0, 0, 1, 2, 2, 2, 2, 1, 0
+    339              0x08, 0x0C, // width=8, height=12
+    340              0x00, 0xFC, 0x00, 0x00, 0x00, 0x00, 0xFC, 0x00, 
+    341              0x00, 0x01, 0x02, 0x02, 0x02, 0x02, 0x01, 0x00, 
+    342          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    343          const uint8_t FontWinFreeSystem14x16_char_86[] = {
+   \                     FontWinFreeSystem14x16_char_86:
+   \   000000 070C0C708000          DB 7, 12, 12, 112, 128, 0, 128, 112, 12, 0, 0, 1, 2, 1, 0, 0
+    344              0x07, 0x0C, // width=7, height=12
+    345              0x0C, 0x70, 0x80, 0x00, 0x80, 0x70, 0x0C, 
+    346              0x00, 0x00, 0x01, 0x02, 0x01, 0x00, 0x00, 
+    347          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    348          const uint8_t FontWinFreeSystem14x16_char_87[] = {
+   \                     FontWinFreeSystem14x16_char_87:
+   \   000000 090C0C708040          DB 9, 12, 12, 112, 128, 64, 60, 64, 128, 112, 12, 0, 0, 3, 0, 0, 0, 3
+   \   000012 0000                  DB 0, 0
+    349              0x09, 0x0C, // width=9, height=12
+    350              0x0C, 0x70, 0x80, 0x40, 0x3C, 0x40, 0x80, 0x70, 0x0C, 
+    351              0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 
+    352          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    353          const uint8_t FontWinFreeSystem14x16_char_88[] = {
+   \                     FontWinFreeSystem14x16_char_88:
+   \   000000 070C000CD020          DB 7, 12, 0, 12, 208, 32, 208, 12, 0, 0, 3, 0, 0, 0, 3, 0
+    354              0x07, 0x0C, // width=7, height=12
+    355              0x00, 0x0C, 0xD0, 0x20, 0xD0, 0x0C, 0x00, 
+    356              0x00, 0x03, 0x00, 0x00, 0x00, 0x03, 0x00, 
+    357          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    358          const uint8_t FontWinFreeSystem14x16_char_89[] = {
+   \                     FontWinFreeSystem14x16_char_89:
+   \   000000 070C04186080          DB 7, 12, 4, 24, 96, 128, 96, 24, 4, 0, 0, 0, 3, 0, 0, 0
+    359              0x07, 0x0C, // width=7, height=12
+    360              0x04, 0x18, 0x60, 0x80, 0x60, 0x18, 0x04, 
+    361              0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 
+    362          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    363          const uint8_t FontWinFreeSystem14x16_char_90[] = {
+   \                     FontWinFreeSystem14x16_char_90:
+   \   000000 070C00048464          DB 7, 12, 0, 4, 132, 100, 20, 12, 0, 0, 3, 2, 2, 2, 2, 0
+    364              0x07, 0x0C, // width=7, height=12
+    365              0x00, 0x04, 0x84, 0x64, 0x14, 0x0C, 0x00, 
+    366              0x00, 0x03, 0x02, 0x02, 0x02, 0x02, 0x00, 
+    367          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    368          const uint8_t FontWinFreeSystem14x16_char_91[] = {
+   \                     FontWinFreeSystem14x16_char_91:
+   \   000000 030C00FC0400          DB 3, 12, 0, 252, 4, 0, 15, 8
+    369              0x03, 0x0C, // width=3, height=12
+    370              0x00, 0xFC, 0x04, 
+    371              0x00, 0x0F, 0x08, 
+    372          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    373          const uint8_t FontWinFreeSystem14x16_char_92[] = {
+   \                     FontWinFreeSystem14x16_char_92:
+   \   000000 030C0CF00000          DB 3, 12, 12, 240, 0, 0, 0, 3
+    374              0x03, 0x0C, // width=3, height=12
+    375              0x0C, 0xF0, 0x00, 
+    376              0x00, 0x00, 0x03, 
+    377          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    378          const uint8_t FontWinFreeSystem14x16_char_93[] = {
+   \                     FontWinFreeSystem14x16_char_93:
+   \   000000 030C04FC0008          DB 3, 12, 4, 252, 0, 8, 15, 0
+    379              0x03, 0x0C, // width=3, height=12
+    380              0x04, 0xFC, 0x00, 
+    381              0x08, 0x0F, 0x00, 
+    382          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    383          const uint8_t FontWinFreeSystem14x16_char_94[] = {
+   \                     FontWinFreeSystem14x16_char_94:
+   \   000000 060C40300C30          DB 6, 12, 64, 48, 12, 48, 64, 0, 0, 0, 0, 0, 0, 0
+    384              0x06, 0x0C, // width=6, height=12
+    385              0x40, 0x30, 0x0C, 0x30, 0x40, 0x00, 
+    386              0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+    387          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    388          const uint8_t FontWinFreeSystem14x16_char_95[] = {
+   \                     FontWinFreeSystem14x16_char_95:
+   \   000000 060C00000000          DB 6, 12, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8, 8
+    389              0x06, 0x0C, // width=6, height=12
+    390              0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+    391              0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 
+    392          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    393          const uint8_t FontWinFreeSystem14x16_char_96[] = {
+   \                     FontWinFreeSystem14x16_char_96:
+   \   000000 030C18040000          DB 3, 12, 24, 4, 0, 0, 0, 0
+    394              0x03, 0x0C, // width=3, height=12
+    395              0x18, 0x04, 0x00, 
+    396              0x00, 0x00, 0x00, 
+    397          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    398          const uint8_t FontWinFreeSystem14x16_char_97[] = {
+   \                     FontWinFreeSystem14x16_char_97:
+   \   000000 050C905050E0          DB 5, 12, 144, 80, 80, 224, 0, 1, 2, 2, 1, 2
+    399              0x05, 0x0C, // width=5, height=12
+    400              0x90, 0x50, 0x50, 0xE0, 0x00, 
+    401              0x01, 0x02, 0x02, 0x01, 0x02, 
+    402          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    403          const uint8_t FontWinFreeSystem14x16_char_98[] = {
+   \                     FontWinFreeSystem14x16_char_98:
+   \   000000 060CFC201010          DB 6, 12, 252, 32, 16, 16, 224, 0, 3, 1, 2, 2, 1, 0
+    404              0x06, 0x0C, // width=6, height=12
+    405              0xFC, 0x20, 0x10, 0x10, 0xE0, 0x00, 
+    406              0x03, 0x01, 0x02, 0x02, 0x01, 0x00, 
+    407          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    408          const uint8_t FontWinFreeSystem14x16_char_99[] = {
+   \                     FontWinFreeSystem14x16_char_99:
+   \   000000 050CE0101020          DB 5, 12, 224, 16, 16, 32, 0, 1, 2, 2, 1, 0
+    409              0x05, 0x0C, // width=5, height=12
+    410              0xE0, 0x10, 0x10, 0x20, 0x00, 
+    411              0x01, 0x02, 0x02, 0x01, 0x00, 
+    412          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    413          const uint8_t FontWinFreeSystem14x16_char_100[] = {
+   \                     FontWinFreeSystem14x16_char_100:
+   \   000000 060CE0101020          DB 6, 12, 224, 16, 16, 32, 252, 0, 1, 2, 2, 1, 3, 0
+    414              0x06, 0x0C, // width=6, height=12
+    415              0xE0, 0x10, 0x10, 0x20, 0xFC, 0x00, 
+    416              0x01, 0x02, 0x02, 0x01, 0x03, 0x00, 
+    417          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    418          const uint8_t FontWinFreeSystem14x16_char_101[] = {
+   \                     FontWinFreeSystem14x16_char_101:
+   \   000000 050CE0505060          DB 5, 12, 224, 80, 80, 96, 0, 1, 2, 2, 1, 0
+    419              0x05, 0x0C, // width=5, height=12
+    420              0xE0, 0x50, 0x50, 0x60, 0x00, 
+    421              0x01, 0x02, 0x02, 0x01, 0x00, 
+    422          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    423          const uint8_t FontWinFreeSystem14x16_char_102[] = {
+   \                     FontWinFreeSystem14x16_char_102:
+   \   000000 040C10F81404          DB 4, 12, 16, 248, 20, 4, 0, 3, 0, 0
+    424              0x04, 0x0C, // width=4, height=12
+    425              0x10, 0xF8, 0x14, 0x04, 
+    426              0x00, 0x03, 0x00, 0x00, 
+    427          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    428          const uint8_t FontWinFreeSystem14x16_char_103[] = {
+   \                     FontWinFreeSystem14x16_char_103:
+   \   000000 060CE0101020          DB 6, 12, 224, 16, 16, 32, 240, 0, 1, 10, 10, 9, 7, 0
+    429              0x06, 0x0C, // width=6, height=12
+    430              0xE0, 0x10, 0x10, 0x20, 0xF0, 0x00, 
+    431              0x01, 0x0A, 0x0A, 0x09, 0x07, 0x00, 
+    432          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    433          const uint8_t FontWinFreeSystem14x16_char_104[] = {
+   \                     FontWinFreeSystem14x16_char_104:
+   \   000000 060CFC201010          DB 6, 12, 252, 32, 16, 16, 224, 0, 3, 0, 0, 0, 3, 0
+    434              0x06, 0x0C, // width=6, height=12
+    435              0xFC, 0x20, 0x10, 0x10, 0xE0, 0x00, 
+    436              0x03, 0x00, 0x00, 0x00, 0x03, 0x00, 
+    437          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    438          const uint8_t FontWinFreeSystem14x16_char_105[] = {
+   \                     FontWinFreeSystem14x16_char_105:
+   \   000000 020CF4000300          DB 2, 12, 244, 0, 3, 0
+    439              0x02, 0x0C, // width=2, height=12
+    440              0xF4, 0x00, 
+    441              0x03, 0x00, 
+    442          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    443          const uint8_t FontWinFreeSystem14x16_char_106[] = {
+   \                     FontWinFreeSystem14x16_char_106:
+   \   000000 020CF4000700          DB 2, 12, 244, 0, 7, 0
+    444              0x02, 0x0C, // width=2, height=12
+    445              0xF4, 0x00, 
+    446              0x07, 0x00, 
+    447          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    448          const uint8_t FontWinFreeSystem14x16_char_107[] = {
+   \                     FontWinFreeSystem14x16_char_107:
+   \   000000 050CFC40A010          DB 5, 12, 252, 64, 160, 16, 0, 3, 0, 0, 3, 0
+    449              0x05, 0x0C, // width=5, height=12
+    450              0xFC, 0x40, 0xA0, 0x10, 0x00, 
+    451              0x03, 0x00, 0x00, 0x03, 0x00, 
+    452          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    453          const uint8_t FontWinFreeSystem14x16_char_108[] = {
+   \                     FontWinFreeSystem14x16_char_108:
+   \   000000 020CFC000300          DB 2, 12, 252, 0, 3, 0
+    454              0x02, 0x0C, // width=2, height=12
+    455              0xFC, 0x00, 
+    456              0x03, 0x00, 
+    457          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    458          const uint8_t FontWinFreeSystem14x16_char_109[] = {
+   \                     FontWinFreeSystem14x16_char_109:
+   \   000000 080CF01010E0          DB 8, 12, 240, 16, 16, 224, 16, 16, 224, 0, 3, 0, 0, 3, 0, 0, 3, 0
+    459              0x08, 0x0C, // width=8, height=12
+    460              0xF0, 0x10, 0x10, 0xE0, 0x10, 0x10, 0xE0, 0x00, 
+    461              0x03, 0x00, 0x00, 0x03, 0x00, 0x00, 0x03, 0x00, 
+    462          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    463          const uint8_t FontWinFreeSystem14x16_char_110[] = {
+   \                     FontWinFreeSystem14x16_char_110:
+   \   000000 060CF0201010          DB 6, 12, 240, 32, 16, 16, 224, 0, 3, 0, 0, 0, 3, 0
+    464              0x06, 0x0C, // width=6, height=12
+    465              0xF0, 0x20, 0x10, 0x10, 0xE0, 0x00, 
+    466              0x03, 0x00, 0x00, 0x00, 0x03, 0x00, 
+    467          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    468          const uint8_t FontWinFreeSystem14x16_char_111[] = {
+   \                     FontWinFreeSystem14x16_char_111:
+   \   000000 060CE0101010          DB 6, 12, 224, 16, 16, 16, 224, 0, 1, 2, 2, 2, 1, 0
+    469              0x06, 0x0C, // width=6, height=12
+    470              0xE0, 0x10, 0x10, 0x10, 0xE0, 0x00, 
+    471              0x01, 0x02, 0x02, 0x02, 0x01, 0x00, 
+    472          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    473          const uint8_t FontWinFreeSystem14x16_char_112[] = {
+   \                     FontWinFreeSystem14x16_char_112:
+   \   000000 060CF0201010          DB 6, 12, 240, 32, 16, 16, 224, 0, 15, 1, 2, 2, 1, 0
+    474              0x06, 0x0C, // width=6, height=12
+    475              0xF0, 0x20, 0x10, 0x10, 0xE0, 0x00, 
+    476              0x0F, 0x01, 0x02, 0x02, 0x01, 0x00, 
+    477          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    478          const uint8_t FontWinFreeSystem14x16_char_113[] = {
+   \                     FontWinFreeSystem14x16_char_113:
+   \   000000 060CE0101020          DB 6, 12, 224, 16, 16, 32, 240, 0, 1, 2, 2, 1, 15, 0
+    479              0x06, 0x0C, // width=6, height=12
+    480              0xE0, 0x10, 0x10, 0x20, 0xF0, 0x00, 
+    481              0x01, 0x02, 0x02, 0x01, 0x0F, 0x00, 
+    482          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    483          const uint8_t FontWinFreeSystem14x16_char_114[] = {
+   \                     FontWinFreeSystem14x16_char_114:
+   \   000000 040CF0201000          DB 4, 12, 240, 32, 16, 0, 3, 0, 0, 0
+    484              0x04, 0x0C, // width=4, height=12
+    485              0xF0, 0x20, 0x10, 0x00, 
+    486              0x03, 0x00, 0x00, 0x00, 
+    487          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    488          const uint8_t FontWinFreeSystem14x16_char_115[] = {
+   \                     FontWinFreeSystem14x16_char_115:
+   \   000000 050C205050A0          DB 5, 12, 32, 80, 80, 160, 0, 1, 2, 2, 1, 0
+    489              0x05, 0x0C, // width=5, height=12
+    490              0x20, 0x50, 0x50, 0xA0, 0x00, 
+    491              0x01, 0x02, 0x02, 0x01, 0x00, 
+    492          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    493          const uint8_t FontWinFreeSystem14x16_char_116[] = {
+   \                     FontWinFreeSystem14x16_char_116:
+   \   000000 040C10FC1000          DB 4, 12, 16, 252, 16, 0, 0, 3, 2, 0
+    494              0x04, 0x0C, // width=4, height=12
+    495              0x10, 0xFC, 0x10, 0x00, 
+    496              0x00, 0x03, 0x02, 0x00, 
+    497          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    498          const uint8_t FontWinFreeSystem14x16_char_117[] = {
+   \                     FontWinFreeSystem14x16_char_117:
+   \   000000 050CF00000F0          DB 5, 12, 240, 0, 0, 240, 0, 1, 2, 2, 3, 0
+    499              0x05, 0x0C, // width=5, height=12
+    500              0xF0, 0x00, 0x00, 0xF0, 0x00, 
+    501              0x01, 0x02, 0x02, 0x03, 0x00, 
+    502          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    503          const uint8_t FontWinFreeSystem14x16_char_118[] = {
+   \                     FontWinFreeSystem14x16_char_118:
+   \   000000 060C30C000C0          DB 6, 12, 48, 192, 0, 192, 48, 0, 0, 0, 3, 0, 0, 0
+    504              0x06, 0x0C, // width=6, height=12
+    505              0x30, 0xC0, 0x00, 0xC0, 0x30, 0x00, 
+    506              0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 
+    507          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    508          const uint8_t FontWinFreeSystem14x16_char_119[] = {
+   \                     FontWinFreeSystem14x16_char_119:
+   \   000000 080C30C000F0          DB 8, 12, 48, 192, 0, 240, 0, 192, 48, 0, 0, 0, 3, 0, 3, 0, 0, 0
+    509              0x08, 0x0C, // width=8, height=12
+    510              0x30, 0xC0, 0x00, 0xF0, 0x00, 0xC0, 0x30, 0x00, 
+    511              0x00, 0x00, 0x03, 0x00, 0x03, 0x00, 0x00, 0x00, 
+    512          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    513          const uint8_t FontWinFreeSystem14x16_char_120[] = {
+   \                     FontWinFreeSystem14x16_char_120:
+   \   000000 060C10A040A0          DB 6, 12, 16, 160, 64, 160, 16, 0, 3, 0, 0, 0, 3, 0
+    514              0x06, 0x0C, // width=6, height=12
+    515              0x10, 0xA0, 0x40, 0xA0, 0x10, 0x00, 
+    516              0x03, 0x00, 0x00, 0x00, 0x03, 0x00, 
+    517          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    518          const uint8_t FontWinFreeSystem14x16_char_121[] = {
+   \                     FontWinFreeSystem14x16_char_121:
+   \   000000 050CF000C030          DB 5, 12, 240, 0, 192, 48, 0, 8, 7, 1, 0, 0
+    519              0x05, 0x0C, // width=5, height=12
+    520              0xF0, 0x00, 0xC0, 0x30, 0x00, 
+    521              0x08, 0x07, 0x01, 0x00, 0x00, 
+    522          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    523          const uint8_t FontWinFreeSystem14x16_char_122[] = {
+   \                     FontWinFreeSystem14x16_char_122:
+   \   000000 050C10905030          DB 5, 12, 16, 144, 80, 48, 0, 3, 2, 2, 2, 0
+    524              0x05, 0x0C, // width=5, height=12
+    525              0x10, 0x90, 0x50, 0x30, 0x00, 
+    526              0x03, 0x02, 0x02, 0x02, 0x00, 
+    527          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    528          const uint8_t FontWinFreeSystem14x16_char_123[] = {
+   \                     FontWinFreeSystem14x16_char_123:
+   \   000000 030C40B80400          DB 3, 12, 64, 184, 4, 0, 7, 8
+    529              0x03, 0x0C, // width=3, height=12
+    530              0x40, 0xB8, 0x04, 
+    531              0x00, 0x07, 0x08, 
+    532          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    533          const uint8_t FontWinFreeSystem14x16_char_124[] = {
+   \                     FontWinFreeSystem14x16_char_124:
+   \   000000 030C00FC0000          DB 3, 12, 0, 252, 0, 0, 15, 0
+    534              0x03, 0x0C, // width=3, height=12
+    535              0x00, 0xFC, 0x00, 
+    536              0x00, 0x0F, 0x00, 
+    537          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    538          const uint8_t FontWinFreeSystem14x16_char_125[] = {
+   \                     FontWinFreeSystem14x16_char_125:
+   \   000000 030C04B84008          DB 3, 12, 4, 184, 64, 8, 7, 0
+    539              0x03, 0x0C, // width=3, height=12
+    540              0x04, 0xB8, 0x40, 
+    541              0x08, 0x07, 0x00, 
+    542          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    543          const uint8_t FontWinFreeSystem14x16_char_126[] = {
+   \                     FontWinFreeSystem14x16_char_126:
+   \   000000 070C40202040          DB 7, 12, 64, 32, 32, 64, 64, 32, 0, 0, 0, 0, 0, 0, 0, 0
+    544              0x07, 0x0C, // width=7, height=12
+    545              0x40, 0x20, 0x20, 0x40, 0x40, 0x20, 0x00, 
+    546              0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+    547          };
+    548          // const uint8_t FontWinFreeSystem14x16_char_127[] = {};
+    549          // const uint8_t FontWinFreeSystem14x16_char_128[] = {};
+    550          // const uint8_t FontWinFreeSystem14x16_char_129[] = {};
+    551          // const uint8_t FontWinFreeSystem14x16_char_130[] = {};
+    552          // const uint8_t FontWinFreeSystem14x16_char_131[] = {};
+    553          // const uint8_t FontWinFreeSystem14x16_char_132[] = {};
+    554          // const uint8_t FontWinFreeSystem14x16_char_133[] = {};
+    555          // const uint8_t FontWinFreeSystem14x16_char_134[] = {};
+    556          // const uint8_t FontWinFreeSystem14x16_char_135[] = {};
+    557          // const uint8_t FontWinFreeSystem14x16_char_136[] = {};
+    558          // const uint8_t FontWinFreeSystem14x16_char_137[] = {};
+    559          // const uint8_t FontWinFreeSystem14x16_char_138[] = {};
+    560          // const uint8_t FontWinFreeSystem14x16_char_139[] = {};
+    561          // const uint8_t FontWinFreeSystem14x16_char_140[] = {};
+    562          // const uint8_t FontWinFreeSystem14x16_char_141[] = {};
+    563          // const uint8_t FontWinFreeSystem14x16_char_142[] = {};
+    564          // const uint8_t FontWinFreeSystem14x16_char_143[] = {};
+    565          // const uint8_t FontWinFreeSystem14x16_char_144[] = {};
+    566          // const uint8_t FontWinFreeSystem14x16_char_145[] = {};
+    567          // const uint8_t FontWinFreeSystem14x16_char_146[] = {};
+    568          // const uint8_t FontWinFreeSystem14x16_char_147[] = {};
+    569          // const uint8_t FontWinFreeSystem14x16_char_148[] = {};
+    570          // const uint8_t FontWinFreeSystem14x16_char_149[] = {};
+    571          // const uint8_t FontWinFreeSystem14x16_char_150[] = {};
+    572          // const uint8_t FontWinFreeSystem14x16_char_151[] = {};
+    573          // const uint8_t FontWinFreeSystem14x16_char_152[] = {};
+    574          // const uint8_t FontWinFreeSystem14x16_char_153[] = {};
+    575          // const uint8_t FontWinFreeSystem14x16_char_154[] = {};
+    576          // const uint8_t FontWinFreeSystem14x16_char_155[] = {};
+    577          // const uint8_t FontWinFreeSystem14x16_char_156[] = {};
+    578          // const uint8_t FontWinFreeSystem14x16_char_157[] = {};
+    579          // const uint8_t FontWinFreeSystem14x16_char_158[] = {};
+    580          // const uint8_t FontWinFreeSystem14x16_char_159[] = {};
+    581          // const uint8_t FontWinFreeSystem14x16_char_160[] = {};
+    582          // const uint8_t FontWinFreeSystem14x16_char_161[] = {};
+    583          // const uint8_t FontWinFreeSystem14x16_char_162[] = {};
+    584          // const uint8_t FontWinFreeSystem14x16_char_163[] = {};
+    585          // const uint8_t FontWinFreeSystem14x16_char_164[] = {};
+    586          // const uint8_t FontWinFreeSystem14x16_char_165[] = {};
+    587          // const uint8_t FontWinFreeSystem14x16_char_166[] = {};
+    588          // const uint8_t FontWinFreeSystem14x16_char_167[] = {};
+    589          // const uint8_t FontWinFreeSystem14x16_char_168[] = {};
+    590          // const uint8_t FontWinFreeSystem14x16_char_169[] = {};
+    591          // const uint8_t FontWinFreeSystem14x16_char_170[] = {};
+    592          // const uint8_t FontWinFreeSystem14x16_char_171[] = {};
+    593          // const uint8_t FontWinFreeSystem14x16_char_172[] = {};
+    594          // const uint8_t FontWinFreeSystem14x16_char_173[] = {};
+    595          // const uint8_t FontWinFreeSystem14x16_char_174[] = {};
+    596          // const uint8_t FontWinFreeSystem14x16_char_175[] = {};
+    597          // const uint8_t FontWinFreeSystem14x16_char_176[] = {};
+    598          // const uint8_t FontWinFreeSystem14x16_char_177[] = {};
+    599          // const uint8_t FontWinFreeSystem14x16_char_178[] = {};
+    600          // const uint8_t FontWinFreeSystem14x16_char_179[] = {};
+    601          // const uint8_t FontWinFreeSystem14x16_char_180[] = {};
+    602          // const uint8_t FontWinFreeSystem14x16_char_181[] = {};
+    603          // const uint8_t FontWinFreeSystem14x16_char_182[] = {};
+    604          // const uint8_t FontWinFreeSystem14x16_char_183[] = {};
+    605          // const uint8_t FontWinFreeSystem14x16_char_184[] = {};
+    606          // const uint8_t FontWinFreeSystem14x16_char_185[] = {};
+    607          // const uint8_t FontWinFreeSystem14x16_char_186[] = {};
+    608          // const uint8_t FontWinFreeSystem14x16_char_187[] = {};
+    609          // const uint8_t FontWinFreeSystem14x16_char_188[] = {};
+    610          // const uint8_t FontWinFreeSystem14x16_char_189[] = {};
+    611          // const uint8_t FontWinFreeSystem14x16_char_190[] = {};
+    612          // const uint8_t FontWinFreeSystem14x16_char_191[] = {};
+    613          // const uint8_t FontWinFreeSystem14x16_char_192[] = {};
+    614          // const uint8_t FontWinFreeSystem14x16_char_193[] = {};
+    615          // const uint8_t FontWinFreeSystem14x16_char_194[] = {};
+    616          // const uint8_t FontWinFreeSystem14x16_char_195[] = {};
+    617          // const uint8_t FontWinFreeSystem14x16_char_196[] = {};
+    618          // const uint8_t FontWinFreeSystem14x16_char_197[] = {};
+    619          // const uint8_t FontWinFreeSystem14x16_char_198[] = {};
+    620          // const uint8_t FontWinFreeSystem14x16_char_199[] = {};
+    621          // const uint8_t FontWinFreeSystem14x16_char_200[] = {};
+    622          // const uint8_t FontWinFreeSystem14x16_char_201[] = {};
+    623          // const uint8_t FontWinFreeSystem14x16_char_202[] = {};
+    624          // const uint8_t FontWinFreeSystem14x16_char_203[] = {};
+    625          // const uint8_t FontWinFreeSystem14x16_char_204[] = {};
+    626          // const uint8_t FontWinFreeSystem14x16_char_205[] = {};
+    627          // const uint8_t FontWinFreeSystem14x16_char_206[] = {};
+    628          // const uint8_t FontWinFreeSystem14x16_char_207[] = {};
+    629          // const uint8_t FontWinFreeSystem14x16_char_208[] = {};
+    630          // const uint8_t FontWinFreeSystem14x16_char_209[] = {};
+    631          // const uint8_t FontWinFreeSystem14x16_char_210[] = {};
+    632          // const uint8_t FontWinFreeSystem14x16_char_211[] = {};
+    633          // const uint8_t FontWinFreeSystem14x16_char_212[] = {};
+    634          // const uint8_t FontWinFreeSystem14x16_char_213[] = {};
+    635          // const uint8_t FontWinFreeSystem14x16_char_214[] = {};
+    636          // const uint8_t FontWinFreeSystem14x16_char_215[] = {};
+    637          // const uint8_t FontWinFreeSystem14x16_char_216[] = {};
+    638          // const uint8_t FontWinFreeSystem14x16_char_217[] = {};
+    639          // const uint8_t FontWinFreeSystem14x16_char_218[] = {};
+    640          // const uint8_t FontWinFreeSystem14x16_char_219[] = {};
+    641          // const uint8_t FontWinFreeSystem14x16_char_220[] = {};
+    642          // const uint8_t FontWinFreeSystem14x16_char_221[] = {};
+    643          // const uint8_t FontWinFreeSystem14x16_char_222[] = {};
+    644          // const uint8_t FontWinFreeSystem14x16_char_223[] = {};
+    645          // const uint8_t FontWinFreeSystem14x16_char_224[] = {};
+    646          // const uint8_t FontWinFreeSystem14x16_char_225[] = {};
+    647          // const uint8_t FontWinFreeSystem14x16_char_226[] = {};
+    648          // const uint8_t FontWinFreeSystem14x16_char_227[] = {};
+    649          // const uint8_t FontWinFreeSystem14x16_char_228[] = {};
+    650          // const uint8_t FontWinFreeSystem14x16_char_229[] = {};
+    651          // const uint8_t FontWinFreeSystem14x16_char_230[] = {};
+    652          // const uint8_t FontWinFreeSystem14x16_char_231[] = {};
+    653          // const uint8_t FontWinFreeSystem14x16_char_232[] = {};
+    654          // const uint8_t FontWinFreeSystem14x16_char_233[] = {};
+    655          // const uint8_t FontWinFreeSystem14x16_char_234[] = {};
+    656          // const uint8_t FontWinFreeSystem14x16_char_235[] = {};
+    657          // const uint8_t FontWinFreeSystem14x16_char_236[] = {};
+    658          // const uint8_t FontWinFreeSystem14x16_char_237[] = {};
+    659          // const uint8_t FontWinFreeSystem14x16_char_238[] = {};
+    660          // const uint8_t FontWinFreeSystem14x16_char_239[] = {};
+    661          // const uint8_t FontWinFreeSystem14x16_char_240[] = {};
+    662          // const uint8_t FontWinFreeSystem14x16_char_241[] = {};
+    663          // const uint8_t FontWinFreeSystem14x16_char_242[] = {};
+    664          // const uint8_t FontWinFreeSystem14x16_char_243[] = {};
+    665          // const uint8_t FontWinFreeSystem14x16_char_244[] = {};
+    666          // const uint8_t FontWinFreeSystem14x16_char_245[] = {};
+    667          // const uint8_t FontWinFreeSystem14x16_char_246[] = {};
+    668          // const uint8_t FontWinFreeSystem14x16_char_247[] = {};
+    669          // const uint8_t FontWinFreeSystem14x16_char_248[] = {};
+    670          // const uint8_t FontWinFreeSystem14x16_char_249[] = {};
+    671          // const uint8_t FontWinFreeSystem14x16_char_250[] = {};
+    672          // const uint8_t FontWinFreeSystem14x16_char_251[] = {};
+    673          // const uint8_t FontWinFreeSystem14x16_char_252[] = {};
+    674          // const uint8_t FontWinFreeSystem14x16_char_253[] = {};
+    675          // const uint8_t FontWinFreeSystem14x16_char_254[] = {};
+    676          // const uint8_t FontWinFreeSystem14x16_char_255[] = {};
+    677          
+
+   \                                 In  segment NEAR_CONST, align 2
+    678          const unsigned char * const FontWinFreeSystem14x16_table[256] = {
+   \                     FontWinFreeSystem14x16_table:
+   \   000000 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000022 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000040 ........              DW FontWinFreeSystem14x16_char_32, FontWinFreeSystem14x16_char_33
+   \   000044 ........              DW FontWinFreeSystem14x16_char_34, FontWinFreeSystem14x16_char_35
+   \   000048 ........              DW FontWinFreeSystem14x16_char_36, FontWinFreeSystem14x16_char_37
+   \   00004C ........              DW FontWinFreeSystem14x16_char_38, FontWinFreeSystem14x16_char_39
+   \   000050 ........              DW FontWinFreeSystem14x16_char_40, FontWinFreeSystem14x16_char_41
+   \   000054 ........              DW FontWinFreeSystem14x16_char_42, FontWinFreeSystem14x16_char_43
+   \   000058 ........              DW FontWinFreeSystem14x16_char_44, FontWinFreeSystem14x16_char_45
+   \   00005C ........              DW FontWinFreeSystem14x16_char_46, FontWinFreeSystem14x16_char_47
+   \   000060 ........              DW FontWinFreeSystem14x16_char_48, FontWinFreeSystem14x16_char_49
+   \   000064 ........              DW FontWinFreeSystem14x16_char_50, FontWinFreeSystem14x16_char_51
+   \   000068 ........              DW FontWinFreeSystem14x16_char_52, FontWinFreeSystem14x16_char_53
+   \   00006C ........              DW FontWinFreeSystem14x16_char_54, FontWinFreeSystem14x16_char_55
+   \   000070 ........              DW FontWinFreeSystem14x16_char_56, FontWinFreeSystem14x16_char_57
+   \   000074 ........              DW FontWinFreeSystem14x16_char_58, FontWinFreeSystem14x16_char_59
+   \   000078 ........              DW FontWinFreeSystem14x16_char_60, FontWinFreeSystem14x16_char_61
+   \   00007C ........              DW FontWinFreeSystem14x16_char_62, FontWinFreeSystem14x16_char_63
+   \   000080 ........              DW FontWinFreeSystem14x16_char_64, FontWinFreeSystem14x16_char_65
+   \   000084 ........              DW FontWinFreeSystem14x16_char_66, FontWinFreeSystem14x16_char_67
+   \   000088 ........              DW FontWinFreeSystem14x16_char_68, FontWinFreeSystem14x16_char_69
+   \   00008C ........              DW FontWinFreeSystem14x16_char_70, FontWinFreeSystem14x16_char_71
+   \   000090 ........              DW FontWinFreeSystem14x16_char_72, FontWinFreeSystem14x16_char_73
+   \   000094 ........              DW FontWinFreeSystem14x16_char_74, FontWinFreeSystem14x16_char_75
+   \   000098 ........              DW FontWinFreeSystem14x16_char_76, FontWinFreeSystem14x16_char_77
+   \   00009C ........              DW FontWinFreeSystem14x16_char_78, FontWinFreeSystem14x16_char_79
+   \   0000A0 ........              DW FontWinFreeSystem14x16_char_80, FontWinFreeSystem14x16_char_81
+   \   0000A4 ........              DW FontWinFreeSystem14x16_char_82, FontWinFreeSystem14x16_char_83
+   \   0000A8 ........              DW FontWinFreeSystem14x16_char_84, FontWinFreeSystem14x16_char_85
+   \   0000AC ........              DW FontWinFreeSystem14x16_char_86, FontWinFreeSystem14x16_char_87
+   \   0000B0 ........              DW FontWinFreeSystem14x16_char_88, FontWinFreeSystem14x16_char_89
+   \   0000B4 ........              DW FontWinFreeSystem14x16_char_90, FontWinFreeSystem14x16_char_91
+   \   0000B8 ........              DW FontWinFreeSystem14x16_char_92, FontWinFreeSystem14x16_char_93
+   \   0000BC ........              DW FontWinFreeSystem14x16_char_94, FontWinFreeSystem14x16_char_95
+   \   0000C0 ........              DW FontWinFreeSystem14x16_char_96, FontWinFreeSystem14x16_char_97
+   \   0000C4 ........              DW FontWinFreeSystem14x16_char_98, FontWinFreeSystem14x16_char_99
+   \   0000C8 ........              DW FontWinFreeSystem14x16_char_100, FontWinFreeSystem14x16_char_101
+   \   0000CC ........              DW FontWinFreeSystem14x16_char_102, FontWinFreeSystem14x16_char_103
+   \   0000D0 ........              DW FontWinFreeSystem14x16_char_104, FontWinFreeSystem14x16_char_105
+   \   0000D4 ........              DW FontWinFreeSystem14x16_char_106, FontWinFreeSystem14x16_char_107
+   \   0000D8 ........              DW FontWinFreeSystem14x16_char_108, FontWinFreeSystem14x16_char_109
+   \   0000DC ........              DW FontWinFreeSystem14x16_char_110, FontWinFreeSystem14x16_char_111
+   \   0000E0 ........              DW FontWinFreeSystem14x16_char_112, FontWinFreeSystem14x16_char_113
+   \   0000E4 ........              DW FontWinFreeSystem14x16_char_114, FontWinFreeSystem14x16_char_115
+   \   0000E8 ........              DW FontWinFreeSystem14x16_char_116, FontWinFreeSystem14x16_char_117
+   \   0000EC ........              DW FontWinFreeSystem14x16_char_118, FontWinFreeSystem14x16_char_119
+   \   0000F0 ........              DW FontWinFreeSystem14x16_char_120, FontWinFreeSystem14x16_char_121
+   \   0000F4 ........              DW FontWinFreeSystem14x16_char_122, FontWinFreeSystem14x16_char_123
+   \   0000F8 ........              DW FontWinFreeSystem14x16_char_124, FontWinFreeSystem14x16_char_125
+   \   0000FC ....00000000          DW FontWinFreeSystem14x16_char_126, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000110 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000132 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000154 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000176 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000198 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   0001BA 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   0001DC 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   0001FE 0000                  DW 0H
+    679              0,
+    680              0,
+    681              0,
+    682              0,
+    683              0,
+    684              0,
+    685              0,
+    686              0,
+    687              0,
+    688              0,
+    689              0,
+    690              0,
+    691              0,
+    692              0,
+    693              0,
+    694              0,
+    695              0,
+    696              0,
+    697              0,
+    698              0,
+    699              0,
+    700              0,
+    701              0,
+    702              0,
+    703              0,
+    704              0,
+    705              0,
+    706              0,
+    707              0,
+    708              0,
+    709              0,
+    710              0,
+    711              FontWinFreeSystem14x16_char_32,
+    712              FontWinFreeSystem14x16_char_33,
+    713              FontWinFreeSystem14x16_char_34,
+    714              FontWinFreeSystem14x16_char_35,
+    715              FontWinFreeSystem14x16_char_36,
+    716              FontWinFreeSystem14x16_char_37,
+    717              FontWinFreeSystem14x16_char_38,
+    718              FontWinFreeSystem14x16_char_39,
+    719              FontWinFreeSystem14x16_char_40,
+    720              FontWinFreeSystem14x16_char_41,
+    721              FontWinFreeSystem14x16_char_42,
+    722              FontWinFreeSystem14x16_char_43,
+    723              FontWinFreeSystem14x16_char_44,
+    724              FontWinFreeSystem14x16_char_45,
+    725              FontWinFreeSystem14x16_char_46,
+    726              FontWinFreeSystem14x16_char_47,
+    727              FontWinFreeSystem14x16_char_48,
+    728              FontWinFreeSystem14x16_char_49,
+    729              FontWinFreeSystem14x16_char_50,
+    730              FontWinFreeSystem14x16_char_51,
+    731              FontWinFreeSystem14x16_char_52,
+    732              FontWinFreeSystem14x16_char_53,
+    733              FontWinFreeSystem14x16_char_54,
+    734              FontWinFreeSystem14x16_char_55,
+    735              FontWinFreeSystem14x16_char_56,
+    736              FontWinFreeSystem14x16_char_57,
+    737              FontWinFreeSystem14x16_char_58,
+    738              FontWinFreeSystem14x16_char_59,
+    739              FontWinFreeSystem14x16_char_60,
+    740              FontWinFreeSystem14x16_char_61,
+    741              FontWinFreeSystem14x16_char_62,
+    742              FontWinFreeSystem14x16_char_63,
+    743              FontWinFreeSystem14x16_char_64,
+    744              FontWinFreeSystem14x16_char_65,
+    745              FontWinFreeSystem14x16_char_66,
+    746              FontWinFreeSystem14x16_char_67,
+    747              FontWinFreeSystem14x16_char_68,
+    748              FontWinFreeSystem14x16_char_69,
+    749              FontWinFreeSystem14x16_char_70,
+    750              FontWinFreeSystem14x16_char_71,
+    751              FontWinFreeSystem14x16_char_72,
+    752              FontWinFreeSystem14x16_char_73,
+    753              FontWinFreeSystem14x16_char_74,
+    754              FontWinFreeSystem14x16_char_75,
+    755              FontWinFreeSystem14x16_char_76,
+    756              FontWinFreeSystem14x16_char_77,
+    757              FontWinFreeSystem14x16_char_78,
+    758              FontWinFreeSystem14x16_char_79,
+    759              FontWinFreeSystem14x16_char_80,
+    760              FontWinFreeSystem14x16_char_81,
+    761              FontWinFreeSystem14x16_char_82,
+    762              FontWinFreeSystem14x16_char_83,
+    763              FontWinFreeSystem14x16_char_84,
+    764              FontWinFreeSystem14x16_char_85,
+    765              FontWinFreeSystem14x16_char_86,
+    766              FontWinFreeSystem14x16_char_87,
+    767              FontWinFreeSystem14x16_char_88,
+    768              FontWinFreeSystem14x16_char_89,
+    769              FontWinFreeSystem14x16_char_90,
+    770              FontWinFreeSystem14x16_char_91,
+    771              FontWinFreeSystem14x16_char_92,
+    772              FontWinFreeSystem14x16_char_93,
+    773              FontWinFreeSystem14x16_char_94,
+    774              FontWinFreeSystem14x16_char_95,
+    775              FontWinFreeSystem14x16_char_96,
+    776              FontWinFreeSystem14x16_char_97,
+    777              FontWinFreeSystem14x16_char_98,
+    778              FontWinFreeSystem14x16_char_99,
+    779              FontWinFreeSystem14x16_char_100,
+    780              FontWinFreeSystem14x16_char_101,
+    781              FontWinFreeSystem14x16_char_102,
+    782              FontWinFreeSystem14x16_char_103,
+    783              FontWinFreeSystem14x16_char_104,
+    784              FontWinFreeSystem14x16_char_105,
+    785              FontWinFreeSystem14x16_char_106,
+    786              FontWinFreeSystem14x16_char_107,
+    787              FontWinFreeSystem14x16_char_108,
+    788              FontWinFreeSystem14x16_char_109,
+    789              FontWinFreeSystem14x16_char_110,
+    790              FontWinFreeSystem14x16_char_111,
+    791              FontWinFreeSystem14x16_char_112,
+    792              FontWinFreeSystem14x16_char_113,
+    793              FontWinFreeSystem14x16_char_114,
+    794              FontWinFreeSystem14x16_char_115,
+    795              FontWinFreeSystem14x16_char_116,
+    796              FontWinFreeSystem14x16_char_117,
+    797              FontWinFreeSystem14x16_char_118,
+    798              FontWinFreeSystem14x16_char_119,
+    799              FontWinFreeSystem14x16_char_120,
+    800              FontWinFreeSystem14x16_char_121,
+    801              FontWinFreeSystem14x16_char_122,
+    802              FontWinFreeSystem14x16_char_123,
+    803              FontWinFreeSystem14x16_char_124,
+    804              FontWinFreeSystem14x16_char_125,
+    805              FontWinFreeSystem14x16_char_126,
+    806              0,
+    807              0,
+    808              0,
+    809              0,
+    810              0,
+    811              0,
+    812              0,
+    813              0,
+    814              0,
+    815              0,
+    816              0,
+    817              0,
+    818              0,
+    819              0,
+    820              0,
+    821              0,
+    822              0,
+    823              0,
+    824              0,
+    825              0,
+    826              0,
+    827              0,
+    828              0,
+    829              0,
+    830              0,
+    831              0,
+    832              0,
+    833              0,
+    834              0,
+    835              0,
+    836              0,
+    837              0,
+    838              0,
+    839              0,
+    840              0,
+    841              0,
+    842              0,
+    843              0,
+    844              0,
+    845              0,
+    846              0,
+    847              0,
+    848              0,
+    849              0,
+    850              0,
+    851              0,
+    852              0,
+    853              0,
+    854              0,
+    855              0,
+    856              0,
+    857              0,
+    858              0,
+    859              0,
+    860              0,
+    861              0,
+    862              0,
+    863              0,
+    864              0,
+    865              0,
+    866              0,
+    867              0,
+    868              0,
+    869              0,
+    870              0,
+    871              0,
+    872              0,
+    873              0,
+    874              0,
+    875              0,
+    876              0,
+    877              0,
+    878              0,
+    879              0,
+    880              0,
+    881              0,
+    882              0,
+    883              0,
+    884              0,
+    885              0,
+    886              0,
+    887              0,
+    888              0,
+    889              0,
+    890              0,
+    891              0,
+    892              0,
+    893              0,
+    894              0,
+    895              0,
+    896              0,
+    897              0,
+    898              0,
+    899              0,
+    900              0,
+    901              0,
+    902              0,
+    903              0,
+    904              0,
+    905              0,
+    906              0,
+    907              0,
+    908              0,
+    909              0,
+    910              0,
+    911              0,
+    912              0,
+    913              0,
+    914              0,
+    915              0,
+    916              0,
+    917              0,
+    918              0,
+    919              0,
+    920              0,
+    921              0,
+    922              0,
+    923              0,
+    924              0,
+    925              0,
+    926              0,
+    927              0,
+    928              0,
+    929              0,
+    930              0,
+    931              0,
+    932              0,
+    933              0,
+    934              0,
+    935          };
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      14  FontWinFreeSystem14x16_char_100
+      12  FontWinFreeSystem14x16_char_101
+      10  FontWinFreeSystem14x16_char_102
+      14  FontWinFreeSystem14x16_char_103
+      14  FontWinFreeSystem14x16_char_104
+       6  FontWinFreeSystem14x16_char_105
+       6  FontWinFreeSystem14x16_char_106
+      12  FontWinFreeSystem14x16_char_107
+       6  FontWinFreeSystem14x16_char_108
+      18  FontWinFreeSystem14x16_char_109
+      14  FontWinFreeSystem14x16_char_110
+      14  FontWinFreeSystem14x16_char_111
+      14  FontWinFreeSystem14x16_char_112
+      14  FontWinFreeSystem14x16_char_113
+      10  FontWinFreeSystem14x16_char_114
+      12  FontWinFreeSystem14x16_char_115
+      10  FontWinFreeSystem14x16_char_116
+      12  FontWinFreeSystem14x16_char_117
+      14  FontWinFreeSystem14x16_char_118
+      18  FontWinFreeSystem14x16_char_119
+      14  FontWinFreeSystem14x16_char_120
+      12  FontWinFreeSystem14x16_char_121
+      12  FontWinFreeSystem14x16_char_122
+       8  FontWinFreeSystem14x16_char_123
+       8  FontWinFreeSystem14x16_char_124
+       8  FontWinFreeSystem14x16_char_125
+      16  FontWinFreeSystem14x16_char_126
+       8  FontWinFreeSystem14x16_char_32
+       8  FontWinFreeSystem14x16_char_33
+      10  FontWinFreeSystem14x16_char_34
+      14  FontWinFreeSystem14x16_char_35
+      14  FontWinFreeSystem14x16_char_36
+      20  FontWinFreeSystem14x16_char_37
+      18  FontWinFreeSystem14x16_char_38
+       8  FontWinFreeSystem14x16_char_39
+      10  FontWinFreeSystem14x16_char_40
+      10  FontWinFreeSystem14x16_char_41
+      10  FontWinFreeSystem14x16_char_42
+      14  FontWinFreeSystem14x16_char_43
+       8  FontWinFreeSystem14x16_char_44
+      16  FontWinFreeSystem14x16_char_45
+       8  FontWinFreeSystem14x16_char_46
+       8  FontWinFreeSystem14x16_char_47
+      14  FontWinFreeSystem14x16_char_48
+      14  FontWinFreeSystem14x16_char_49
+      14  FontWinFreeSystem14x16_char_50
+      14  FontWinFreeSystem14x16_char_51
+      14  FontWinFreeSystem14x16_char_52
+      14  FontWinFreeSystem14x16_char_53
+      14  FontWinFreeSystem14x16_char_54
+      14  FontWinFreeSystem14x16_char_55
+      14  FontWinFreeSystem14x16_char_56
+      14  FontWinFreeSystem14x16_char_57
+       8  FontWinFreeSystem14x16_char_58
+       8  FontWinFreeSystem14x16_char_59
+      14  FontWinFreeSystem14x16_char_60
+      12  FontWinFreeSystem14x16_char_61
+      14  FontWinFreeSystem14x16_char_62
+      14  FontWinFreeSystem14x16_char_63
+      24  FontWinFreeSystem14x16_char_64
+      16  FontWinFreeSystem14x16_char_65
+      16  FontWinFreeSystem14x16_char_66
+      18  FontWinFreeSystem14x16_char_67
+      18  FontWinFreeSystem14x16_char_68
+      16  FontWinFreeSystem14x16_char_69
+      14  FontWinFreeSystem14x16_char_70
+      18  FontWinFreeSystem14x16_char_71
+      18  FontWinFreeSystem14x16_char_72
+       8  FontWinFreeSystem14x16_char_73
+      12  FontWinFreeSystem14x16_char_74
+      16  FontWinFreeSystem14x16_char_75
+      14  FontWinFreeSystem14x16_char_76
+      20  FontWinFreeSystem14x16_char_77
+      18  FontWinFreeSystem14x16_char_78
+      18  FontWinFreeSystem14x16_char_79
+      16  FontWinFreeSystem14x16_char_80
+      18  FontWinFreeSystem14x16_char_81
+      16  FontWinFreeSystem14x16_char_82
+      16  FontWinFreeSystem14x16_char_83
+      12  FontWinFreeSystem14x16_char_84
+      18  FontWinFreeSystem14x16_char_85
+      16  FontWinFreeSystem14x16_char_86
+      20  FontWinFreeSystem14x16_char_87
+      16  FontWinFreeSystem14x16_char_88
+      16  FontWinFreeSystem14x16_char_89
+      16  FontWinFreeSystem14x16_char_90
+       8  FontWinFreeSystem14x16_char_91
+       8  FontWinFreeSystem14x16_char_92
+       8  FontWinFreeSystem14x16_char_93
+      14  FontWinFreeSystem14x16_char_94
+      14  FontWinFreeSystem14x16_char_95
+       8  FontWinFreeSystem14x16_char_96
+      12  FontWinFreeSystem14x16_char_97
+      14  FontWinFreeSystem14x16_char_98
+      12  FontWinFreeSystem14x16_char_99
+     512  FontWinFreeSystem14x16_table
+
+ 
+ 1 770 bytes in segment NEAR_CONST
+ 
+ 1 770 bytes of CONST memory
+
+Errors: none
+Warnings: none

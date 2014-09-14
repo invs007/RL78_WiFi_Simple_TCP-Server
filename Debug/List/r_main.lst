@@ -1,0 +1,262 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             05/Aug/2014  14:54:18 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Evaluation license - IAR Embedded Workbench for Renesas RL78, Evaluation version 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_main.c                     #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_main.c" --core rl78_2      #
+#                    --code_model near --data_model near                      #
+#                    --near_const_location rom0 -o "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy\Debug\Obj\" --dlib_config      #
+#                    "C:\Program Files (x86)\IAR Systems\Embedded Workbench   #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\r_main.lst                      #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\r_main.r87                       #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\applilet3_src\r_main.c
+      1          /***********************************************************************************************************************
+      2          * DISCLAIMER
+      3          * This software is supplied by Renesas Electronics Corporation and is only 
+      4          * intended for use with Renesas products. No other uses are authorized. This 
+      5          * software is owned by Renesas Electronics Corporation and is protected under 
+      6          * all applicable laws, including copyright laws.
+      7          * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING 
+      8          * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT 
+      9          * LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE 
+     10          * AND NON-INFRINGEMENT.  ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.
+     11          * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS 
+     12          * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE 
+     13          * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR 
+     14          * ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE 
+     15          * BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+     16          * Renesas reserves the right, without notice, to make changes to this software 
+     17          * and to discontinue the availability of this software.  By using this software, 
+     18          * you agree to the additional terms and conditions found by accessing the 
+     19          * following link:
+     20          * http://www.renesas.com/disclaimer
+     21          *
+     22          * Copyright (C) 2011, 2013 Renesas Electronics Corporation. All rights reserved.
+     23          ***********************************************************************************************************************/
+     24          
+     25          /***********************************************************************************************************************
+     26          * File Name    : r_main.c
+     27          * Version      : Applilet3 for RL78/G14 V2.00.00.08 [12 Apr 2013]
+     28          * Device(s)    : R5F104PJ
+     29          * Tool-Chain   : IAR Systems iccrl78
+     30          * Description  : This file implements main function.
+     31          * Creation Date: 8/4/2014
+     32          ***********************************************************************************************************************/
+     33          
+     34          /***********************************************************************************************************************
+     35          Includes
+     36          ***********************************************************************************************************************/
+     37          #include "r_cg_macrodriver.h"
+     38          #include "r_cg_cgc.h"
+     39          #include "r_cg_port.h"
+     40          #include "r_cg_intc.h"
+     41          #include "r_cg_serial.h"
+     42          #include "r_cg_adc.h"
+     43          #include "r_cg_it.h"
+     44          /* Start user code for include. Do not edit comment generated here */
+     45          #include <stdio.h>
+     46          #include <string.h>
+     47          #include "lcd.h"
+     48          #include "RDKRL78_spi.h"
+     49          
+     50          #define TX_MODE 0
+     51          
+     52          /* End user code. Do not edit comment generated here */
+     53          #include "r_cg_userdefine.h"
+     54          
+     55          /***********************************************************************************************************************
+     56          Global variables and functions
+     57          ***********************************************************************************************************************/
+     58          /* Start user code for global. Do not edit comment generated here */
+     59          extern void Auto_Setup(uint8_t);
+     60          /* End user code. Do not edit comment generated here */
+     61          
+     62          /* Set option bytes */
+     63          #pragma location = "OPTBYTE"
+
+   \                                 In  segment OPTBYTE, align 1, root
+     64          __root const uint8_t opbyte0 = 0xEFU;
+   \                     opbyte0:
+   \   000000 EF                    DB 239
+     65          #pragma location = "OPTBYTE"
+
+   \                                 In  segment OPTBYTE, align 1, root
+     66          __root const uint8_t opbyte1 = 0xFFU;
+   \                     opbyte1:
+   \   000000 FF                    DB 255
+     67          #pragma location = "OPTBYTE"
+
+   \                                 In  segment OPTBYTE, align 1, root
+     68          __root const uint8_t opbyte2 = 0xF0U;
+   \                     opbyte2:
+   \   000000 F0                    DB 240
+     69          #pragma location = "OPTBYTE"
+
+   \                                 In  segment OPTBYTE, align 1, root
+     70          __root const uint8_t opbyte3 = 0x85U;
+   \                     opbyte3:
+   \   000000 85                    DB 133
+     71          
+     72          /* Set security ID */
+     73          #pragma location = "SECUID"
+
+   \                                 In  segment SECUID, align 2, root
+     74          __root const uint8_t secuid[10] = 
+   \                     secuid:
+   \   000000 000000000000          DB 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+     75              {0x00U, 0x00U, 0x00U, 0x00U, 0x00U, 0x00U, 0x00U, 0x00U, 0x00U, 0x00U};
+     76          /* Secure trace RAM area */
+
+   \                                 In  segment NEAR_A, at 0xfa300, root
+     77          __no_init __root unsigned char ocdtraceram[1024] @ 0xFA300;
+   \                     ocdtraceram:
+   \   000000                       DS 1024
+     78          
+     79          void R_MAIN_UserInit(void);
+     80          
+     81          /***********************************************************************************************************************
+     82          * Function Name: main
+     83          * Description  : This function implements main function.
+     84          * Arguments    : None
+     85          * Return Value : None
+     86          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     87          void main(void)
+   \                     main:
+     88          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 0
+     89              R_MAIN_UserInit();
+   \   000002 FD....                CALL      R_MAIN_UserInit    ;; 3 cycles
+     90              /* Start user code. Do not edit comment generated here */
+     91              LCDPrintf(1,0,"START");
+   \   000005 34....                MOVW      DE, #`?<Constant "START">`  ;; 1 cycle
+   \   000008 F3                    CLRB      B                  ;; 1 cycle
+   \   000009 E1                    ONEB      A                  ;; 1 cycle
+   \   00000A FD....                CALL      LCDPrintf          ;; 3 cycles
+     92              Auto_Setup(0);
+   \   00000D F1                    CLRB      A                  ;; 1 cycle
+   \   00000E FD....                CALL      Auto_Setup         ;; 3 cycles
+     93             // while(1);
+     94              /* End user code. Do not edit comment generated here */
+     95          }
+   \   000011 C4                    POP       DE                 ;; 1 cycle
+   \   000012 C2                    POP       BC                 ;; 1 cycle
+   \   000013 D7                    RET                          ;; 6 cycles
+   \   000014                       ; ------------------------------------- Block: 23 cycles
+   \   000014                       ; ------------------------------------- Total: 23 cycles
+   \   000014                       REQUIRE ?CLRL78_V1_0_L00
+     96          
+     97          
+     98          /***********************************************************************************************************************
+     99          * Function Name: R_MAIN_UserInit
+    100          * Description  : This function adds user code before implementing main function.
+    101          * Arguments    : None
+    102          * Return Value : None
+    103          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    104          void R_MAIN_UserInit(void)
+   \                     R_MAIN_UserInit:
+    105          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+    106              /* Start user code. Do not edit comment generated here */
+    107              EI();
+   \   000000 717AFA                EI                           ;; 2 cycles
+    108              SPI_Init();
+   \   000003 FD....                CALL      SPI_Init           ;; 3 cycles
+    109              LCDInit();
+   \   000006 ED....                BR        N:LCDInit          ;; 3 cycles
+   \   000009                       ; ------------------------------------- Block: 8 cycles
+   \   000009                       ; ------------------------------------- Total: 8 cycles
+   \   000009                       REQUIRE ?CLRL78_V1_0_L00
+    110              /* End user code. Do not edit comment generated here */
+    111          }
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "START">`:
+   \   000000 535441525400          DB "START"
+    112          
+    113          /* Start user code for adding. Do not edit comment generated here */
+    114          
+    115          /* End user code. Do not edit comment generated here */
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+      0   R_MAIN_UserInit
+        0   -> LCDInit
+        0   -> SPI_Init
+      4   main
+        4   -> Auto_Setup
+        4   -> LCDPrintf
+        4   -> R_MAIN_UserInit
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       6  ?<Constant "START">
+       9  R_MAIN_UserInit
+      20  main
+    1024  ocdtraceram
+       1  opbyte0
+       1  opbyte1
+       1  opbyte2
+       1  opbyte3
+      10  secuid
+
+ 
+    29 bytes in segment CODE
+ 1 024 bytes in segment NEAR_A
+     6 bytes in segment NEAR_CONST
+     4 bytes in segment OPTBYTE
+    10 bytes in segment SECUID
+ 
+ 29 bytes of CODE  memory
+ 20 bytes of CONST memory
+  0 bytes of DATA  memory (+ 1 024 bytes shared)
+
+Errors: none
+Warnings: none

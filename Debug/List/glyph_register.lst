@@ -1,0 +1,275 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             05/Aug/2014  14:51:20 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Evaluation license - IAR Embedded Workbench for Renesas RL78, Evaluation version 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Glyph\glyph_register.c                     #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Glyph\glyph_register.c" --core rl78_2      #
+#                    --code_model near --data_model near                      #
+#                    --near_const_location rom0 -o "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy\Debug\Obj\" --dlib_config      #
+#                    "C:\Program Files (x86)\IAR Systems\Embedded Workbench   #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\glyph_register.lst              #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\glyph_register.r87               #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\Glyph\glyph_register.c
+      1          /******************************************************************************
+      2          * DISCLAIMER
+      3          * This software is supplied by Renesas Electronics Corporation and is only
+      4          * intended for use with Renesas products. No other uses are authorized.
+      5          * This software is owned by Renesas Electronics Corporation and is protected under
+      6          * all applicable laws, including copyright laws.
+      7          * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES
+      8          * REGARDING THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY,
+      9          * INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+     10          * PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY
+     11          * DISCLAIMED.
+     12          * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS
+     13          * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE
+     14          * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES
+     15          * FOR ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS
+     16          * AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+     17          * Renesas reserves the right, without notice, to make changes to this
+     18          * software and to discontinue the availability of this software.
+     19          * By using this software, you agree to the additional terms and
+     20          * conditions found by accessing the following link:
+     21          * http://www.renesas.com/disclaimer
+     22          ******************************************************************************/
+     23          /* Copyright (C) 2010 Renesas Electronics Corporation. All rights reserved. */
+     24          /* Code written for Renesas by Future Designs, Inc. www.teamfdi.com */
+     25          
+     26          /******************************************************************************
+     27          * File Name : GlyphOpenDrivers.c
+     28          * Version : 1.00
+     29          * Device(s) : Communications Drivers and LCD Display Drivers
+     30          * Tool-Chain : Glyph - The Generic API for Graphics RSPI API
+     31          * H/W Platform : RX62N Group CPU
+     32          * Description : Sets functions in the Handle.
+     33          ******************************************************************************
+     34          * History :
+     35          * : 21.07.2010 1.00 First Release
+     36          ******************************************************************************/
+     37          
+     38          /******************************************************************************
+     39          Includes <system include> “Glyph Includes”
+     40          ******************************************************************************/
+     41          #include "glyph_api.h"
+     42          
+     43          /******************************************************************************
+     44          Includes “Glyph LCD Display (0) Include”
+     45          ******************************************************************************/
+     46          #include "Drivers/ST7579_LCD.h"
+     47          #include "Drivers/YRDKRL78_LCD.h"
+     48          
+     49          /******************************************************************************
+     50          * ID : 58.0
+     51          * Outline : GlyphCommOpen
+     52          * Include : RX62N_RSPI0.h
+     53          * Function Name: GlyphCommOpen
+     54          * Description : Assign the communications workspace.
+     55          * Argument : aHandle - the Glyph handle to setup for the LCD and Communications.
+     56          * Return Value : 0=success, not 0= error
+     57          * Calling Functions : main
+     58          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     59          T_glyphError GlyphCommOpen(T_glyphHandle aHandle, int16_t aAddress)
+   \                     GlyphCommOpen:
+     60          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C5                    PUSH      DE                 ;; 1 cycle
+   \   000001 C1                    PUSH      AX                 ;; 1 cycle
+   \   000002                       ; Auto size: 2
+     61              T_glyphWorkspace *p_gw = (T_glyphWorkspace *)aHandle;
+     62          
+     63          
+     64              switch (aAddress) {
+   \   000002 13                    MOVW      AX, BC             ;; 1 cycle
+   \   000003 F7                    CLRW      BC                 ;; 1 cycle
+   \   000004 43                    CMPW      AX, BC             ;; 1 cycle
+   \   000005 DF2B                  BNZ       ??GlyphLCDOpen_0   ;; 4 cycles
+   \   000007                       ; ------------------------------------- Block: 9 cycles
+     65                  case 0:
+     66                       p_gw->iCommAPI->iOpen        = YRDKRL78_RSPIOpen;
+   \   000007 A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000009 14                    MOVW      DE, AX             ;; 1 cycle
+   \   00000A A5                    INCW      DE                 ;; 1 cycle
+   \   00000B A5                    INCW      DE                 ;; 1 cycle
+   \   00000C 32....                MOVW      BC, #YRDKRL78_RSPIOpen  ;; 1 cycle
+   \   00000F A9                    MOVW      AX, [DE]           ;; 1 cycle
+   \   000010 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000011 13                    MOVW      AX, BC             ;; 1 cycle
+   \   000012 BB                    MOVW      [HL], AX           ;; 1 cycle
+     67                       p_gw->iCommAPI->iCommandSend = YRDKRL78_CommandSend;
+   \   000013 32....                MOVW      BC, #YRDKRL78_CommandSend  ;; 1 cycle
+   \   000016 A9                    MOVW      AX, [DE]           ;; 1 cycle
+   \   000017 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000018 13                    MOVW      AX, BC             ;; 1 cycle
+   \   000019 BC02                  MOVW      [HL+0x02], AX      ;; 1 cycle
+     68                       p_gw->iCommAPI->iDataSend    = YRDKRL78_DataSend;
+   \   00001B 32....                MOVW      BC, #YRDKRL78_DataSend  ;; 1 cycle
+   \   00001E A9                    MOVW      AX, [DE]           ;; 1 cycle
+   \   00001F 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000020 13                    MOVW      AX, BC             ;; 1 cycle
+   \   000021 BC04                  MOVW      [HL+0x04], AX      ;; 1 cycle
+     69                       break;
+     70          
+     71          
+     72                  default:
+     73                      return GLYPH_ERROR_ILLEGAL_OPERATION;
+     74              }
+     75          
+     76              return p_gw->iCommAPI->iOpen(aHandle);
+   \   000023 A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000025 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000026 A9                    MOVW      AX, [DE]           ;; 1 cycle
+   \   000027 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000028 A9                    MOVW      AX, [DE]           ;; 1 cycle
+   \   000029 12                    MOVW      BC, AX             ;; 1 cycle
+   \   00002A CEFC00                MOV       CS, #0x0           ;; 1 cycle
+   \   00002D 17                    MOVW      AX, HL             ;; 1 cycle
+   \   00002E 61DA                  CALL      BC                 ;; 3 cycles
+   \   000030 EF01                  BR        S:??GlyphLCDOpen_1  ;; 3 cycles
+   \   000032                       ; ------------------------------------- Block: 33 cycles
+   \                     ??GlyphLCDOpen_0:
+   \   000032 E1                    ONEB      A                  ;; 1 cycle
+   \   000033                       ; ------------------------------------- Block: 1 cycles
+   \                     ??GlyphLCDOpen_1:
+   \   000033 1002                  ADDW      SP, #0x2           ;; 1 cycle
+   \   000035 C4                    POP       DE                 ;; 1 cycle
+   \   000036 D7                    RET                          ;; 6 cycles
+   \   000037                       ; ------------------------------------- Block: 8 cycles
+   \   000037                       ; ------------------------------------- Total: 51 cycles
+   \   000037                       REQUIRE ?CLRL78_V1_0_L00
+     77          }
+     78          
+     79          /******************************************************************************
+     80          * ID : 59.0
+     81          * Outline : GlyphLCDOpen
+     82          * Include : ST7579_LCD.h
+     83          * Function Name: GlyphLCDOpen
+     84          * Description : Assign the global ST7579_LCD to aHandle.
+     85          * Argument : aHandle - the Glyph handle to setup for the LCD.
+     86          * Return Value : 0=success, not 0= error
+     87          * Calling Functions : GlyphOpen
+     88          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     89          T_glyphError GlyphLCDOpen(T_glyphHandle aHandle, int16_t aAddress)
+   \                     GlyphLCDOpen:
+     90          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C5                    PUSH      DE                 ;; 1 cycle
+   \   000001                       ; Auto size: 0
+   \   000001 16                    MOVW      HL, AX             ;; 1 cycle
+     91              T_glyphWorkspace *p_gw = (T_glyphWorkspace *)aHandle;
+     92          
+     93          
+     94              switch (aAddress) {
+   \   000002 13                    MOVW      AX, BC             ;; 1 cycle
+   \   000003 F7                    CLRW      BC                 ;; 1 cycle
+   \   000004 43                    CMPW      AX, BC             ;; 1 cycle
+   \   000005 DF23                  BNZ       ??GlyphLCDOpen_2   ;; 4 cycles
+   \   000007                       ; ------------------------------------- Block: 9 cycles
+     95                  case 0:
+     96                       p_gw->iLCDAPI->iOpen  = ST7579_Open;
+   \   000007 32....                MOVW      BC, #ST7579_Open   ;; 1 cycle
+   \   00000A AB                    MOVW      AX, [HL]           ;; 1 cycle
+   \   00000B 14                    MOVW      DE, AX             ;; 1 cycle
+   \   00000C 13                    MOVW      AX, BC             ;; 1 cycle
+   \   00000D BA1C                  MOVW      [DE+0x1C], AX      ;; 1 cycle
+     97                       p_gw->iLCDAPI->iWrite = ST7579_Write;
+   \   00000F 32....                MOVW      BC, #ST7579_Write  ;; 1 cycle
+   \   000012 AB                    MOVW      AX, [HL]           ;; 1 cycle
+   \   000013 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000014 13                    MOVW      AX, BC             ;; 1 cycle
+   \   000015 BA22                  MOVW      [DE+0x22], AX      ;; 1 cycle
+     98                       p_gw->iLCDAPI->iRead  = ST7579_Read;
+   \   000017 32....                MOVW      BC, #ST7579_Read   ;; 1 cycle
+   \   00001A AB                    MOVW      AX, [HL]           ;; 1 cycle
+   \   00001B 14                    MOVW      DE, AX             ;; 1 cycle
+   \   00001C 13                    MOVW      AX, BC             ;; 1 cycle
+   \   00001D BA20                  MOVW      [DE+0x20], AX      ;; 1 cycle
+     99                       p_gw->iLCDAPI->iClose = ST7579_Close;
+   \   00001F 34....                MOVW      DE, #ST7579_Close  ;; 1 cycle
+   \   000022 AB                    MOVW      AX, [HL]           ;; 1 cycle
+   \   000023 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000024 15                    MOVW      AX, DE             ;; 1 cycle
+   \   000025 BC1E                  MOVW      [HL+0x1E], AX      ;; 1 cycle
+    100                       break;
+    101          
+    102          
+    103                  default:
+    104                      return GLYPH_ERROR_ILLEGAL_OPERATION;
+    105              }
+    106          
+    107              return GLYPH_ERROR_NONE;
+   \   000027 F1                    CLRB      A                  ;; 1 cycle
+   \   000028 EF01                  BR        S:??GlyphLCDOpen_3  ;; 3 cycles
+   \   00002A                       ; ------------------------------------- Block: 24 cycles
+   \                     ??GlyphLCDOpen_2:
+   \   00002A E1                    ONEB      A                  ;; 1 cycle
+   \   00002B                       ; ------------------------------------- Block: 1 cycles
+   \                     ??GlyphLCDOpen_3:
+   \   00002B C4                    POP       DE                 ;; 1 cycle
+   \   00002C D7                    RET                          ;; 6 cycles
+   \   00002D                       ; ------------------------------------- Block: 7 cycles
+   \   00002D                       ; ------------------------------------- Total: 41 cycles
+   \   00002D                       REQUIRE ?CLRL78_V1_0_L00
+    108          }
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+      4   GlyphCommOpen
+        4   -- Indirect call
+      2   GlyphLCDOpen
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      55  GlyphCommOpen
+      45  GlyphLCDOpen
+
+ 
+ 100 bytes in segment CODE
+ 
+ 100 bytes of CODE memory
+
+Errors: none
+Warnings: none

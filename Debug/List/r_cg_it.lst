@@ -1,0 +1,262 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             05/Aug/2014  14:51:24 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Evaluation license - IAR Embedded Workbench for Renesas RL78, Evaluation version 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_cg_it.c                    #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_cg_it.c" --core rl78_2     #
+#                    --code_model near --data_model near                      #
+#                    --near_const_location rom0 -o "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy\Debug\Obj\" --dlib_config      #
+#                    "C:\Program Files (x86)\IAR Systems\Embedded Workbench   #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\r_cg_it.lst                     #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\r_cg_it.r87                      #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\applilet3_src\r_cg_it.c
+      1          /***********************************************************************************************************************
+      2          * DISCLAIMER
+      3          * This software is supplied by Renesas Electronics Corporation and is only 
+      4          * intended for use with Renesas products. No other uses are authorized. This 
+      5          * software is owned by Renesas Electronics Corporation and is protected under 
+      6          * all applicable laws, including copyright laws.
+      7          * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING 
+      8          * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT 
+      9          * LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE 
+     10          * AND NON-INFRINGEMENT.  ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.
+     11          * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS 
+     12          * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE 
+     13          * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR 
+     14          * ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE 
+     15          * BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+     16          * Renesas reserves the right, without notice, to make changes to this software 
+     17          * and to discontinue the availability of this software.  By using this software, 
+     18          * you agree to the additional terms and conditions found by accessing the 
+     19          * following link:
+     20          * http://www.renesas.com/disclaimer
+     21          *
+     22          * Copyright (C) 2011, 2013 Renesas Electronics Corporation. All rights reserved.
+     23          ***********************************************************************************************************************/
+     24          
+     25          /***********************************************************************************************************************
+     26          * File Name    : r_cg_it.c
+     27          * Version      : Applilet3 for RL78/G14 V2.00.00.08 [12 Apr 2013]
+     28          * Device(s)    : R5F104PJ
+     29          * Tool-Chain   : IAR Systems iccrl78
+     30          * Description  : This file implements device driver for IT module.
+     31          * Creation Date: 8/4/2014
+     32          ***********************************************************************************************************************/
+     33          
+     34          /***********************************************************************************************************************
+     35          Includes
+     36          ***********************************************************************************************************************/
+     37          #include "r_cg_macrodriver.h"
+
+   \                                 In  segment NEAR_A, at 0xfff90
+   \   union <unnamed> volatile __sfr __no_bit_access _A_ITMC
+   \                     _A_ITMC:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffe2
+   \   union <unnamed> volatile __sfr _A_IF1
+   \                     _A_IF1:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffe6
+   \   union <unnamed> volatile __sfr _A_MK1
+   \                     _A_MK1:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffea
+   \   union <unnamed> volatile __sfr _A_PR01
+   \                     _A_PR01:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffee
+   \   union <unnamed> volatile __sfr _A_PR11
+   \                     _A_PR11:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xf00f0
+   \   union <unnamed> volatile _A_PER0
+   \                     _A_PER0:
+   \   000000                       DS 1
+     38          #include "r_cg_it.h"
+     39          /* Start user code for include. Do not edit comment generated here */
+     40          /* End user code. Do not edit comment generated here */
+     41          #include "r_cg_userdefine.h"
+     42          
+     43          /***********************************************************************************************************************
+     44          Global variables and functions
+     45          ***********************************************************************************************************************/
+     46          /* Start user code for global. Do not edit comment generated here */
+     47          /* End user code. Do not edit comment generated here */
+     48          
+     49          /***********************************************************************************************************************
+     50          * Function Name: R_IT_Create
+     51          * Description  : This function initializes the IT module.
+     52          * Arguments    : None
+     53          * Return Value : None
+     54          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     55          void R_IT_Create(void)
+   \                     R_IT_Create:
+     56          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+     57              RTCEN = 1U;    /* supply IT clock */
+   \   000000 36F000                MOVW      HL, #0xF0          ;; 1 cycle
+   \   000003 71F2                  SET1      [HL].7             ;; 2 cycles
+     58              ITMC = _0000_IT_OPERATION_DISABLE;    /* disable IT operation */
+   \   000005 CB900000              MOVW      0xFFF90, #0x0      ;; 1 cycle
+     59              ITMK = 1U;    /* disable INTIT interrupt */
+   \   000009 712AE7                SET1      0xFFFE7.2          ;; 2 cycles
+     60              ITIF = 0U;    /* clear INTIT interrupt flag */
+   \   00000C 712BE3                CLR1      0xFFFE3.2          ;; 2 cycles
+     61              /* Set INTIT low priority */
+     62              ITPR1 = 1U;
+   \   00000F 712AEF                SET1      0xFFFEF.2          ;; 2 cycles
+     63              ITPR0 = 1U;
+   \   000012 712AEB                SET1      0xFFFEB.2          ;; 2 cycles
+     64              ITMC = _0020_ITMCMP_VALUE;
+   \   000015 CB902000              MOVW      0xFFF90, #0x20     ;; 1 cycle
+     65          }
+   \   000019 D7                    RET                          ;; 6 cycles
+   \   00001A                       ; ------------------------------------- Block: 19 cycles
+   \   00001A                       ; ------------------------------------- Total: 19 cycles
+   \   00001A                       REQUIRE ?CLRL78_V1_0_L00
+   \   00001A                       REQUIRE _A_PER0
+   \   00001A                       REQUIRE _A_ITMC
+   \   00001A                       REQUIRE _A_MK1
+   \   00001A                       REQUIRE _A_IF1
+   \   00001A                       REQUIRE _A_PR11
+   \   00001A                       REQUIRE _A_PR01
+     66          
+     67          /***********************************************************************************************************************
+     68          * Function Name: R_IT_Start
+     69          * Description  : This function starts IT module operation.
+     70          * Arguments    : None
+     71          * Return Value : None
+     72          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     73          void R_IT_Start(void)
+   \                     R_IT_Start:
+     74          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+     75              ITIF = 0U;    /* clear INTIT interrupt flag */
+   \   000000 712BE3                CLR1      0xFFFE3.2          ;; 2 cycles
+     76              ITMK = 0U;    /* enable INTIT interrupt */
+   \   000003 712BE7                CLR1      0xFFFE7.2          ;; 2 cycles
+     77              ITMC |= _8000_IT_OPERATION_ENABLE;    /* enable IT operation */
+   \   000006 AE90                  MOVW      AX, 0xFFF90        ;; 1 cycle
+   \   000008 6C80                  OR        A, #0x80           ;; 1 cycle
+   \   00000A BE90                  MOVW      0xFFF90, AX        ;; 1 cycle
+     78          }
+   \   00000C D7                    RET                          ;; 6 cycles
+   \   00000D                       ; ------------------------------------- Block: 13 cycles
+   \   00000D                       ; ------------------------------------- Total: 13 cycles
+   \   00000D                       REQUIRE ?CLRL78_V1_0_L00
+   \   00000D                       REQUIRE _A_IF1
+   \   00000D                       REQUIRE _A_MK1
+   \   00000D                       REQUIRE _A_ITMC
+     79          
+     80          /***********************************************************************************************************************
+     81          * Function Name: R_IT_Stop
+     82          * Description  : This function stops IT module operation.
+     83          * Arguments    : None
+     84          * Return Value : None
+     85          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     86          void R_IT_Stop(void)
+   \                     R_IT_Stop:
+     87          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+     88              ITMK = 1U;    /* disable INTIT interrupt */
+   \   000000 712AE7                SET1      0xFFFE7.2          ;; 2 cycles
+     89              ITIF = 0U;    /* clear INTIT interrupt flag */
+   \   000003 712BE3                CLR1      0xFFFE3.2          ;; 2 cycles
+     90              ITMC &= (uint16_t)~_8000_IT_OPERATION_ENABLE;    /* disable IT operation */
+   \   000006 AE90                  MOVW      AX, 0xFFF90        ;; 1 cycle
+   \   000008 5C7F                  AND       A, #0x7F           ;; 1 cycle
+   \   00000A BE90                  MOVW      0xFFF90, AX        ;; 1 cycle
+     91          }
+   \   00000C D7                    RET                          ;; 6 cycles
+   \   00000D                       ; ------------------------------------- Block: 13 cycles
+   \   00000D                       ; ------------------------------------- Total: 13 cycles
+   \   00000D                       REQUIRE ?CLRL78_V1_0_L00
+   \   00000D                       REQUIRE _A_MK1
+   \   00000D                       REQUIRE _A_IF1
+   \   00000D                       REQUIRE _A_ITMC
+     92          
+     93          /* Start user code for adding. Do not edit comment generated here */
+     94          /* End user code. Do not edit comment generated here */
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+      0   R_IT_Create
+      0   R_IT_Start
+      0   R_IT_Stop
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      26  R_IT_Create
+      13  R_IT_Start
+      13  R_IT_Stop
+       2  _A_IF1
+       2  _A_ITMC
+       2  _A_MK1
+       1  _A_PER0
+       2  _A_PR01
+       2  _A_PR11
+
+ 
+ 52 bytes in segment CODE
+ 11 bytes in segment NEAR_A
+ 
+ 52 bytes of CODE memory
+  0 bytes of DATA memory (+ 11 bytes shared)
+
+Errors: none
+Warnings: none

@@ -1,0 +1,444 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             05/Aug/2014  14:51:22 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Evaluation license - IAR Embedded Workbench for Renesas RL78, Evaluation version 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_cg_adc.c                   #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_cg_adc.c" --core rl78_2    #
+#                    --code_model near --data_model near                      #
+#                    --near_const_location rom0 -o "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy\Debug\Obj\" --dlib_config      #
+#                    "C:\Program Files (x86)\IAR Systems\Embedded Workbench   #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\r_cg_adc.lst                    #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\r_cg_adc.r87                     #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\applilet3_src\r_cg_adc.c
+      1          /***********************************************************************************************************************
+      2          * DISCLAIMER
+      3          * This software is supplied by Renesas Electronics Corporation and is only 
+      4          * intended for use with Renesas products. No other uses are authorized. This 
+      5          * software is owned by Renesas Electronics Corporation and is protected under 
+      6          * all applicable laws, including copyright laws.
+      7          * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING 
+      8          * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT 
+      9          * LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE 
+     10          * AND NON-INFRINGEMENT.  ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.
+     11          * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS 
+     12          * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE 
+     13          * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR 
+     14          * ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE 
+     15          * BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+     16          * Renesas reserves the right, without notice, to make changes to this software 
+     17          * and to discontinue the availability of this software.  By using this software, 
+     18          * you agree to the additional terms and conditions found by accessing the 
+     19          * following link:
+     20          * http://www.renesas.com/disclaimer
+     21          *
+     22          * Copyright (C) 2011, 2013 Renesas Electronics Corporation. All rights reserved.
+     23          ***********************************************************************************************************************/
+     24          
+     25          /***********************************************************************************************************************
+     26          * File Name    : r_cg_adc.c
+     27          * Version      : Applilet3 for RL78/G14 V2.00.00.08 [12 Apr 2013]
+     28          * Device(s)    : R5F104PJ
+     29          * Tool-Chain   : IAR Systems iccrl78
+     30          * Description  : This file implements device driver for ADC module.
+     31          * Creation Date: 8/4/2014
+     32          ***********************************************************************************************************************/
+     33          
+     34          /***********************************************************************************************************************
+     35          Includes
+     36          ***********************************************************************************************************************/
+     37          #include "r_cg_macrodriver.h"
+
+   \                                 In  segment SADDR_A, at 0xfff1e
+   \   union <unnamed> const volatile __saddr __no_bit_access _A_ADCR
+   \                     _A_ADCR:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfff22
+   \   union <unnamed> volatile __sfr _A_PM2
+   \                     _A_PM2:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff2a
+   \   union <unnamed> volatile __sfr _A_PM10
+   \                     _A_PM10:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff2c
+   \   union <unnamed> volatile __sfr _A_PM12
+   \                     _A_PM12:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff2e
+   \   union <unnamed> volatile __sfr _A_PM14
+   \                     _A_PM14:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff2f
+   \   union <unnamed> volatile __sfr _A_PM15
+   \                     _A_PM15:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff30
+   \   union <unnamed> volatile __sfr _A_ADM0
+   \                     _A_ADM0:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff31
+   \   union <unnamed> volatile __sfr _A_ADS
+   \                     _A_ADS:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff32
+   \   union <unnamed> volatile __sfr _A_ADM1
+   \                     _A_ADM1:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfffe2
+   \   union <unnamed> volatile __sfr _A_IF1
+   \                     _A_IF1:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffe6
+   \   union <unnamed> volatile __sfr _A_MK1
+   \                     _A_MK1:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xf0010
+   \   union <unnamed> volatile _A_ADM2
+   \                     _A_ADM2:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xf0011
+   \   union <unnamed> volatile __no_bit_access _A_ADUL
+   \                     _A_ADUL:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xf0012
+   \   union <unnamed> volatile __no_bit_access _A_ADLL
+   \                     _A_ADLL:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xf006a
+   \   union <unnamed> volatile _A_PMC10
+   \                     _A_PMC10:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xf006c
+   \   union <unnamed> volatile _A_PMC12
+   \                     _A_PMC12:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xf006e
+   \   union <unnamed> volatile _A_PMC14
+   \                     _A_PMC14:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xf00f0
+   \   union <unnamed> volatile _A_PER0
+   \                     _A_PER0:
+   \   000000                       DS 1
+     38          #include "r_cg_adc.h"
+     39          /* Start user code for include. Do not edit comment generated here */
+     40          /* End user code. Do not edit comment generated here */
+     41          #include "r_cg_userdefine.h"
+     42          
+     43          /***********************************************************************************************************************
+     44          Global variables and functions
+     45          ***********************************************************************************************************************/
+     46          /* Start user code for global. Do not edit comment generated here */
+     47          /* End user code. Do not edit comment generated here */
+     48          
+     49          /***********************************************************************************************************************
+     50          * Function Name: R_ADC_Create
+     51          * Description  : This function initializes the AD converter.
+     52          * Arguments    : None
+     53          * Return Value : None
+     54          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     55          void R_ADC_Create(void)
+   \                     R_ADC_Create:
+     56          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+     57              ADCEN = 1U;  /* supply AD clock */
+   \   000000 36F000                MOVW      HL, #0xF0          ;; 1 cycle
+   \   000003 71D2                  SET1      [HL].5             ;; 2 cycles
+     58              ADM0 = _00_AD_ADM0_INITIALVALUE;  /* disable AD conversion and clear ADM0 register */
+   \   000005 CE3000                MOV       0xFFF30, #0x0      ;; 1 cycle
+     59              ADMK = 1U;  /* disable INTAD interrupt */
+   \   000008 710AE7                SET1      0xFFFE7.0          ;; 2 cycles
+     60              ADIF = 0U;  /* clear INTAD interrupt flag */
+   \   00000B 710BE3                CLR1      0xFFFE3.0          ;; 2 cycles
+     61              /* Set ANI0 - ANI9 pin as analog input */
+     62              PM2 |= 0xFFU;
+   \   00000E 8E22                  MOV       A, 0xFFF22         ;; 1 cycle
+   \   000010 CE22FF                MOV       0xFFF22, #0xFF     ;; 1 cycle
+     63              PM15 |= 0x7FU;
+   \   000013 8E2F                  MOV       A, 0xFFF2F         ;; 1 cycle
+   \   000015 6C7F                  OR        A, #0x7F           ;; 1 cycle
+   \   000017 9E2F                  MOV       0xFFF2F, A         ;; 1 cycle
+     64              /* Set ANI18 pin */
+     65              PMC14 |= 0x80U;
+   \   000019 566E                  MOV       L, #0x6E           ;; 1 cycle
+   \   00001B 71F2                  SET1      [HL].7             ;; 2 cycles
+     66              PM14 |= 0x80U;
+   \   00001D 717A2E                SET1      0xFFF2E.7          ;; 2 cycles
+     67              /* Set ANI19 pin */
+     68              PMC12 |= 0x01U;
+   \   000020 B7                    DECW      HL                 ;; 1 cycle
+   \   000021 B7                    DECW      HL                 ;; 1 cycle
+   \   000022 7182                  SET1      [HL].0             ;; 2 cycles
+     69              PM12 |= 0x01U;
+   \   000024 710A2C                SET1      0xFFF2C.0          ;; 2 cycles
+     70              /* Set ANI20 pin */
+     71              PMC10 |= 0x01U;
+   \   000027 B7                    DECW      HL                 ;; 1 cycle
+   \   000028 B7                    DECW      HL                 ;; 1 cycle
+   \   000029 7182                  SET1      [HL].0             ;; 2 cycles
+     72              PM10 |= 0x01U;
+   \   00002B 710A2A                SET1      0xFFF2A.0          ;; 2 cycles
+     73              ADM0 = _08_AD_CONVERSION_CLOCK_32 | _00_AD_TIME_MODE_NORMAL_1 | _00_AD_OPERMODE_SELECT;
+   \   00002E CE3008                MOV       0xFFF30, #0x8      ;; 1 cycle
+     74              ADM1 = _00_AD_TRIGGER_SOFTWARE | _00_AD_CONVMODE_CONSELECT;
+   \   000031 CE3200                MOV       0xFFF32, #0x0      ;; 1 cycle
+     75              ADM2 = _00_AD_POSITIVE_VDD | _00_AD_NEGATIVE_VSS | _00_AD_AREA_MODE_1 | _00_AD_RESOLUTION_10BIT;
+   \   000034 CF100000              MOV       0x10, #0x0         ;; 1 cycle
+     76              ADUL = _FF_AD_ADUL_VALUE;
+   \   000038 CF1100FF              MOV       0x11, #0xFF        ;; 1 cycle
+     77              ADLL = _00_AD_ADLL_VALUE;
+   \   00003C CF120000              MOV       0x12, #0x0         ;; 1 cycle
+     78              ADS = _08_AD_INPUT_CHANNEL_8;
+   \   000040 CE3108                MOV       0xFFF31, #0x8      ;; 1 cycle
+     79              ADCE = 1U;  /* enable AD comparator */
+   \   000043 710A30                SET1      0xFFF30.0          ;; 2 cycles
+     80          }
+   \   000046 D7                    RET                          ;; 6 cycles
+   \   000047                       ; ------------------------------------- Block: 44 cycles
+   \   000047                       ; ------------------------------------- Total: 44 cycles
+   \   000047                       REQUIRE ?CLRL78_V1_0_L00
+   \   000047                       REQUIRE _A_PER0
+   \   000047                       REQUIRE _A_ADM0
+   \   000047                       REQUIRE _A_MK1
+   \   000047                       REQUIRE _A_IF1
+   \   000047                       REQUIRE _A_PM2
+   \   000047                       REQUIRE _A_PM15
+   \   000047                       REQUIRE _A_PMC14
+   \   000047                       REQUIRE _A_PM14
+   \   000047                       REQUIRE _A_PMC12
+   \   000047                       REQUIRE _A_PM12
+   \   000047                       REQUIRE _A_PMC10
+   \   000047                       REQUIRE _A_PM10
+   \   000047                       REQUIRE _A_ADM1
+   \   000047                       REQUIRE _A_ADM2
+   \   000047                       REQUIRE _A_ADUL
+   \   000047                       REQUIRE _A_ADLL
+   \   000047                       REQUIRE _A_ADS
+     81          
+     82          /***********************************************************************************************************************
+     83          * Function Name: R_ADC_Start
+     84          * Description  : This function starts the AD converter.
+     85          * Arguments    : None
+     86          * Return Value : None
+     87          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     88          void R_ADC_Start(void)
+   \                     R_ADC_Start:
+     89          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+     90              ADCS = 1U;  /* enable AD conversion */
+   \   000000 717A30                SET1      0xFFF30.7          ;; 2 cycles
+     91          }
+   \   000003 D7                    RET                          ;; 6 cycles
+   \   000004                       ; ------------------------------------- Block: 8 cycles
+   \   000004                       ; ------------------------------------- Total: 8 cycles
+   \   000004                       REQUIRE ?CLRL78_V1_0_L00
+   \   000004                       REQUIRE _A_ADM0
+     92          
+     93          /***********************************************************************************************************************
+     94          * Function Name: R_ADC_Stop
+     95          * Description  : This function stops the AD converter.
+     96          * Arguments    : None
+     97          * Return Value : None
+     98          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     99          void R_ADC_Stop(void)
+   \                     R_ADC_Stop:
+    100          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+    101              ADCS = 0U;  /* disable AD conversion */
+   \   000000 717B30                CLR1      0xFFF30.7          ;; 2 cycles
+    102          }
+   \   000003 D7                    RET                          ;; 6 cycles
+   \   000004                       ; ------------------------------------- Block: 8 cycles
+   \   000004                       ; ------------------------------------- Total: 8 cycles
+   \   000004                       REQUIRE ?CLRL78_V1_0_L00
+   \   000004                       REQUIRE _A_ADM0
+    103          
+    104          /***********************************************************************************************************************
+    105          * Function Name: R_ADC_Set_OperationOn
+    106          * Description  : This function enables comparator operation.
+    107          * Arguments    : None
+    108          * Return Value : None
+    109          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    110          void R_ADC_Set_OperationOn(void)
+   \                     R_ADC_Set_OperationOn:
+    111          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+    112              ADCE = 1U;  /* enable AD comparator */
+   \   000000 710A30                SET1      0xFFF30.0          ;; 2 cycles
+    113          }
+   \   000003 D7                    RET                          ;; 6 cycles
+   \   000004                       ; ------------------------------------- Block: 8 cycles
+   \   000004                       ; ------------------------------------- Total: 8 cycles
+   \   000004                       REQUIRE ?CLRL78_V1_0_L00
+   \   000004                       REQUIRE _A_ADM0
+    114          
+    115          /***********************************************************************************************************************
+    116          * Function Name: R_ADC_Set_OperationOff
+    117          * Description  : This function stops comparator operation.
+    118          * Arguments    : None
+    119          * Return Value : None
+    120          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    121          void R_ADC_Set_OperationOff(void)
+   \                     R_ADC_Set_OperationOff:
+    122          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+    123              ADCE = 0U;  /* disable AD comparator */
+   \   000000 710B30                CLR1      0xFFF30.0          ;; 2 cycles
+    124          }
+   \   000003 D7                    RET                          ;; 6 cycles
+   \   000004                       ; ------------------------------------- Block: 8 cycles
+   \   000004                       ; ------------------------------------- Total: 8 cycles
+   \   000004                       REQUIRE ?CLRL78_V1_0_L00
+   \   000004                       REQUIRE _A_ADM0
+    125          
+    126          /***********************************************************************************************************************
+    127          * Function Name: R_ADC_Get_Result
+    128          * Description  : This function returns the conversion result in the buffer.
+    129          * Arguments    : buffer -
+    130          *                    the address where to write the conversion result
+    131          * Return Value : None
+    132          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    133          void R_ADC_Get_Result(uint16_t * const buffer)
+   \                     R_ADC_Get_Result:
+    134          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+   \   000000 16                    MOVW      HL, AX             ;; 1 cycle
+    135              *buffer = (uint16_t)(ADCR >> 6U);
+   \   000001 AD1E                  MOVW      AX, S:0xFFF1E      ;; 1 cycle
+   \   000003 316E                  SHRW      AX, 0x6            ;; 1 cycle
+   \   000005 BB                    MOVW      [HL], AX           ;; 1 cycle
+    136          }
+   \   000006 D7                    RET                          ;; 6 cycles
+   \   000007                       ; ------------------------------------- Block: 10 cycles
+   \   000007                       ; ------------------------------------- Total: 10 cycles
+   \   000007                       REQUIRE ?CLRL78_V1_0_L00
+   \   000007                       REQUIRE _A_ADCR
+    137          
+    138          /* Start user code for adding. Do not edit comment generated here */
+    139          /* End user code. Do not edit comment generated here */
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+      0   R_ADC_Create
+      0   R_ADC_Get_Result
+      0   R_ADC_Set_OperationOff
+      0   R_ADC_Set_OperationOn
+      0   R_ADC_Start
+      0   R_ADC_Stop
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      71  R_ADC_Create
+       7  R_ADC_Get_Result
+       4  R_ADC_Set_OperationOff
+       4  R_ADC_Set_OperationOn
+       4  R_ADC_Start
+       4  R_ADC_Stop
+       2  _A_ADCR
+       1  _A_ADLL
+       1  _A_ADM0
+       1  _A_ADM1
+       1  _A_ADM2
+       1  _A_ADS
+       1  _A_ADUL
+       2  _A_IF1
+       2  _A_MK1
+       1  _A_PER0
+       1  _A_PM10
+       1  _A_PM12
+       1  _A_PM14
+       1  _A_PM15
+       1  _A_PM2
+       1  _A_PMC10
+       1  _A_PMC12
+       1  _A_PMC14
+
+ 
+ 94 bytes in segment CODE
+ 19 bytes in segment NEAR_A
+  2 bytes in segment SADDR_A
+ 
+ 94 bytes of CODE memory
+  0 bytes of DATA memory (+ 21 bytes shared)
+
+Errors: none
+Warnings: none

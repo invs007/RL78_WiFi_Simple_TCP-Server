@@ -1,0 +1,1756 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             05/Aug/2014  14:51:19 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Evaluation license - IAR Embedded Workbench for Renesas RL78, Evaluation version 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Glyph\glyph.c                              #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Glyph\glyph.c" --core rl78_2 --code_model  #
+#                    near --data_model near --near_const_location rom0 -o     #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\" --dlib_config "C:\Program      #
+#                    Files (x86)\IAR Systems\Embedded Workbench               #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\glyph.lst                       #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\glyph.r87                        #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\Glyph\glyph.c
+      1          /******************************************************************************
+      2          * DISCLAIMER
+      3          * This software is supplied by Renesas Electronics Corporation and is only
+      4          * intended for use with Renesas products. No other uses are authorized.
+      5          * This software is owned by Renesas Electronics Corporation and is protected under
+      6          * all applicable laws, including copyright laws.
+      7          * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES
+      8          * REGARDING THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY,
+      9          * INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+     10          * PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY
+     11          * DISCLAIMED.
+     12          * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS
+     13          * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE
+     14          * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES
+     15          * FOR ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS
+     16          * AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+     17          * Renesas reserves the right, without notice, to make changes to this
+     18          * software and to discontinue the availability of this software.
+     19          * By using this software, you agree to the additional terms and
+     20          * conditions found by accessing the following link:
+     21          * http://www.renesas.com/disclaimer
+     22          ******************************************************************************/
+     23          /* Copyright (C) 2010 Renesas Electronics Corporation. All rights reserved. */
+     24          /* Code written for Renesas by Future Designs, Inc. www.teamfdi.com */
+     25          
+     26          /******************************************************************************
+     27          * File Name : Glyph.c
+     28          * Version : 1.00
+     29          * Device(s) : Generic
+     30          * Tool-Chain : Glyph - The Generic API for Graphics LCD.
+     31          * H/W Platform : Embedded Controls
+     32          * Description : This is the Glyph API Library definitions.
+     33          *               The Generic API for Graphics LCD (nicknamed "Glyph") is a 
+     34          *               reusable software design to support multiple projects where 
+     35          *               the LCD size and resolution may change, but the basic feature 
+     36          *               set will stay consistent.  Glyph is a standard library 
+     37          *               interface for use with any graphic LCD.  
+     38          ******************************************************************************
+     39          * History :
+     40          * : 20.07.2010 1.00 First Release
+     41          ******************************************************************************/
+     42          
+     43          /******************************************************************************
+     44          Includes “Glyph Includes”
+     45          ******************************************************************************/
+     46          #include <stdio.h>
+     47          #include <stdlib.h>
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \   __intrinsic __nounwind __near_func void free(void *)
+   \                     free:
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+   \   000000 ED....                BR        N:__near_free      ;; 3 cycles
+   \   000003                       ; ------------------------------------- Block: 3 cycles
+   \   000003                       ; ------------------------------------- Total: 3 cycles
+   \   000003                       REQUIRE ?CLRL78_V1_0_L00
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \   __intrinsic __nounwind __near_func void *malloc(size_t)
+   \                     malloc:
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+   \   000000 ED....                BR        N:__near_malloc    ;; 3 cycles
+   \   000003                       ; ------------------------------------- Block: 3 cycles
+   \   000003                       ; ------------------------------------- Total: 3 cycles
+   \   000003                       REQUIRE ?CLRL78_V1_0_L00
+     48          #include "glyph_cfg.h"
+     49          #include "glyph_api.h"
+     50          
+     51          /******************************************************************************
+     52          Private Prototypes for the Glyph LCD API
+     53          ******************************************************************************/
+     54          T_glyphError GlyphLCDOpen(T_glyphHandle aHandle, int16_t aAddress) ;
+     55          T_glyphError GlyphCommOpen(T_glyphHandle aHandle, int16_t aAddress) ;
+     56          
+     57          /******************************************************************************
+     58          * ID : 1.0
+     59          * Outline : GlyphOpen
+     60          * Include : Glyph.h
+     61          * Function Name: GlyphOpen
+     62          * Description : Open the Glyph API.
+     63          * Argument : aHandle - handle passed in and initialized.
+     64          *          : aAddress - The numerical definition of the communications
+     65          *                       and LCD Display set used for this instance of
+     66          *                       the passed in handle.
+     67          * Return Value : 0=success, not 0= error
+     68          * Calling Functions : main
+     69          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     70          T_glyphError GlyphOpen(T_glyphHandle *aHandle, int16_t aAddress)
+   \                     GlyphOpen:
+     71          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C5                    PUSH      DE                 ;; 1 cycle
+   \   000001 C1                    PUSH      AX                 ;; 1 cycle
+   \   000002 C3                    PUSH      BC                 ;; 1 cycle
+   \   000003                       ; Auto size: 6
+   \   000003 C1                    PUSH      AX                 ;; 1 cycle
+     72              T_glyphError error = GLYPH_ERROR_ILLEGAL_OPERATION ;
+   \   000004 5501                  MOV       D, #0x1            ;; 1 cycle
+     73              //T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)aHandle;
+     74              T_glyphWorkspace *p_glyph ;
+     75          
+     76              p_glyph = (T_glyphWorkspace *)malloc(sizeof(T_glyphWorkspace)) ;
+   \   000006 300400                MOVW      AX, #0x4           ;; 1 cycle
+   \   000009 FD....                CALL      malloc             ;; 3 cycles
+   \   00000C B800                  MOVW      [SP], AX           ;; 1 cycle
+     77              p_glyph->iCommAPI = (T_Comm_API *)malloc(sizeof(T_Comm_API)) ;
+   \   00000E 300600                MOVW      AX, #0x6           ;; 1 cycle
+   \   000011 FD....                CALL      malloc             ;; 3 cycles
+   \   000014 12                    MOVW      BC, AX             ;; 1 cycle
+   \   000015 A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000017 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000018 13                    MOVW      AX, BC             ;; 1 cycle
+   \   000019 BC02                  MOVW      [HL+0x02], AX      ;; 1 cycle
+     78              p_glyph->iLCDAPI = (T_LCD_API *)malloc(sizeof(T_LCD_API)) ;
+   \   00001B 302400                MOVW      AX, #0x24          ;; 1 cycle
+   \   00001E FD....                CALL      malloc             ;; 3 cycles
+   \   000021 12                    MOVW      BC, AX             ;; 1 cycle
+   \   000022 A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000024 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000025 33                    XCHW      AX, BC             ;; 1 cycle
+   \   000026 BB                    MOVW      [HL], AX           ;; 1 cycle
+     79              
+     80              *aHandle = (T_glyphHandle)p_glyph ;
+   \   000027 A804                  MOVW      AX, [SP+0x04]      ;; 1 cycle
+   \   000029 16                    MOVW      HL, AX             ;; 1 cycle
+   \   00002A 13                    MOVW      AX, BC             ;; 1 cycle
+   \   00002B BB                    MOVW      [HL], AX           ;; 1 cycle
+     81              
+     82              /* Open the communications and the LCD */
+     83              if (GlyphCommOpen(*aHandle, aAddress) == GLYPH_ERROR_NONE) {
+   \   00002C A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   00002E 12                    MOVW      BC, AX             ;; 1 cycle
+   \   00002F AB                    MOVW      AX, [HL]           ;; 1 cycle
+   \   000030 FD....                CALL      GlyphCommOpen      ;; 3 cycles
+   \   000033 D1                    CMP0      A                  ;; 1 cycle
+   \   000034 DF26                  BNZ       ??GlyphSetContrastBoost_0  ;; 4 cycles
+   \   000036                       ; ------------------------------------- Block: 43 cycles
+     84                  if (GlyphLCDOpen(*aHandle, aAddress) == GLYPH_ERROR_NONE) {
+   \   000036 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000038 12                    MOVW      BC, AX             ;; 1 cycle
+   \   000039 A804                  MOVW      AX, [SP+0x04]      ;; 1 cycle
+   \   00003B 16                    MOVW      HL, AX             ;; 1 cycle
+   \   00003C AB                    MOVW      AX, [HL]           ;; 1 cycle
+   \   00003D FD....                CALL      GlyphLCDOpen       ;; 3 cycles
+   \   000040 D1                    CMP0      A                  ;; 1 cycle
+   \   000041 DF19                  BNZ       ??GlyphSetContrastBoost_0  ;; 4 cycles
+   \   000043                       ; ------------------------------------- Block: 13 cycles
+     85                      error = p_glyph->iLCDAPI->iOpen(*aHandle, aAddress) ;
+   \   000043 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000045 12                    MOVW      BC, AX             ;; 1 cycle
+   \   000046 A804                  MOVW      AX, [SP+0x04]      ;; 1 cycle
+   \   000048 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000049 AB                    MOVW      AX, [HL]           ;; 1 cycle
+   \   00004A C3                    PUSH      BC                 ;; 1 cycle
+   \   00004B 12                    MOVW      BC, AX             ;; 1 cycle
+   \   00004C A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   00004E 16                    MOVW      HL, AX             ;; 1 cycle
+   \   00004F AB                    MOVW      AX, [HL]           ;; 1 cycle
+   \   000050 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000051 AA1C                  MOVW      AX, [DE+0x1C]      ;; 1 cycle
+   \   000053 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000054 CEFC00                MOV       CS, #0x0           ;; 1 cycle
+   \   000057 13                    MOVW      AX, BC             ;; 1 cycle
+   \   000058 C2                    POP       BC                 ;; 1 cycle
+   \   000059 61FA                  CALL      HL                 ;; 3 cycles
+   \   00005B 75                    MOV       D, A               ;; 1 cycle
+   \   00005C                       ; ------------------------------------- Block: 20 cycles
+     86                  }
+     87              }
+     88              
+     89              return error ;
+   \                     ??GlyphSetContrastBoost_0:
+   \   00005C 65                    MOV       A, D               ;; 1 cycle
+   \   00005D 1006                  ADDW      SP, #0x6           ;; 1 cycle
+   \   00005F C4                    POP       DE                 ;; 1 cycle
+   \   000060 D7                    RET                          ;; 6 cycles
+   \   000061                       ; ------------------------------------- Block: 9 cycles
+   \   000061                       ; ------------------------------------- Total: 85 cycles
+   \   000061                       REQUIRE ?CLRL78_V1_0_L00
+     90          }
+     91          
+     92          /******************************************************************************
+     93          * ID : 1.1
+     94          * Outline : GlyphClose
+     95          * Include : Glyph.h
+     96          * Function Name: GlyphClose
+     97          * Description : Close the Glyph API.
+     98          * Argument : aHandle - handle created and returned.
+     99          * Return Value : 0=success, not 0= error
+    100          * Calling Functions : main
+    101          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    102          T_glyphError GlyphClose(T_glyphHandle *aHandle)
+   \                     GlyphClose:
+    103          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002 C1                    PUSH      AX                 ;; 1 cycle
+   \   000003                       ; Auto size: 2
+    104              T_glyphError error = GLYPH_ERROR_ILLEGAL_OPERATION ;
+    105              T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)*aHandle;
+   \   000003 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000004 AB                    MOVW      AX, [HL]           ;; 1 cycle
+   \   000005 14                    MOVW      DE, AX             ;; 1 cycle
+    106              
+    107              GlyphClearScreen(*aHandle) ;
+   \   000006 FD....                CALL      GlyphClearScreen   ;; 3 cycles
+    108          
+    109              error = p_glyph->iLCDAPI->iClose(aHandle);
+   \   000009 A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   00000B C1                    PUSH      AX                 ;; 1 cycle
+   \   00000C A9                    MOVW      AX, [DE]           ;; 1 cycle
+   \   00000D 16                    MOVW      HL, AX             ;; 1 cycle
+   \   00000E AC1E                  MOVW      AX, [HL+0x1E]      ;; 1 cycle
+   \   000010 12                    MOVW      BC, AX             ;; 1 cycle
+   \   000011 CEFC00                MOV       CS, #0x0           ;; 1 cycle
+   \   000014 C0                    POP       AX                 ;; 1 cycle
+   \   000015 61DA                  CALL      BC                 ;; 3 cycles
+   \   000017 73                    MOV       B, A               ;; 1 cycle
+    110              if (error == GLYPH_ERROR_NONE) {
+   \   000018 D3                    CMP0      B                  ;; 1 cycle
+   \   000019 DF15                  BNZ       ??GlyphSetContrastBoost_1  ;; 4 cycles
+   \   00001B                       ; ------------------------------------- Block: 26 cycles
+    111                  free((void *)p_glyph->iLCDAPI) ;
+   \   00001B A9                    MOVW      AX, [DE]           ;; 1 cycle
+   \   00001C FD....                CALL      free               ;; 3 cycles
+    112                  p_glyph->iLCDAPI = 0 ;
+   \   00001F F6                    CLRW      AX                 ;; 1 cycle
+   \   000020 B9                    MOVW      [DE], AX           ;; 1 cycle
+    113                  free((void *)p_glyph->iCommAPI) ;
+   \   000021 AA02                  MOVW      AX, [DE+0x02]      ;; 1 cycle
+   \   000023 FD....                CALL      free               ;; 3 cycles
+    114                  p_glyph->iCommAPI = 0 ;
+   \   000026 F6                    CLRW      AX                 ;; 1 cycle
+   \   000027 BA02                  MOVW      [DE+0x02], AX      ;; 1 cycle
+    115                  free((void *)p_glyph) ;
+   \   000029 15                    MOVW      AX, DE             ;; 1 cycle
+   \   00002A FD....                CALL      free               ;; 3 cycles
+    116                  p_glyph = 0 ;
+   \   00002D 340000                MOVW      DE, #0x0           ;; 1 cycle
+   \   000030                       ; ------------------------------------- Block: 17 cycles
+    117              }
+    118              
+    119              *aHandle = (T_glyphHandle)p_glyph ;
+   \                     ??GlyphSetContrastBoost_1:
+   \   000030 A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000032 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000033 15                    MOVW      AX, DE             ;; 1 cycle
+   \   000034 BB                    MOVW      [HL], AX           ;; 1 cycle
+    120              
+    121              return error ;
+   \   000035 63                    MOV       A, B               ;; 1 cycle
+   \   000036 1002                  ADDW      SP, #0x2           ;; 1 cycle
+   \   000038 C4                    POP       DE                 ;; 1 cycle
+   \   000039 C2                    POP       BC                 ;; 1 cycle
+   \   00003A D7                    RET                          ;; 6 cycles
+   \   00003B                       ; ------------------------------------- Block: 14 cycles
+   \   00003B                       ; ------------------------------------- Total: 57 cycles
+   \   00003B                       REQUIRE ?CLRL78_V1_0_L00
+    122          }
+    123          
+    124          /******************************************************************************
+    125          * ID : 2.0
+    126          * Outline : GlyphWrite
+    127          * Include : Glyph.h
+    128          * Function Name: GlyphWrite
+    129          * Description : Write to the LCD using a Glyph Register value, to the Glyph
+    130          * data storage or run an LCD Glyph Command.
+    131          * Argument : aHandle - handle created and returned.
+    132          *          : aAddress - may be used for communications.
+    133          * Return Value : 0=success, not 0= error
+    134          * Calling Functions : main, GlyphSetX, GlyphSetY, GlyphSetXY,
+    135          *                     GlyphSetFont, GlyphSetDrawMode,
+    136          *                     GlyphChar, GlyphString, GlyphClearScreen,
+    137          *                     GlyphInvertScreen, GlyphNormalScreen, GlyphSleep,
+    138          *                     GlyphWake, GlyphDrawTestPattern, GlyphDrawBlock,
+    139          *                     GlyphEraseBlock, GlyphSetContrast, GlyphSetContrastBoost
+    140          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    141          T_glyphError GlyphWrite(T_glyphHandle aHandle, uint16_t aRegister, uint16_t aValue)
+   \                     GlyphWrite:
+    142          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+   \   000000 16                    MOVW      HL, AX             ;; 1 cycle
+    143              T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)aHandle;
+    144          
+    145              return p_glyph->iLCDAPI->iWrite(aHandle, aRegister, aValue);
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002 AB                    MOVW      AX, [HL]           ;; 1 cycle
+   \   000003 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000004 AA22                  MOVW      AX, [DE+0x22]      ;; 1 cycle
+   \   000006                       ; ------------------------------------- Block: 5 cycles
+   \   000006                       ; ------------------------------------- Total: 5 cycles
+   \   000006                       REQUIRE ?CLRL78_V1_0_L00
+   \   000006                       REQUIRE ?Subroutine2
+   \   000006                       ; // Fall through to label ?Subroutine2
+    146          }
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000 37                    XCHW      AX, HL             ;; 1 cycle
+   \   000001 CEFC00                MOV       CS, #0x0           ;; 1 cycle
+   \   000004 C4                    POP       DE                 ;; 1 cycle
+   \   000005 61FA                  CALL      HL                 ;; 3 cycles
+   \   000007 D7                    RET                          ;; 6 cycles
+   \   000008                       ; ------------------------------------- Block: 12 cycles
+   \   000008                       ; ------------------------------------- Total: 12 cycles
+   \   000008                       REQUIRE ?CLRL78_V1_0_L00
+    147          
+    148          /******************************************************************************
+    149          * ID : 3.0
+    150          * Outline : GlyphRead
+    151          * Include : Glyph.h
+    152          * Function Name: GlyphRead
+    153          * Description : Read from the Glyph data storage using a Glyph Register value.
+    154          * Argument : aHandle - handle created and returned.
+    155          *          : aAddress - may be used for communications.
+    156          * Return Value : 0=success, not 0= error
+    157          * Calling Functions : main, GlyphGetStatus, GlyphGetX, GlyphGetY, GlyphGetXY,
+    158          *                     GlyphGetFont, GlyphGetFont
+    159          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    160          T_glyphError GlyphRead(T_glyphHandle aHandle, uint16_t aRegister, uint16_t *aValue)
+   \                     GlyphRead:
+    161          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+   \   000000 16                    MOVW      HL, AX             ;; 1 cycle
+    162              T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)aHandle;
+    163          
+    164              return p_glyph->iLCDAPI->iRead(aHandle, aRegister, aValue) ;
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002 AB                    MOVW      AX, [HL]           ;; 1 cycle
+   \   000003 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000004 AA20                  MOVW      AX, [DE+0x20]      ;; 1 cycle
+   \   000006 ED....                BR        N:?Subroutine2     ;; 3 cycles
+   \   000009                       ; ------------------------------------- Block: 8 cycles
+   \   000009                       ; ------------------------------------- Total: 8 cycles
+   \   000009                       REQUIRE ?CLRL78_V1_0_L00
+    165          }
+    166          
+    167          /******************************************************************************
+    168          * ID : 3.1
+    169          * Outline : GlyphGetStatus
+    170          * Include : Glyph.h
+    171          * Function Name: GlyphGetStatus
+    172          * Description : Returns the status.
+    173          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    174          *          : aStatus - GLYPH_STATUS_BUSY or GLYPH_STATUS_READY
+    175          * Return Value : 0=success, not 0= error
+    176          * Calling Functions : main
+    177          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    178          T_glyphError GlyphGetStatus(T_glyphHandle aHandle, T_glyphStatusBits *aStatus)
+   \                     GlyphGetStatus:
+    179          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C5                    PUSH      DE                 ;; 1 cycle
+   \   000001                       ; Auto size: 0
+   \   000001 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000002 C3                    PUSH      BC                 ;; 1 cycle
+   \   000003 C4                    POP       DE                 ;; 1 cycle
+    180              T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)aHandle;
+    181          
+    182              return p_glyph->iLCDAPI->iRead(aHandle, GLYPH_STATUS, (uint16_t *)aStatus) ;
+   \   000004 F7                    CLRW      BC                 ;; 1 cycle
+   \   000005 ED....                BR        N:?Subroutine1     ;; 3 cycles
+   \   000008                       ; ------------------------------------- Block: 8 cycles
+   \   000008                       ; ------------------------------------- Total: 8 cycles
+   \   000008                       REQUIRE ?CLRL78_V1_0_L00
+    183          }
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000 C5                    PUSH      DE                 ;; 1 cycle
+   \   000001 AB                    MOVW      AX, [HL]           ;; 1 cycle
+   \   000002 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000003 AA20                  MOVW      AX, [DE+0x20]      ;; 1 cycle
+   \   000005                       ; ------------------------------------- Block: 4 cycles
+   \   000005                       ; ------------------------------------- Total: 4 cycles
+   \   000005                       REQUIRE ?CLRL78_V1_0_L00
+   \   000005                       REQUIRE ??Subroutine11_0
+   \   000005                       ; // Fall through to label ??Subroutine11_0
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ??Subroutine11_0:
+   \   000000 37                    XCHW      AX, HL             ;; 1 cycle
+   \   000001 CEFC00                MOV       CS, #0x0           ;; 1 cycle
+   \   000004 C4                    POP       DE                 ;; 1 cycle
+   \   000005 61FA                  CALL      HL                 ;; 3 cycles
+   \   000007 C4                    POP       DE                 ;; 1 cycle
+   \   000008 D7                    RET                          ;; 6 cycles
+   \   000009                       ; ------------------------------------- Block: 13 cycles
+   \   000009                       ; ------------------------------------- Total: 13 cycles
+   \   000009                       REQUIRE ?CLRL78_V1_0_L00
+    184          
+    185          /******************************************************************************
+    186          * ID : 4.0
+    187          * Outline : GlyphSetX
+    188          * Include : Glyph.h
+    189          * Function Name: GlyphSetX
+    190          * Description : Sets the value of the X position in the given Glyph Handle.
+    191          * This position is used as the left position of the next Glyph on the screen.
+    192          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    193          *          : aX - The given X position.
+    194          * Return Value : 0=success, not 0= error
+    195          * Calling Functions : main
+    196          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    197          T_glyphError GlyphSetX(T_glyphHandle aHandle, uint16_t aX)
+   \                     GlyphSetX:
+    198          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C5                    PUSH      DE                 ;; 1 cycle
+   \   000001                       ; Auto size: 0
+   \   000001 16                    MOVW      HL, AX             ;; 1 cycle
+    199              T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)aHandle;
+    200          
+    201              return p_glyph->iLCDAPI->iWrite(aHandle, GLYPH_CHAR_X, aX);
+   \   000002 C3                    PUSH      BC                 ;; 1 cycle
+   \   000003 C4                    POP       DE                 ;; 1 cycle
+   \   000004 E7                    ONEW      BC                 ;; 1 cycle
+   \   000005                       ; ------------------------------------- Block: 5 cycles
+   \   000005                       ; ------------------------------------- Total: 5 cycles
+   \   000005                       REQUIRE ?CLRL78_V1_0_L00
+   \   000005                       REQUIRE ?Subroutine10
+   \   000005                       ; // Fall through to label ?Subroutine10
+    202          }
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine10:
+   \   000000 C5                    PUSH      DE                 ;; 1 cycle
+   \   000001 AB                    MOVW      AX, [HL]           ;; 1 cycle
+   \   000002 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000003 AA22                  MOVW      AX, [DE+0x22]      ;; 1 cycle
+   \   000005 ED....                BR        N:??Subroutine11_0  ;; 3 cycles
+   \   000008                       ; ------------------------------------- Block: 7 cycles
+   \   000008                       ; ------------------------------------- Total: 7 cycles
+   \   000008                       REQUIRE ?CLRL78_V1_0_L00
+    203          
+    204          /******************************************************************************
+    205          * ID : 5.0
+    206          * Outline : GlyphSetY
+    207          * Include : Glyph.h
+    208          * Function Name: GlyphSetY
+    209          * Description : Sets the value of the Y position in the given Glyph Handle.
+    210          * This position is used as the left position of the next Glyph on the screen.
+    211          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    212          *          : aY - The given Y position.
+    213          * Return Value : 0=success, not 0= error
+    214          * Calling Functions : main
+    215          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    216          T_glyphError GlyphSetY(T_glyphHandle aHandle, uint16_t aY)
+   \                     GlyphSetY:
+    217          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C5                    PUSH      DE                 ;; 1 cycle
+   \   000001                       ; Auto size: 0
+   \   000001 16                    MOVW      HL, AX             ;; 1 cycle
+    218              T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)aHandle;
+    219          
+    220              return p_glyph->iLCDAPI->iWrite(aHandle, GLYPH_CHAR_Y, aY);
+   \   000002 C3                    PUSH      BC                 ;; 1 cycle
+   \   000003 C4                    POP       DE                 ;; 1 cycle
+   \   000004 320200                MOVW      BC, #0x2           ;; 1 cycle
+   \   000007 ED....                BR        N:?Subroutine10    ;; 3 cycles
+   \   00000A                       ; ------------------------------------- Block: 8 cycles
+   \   00000A                       ; ------------------------------------- Total: 8 cycles
+   \   00000A                       REQUIRE ?CLRL78_V1_0_L00
+    221          }
+    222          
+    223          /******************************************************************************
+    224          * ID : 6.0
+    225          * Outline : GlyphSetXY
+    226          * Include : Glyph.h
+    227          * Function Name: GlyphSetXY
+    228          * Description : Sets the value of the X and Y positions in the given Glyph
+    229          * Handle.  This position is used as the top left position of the next Glyph
+    230          * on the screen.
+    231          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    232          *          : aX - The given X position.
+    233          *          : aY - The given Y position.
+    234          * Return Value : 0=success, not 0= error
+    235          * Calling Functions : main
+    236          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    237          T_glyphError GlyphSetXY(T_glyphHandle aHandle, uint16_t aX, uint16_t aY)
+   \                     GlyphSetXY:
+    238          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C1                    PUSH      AX                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 4
+    239              T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)aHandle;
+    240              T_glyphError error ;
+    241          
+    242              error = p_glyph->iLCDAPI->iWrite(aHandle, GLYPH_CHAR_X, aX);
+   \   000002 C3                    PUSH      BC                 ;; 1 cycle
+   \   000003 C4                    POP       DE                 ;; 1 cycle
+   \   000004 E7                    ONEW      BC                 ;; 1 cycle
+   \   000005 C5                    PUSH      DE                 ;; 1 cycle
+   \   000006 FD....                CALL      N:?Subroutine5     ;; 3 cycles
+   \   000009                       ; ------------------------------------- Block: 9 cycles
+   \                     ??CrossCallReturnLabel_12:
+   \   000009 C4                    POP       DE                 ;; 1 cycle
+   \   00000A 61FA                  CALL      HL                 ;; 3 cycles
+    243              if (error == GLYPH_ERROR_NONE)
+   \   00000C D1                    CMP0      A                  ;; 1 cycle
+   \   00000D DF0F                  BNZ       ??GlyphSetContrastBoost_2  ;; 4 cycles
+   \   00000F                       ; ------------------------------------- Block: 9 cycles
+    244              {
+    245                  error = p_glyph->iLCDAPI->iWrite(aHandle, GLYPH_CHAR_Y, aY);
+   \   00000F A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000011 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000012 320200                MOVW      BC, #0x2           ;; 1 cycle
+   \   000015 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000017 C5                    PUSH      DE                 ;; 1 cycle
+   \   000018 FD....                CALL      N:?Subroutine5     ;; 3 cycles
+   \   00001B                       ; ------------------------------------- Block: 8 cycles
+    246              }
+   \                     ??CrossCallReturnLabel_13:
+   \   00001B C4                    POP       DE                 ;; 1 cycle
+   \   00001C 61FA                  CALL      HL                 ;; 3 cycles
+   \   00001E                       ; ------------------------------------- Block: 4 cycles
+    247          
+    248              return error ;
+   \                     ??GlyphSetContrastBoost_2:
+   \   00001E 1004                  ADDW      SP, #0x4           ;; 1 cycle
+   \   000020 D7                    RET                          ;; 6 cycles
+   \   000021                       ; ------------------------------------- Block: 7 cycles
+   \   000021                       ; ------------------------------------- Total: 37 cycles
+   \   000021                       REQUIRE ?CLRL78_V1_0_L00
+    249          }
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine9:
+   \   000000 37                    XCHW      AX, HL             ;; 1 cycle
+   \   000001 CEFC00                MOV       CS, #0x0           ;; 1 cycle
+   \   000004 D7                    RET                          ;; 6 cycles
+   \   000005                       ; ------------------------------------- Block: 8 cycles
+   \   000005                       ; ------------------------------------- Total: 8 cycles
+   \   000005                       REQUIRE ?CLRL78_V1_0_L00
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine5:
+   \   000000 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000001                       ; ------------------------------------- Block: 1 cycles
+   \   000001                       ; ------------------------------------- Total: 1 cycles
+   \   000001                       REQUIRE ?CLRL78_V1_0_L00
+   \   000001                       REQUIRE ?Subroutine8
+   \   000001                       ; // Fall through to label ?Subroutine8
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine8:
+   \   000000 AB                    MOVW      AX, [HL]           ;; 1 cycle
+   \   000001 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000002 AA22                  MOVW      AX, [DE+0x22]      ;; 1 cycle
+   \   000004 ED....                BR        N:?Subroutine9     ;; 3 cycles
+   \   000007                       ; ------------------------------------- Block: 6 cycles
+   \   000007                       ; ------------------------------------- Total: 6 cycles
+   \   000007                       REQUIRE ?CLRL78_V1_0_L00
+    250          
+    251          /******************************************************************************
+    252          * ID : 7.0
+    253          * Outline : GlyphGetXY
+    254          * Include : Glyph.h
+    255          * Function Name: GlyphGetXY
+    256          * Description : Gets the value of the X and Y positions in the given Glyph
+    257          * Handle. The filled values are the current top left position of the next
+    258          * character to be placed onto the screen.
+    259          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    260          *          : aX - The X position to obtain.
+    261          *          : aY - The Y position to obtain.
+    262          * Return Value : 0=success, not 0= error
+    263          * Calling Functions : main
+    264          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    265          T_glyphError GlyphGetXY(T_glyphHandle aHandle, uint16_t *aX, uint16_t *aY)
+   \                     GlyphGetXY:
+    266          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C1                    PUSH      AX                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 4
+   \   000002 C3                    PUSH      BC                 ;; 1 cycle
+   \   000003 C4                    POP       DE                 ;; 1 cycle
+    267              T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)aHandle;
+    268              T_glyphError error ;
+    269          
+    270              error = p_glyph->iLCDAPI->iRead(aHandle, GLYPH_CHAR_X, aX);
+   \   000004 E7                    ONEW      BC                 ;; 1 cycle
+   \   000005 C5                    PUSH      DE                 ;; 1 cycle
+   \   000006 FD....                CALL      N:?Subroutine6     ;; 3 cycles
+   \   000009                       ; ------------------------------------- Block: 9 cycles
+   \                     ??CrossCallReturnLabel_4:
+   \   000009 C4                    POP       DE                 ;; 1 cycle
+   \   00000A 61FA                  CALL      HL                 ;; 3 cycles
+    271              if (error == GLYPH_ERROR_NONE)
+   \   00000C D1                    CMP0      A                  ;; 1 cycle
+   \   00000D DF0F                  BNZ       ??GlyphSetContrastBoost_3  ;; 4 cycles
+   \   00000F                       ; ------------------------------------- Block: 9 cycles
+    272              {
+    273                  error = p_glyph->iLCDAPI->iRead(aHandle, GLYPH_CHAR_Y, aY);
+   \   00000F A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000011 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000012 320200                MOVW      BC, #0x2           ;; 1 cycle
+   \   000015 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000017 C5                    PUSH      DE                 ;; 1 cycle
+   \   000018 FD....                CALL      N:?Subroutine6     ;; 3 cycles
+   \   00001B                       ; ------------------------------------- Block: 8 cycles
+    274              }
+   \                     ??CrossCallReturnLabel_5:
+   \   00001B C4                    POP       DE                 ;; 1 cycle
+   \   00001C 61FA                  CALL      HL                 ;; 3 cycles
+   \   00001E                       ; ------------------------------------- Block: 4 cycles
+    275          
+    276              return error ;
+   \                     ??GlyphSetContrastBoost_3:
+   \   00001E 1004                  ADDW      SP, #0x4           ;; 1 cycle
+   \   000020 D7                    RET                          ;; 6 cycles
+   \   000021                       ; ------------------------------------- Block: 7 cycles
+   \   000021                       ; ------------------------------------- Total: 37 cycles
+   \   000021                       REQUIRE ?CLRL78_V1_0_L00
+    277          }
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine6:
+   \   000000 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000001 AB                    MOVW      AX, [HL]           ;; 1 cycle
+   \   000002 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000003 AA20                  MOVW      AX, [DE+0x20]      ;; 1 cycle
+   \   000005                       ; ------------------------------------- Block: 4 cycles
+   \   000005                       ; ------------------------------------- Total: 4 cycles
+   \   000005                       REQUIRE ?CLRL78_V1_0_L00
+   \   000005                       REQUIRE ?Subroutine9
+   \   000005                       ; // Fall through to label ?Subroutine9
+    278          
+    279          /******************************************************************************
+    280          * ID : 8.0
+    281          * Outline : GlyphSetFont
+    282          * Include : Glyph.h
+    283          * Function Name: GlyphSetFont
+    284          * Description : Set a selected font value from the font enumeration to be used as the
+    285          * next font for the next character placed onto the screen.  This font will
+    286          * stay set for every character from now on until you decide to set it again.
+    287          * 
+    288          * The font must have been previously turned on before compile time.  Fonts
+    289          * can be turned on and off and then recompiled using the following file:
+    290          * GlyphUseFont.h
+    291          * which is to be stored inside of your project root directory.
+    292          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    293          *          : aFont - A value from the Font Enumeration.
+    294          * Return Value : 0=success, not 0= error
+    295          * Calling Functions : main
+    296          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    297          T_glyphError GlyphSetFont(T_glyphHandle aHandle, T_glyphFont aFont)
+   \                     GlyphSetFont:
+    298          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 0
+   \   000002 FD....                CALL      N:?Subroutine7     ;; 3 cycles
+   \   000005                       ; ------------------------------------- Block: 5 cycles
+    299              T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)aHandle;
+    300           
+    301              return p_glyph->iLCDAPI->iWrite(aHandle, GLYPH_FONT, (uint16_t)aFont);
+   \                     ??CrossCallReturnLabel_0:
+   \   000005 320300                MOVW      BC, #0x3           ;; 1 cycle
+   \   000008 ED....                BR        N:?Subroutine0     ;; 3 cycles
+   \   00000B                       ; ------------------------------------- Block: 4 cycles
+   \   00000B                       ; ------------------------------------- Total: 9 cycles
+   \   00000B                       REQUIRE ?CLRL78_V1_0_L00
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000 C5                    PUSH      DE                 ;; 1 cycle
+   \   000001 FD....                CALL      N:?Subroutine8     ;; 3 cycles
+   \   000004                       ; ------------------------------------- Block: 4 cycles
+   \                     ??CrossCallReturnLabel_11:
+   \   000004 C4                    POP       DE                 ;; 1 cycle
+   \   000005 61FA                  CALL      HL                 ;; 3 cycles
+   \   000007 C4                    POP       DE                 ;; 1 cycle
+   \   000008 C2                    POP       BC                 ;; 1 cycle
+   \   000009 D7                    RET                          ;; 6 cycles
+   \   00000A                       ; ------------------------------------- Block: 12 cycles
+   \   00000A                       ; ------------------------------------- Total: 16 cycles
+   \   00000A                       REQUIRE ?CLRL78_V1_0_L00
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine7:
+   \   000000 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000001 63                    MOV       A, B               ;; 1 cycle
+   \   000002 74                    MOV       E, A               ;; 1 cycle
+   \   000003 5500                  MOV       D, #0x0            ;; 1 cycle
+   \   000005 D7                    RET                          ;; 6 cycles
+   \   000006                       ; ------------------------------------- Block: 10 cycles
+   \   000006                       ; ------------------------------------- Total: 10 cycles
+   \   000006                       REQUIRE ?CLRL78_V1_0_L00
+    302          }
+    303          
+    304          /******************************************************************************
+    305          * ID : 9.0
+    306          * Outline : GlyphGetFont
+    307          * Include : Glyph.h
+    308          * Function Name: GlyphGetFont
+    309          * Description : Retrieve the enumeration value for the currently selected font.
+    310          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    311          *          : aFont - A value from the Font Enumeration retrieved.
+    312          * Return Value : 0=success, not 0= error
+    313          * Calling Functions : main
+    314          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    315          T_glyphError GlyphGetFont(T_glyphHandle aHandle, T_glyphFont *aFont)
+   \                     GlyphGetFont:
+    316          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C5                    PUSH      DE                 ;; 1 cycle
+   \   000001                       ; Auto size: 0
+   \   000001 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000002 C3                    PUSH      BC                 ;; 1 cycle
+   \   000003 C4                    POP       DE                 ;; 1 cycle
+    317              T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)aHandle;
+    318          
+    319              return p_glyph->iLCDAPI->iRead(aHandle, GLYPH_FONT, (uint16_t *)aFont) ;
+   \   000004 320300                MOVW      BC, #0x3           ;; 1 cycle
+   \   000007 ED....                BR        N:?Subroutine1     ;; 3 cycles
+   \   00000A                       ; ------------------------------------- Block: 8 cycles
+   \   00000A                       ; ------------------------------------- Total: 8 cycles
+   \   00000A                       REQUIRE ?CLRL78_V1_0_L00
+    320          }
+    321          
+    322          /******************************************************************************
+    323          * ID : 10.0
+    324          * Outline : GlyphSetDrawMode
+    325          * Include : Glyph.h
+    326          * Function Name: GlyphSetDrawMode
+    327          * Description : The draw mode function. Causes a draw procedure to happen on
+    328           * the LCD display.  The procedure is chosen using the T_glyphDrawMode
+    329           * enumeration in the Glyph.h file.  Operations are described as:
+    330           *   GLYPH_CMD_NOP            -- Does Nothing
+    331           *   GLYPH_CMD_SCREEN_CLEAR   -- Clears the screen to blank no pixels on.
+    332           *   GLYPH_CMD_SCREEN_INVERT  -- Inverts the entire screen.  Black is white.
+    333           *   GLYPH_CMD_SCREEN_REGULAR -- Used on startup to create a normal screen.
+    334           *   GLYPH_CMD_SCREEN_SLEEP   -- Puts the LCD in a low power blank screen.
+    335           *   GLYPH_CMD_SCREEN_WAKE    -- Restores the LCD from low power sleep.
+    336           *   GLYPH_CMD_TEST_PATTERN   -- Displays a test patter.
+    337           *   GLYPH_CMD_DRAW_BLOCK     -- Fills X to X2 and Y to Y2
+    338           *   GLYPH_CMD_ERASE_BLOCK    -- Erases X to X2 and Y to Y2
+    339          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    340          *          : aMode - A value from the Draw mode Enumeration.
+    341          * Return Value : 0=success, not 0= error
+    342          * Calling Functions : main
+    343          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    344          T_glyphError GlyphSetDrawMode(T_glyphHandle aHandle, T_glyphDrawMode aMode)
+   \                     GlyphSetDrawMode:
+    345          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 0
+   \   000002 FD....                CALL      N:?Subroutine7     ;; 3 cycles
+   \   000005                       ; ------------------------------------- Block: 5 cycles
+    346              T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)aHandle;
+    347          
+    348              return p_glyph->iLCDAPI->iWrite(aHandle, GLYPH_DRAW_CMD, aMode) ;
+   \                     ??CrossCallReturnLabel_1:
+   \   000005 320500                MOVW      BC, #0x5           ;; 1 cycle
+   \   000008 ED....                BR        N:?Subroutine0     ;; 3 cycles
+   \   00000B                       ; ------------------------------------- Block: 4 cycles
+   \   00000B                       ; ------------------------------------- Total: 9 cycles
+   \   00000B                       REQUIRE ?CLRL78_V1_0_L00
+    349          }
+    350          
+    351          /******************************************************************************
+    352          * ID : 11.0
+    353          * Outline : GlyphChar
+    354          * Include : Glyph.h
+    355          * Function Name: GlyphChar
+    356          * Description : Draws the given character in the currently chosen font at
+    357          * the current X and Y top left starting pixel on the LCD Screen.
+    358          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    359          *          : aChar - The given character.
+    360          * Return Value : 0=success, not 0= error
+    361          * Calling Functions : main
+    362          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    363          T_glyphError GlyphChar(T_glyphHandle aHandle, uint16_t aChar)
+   \                     GlyphChar:
+    364          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C5                    PUSH      DE                 ;; 1 cycle
+   \   000001                       ; Auto size: 0
+   \   000001 16                    MOVW      HL, AX             ;; 1 cycle
+    365              T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)aHandle;
+    366          
+    367              return p_glyph->iLCDAPI->iWrite(aHandle, GLYPH_DRAW_CHAR, aChar) ;
+   \   000002 C3                    PUSH      BC                 ;; 1 cycle
+   \   000003 C4                    POP       DE                 ;; 1 cycle
+   \   000004 320400                MOVW      BC, #0x4           ;; 1 cycle
+   \   000007 ED....                BR        N:?Subroutine10    ;; 3 cycles
+   \   00000A                       ; ------------------------------------- Block: 8 cycles
+   \   00000A                       ; ------------------------------------- Total: 8 cycles
+   \   00000A                       REQUIRE ?CLRL78_V1_0_L00
+    368          }
+    369          
+    370          /******************************************************************************
+    371          * ID : 12.0
+    372          * Outline : GlyphString
+    373          * Include : Glyph.h
+    374          * Function Name: GlyphString
+    375          * Description : Draws the given character string in the currently chosen font at the
+    376          * current X and Y top left starting pixel on the LCD Screen.
+    377          *
+    378          * Each character of the string is set from the start of the last character
+    379          * by the number of aSpacing given.  So if the font is say 8 pixels wide,
+    380          * a good number to use here might be 10 pixels which would give you
+    381          * two pixels between each character in the string.
+    382          *
+    383          * You must count the number of characters you wish to put to the LCD
+    384          * screen and enter that number in the aLength variable.
+    385          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    386          *          : aString - The given character string.
+    387          *          : aLength - The count of characters in the string
+    388          *                      you wish to display on the LCD.
+    389          * Return Value : 0=success, not 0= error
+    390          * Calling Functions : main
+    391          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    392          T_glyphError GlyphString(T_glyphHandle aHandle, uint8_t * aString, uint8_t aLength)
+   \                     GlyphString:
+    393          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C5                    PUSH      DE                 ;; 1 cycle
+   \   000001 C1                    PUSH      AX                 ;; 1 cycle
+   \   000002 C3                    PUSH      BC                 ;; 1 cycle
+   \   000003 C5                    PUSH      DE                 ;; 1 cycle
+   \   000004                       ; Auto size: 6
+    394              uint16_t nIndex = 0 ;
+   \   000004 F6                    CLRW      AX                 ;; 1 cycle
+   \   000005 14                    MOVW      DE, AX             ;; 1 cycle
+    395          
+    396              nIndex = 0 ;
+   \   000006 EF0D                  BR        S:??GlyphSetContrastBoost_4  ;; 3 cycles
+   \   000008                       ; ------------------------------------- Block: 9 cycles
+    397              while (nIndex < aLength)
+    398              {
+    399                  GlyphChar(aHandle, aString[nIndex]) ;
+   \                     ??GlyphString_0:
+   \   000008 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   00000A 05                    ADDW      AX, DE             ;; 1 cycle
+   \   00000B 16                    MOVW      HL, AX             ;; 1 cycle
+   \   00000C 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   00000D 72                    MOV       C, A               ;; 1 cycle
+   \   00000E F3                    CLRB      B                  ;; 1 cycle
+   \   00000F A804                  MOVW      AX, [SP+0x04]      ;; 1 cycle
+   \   000011 FD....                CALL      GlyphChar          ;; 3 cycles
+    400                  nIndex++ ;
+   \   000014 A5                    INCW      DE                 ;; 1 cycle
+   \   000015                       ; ------------------------------------- Block: 11 cycles
+    401              }
+   \                     ??GlyphSetContrastBoost_4:
+   \   000015 8801                  MOV       A, [SP+0x01]       ;; 1 cycle
+   \   000017 70                    MOV       X, A               ;; 1 cycle
+   \   000018 F1                    CLRB      A                  ;; 1 cycle
+   \   000019 45                    CMPW      AX, DE             ;; 1 cycle
+   \   00001A 61C3EB                BH        ??GlyphString_0    ;; 4 cycles
+   \   00001D                       ; ------------------------------------- Block: 8 cycles
+    402          
+    403              return GLYPH_ERROR_NONE ;
+   \   00001D 1006                  ADDW      SP, #0x6           ;; 1 cycle
+   \   00001F C4                    POP       DE                 ;; 1 cycle
+   \   000020 D7                    RET                          ;; 6 cycles
+   \   000021                       ; ------------------------------------- Block: 8 cycles
+   \   000021                       ; ------------------------------------- Total: 36 cycles
+   \   000021                       REQUIRE ?CLRL78_V1_0_L00
+    404          }
+    405          
+    406          /******************************************************************************
+    407          * ID : 13.0
+    408          * Outline : GlyphGetVersionInfo
+    409          * Include : Glyph.h
+    410          * Function Name: GlyphGetVersionInfo
+    411          * Description : Fills the given T_glyphVersionInfo with version data.
+    412          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    413          *          : aInfo - The given version info structure to fill.
+    414          * Return Value : 0=success, not 0= error
+    415          * Calling Functions : main
+    416          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    417          T_glyphError GlyphGetVersionInfo(T_glyphHandle aHandle, T_glyphVersionInfo *aInfo)
+   \                     GlyphGetVersionInfo:
+    418          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C5                    PUSH      DE                 ;; 1 cycle
+   \   000001 C1                    PUSH      AX                 ;; 1 cycle
+   \   000002 C3                    PUSH      BC                 ;; 1 cycle
+   \   000003                       ; Auto size: 6
+   \   000003 C1                    PUSH      AX                 ;; 1 cycle
+    419              uint16_t nVersionValue = 0 ;
+   \   000004 F6                    CLRW      AX                 ;; 1 cycle
+   \   000005 B800                  MOVW      [SP], AX           ;; 1 cycle
+    420              T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)aHandle;
+    421          
+    422              if (p_glyph->iLCDAPI->iRead(aHandle, GLYPH_API_MAJOR_VERSION, &nVersionValue) == GLYPH_ERROR_NONE) {
+   \   000007 EBF8FF                MOVW      DE, SP             ;; 1 cycle
+   \   00000A 320800                MOVW      BC, #0x8           ;; 1 cycle
+   \   00000D A804                  MOVW      AX, [SP+0x04]      ;; 1 cycle
+   \   00000F C5                    PUSH      DE                 ;; 1 cycle
+   \   000010 FD....                CALL      N:?Subroutine6     ;; 3 cycles
+   \   000013                       ; ------------------------------------- Block: 13 cycles
+   \                     ??CrossCallReturnLabel_6:
+   \   000013 C4                    POP       DE                 ;; 1 cycle
+   \   000014 61FA                  CALL      HL                 ;; 3 cycles
+   \   000016 D1                    CMP0      A                  ;; 1 cycle
+   \   000017 61E8                  SKZ                          ;; 4 cycles
+   \   000019 ED....                BR        N:??GlyphSetContrastBoost_5  ;; 4 cycles
+   \   00001C                       ; ------------------------------------- Block: 9 cycles
+    423                  aInfo->nVersionAPIMajor = nVersionValue ;
+   \   00001C A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   00001E 60                    MOV       A, X               ;; 1 cycle
+   \   00001F 73                    MOV       B, A               ;; 1 cycle
+   \   000020 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000022 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000023 63                    MOV       A, B               ;; 1 cycle
+   \   000024 9C28                  MOV       [HL+0x28], A       ;; 1 cycle
+    424                  if (p_glyph->iLCDAPI->iRead(aHandle, GLYPH_API_MINOR_VERSION, &nVersionValue) == GLYPH_ERROR_NONE) {
+   \   000026 EBF8FF                MOVW      DE, SP             ;; 1 cycle
+   \   000029 320900                MOVW      BC, #0x9           ;; 1 cycle
+   \   00002C A804                  MOVW      AX, [SP+0x04]      ;; 1 cycle
+   \   00002E C5                    PUSH      DE                 ;; 1 cycle
+   \   00002F FD....                CALL      N:?Subroutine6     ;; 3 cycles
+   \   000032                       ; ------------------------------------- Block: 14 cycles
+   \                     ??CrossCallReturnLabel_7:
+   \   000032 C4                    POP       DE                 ;; 1 cycle
+   \   000033 61FA                  CALL      HL                 ;; 3 cycles
+   \   000035 D1                    CMP0      A                  ;; 1 cycle
+   \   000036 61E8                  SKZ                          ;; 4 cycles
+   \   000038 ED....                BR        N:??GlyphSetContrastBoost_5  ;; 4 cycles
+   \   00003B                       ; ------------------------------------- Block: 9 cycles
+    425                      aInfo->nVersionAPIMinor = nVersionValue ;
+   \   00003B A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   00003D 60                    MOV       A, X               ;; 1 cycle
+   \   00003E 73                    MOV       B, A               ;; 1 cycle
+   \   00003F A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000041 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000042 63                    MOV       A, B               ;; 1 cycle
+   \   000043 9C29                  MOV       [HL+0x29], A       ;; 1 cycle
+    426                      if (p_glyph->iLCDAPI->iRead(aHandle, GLYPH_IMPLEMENTATION_ID, &nVersionValue) == GLYPH_ERROR_NONE) {
+   \   000045 EBF8FF                MOVW      DE, SP             ;; 1 cycle
+   \   000048 320A00                MOVW      BC, #0xA           ;; 1 cycle
+   \   00004B A804                  MOVW      AX, [SP+0x04]      ;; 1 cycle
+   \   00004D C5                    PUSH      DE                 ;; 1 cycle
+   \   00004E FD....                CALL      N:?Subroutine6     ;; 3 cycles
+   \   000051                       ; ------------------------------------- Block: 14 cycles
+   \                     ??CrossCallReturnLabel_8:
+   \   000051 C4                    POP       DE                 ;; 1 cycle
+   \   000052 61FA                  CALL      HL                 ;; 3 cycles
+   \   000054 D1                    CMP0      A                  ;; 1 cycle
+   \   000055 DF79                  BNZ       ??GlyphSetContrastBoost_5  ;; 4 cycles
+   \   000057                       ; ------------------------------------- Block: 9 cycles
+    427                          aInfo->nImplementationID = nVersionValue ;
+   \   000057 A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000059 60                    MOV       A, X               ;; 1 cycle
+   \   00005A 73                    MOV       B, A               ;; 1 cycle
+   \   00005B A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   00005D 16                    MOVW      HL, AX             ;; 1 cycle
+   \   00005E 63                    MOV       A, B               ;; 1 cycle
+   \   00005F 9C2C                  MOV       [HL+0x2C], A       ;; 1 cycle
+    428                          if (p_glyph->iLCDAPI->iRead(aHandle, GLYPH_IMPL_MAJOR_VERSION, &nVersionValue) == GLYPH_ERROR_NONE) {
+   \   000061 EBF8FF                MOVW      DE, SP             ;; 1 cycle
+   \   000064 320B00                MOVW      BC, #0xB           ;; 1 cycle
+   \   000067 A804                  MOVW      AX, [SP+0x04]      ;; 1 cycle
+   \   000069 C5                    PUSH      DE                 ;; 1 cycle
+   \   00006A FD....                CALL      N:?Subroutine6     ;; 3 cycles
+   \   00006D                       ; ------------------------------------- Block: 14 cycles
+   \                     ??CrossCallReturnLabel_9:
+   \   00006D C4                    POP       DE                 ;; 1 cycle
+   \   00006E 61FA                  CALL      HL                 ;; 3 cycles
+   \   000070 D1                    CMP0      A                  ;; 1 cycle
+   \   000071 DF5D                  BNZ       ??GlyphSetContrastBoost_5  ;; 4 cycles
+   \   000073                       ; ------------------------------------- Block: 9 cycles
+    429                              aInfo->nVersionIMPLMajor = nVersionValue ;
+   \   000073 A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000075 60                    MOV       A, X               ;; 1 cycle
+   \   000076 73                    MOV       B, A               ;; 1 cycle
+   \   000077 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000079 16                    MOVW      HL, AX             ;; 1 cycle
+   \   00007A 63                    MOV       A, B               ;; 1 cycle
+   \   00007B 9C2A                  MOV       [HL+0x2A], A       ;; 1 cycle
+    430                              if (p_glyph->iLCDAPI->iRead(aHandle, GLYPH_IMPL_MINOR_VERSION, &nVersionValue) == GLYPH_ERROR_NONE) {
+   \   00007D EBF8FF                MOVW      DE, SP             ;; 1 cycle
+   \   000080 320C00                MOVW      BC, #0xC           ;; 1 cycle
+   \   000083 A804                  MOVW      AX, [SP+0x04]      ;; 1 cycle
+   \   000085 C5                    PUSH      DE                 ;; 1 cycle
+   \   000086 FD....                CALL      N:?Subroutine6     ;; 3 cycles
+   \   000089                       ; ------------------------------------- Block: 14 cycles
+   \                     ??CrossCallReturnLabel_10:
+   \   000089 C4                    POP       DE                 ;; 1 cycle
+   \   00008A 61FA                  CALL      HL                 ;; 3 cycles
+   \   00008C D1                    CMP0      A                  ;; 1 cycle
+   \   00008D DF41                  BNZ       ??GlyphSetContrastBoost_5  ;; 4 cycles
+   \   00008F                       ; ------------------------------------- Block: 9 cycles
+    431                                  aInfo->nVersionIMPLMinor = nVersionValue ;
+   \   00008F A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000091 60                    MOV       A, X               ;; 1 cycle
+   \   000092 73                    MOV       B, A               ;; 1 cycle
+   \   000093 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000095 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000096 63                    MOV       A, B               ;; 1 cycle
+   \   000097 9C2B                  MOV       [HL+0x2B], A       ;; 1 cycle
+    432                                  sprintf((char *)aInfo->strVersionAPI, "API v. %d.0%d",
+    433                                          (int)aInfo->nVersionAPIMajor,
+    434                                          (int)aInfo->nVersionAPIMinor) ;
+   \   000099 8C29                  MOV       A, [HL+0x29]       ;; 1 cycle
+   \   00009B 70                    MOV       X, A               ;; 1 cycle
+   \   00009C 317B                  SAR       A, 0x7             ;; 1 cycle
+   \   00009E C1                    PUSH      AX                 ;; 1 cycle
+   \   00009F 8C28                  MOV       A, [HL+0x28]       ;; 1 cycle
+   \   0000A1 70                    MOV       X, A               ;; 1 cycle
+   \   0000A2 317B                  SAR       A, 0x7             ;; 1 cycle
+   \   0000A4 C1                    PUSH      AX                 ;; 1 cycle
+   \   0000A5 32....                MOVW      BC, #`?<Constant "API v. %d.0%d">`  ;; 1 cycle
+   \   0000A8 17                    MOVW      AX, HL             ;; 1 cycle
+   \   0000A9 FD....                CALL      sprintf            ;; 3 cycles
+    435                                  sprintf((char *)aInfo->strVersionIMPL, "Impl. v. %d.%d%d",
+    436                                          (int)aInfo->nVersionIMPLMajor,
+    437                                          (int)aInfo->nImplementationID,
+    438                                          (int)aInfo->nVersionIMPLMinor) ;
+   \   0000AC A806                  MOVW      AX, [SP+0x06]      ;; 1 cycle
+   \   0000AE 16                    MOVW      HL, AX             ;; 1 cycle
+   \   0000AF 8C2B                  MOV       A, [HL+0x2B]       ;; 1 cycle
+   \   0000B1 70                    MOV       X, A               ;; 1 cycle
+   \   0000B2 317B                  SAR       A, 0x7             ;; 1 cycle
+   \   0000B4 C1                    PUSH      AX                 ;; 1 cycle
+   \   0000B5 8C2C                  MOV       A, [HL+0x2C]       ;; 1 cycle
+   \   0000B7 70                    MOV       X, A               ;; 1 cycle
+   \   0000B8 317B                  SAR       A, 0x7             ;; 1 cycle
+   \   0000BA C1                    PUSH      AX                 ;; 1 cycle
+   \   0000BB 8C2A                  MOV       A, [HL+0x2A]       ;; 1 cycle
+   \   0000BD 70                    MOV       X, A               ;; 1 cycle
+   \   0000BE 317B                  SAR       A, 0x7             ;; 1 cycle
+   \   0000C0 C1                    PUSH      AX                 ;; 1 cycle
+   \   0000C1 32....                MOVW      BC, #`?<Constant "Impl. v. %d.%d%d">`  ;; 1 cycle
+   \   0000C4 17                    MOVW      AX, HL             ;; 1 cycle
+   \   0000C5 041400                ADDW      AX, #0x14          ;; 1 cycle
+   \   0000C8 FD....                CALL      sprintf            ;; 3 cycles
+    439          
+    440                                  return GLYPH_ERROR_NONE ;
+   \   0000CB F1                    CLRB      A                  ;; 1 cycle
+   \   0000CC 100A                  ADDW      SP, #0xA           ;; 1 cycle
+   \   0000CE EF01                  BR        S:??GlyphSetContrastBoost_6  ;; 3 cycles
+   \   0000D0                       ; ------------------------------------- Block: 45 cycles
+    441                              }
+    442                          }
+    443                      }
+    444                  }
+    445              }
+    446          
+    447              return GLYPH_ERROR_ILLEGAL_OPERATION ;
+   \                     ??GlyphSetContrastBoost_5:
+   \   0000D0 E1                    ONEB      A                  ;; 1 cycle
+   \   0000D1                       ; ------------------------------------- Block: 1 cycles
+   \                     ??GlyphSetContrastBoost_6:
+   \   0000D1 1006                  ADDW      SP, #0x6           ;; 1 cycle
+   \   0000D3 C4                    POP       DE                 ;; 1 cycle
+   \   0000D4 D7                    RET                          ;; 6 cycles
+   \   0000D5                       ; ------------------------------------- Block: 8 cycles
+   \   0000D5                       ; ------------------------------------- Total: 168 cycles
+   \   0000D5                       REQUIRE ?CLRL78_V1_0_L00
+    448          }
+    449          
+    450          /******************************************************************************
+    451          * ID : 14.0
+    452          * Outline : GlyphClearScreen
+    453          * Include : Glyph.h
+    454          * Function Name: GlyphClearScreen
+    455          * Description : Clears the LCD Screen to white.
+    456          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    457          * Return Value : 0=success, not 0= error
+    458          * Calling Functions : main
+    459          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    460          T_glyphError GlyphClearScreen(T_glyphHandle aHandle)
+   \                     GlyphClearScreen:
+    461          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001                       ; Auto size: 0
+    462              return GlyphSetDrawMode(aHandle, GLYPH_CMD_SCREEN_CLEAR) ;
+   \   000001 E3                    ONEB      B                  ;; 1 cycle
+   \   000002 ED....                BR        N:?Subroutine3     ;; 3 cycles
+   \   000005                       ; ------------------------------------- Block: 5 cycles
+   \   000005                       ; ------------------------------------- Total: 5 cycles
+   \   000005                       REQUIRE ?CLRL78_V1_0_L00
+    463          }
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine3:
+   \   000000 FD....                CALL      GlyphSetDrawMode   ;; 3 cycles
+   \   000003 C2                    POP       BC                 ;; 1 cycle
+   \   000004 D7                    RET                          ;; 6 cycles
+   \   000005                       ; ------------------------------------- Block: 10 cycles
+   \   000005                       ; ------------------------------------- Total: 10 cycles
+   \   000005                       REQUIRE ?CLRL78_V1_0_L00
+    464          
+    465          /******************************************************************************
+    466          * ID : 15.0
+    467          * Outline : GlyphInvertScreen
+    468          * Include : Glyph.h
+    469          * Function Name: GlyphInvertScreen
+    470          * Description : Inverts every pixel on the screen from white to dark and dark to white.
+    471          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    472          * Return Value : 0=success, not 0= error
+    473          * Calling Functions : main
+    474          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    475          T_glyphError GlyphInvertScreen(T_glyphHandle aHandle)
+   \                     GlyphInvertScreen:
+    476          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001                       ; Auto size: 0
+    477              return GlyphSetDrawMode(aHandle, GLYPH_CMD_SCREEN_INVERT) ;
+   \   000001 5302                  MOV       B, #0x2            ;; 1 cycle
+   \   000003 ED....                BR        N:?Subroutine3     ;; 3 cycles
+   \   000006                       ; ------------------------------------- Block: 5 cycles
+   \   000006                       ; ------------------------------------- Total: 5 cycles
+   \   000006                       REQUIRE ?CLRL78_V1_0_L00
+    478          }
+    479          
+    480          /******************************************************************************
+    481          * ID : 16.0
+    482          * Outline : GlyphNormalScreen
+    483          * Include : Glyph.h
+    484          * Function Name: GlyphNormalScreen
+    485          * Description : Sets up the normal LCD Screen right after initialization
+    486          * startup.
+    487          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    488          * Return Value : 0=success, not 0= error
+    489          * Calling Functions : main
+    490          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    491          T_glyphError GlyphNormalScreen(T_glyphHandle aHandle)
+   \                     GlyphNormalScreen:
+    492          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001                       ; Auto size: 0
+    493              return GlyphSetDrawMode(aHandle, GLYPH_CMD_SCREEN_REGULAR) ;
+   \   000001 5303                  MOV       B, #0x3            ;; 1 cycle
+   \   000003 ED....                BR        N:?Subroutine3     ;; 3 cycles
+   \   000006                       ; ------------------------------------- Block: 5 cycles
+   \   000006                       ; ------------------------------------- Total: 5 cycles
+   \   000006                       REQUIRE ?CLRL78_V1_0_L00
+    494          }
+    495          
+    496          /******************************************************************************
+    497          * ID : 17.0
+    498          * Outline : GlyphSleep
+    499          * Include : Glyph.h
+    500          * Function Name: GlyphSleep
+    501          * Description : Puts the LCD in a low power blank screen.
+    502          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    503          * Return Value : 0=success, not 0= error
+    504          * Calling Functions : main
+    505          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    506          T_glyphError GlyphSleep(T_glyphHandle aHandle)
+   \                     GlyphSleep:
+    507          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001                       ; Auto size: 0
+    508              return GlyphSetDrawMode(aHandle, GLYPH_CMD_SCREEN_SLEEP) ;
+   \   000001 5304                  MOV       B, #0x4            ;; 1 cycle
+   \   000003                       ; ------------------------------------- Block: 2 cycles
+   \   000003                       ; ------------------------------------- Total: 2 cycles
+   \   000003                       REQUIRE ?CLRL78_V1_0_L00
+   \   000003                       REQUIRE ?Subroutine3
+   \   000003                       ; // Fall through to label ?Subroutine3
+    509          }
+    510          
+    511          /******************************************************************************
+    512          * ID : 18.0
+    513          * Outline : GlyphSleep
+    514          * Include : Glyph.h
+    515          * Function Name: GlyphSleep
+    516          * Description : Takes the LCD out of low power sleep mode and redraws the
+    517          * current image.
+    518          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    519          * Return Value : 0=success, not 0= error
+    520          * Calling Functions : main
+    521          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    522          T_glyphError GlyphWake(T_glyphHandle aHandle)
+   \                     GlyphWake:
+    523          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001                       ; Auto size: 0
+    524              return GlyphSetDrawMode(aHandle, GLYPH_CMD_SCREEN_WAKE) ;
+   \   000001 5305                  MOV       B, #0x5            ;; 1 cycle
+   \   000003 ED....                BR        N:?Subroutine3     ;; 3 cycles
+   \   000006                       ; ------------------------------------- Block: 5 cycles
+   \   000006                       ; ------------------------------------- Total: 5 cycles
+   \   000006                       REQUIRE ?CLRL78_V1_0_L00
+    525          }
+    526          
+    527          /******************************************************************************
+    528          * ID : 19.0
+    529          * Outline : GlyphDrawTestPattern
+    530          * Include : Glyph.h
+    531          * Function Name: GlyphDrawTestPattern
+    532          * Description : Draws a test image onto the LCD Screen.
+    533          * current image.
+    534          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    535          * Return Value : 0=success, not 0= error
+    536          * Calling Functions : main
+    537          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    538          T_glyphError GlyphDrawTestPattern(T_glyphHandle aHandle)
+   \                     GlyphDrawTestPattern:
+    539          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001                       ; Auto size: 0
+    540              return GlyphSetDrawMode(aHandle, GLYPH_CMD_TEST_PATTERN) ;
+   \   000001 5306                  MOV       B, #0x6            ;; 1 cycle
+   \   000003 ED....                BR        N:?Subroutine3     ;; 3 cycles
+   \   000006                       ; ------------------------------------- Block: 5 cycles
+   \   000006                       ; ------------------------------------- Total: 5 cycles
+   \   000006                       REQUIRE ?CLRL78_V1_0_L00
+    541          }
+    542          
+    543          /******************************************************************************
+    544          * ID : 20.0
+    545          * Outline : GlyphDrawBlock
+    546          * Include : Glyph.h
+    547          * Function Name: GlyphDrawBlock
+    548          * Description : Draws a set of dark pixels from the X and Y position to the
+    549          * X2 and Y2 position.
+    550          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    551          *          : aX1 - the given X position.
+    552          *          : aY1 - the given Y position.
+    553          *          : aX2 - the given X2 position.
+    554          *          : aY2 - the given Y2 position.
+    555          * Return Value : 0=success, not 0= error
+    556          * Calling Functions : main
+    557          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    558          T_glyphError GlyphDrawBlock(T_glyphHandle aHandle, uint16_t aX1, uint16_t aY1, uint16_t aX2, uint16_t aY2)
+   \                     GlyphDrawBlock:
+    559          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 4
+   \   000000 C1                    PUSH      AX                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 4
+    560              T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)aHandle;
+    561          
+    562              if (p_glyph->iLCDAPI->iWrite(aHandle, GLYPH_CHAR_X, aX1) == GLYPH_ERROR_NONE) {
+   \   000002 C3                    PUSH      BC                 ;; 1 cycle
+   \   000003 C4                    POP       DE                 ;; 1 cycle
+   \   000004 E7                    ONEW      BC                 ;; 1 cycle
+   \   000005 C5                    PUSH      DE                 ;; 1 cycle
+   \   000006 FD....                CALL      N:?Subroutine5     ;; 3 cycles
+   \   000009                       ; ------------------------------------- Block: 9 cycles
+   \                     ??CrossCallReturnLabel_14:
+   \   000009 C4                    POP       DE                 ;; 1 cycle
+   \   00000A 61FA                  CALL      HL                 ;; 3 cycles
+   \   00000C D1                    CMP0      A                  ;; 1 cycle
+   \   00000D DF3F                  BNZ       ??GlyphSetContrastBoost_7  ;; 4 cycles
+   \   00000F                       ; ------------------------------------- Block: 9 cycles
+    563                  if (p_glyph->iLCDAPI->iWrite(aHandle, GLYPH_CHAR_Y, aY1) == GLYPH_ERROR_NONE) {
+   \   00000F A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000011 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000012 320200                MOVW      BC, #0x2           ;; 1 cycle
+   \   000015 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000017 C5                    PUSH      DE                 ;; 1 cycle
+   \   000018 FD....                CALL      N:?Subroutine5     ;; 3 cycles
+   \   00001B                       ; ------------------------------------- Block: 8 cycles
+   \                     ??CrossCallReturnLabel_15:
+   \   00001B C4                    POP       DE                 ;; 1 cycle
+   \   00001C 61FA                  CALL      HL                 ;; 3 cycles
+   \   00001E D1                    CMP0      A                  ;; 1 cycle
+   \   00001F DF2D                  BNZ       ??GlyphSetContrastBoost_7  ;; 4 cycles
+   \   000021                       ; ------------------------------------- Block: 9 cycles
+    564                      if (p_glyph->iLCDAPI->iWrite(aHandle, GLYPH_CHAR_X2, aX2) == GLYPH_ERROR_NONE) {
+   \   000021 A808                  MOVW      AX, [SP+0x08]      ;; 1 cycle
+   \   000023 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000024 320D00                MOVW      BC, #0xD           ;; 1 cycle
+   \   000027 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000029 C5                    PUSH      DE                 ;; 1 cycle
+   \   00002A FD....                CALL      N:?Subroutine5     ;; 3 cycles
+   \   00002D                       ; ------------------------------------- Block: 8 cycles
+   \                     ??CrossCallReturnLabel_16:
+   \   00002D C4                    POP       DE                 ;; 1 cycle
+   \   00002E 61FA                  CALL      HL                 ;; 3 cycles
+   \   000030 D1                    CMP0      A                  ;; 1 cycle
+   \   000031 DF1B                  BNZ       ??GlyphSetContrastBoost_7  ;; 4 cycles
+   \   000033                       ; ------------------------------------- Block: 9 cycles
+    565                          if (p_glyph->iLCDAPI->iWrite(aHandle, GLYPH_CHAR_Y2, aY2) == GLYPH_ERROR_NONE) {
+   \   000033 A80A                  MOVW      AX, [SP+0x0A]      ;; 1 cycle
+   \   000035 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000036 320E00                MOVW      BC, #0xE           ;; 1 cycle
+   \   000039 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   00003B C5                    PUSH      DE                 ;; 1 cycle
+   \   00003C FD....                CALL      N:?Subroutine5     ;; 3 cycles
+   \   00003F                       ; ------------------------------------- Block: 8 cycles
+   \                     ??CrossCallReturnLabel_17:
+   \   00003F C4                    POP       DE                 ;; 1 cycle
+   \   000040 61FA                  CALL      HL                 ;; 3 cycles
+   \   000042 D1                    CMP0      A                  ;; 1 cycle
+   \   000043 DF09                  BNZ       ??GlyphSetContrastBoost_7  ;; 4 cycles
+   \   000045                       ; ------------------------------------- Block: 9 cycles
+    566                              return GlyphSetDrawMode(aHandle, GLYPH_CMD_DRAW_BLOCK) ;
+   \   000045 5307                  MOV       B, #0x7            ;; 1 cycle
+   \   000047 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000049 FD....                CALL      GlyphSetDrawMode   ;; 3 cycles
+   \   00004C EF01                  BR        S:??GlyphSetContrastBoost_8  ;; 3 cycles
+   \   00004E                       ; ------------------------------------- Block: 8 cycles
+    567                          }
+    568                      }
+    569                  }
+    570              }
+    571          
+    572              return GLYPH_ERROR_ILLEGAL_OPERATION ;
+   \                     ??GlyphSetContrastBoost_7:
+   \   00004E E1                    ONEB      A                  ;; 1 cycle
+   \   00004F                       ; ------------------------------------- Block: 1 cycles
+   \                     ??GlyphSetContrastBoost_8:
+   \   00004F                       REQUIRE ?CLRL78_V1_0_L00
+   \   00004F                       REQUIRE ?Subroutine4
+   \   00004F                       ; // Fall through to label ?Subroutine4
+    573          }
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine4:
+   \   000000 1004                  ADDW      SP, #0x4           ;; 1 cycle
+   \   000002 FD....                CALL      N:?FUNC_LEAVE_L06
+   \   000005 0400                  DW        0x4                ;; 3 cycles
+   \   000007                       ; ------------------------------------- Block: 4 cycles
+   \   000007                       ; ------------------------------------- Total: 4 cycles
+   \   000007                       REQUIRE ?CLRL78_V1_0_L00
+    574          
+    575          /******************************************************************************
+    576          * ID : 21.0
+    577          * Outline : GlyphEraseBlock
+    578          * Include : Glyph.h
+    579          * Function Name: GlyphEraseBlock
+    580          * Description : Clears to a set of white pixels from the X and Y position to the
+    581          * X2 and Y2 position.
+    582          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    583          *          : aX1 - the given X position.
+    584          *          : aY1 - the given Y position.
+    585          *          : aX2 - the given X2 position.
+    586          *          : aY2 - the given Y2 position.
+    587          * Return Value : 0=success, not 0= error
+    588          * Calling Functions : main
+    589          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    590          T_glyphError GlyphEraseBlock(T_glyphHandle aHandle, uint16_t aX1, uint16_t aY1, uint16_t aX2, uint16_t aY2)
+   \                     GlyphEraseBlock:
+    591          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 4
+   \   000000 C1                    PUSH      AX                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 4
+    592              T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)aHandle;
+    593          
+    594              if (p_glyph->iLCDAPI->iWrite(aHandle, GLYPH_CHAR_X, aX1) == GLYPH_ERROR_NONE) {
+   \   000002 C3                    PUSH      BC                 ;; 1 cycle
+   \   000003 C4                    POP       DE                 ;; 1 cycle
+   \   000004 E7                    ONEW      BC                 ;; 1 cycle
+   \   000005 C5                    PUSH      DE                 ;; 1 cycle
+   \   000006 FD....                CALL      N:?Subroutine5     ;; 3 cycles
+   \   000009                       ; ------------------------------------- Block: 9 cycles
+   \                     ??CrossCallReturnLabel_18:
+   \   000009 C4                    POP       DE                 ;; 1 cycle
+   \   00000A 61FA                  CALL      HL                 ;; 3 cycles
+   \   00000C D1                    CMP0      A                  ;; 1 cycle
+   \   00000D DF3F                  BNZ       ??GlyphSetContrastBoost_9  ;; 4 cycles
+   \   00000F                       ; ------------------------------------- Block: 9 cycles
+    595                  if (p_glyph->iLCDAPI->iWrite(aHandle, GLYPH_CHAR_Y, aY1) == GLYPH_ERROR_NONE) {
+   \   00000F A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000011 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000012 320200                MOVW      BC, #0x2           ;; 1 cycle
+   \   000015 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000017 C5                    PUSH      DE                 ;; 1 cycle
+   \   000018 FD....                CALL      N:?Subroutine5     ;; 3 cycles
+   \   00001B                       ; ------------------------------------- Block: 8 cycles
+   \                     ??CrossCallReturnLabel_19:
+   \   00001B C4                    POP       DE                 ;; 1 cycle
+   \   00001C 61FA                  CALL      HL                 ;; 3 cycles
+   \   00001E D1                    CMP0      A                  ;; 1 cycle
+   \   00001F DF2D                  BNZ       ??GlyphSetContrastBoost_9  ;; 4 cycles
+   \   000021                       ; ------------------------------------- Block: 9 cycles
+    596                      if (p_glyph->iLCDAPI->iWrite(aHandle, GLYPH_CHAR_X2, aX2) == GLYPH_ERROR_NONE) {
+   \   000021 A808                  MOVW      AX, [SP+0x08]      ;; 1 cycle
+   \   000023 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000024 320D00                MOVW      BC, #0xD           ;; 1 cycle
+   \   000027 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000029 C5                    PUSH      DE                 ;; 1 cycle
+   \   00002A FD....                CALL      N:?Subroutine5     ;; 3 cycles
+   \   00002D                       ; ------------------------------------- Block: 8 cycles
+   \                     ??CrossCallReturnLabel_20:
+   \   00002D C4                    POP       DE                 ;; 1 cycle
+   \   00002E 61FA                  CALL      HL                 ;; 3 cycles
+   \   000030 D1                    CMP0      A                  ;; 1 cycle
+   \   000031 DF1B                  BNZ       ??GlyphSetContrastBoost_9  ;; 4 cycles
+   \   000033                       ; ------------------------------------- Block: 9 cycles
+    597                          if (p_glyph->iLCDAPI->iWrite(aHandle, GLYPH_CHAR_Y2, aY2) == GLYPH_ERROR_NONE) {
+   \   000033 A80A                  MOVW      AX, [SP+0x0A]      ;; 1 cycle
+   \   000035 14                    MOVW      DE, AX             ;; 1 cycle
+   \   000036 320E00                MOVW      BC, #0xE           ;; 1 cycle
+   \   000039 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   00003B C5                    PUSH      DE                 ;; 1 cycle
+   \   00003C FD....                CALL      N:?Subroutine5     ;; 3 cycles
+   \   00003F                       ; ------------------------------------- Block: 8 cycles
+   \                     ??CrossCallReturnLabel_21:
+   \   00003F C4                    POP       DE                 ;; 1 cycle
+   \   000040 61FA                  CALL      HL                 ;; 3 cycles
+   \   000042 D1                    CMP0      A                  ;; 1 cycle
+   \   000043 DF09                  BNZ       ??GlyphSetContrastBoost_9  ;; 4 cycles
+   \   000045                       ; ------------------------------------- Block: 9 cycles
+    598                              return GlyphSetDrawMode(aHandle, GLYPH_CMD_ERASE_BLOCK) ;
+   \   000045 5308                  MOV       B, #0x8            ;; 1 cycle
+   \   000047 A802                  MOVW      AX, [SP+0x02]      ;; 1 cycle
+   \   000049 FD....                CALL      GlyphSetDrawMode   ;; 3 cycles
+   \   00004C EF01                  BR        S:??GlyphSetContrastBoost_10  ;; 3 cycles
+   \   00004E                       ; ------------------------------------- Block: 8 cycles
+    599                          }
+    600                      }
+    601                  }
+    602              }
+    603          
+    604              return GLYPH_ERROR_ILLEGAL_OPERATION ;
+   \                     ??GlyphSetContrastBoost_9:
+   \   00004E E1                    ONEB      A                  ;; 1 cycle
+   \   00004F                       ; ------------------------------------- Block: 1 cycles
+   \                     ??GlyphSetContrastBoost_10:
+   \   00004F ED....                BR        N:?Subroutine4     ;; 3 cycles
+   \   000052                       ; ------------------------------------- Block: 3 cycles
+   \   000052                       ; ------------------------------------- Total: 81 cycles
+   \   000052                       REQUIRE ?CLRL78_V1_0_L00
+    605          }
+    606          
+    607          /******************************************************************************
+    608          * ID : 22.0
+    609          * Outline : GlyphSetContrast
+    610          * Include : Glyph.h
+    611          * Function Name: GlyphSetContrast
+    612          * Description : Sets the contrast of the LCD Display.  Any Positive number
+    613          * is ok. Check the documentation of your LCD and study the LCD Driver Code
+    614          * for correct values.  If the number is too large the contrast will not be
+    615          * changed.
+    616          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    617          *          : nContrast - A Contrast setting value.
+    618          * Return Value : 0=success, not 0= error
+    619          * Calling Functions : main
+    620          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    621          T_glyphError GlyphSetContrast(T_glyphHandle aHandle, uint8_t nContrast)
+   \                     GlyphSetContrast:
+    622          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 0
+   \   000002 FD....                CALL      N:?Subroutine7     ;; 3 cycles
+   \   000005                       ; ------------------------------------- Block: 5 cycles
+    623              T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)aHandle;
+    624          
+    625              return p_glyph->iLCDAPI->iWrite(aHandle, GLYPH_CONTRAST, (uint16_t)nContrast) ;
+   \                     ??CrossCallReturnLabel_2:
+   \   000005 321400                MOVW      BC, #0x14          ;; 1 cycle
+   \   000008                       ; ------------------------------------- Block: 1 cycles
+   \   000008                       ; ------------------------------------- Total: 6 cycles
+   \   000008                       REQUIRE ?CLRL78_V1_0_L00
+   \   000008                       REQUIRE ?Subroutine0
+   \   000008                       ; // Fall through to label ?Subroutine0
+    626          }
+    627          
+    628          /******************************************************************************
+    629          * ID : 23.0
+    630          * Outline : GlyphSetContrastBoost
+    631          * Include : Glyph.h
+    632          * Function Name: GlyphSetContrastBoost
+    633          * Description : Sets the boost for the contrast of the LCD Display.  Any
+    634          * Positive number is ok.  Check the documentation of your LCD and study the
+    635          * LCD Driver Code for correct values.  If the number is too large the contrast
+    636          * boost will not be changed.
+    637          * Argument : aHandle - the Glyph handle setup by the LCD and Communications.
+    638          *          : cContrastBoost - A Contrast Booster setting value.
+    639          * Return Value : 0=success, not 0= error
+    640          * Calling Functions : main
+    641          ******************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    642          T_glyphError GlyphSetContrastBoost(T_glyphHandle aHandle, uint8_t cContrastBoost)
+   \                     GlyphSetContrastBoost:
+    643          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C3                    PUSH      BC                 ;; 1 cycle
+   \   000001 C5                    PUSH      DE                 ;; 1 cycle
+   \   000002                       ; Auto size: 0
+   \   000002 FD....                CALL      N:?Subroutine7     ;; 3 cycles
+   \   000005                       ; ------------------------------------- Block: 5 cycles
+    644              T_glyphWorkspace *p_glyph = (T_glyphWorkspace *)aHandle;
+    645          
+    646              return p_glyph->iLCDAPI->iWrite(aHandle, GLYPH_CONTRAST_BOOST, (uint16_t)cContrastBoost) ;
+   \                     ??CrossCallReturnLabel_3:
+   \   000005 321500                MOVW      BC, #0x15          ;; 1 cycle
+   \   000008 ED....                BR        N:?Subroutine0     ;; 3 cycles
+   \   00000B                       ; ------------------------------------- Block: 4 cycles
+   \   00000B                       ; ------------------------------------- Total: 9 cycles
+   \   00000B                       REQUIRE ?CLRL78_V1_0_L00
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "API v. %d.0%d">`:
+   \   000000 41504920762E          DB "API v. %d.0%d"
+
+   \                                 In  segment NEAR_CONST, align 2
+   \                     `?<Constant "Impl. v. %d.%d%d">`:
+   \   000000 496D706C2E20          DB "Impl. v. %d.%d%d"
+   \   000011 00                    DB 0
+    647          }
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+      4   GlyphChar
+        2   -- Indirect call
+      2   GlyphClearScreen
+        2   -> GlyphSetDrawMode
+      8   GlyphClose
+        6   -- Indirect call
+        6   -> GlyphClearScreen
+        6   -> free
+     10   GlyphDrawBlock
+        4   -- Indirect call
+        4   -> GlyphSetDrawMode
+      2   GlyphDrawTestPattern
+        2   -> GlyphSetDrawMode
+     10   GlyphEraseBlock
+        4   -- Indirect call
+        4   -> GlyphSetDrawMode
+      4   GlyphGetFont
+        2   -- Indirect call
+      4   GlyphGetStatus
+        2   -- Indirect call
+     18   GlyphGetVersionInfo
+        8   -- Indirect call
+       12   -> sprintf
+       18   -> sprintf
+      6   GlyphGetXY
+        4   -- Indirect call
+      2   GlyphInvertScreen
+        2   -> GlyphSetDrawMode
+      2   GlyphNormalScreen
+        2   -> GlyphSetDrawMode
+     10   GlyphOpen
+        8   -- Indirect call
+        8   -> GlyphCommOpen
+        8   -> GlyphLCDOpen
+        8   -> malloc
+      2   GlyphRead
+        0   -- Indirect call
+      6   GlyphSetContrast
+        4   -- Indirect call
+      6   GlyphSetContrastBoost
+        4   -- Indirect call
+      6   GlyphSetDrawMode
+        4   -- Indirect call
+      6   GlyphSetFont
+        4   -- Indirect call
+      4   GlyphSetX
+        2   -- Indirect call
+      6   GlyphSetXY
+        4   -- Indirect call
+      4   GlyphSetY
+        2   -- Indirect call
+      2   GlyphSleep
+        2   -> GlyphSetDrawMode
+      8   GlyphString
+        8   -> GlyphChar
+      2   GlyphWake
+        2   -> GlyphSetDrawMode
+      2   GlyphWrite
+        0   -- Indirect call
+      0   free
+        0   -> __near_free
+      0   malloc
+        0   -> __near_malloc
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      14  ?<Constant "API v. %d.0%d">
+      18  ?<Constant "Impl. v. %d.%d%d">
+       9  ??Subroutine11_0
+      10  ?Subroutine0
+       5  ?Subroutine1
+       8  ?Subroutine10
+       8  ?Subroutine2
+       5  ?Subroutine3
+       7  ?Subroutine4
+       1  ?Subroutine5
+       5  ?Subroutine6
+       6  ?Subroutine7
+       7  ?Subroutine8
+       5  ?Subroutine9
+      10  GlyphChar
+       5  GlyphClearScreen
+      59  GlyphClose
+      79  GlyphDrawBlock
+       6  GlyphDrawTestPattern
+      82  GlyphEraseBlock
+      10  GlyphGetFont
+       8  GlyphGetStatus
+     213  GlyphGetVersionInfo
+      33  GlyphGetXY
+       6  GlyphInvertScreen
+       6  GlyphNormalScreen
+      97  GlyphOpen
+       9  GlyphRead
+       8  GlyphSetContrast
+      11  GlyphSetContrastBoost
+      11  GlyphSetDrawMode
+      11  GlyphSetFont
+       5  GlyphSetX
+      33  GlyphSetXY
+      10  GlyphSetY
+       3  GlyphSleep
+      33  GlyphString
+       6  GlyphWake
+       6  GlyphWrite
+       3  free
+       3  malloc
+
+ 
+ 842 bytes in segment CODE
+  32 bytes in segment NEAR_CONST
+ 
+ 836 bytes of CODE  memory (+ 6 bytes shared)
+  32 bytes of CONST memory
+
+Errors: none
+Warnings: none

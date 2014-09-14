@@ -1,0 +1,910 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             05/Aug/2014  14:51:25 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Evaluation license - IAR Embedded Workbench for Renesas RL78, Evaluation version 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_cg_serial.c                #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_cg_serial.c" --core        #
+#                    rl78_2 --code_model near --data_model near               #
+#                    --near_const_location rom0 -o "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy\Debug\Obj\" --dlib_config      #
+#                    "C:\Program Files (x86)\IAR Systems\Embedded Workbench   #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\r_cg_serial.lst                 #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\r_cg_serial.r87                  #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\applilet3_src\r_cg_serial.c
+      1          /***********************************************************************************************************************
+      2          * DISCLAIMER
+      3          * This software is supplied by Renesas Electronics Corporation and is only 
+      4          * intended for use with Renesas products. No other uses are authorized. This 
+      5          * software is owned by Renesas Electronics Corporation and is protected under 
+      6          * all applicable laws, including copyright laws.
+      7          * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING 
+      8          * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT 
+      9          * LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE 
+     10          * AND NON-INFRINGEMENT.  ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.
+     11          * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS 
+     12          * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE 
+     13          * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR 
+     14          * ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE 
+     15          * BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+     16          * Renesas reserves the right, without notice, to make changes to this software 
+     17          * and to discontinue the availability of this software.  By using this software, 
+     18          * you agree to the additional terms and conditions found by accessing the 
+     19          * following link:
+     20          * http://www.renesas.com/disclaimer
+     21          *
+     22          * Copyright (C) 2011, 2013 Renesas Electronics Corporation. All rights reserved.
+     23          ***********************************************************************************************************************/
+     24          
+     25          /***********************************************************************************************************************
+     26          * File Name    : r_cg_serial.c
+     27          * Version      : Applilet3 for RL78/G14 V2.00.00.08 [12 Apr 2013]
+     28          * Device(s)    : R5F104PJ
+     29          * Tool-Chain   : IAR Systems iccrl78
+     30          * Description  : This file implements device driver for Serial module.
+     31          * Creation Date: 8/4/2014
+     32          ***********************************************************************************************************************/
+     33          
+     34          /***********************************************************************************************************************
+     35          Includes
+     36          ***********************************************************************************************************************/
+     37          #include "r_cg_macrodriver.h"
+
+   \                                 In  segment SADDR_A, at 0xfff05
+   \   union <unnamed> volatile __saddr _A_P5
+   \                     _A_P5:
+   \   000000                       DS 1
+
+   \                                 In  segment SADDR_A, at 0xfff07
+   \   union <unnamed> volatile __saddr _A_P7
+   \                     _A_P7:
+   \   000000                       DS 1
+
+   \                                 In  segment SADDR_A, at 0xfff16
+   \   union <unnamed> volatile __saddr __no_bit_access _A_SDR13
+   \                     _A_SDR13:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfff25
+   \   union <unnamed> volatile __sfr _A_PM5
+   \                     _A_PM5:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff27
+   \   union <unnamed> volatile __sfr _A_PM7
+   \                     _A_PM7:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff4a
+   \   union <unnamed> volatile __sfr __no_bit_access _A_SDR11
+   \                     _A_SDR11:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffe0
+   \   union <unnamed> volatile __sfr _A_IF0
+   \                     _A_IF0:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffe2
+   \   union <unnamed> volatile __sfr _A_IF1
+   \                     _A_IF1:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffe4
+   \   union <unnamed> volatile __sfr _A_MK0
+   \                     _A_MK0:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffe6
+   \   union <unnamed> volatile __sfr _A_MK1
+   \                     _A_MK1:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffe8
+   \   union <unnamed> volatile __sfr _A_PR00
+   \                     _A_PR00:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffea
+   \   union <unnamed> volatile __sfr _A_PR01
+   \                     _A_PR01:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffec
+   \   union <unnamed> volatile __sfr _A_PR10
+   \                     _A_PR10:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffee
+   \   union <unnamed> volatile __sfr _A_PR11
+   \                     _A_PR11:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xf00f0
+   \   union <unnamed> volatile _A_PER0
+   \                     _A_PER0:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xf014a
+   \   union <unnamed> volatile __no_bit_access _A_SIR11
+   \                     _A_SIR11:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xf014e
+   \   union <unnamed> volatile __no_bit_access _A_SIR13
+   \                     _A_SIR13:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xf0152
+   \   union <unnamed> volatile __no_bit_access _A_SMR11
+   \                     _A_SMR11:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xf0156
+   \   union <unnamed> volatile __no_bit_access _A_SMR13
+   \                     _A_SMR13:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xf015a
+   \   union <unnamed> volatile __no_bit_access _A_SCR11
+   \                     _A_SCR11:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xf015e
+   \   union <unnamed> volatile __no_bit_access _A_SCR13
+   \                     _A_SCR13:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xf0162
+   \   union <unnamed> volatile _A_SS1
+   \                     _A_SS1:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xf0164
+   \   union <unnamed> volatile _A_ST1
+   \                     _A_ST1:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xf0166
+   \   union <unnamed> volatile __no_bit_access _A_SPS1
+   \                     _A_SPS1:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xf0168
+   \   union <unnamed> volatile __no_bit_access _A_SO1
+   \                     _A_SO1:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xf016a
+   \   union <unnamed> volatile _A_SOE1
+   \                     _A_SOE1:
+   \   000000                       DS 2
+     38          #include "r_cg_serial.h"
+     39          /* Start user code for include. Do not edit comment generated here */
+     40          /* End user code. Do not edit comment generated here */
+     41          #include "r_cg_userdefine.h"
+     42          
+     43          /***********************************************************************************************************************
+     44          Global variables and functions
+     45          ***********************************************************************************************************************/
+
+   \                                 In  segment NEAR_Z, align 2, align-sorted
+     46          uint8_t * gp_csi21_rx_address;         /* csi21 receive buffer address */
+   \                     gp_csi21_rx_address:
+   \   000000                       DS 2
+   \   000002                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 2, align-sorted
+     47          uint16_t  g_csi21_rx_length;           /* csi21 receive data length */
+   \                     g_csi21_rx_length:
+   \   000000                       DS 2
+   \   000002                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 2, align-sorted
+     48          uint16_t  g_csi21_rx_count;            /* csi21 receive data count */
+   \                     g_csi21_rx_count:
+   \   000000                       DS 2
+   \   000002                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 2, align-sorted
+     49          uint8_t * gp_csi21_tx_address;         /* csi21 send buffer address */
+   \                     gp_csi21_tx_address:
+   \   000000                       DS 2
+   \   000002                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 2, align-sorted
+     50          uint16_t  g_csi21_send_length;         /* csi21 send data length */
+   \                     g_csi21_send_length:
+   \   000000                       DS 2
+   \   000002                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 2, align-sorted
+     51          uint16_t  g_csi21_tx_count;            /* csi21 send data count */
+   \                     g_csi21_tx_count:
+   \   000000                       DS 2
+   \   000002                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 2, align-sorted
+     52          uint8_t * gp_csi31_rx_address;         /* csi31 receive buffer address */
+   \                     gp_csi31_rx_address:
+   \   000000                       DS 2
+   \   000002                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 2, align-sorted
+     53          uint16_t  g_csi31_rx_length;           /* csi31 receive data length */
+   \                     g_csi31_rx_length:
+   \   000000                       DS 2
+   \   000002                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 2, align-sorted
+     54          uint16_t  g_csi31_rx_count;            /* csi31 receive data count */
+   \                     g_csi31_rx_count:
+   \   000000                       DS 2
+   \   000002                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 2, align-sorted
+     55          uint8_t * gp_csi31_tx_address;         /* csi31 send buffer address */
+   \                     gp_csi31_tx_address:
+   \   000000                       DS 2
+   \   000002                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 2, align-sorted
+     56          uint16_t  g_csi31_send_length;         /* csi31 send data length */
+   \                     g_csi31_send_length:
+   \   000000                       DS 2
+   \   000002                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 2, align-sorted
+     57          uint16_t  g_csi31_tx_count;            /* csi31 send data count */
+   \                     g_csi31_tx_count:
+   \   000000                       DS 2
+   \   000002                       REQUIRE __INIT_NEAR_Z
+     58          /* Start user code for global. Do not edit comment generated here */
+     59          /* End user code. Do not edit comment generated here */
+     60          
+     61          /***********************************************************************************************************************
+     62          * Function Name: R_SAU1_Create
+     63          * Description  : This function initializes the SAU1 module.
+     64          * Arguments    : None
+     65          * Return Value : None
+     66          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     67          void R_SAU1_Create(void)
+   \                     R_SAU1_Create:
+     68          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+     69              SAU1EN = 1U;    /* supply SAU1 clock */
+   \   000000 36F000                MOVW      HL, #0xF0          ;; 1 cycle
+   \   000003 71B2                  SET1      [HL].3             ;; 2 cycles
+     70              NOP();
+   \   000005 00                    NOP                          ;; 1 cycle
+     71              NOP();
+   \   000006 00                    NOP                          ;; 1 cycle
+     72              NOP();
+   \   000007 00                    NOP                          ;; 1 cycle
+     73              NOP();
+   \   000008 00                    NOP                          ;; 1 cycle
+     74              SPS1 = _0000_SAU_CK00_FCLK_0 | _0040_SAU_CK01_FCLK_4;
+   \   000009 304000                MOVW      AX, #0x40          ;; 1 cycle
+   \   00000C BF6601                MOVW      0x166, AX          ;; 1 cycle
+     75              R_CSI21_Create();
+   \   00000F FD....                CALL      R_CSI21_Create     ;; 3 cycles
+     76              R_CSI31_Create();
+   \   000012 ED....                BR        N:R_CSI31_Create   ;; 3 cycles
+   \   000015                       ; ------------------------------------- Block: 15 cycles
+   \   000015                       ; ------------------------------------- Total: 15 cycles
+   \   000015                       REQUIRE ?CLRL78_V1_0_L00
+   \   000015                       REQUIRE _A_PER0
+   \   000015                       REQUIRE _A_SPS1
+     77          }
+     78          
+     79          /***********************************************************************************************************************
+     80          * Function Name: R_CSI21_Create
+     81          * Description  : This function initializes the CSI21 module.
+     82          * Arguments    : None
+     83          * Return Value : None
+     84          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     85          void R_CSI21_Create(void)
+   \                     R_CSI21_Create:
+     86          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+     87              ST1 |= _0002_SAU_CH1_STOP_TRG_ON;    /* disable CSI21 */
+   \   000000 366401                MOVW      HL, #0x164         ;; 1 cycle
+   \   000003 7192                  SET1      [HL].1             ;; 2 cycles
+     88              CSIMK21 = 1U;    /* disable INTCSI21 interrupt */
+   \   000005 711AE5                SET1      0xFFFE5.1          ;; 2 cycles
+     89              CSIIF21 = 0U;    /* clear INTCSI21 interrupt flag */
+   \   000008 711BE1                CLR1      0xFFFE1.1          ;; 2 cycles
+     90              /* Set INTCSI21 low priority */
+     91              CSIPR121 = 1U;
+   \   00000B 711AED                SET1      0xFFFED.1          ;; 2 cycles
+     92              CSIPR021 = 1U;
+   \   00000E 711AE9                SET1      0xFFFE9.1          ;; 2 cycles
+     93              SIR11 = _0004_SAU_SIRMN_FECTMN | _0002_SAU_SIRMN_PECTMN | _0001_SAU_SIRMN_OVCTMN;    /* clear error flag */
+   \   000011 300700                MOVW      AX, #0x7           ;; 1 cycle
+   \   000014 BF4A01                MOVW      0x14A, AX          ;; 1 cycle
+     94              SMR11 = _0020_SAU_SMRMN_INITIALVALUE | _0000_SAU_CLOCK_SELECT_CK00 | _0000_SAU_CLOCK_MODE_CKS |
+     95                      _0000_SAU_TRIGGER_SOFTWARE | _0000_SAU_MODE_CSI | _0000_SAU_TRANSFER_END;
+   \   000017 5020                  MOV       X, #0x20           ;; 1 cycle
+   \   000019 BF5201                MOVW      0x152, AX          ;; 1 cycle
+     96              SCR11 = _C000_SAU_RECEPTION_TRANSMISSION | _0000_SAU_TIMING_1 | _0000_SAU_MSB | _0007_SAU_LENGTH_8;
+   \   00001C 3007C0                MOVW      AX, #0xC007        ;; 1 cycle
+   \   00001F BF5A01                MOVW      0x15A, AX          ;; 1 cycle
+     97              SDR11 = _4A00_CSI21_DIVISOR;
+   \   000022 CB4A004A              MOVW      0xFFF4A, #0x4A00   ;; 1 cycle
+     98              SO1 |= _0200_SAU_CH1_CLOCK_OUTPUT_1;    /* CSI21 clock initial level */
+   \   000026 FD....                CALL      N:?Subroutine0     ;; 3 cycles
+   \   000029                       ; ------------------------------------- Block: 21 cycles
+     99              SO1 &= ~_0002_SAU_CH1_DATA_OUTPUT_1;    /* CSI21 SO initial level */
+    100              SOE1 |= _0002_SAU_CH1_OUTPUT_ENABLE;    /* enable CSI21 output */
+   \                     ??CrossCallReturnLabel_2:
+   \   000029 566A                  MOV       L, #0x6A           ;; 1 cycle
+   \   00002B 7192                  SET1      [HL].1             ;; 2 cycles
+    101              /* Set SI21 pin */
+    102              PM7 |= 0x02U;
+   \   00002D 711A27                SET1      0xFFF27.1          ;; 2 cycles
+    103              /* Set SO21 pin */
+    104              P7 |= 0x04U;
+   \   000030 712207                SET1      S:0xFFF07.2        ;; 2 cycles
+    105              PM7 &= 0xFBU;
+   \   000033 712B27                CLR1      0xFFF27.2          ;; 2 cycles
+    106              /* Set SCK21 pin */
+    107              P7 |= 0x01U;
+   \   000036 710207                SET1      S:0xFFF07.0        ;; 2 cycles
+    108              PM7 &= 0xFEU;
+   \   000039 710B27                CLR1      0xFFF27.0          ;; 2 cycles
+    109          }
+   \   00003C D7                    RET                          ;; 6 cycles
+   \   00003D                       ; ------------------------------------- Block: 19 cycles
+   \   00003D                       ; ------------------------------------- Total: 40 cycles
+   \   00003D                       REQUIRE ?CLRL78_V1_0_L00
+   \   00003D                       REQUIRE _A_ST1
+   \   00003D                       REQUIRE _A_MK0
+   \   00003D                       REQUIRE _A_IF0
+   \   00003D                       REQUIRE _A_PR10
+   \   00003D                       REQUIRE _A_PR00
+   \   00003D                       REQUIRE _A_SIR11
+   \   00003D                       REQUIRE _A_SMR11
+   \   00003D                       REQUIRE _A_SCR11
+   \   00003D                       REQUIRE _A_SDR11
+   \   00003D                       REQUIRE _A_SO1
+   \   00003D                       REQUIRE _A_SOE1
+   \   00003D                       REQUIRE _A_PM7
+   \   00003D                       REQUIRE _A_P7
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000 AF6801                MOVW      AX, 0x168          ;; 1 cycle
+   \   000003 6C02                  OR        A, #0x2            ;; 1 cycle
+   \   000005 BF6801                MOVW      0x168, AX          ;; 1 cycle
+   \   000008 AF6801                MOVW      AX, 0x168          ;; 1 cycle
+   \   00000B 08                    XCH       A, X               ;; 1 cycle
+   \   00000C 5CFD                  AND       A, #0xFD           ;; 1 cycle
+   \   00000E                       ; ------------------------------------- Block: 6 cycles
+   \   00000E                       ; ------------------------------------- Total: 6 cycles
+   \   00000E                       REQUIRE ?CLRL78_V1_0_L00
+   \   00000E                       REQUIRE ?Subroutine2
+   \   00000E                       ; // Fall through to label ?Subroutine2
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000 08                    XCH       A, X               ;; 1 cycle
+   \   000001 BF6801                MOVW      0x168, AX          ;; 1 cycle
+   \   000004 D7                    RET                          ;; 6 cycles
+   \   000005                       ; ------------------------------------- Block: 8 cycles
+   \   000005                       ; ------------------------------------- Total: 8 cycles
+   \   000005                       REQUIRE ?CLRL78_V1_0_L00
+    110          
+    111          /***********************************************************************************************************************
+    112          * Function Name: R_CSI21_Start
+    113          * Description  : This function starts the CSI21 module operation.
+    114          * Arguments    : None
+    115          * Return Value : None
+    116          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    117          void R_CSI21_Start(void)
+   \                     R_CSI21_Start:
+    118          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+    119              CSIIF21 = 0U;    /* clear INTCSI21 interrupt flag */
+   \   000000 711BE1                CLR1      0xFFFE1.1          ;; 2 cycles
+    120              CSIMK21 = 0U;    /* enable INTCSI21 */
+   \   000003 711BE5                CLR1      0xFFFE5.1          ;; 2 cycles
+    121              SO1 |= _0200_SAU_CH1_CLOCK_OUTPUT_1;    /* CSI21 clock initial level */
+   \   000006 FD....                CALL      N:?Subroutine0     ;; 3 cycles
+   \   000009                       ; ------------------------------------- Block: 7 cycles
+    122              SO1 &= ~_0002_SAU_CH1_DATA_OUTPUT_1;           /* CSI21 SO initial level */
+    123              SOE1 |= _0002_SAU_CH1_OUTPUT_ENABLE;           /* enable CSI21 output */
+   \                     ??CrossCallReturnLabel_3:
+   \   000009 366A01                MOVW      HL, #0x16A         ;; 1 cycle
+   \   00000C 7192                  SET1      [HL].1             ;; 2 cycles
+    124              SS1 |= _0002_SAU_CH1_START_TRG_ON;             /* enable CSI21 */
+   \   00000E 5662                  MOV       L, #0x62           ;; 1 cycle
+   \   000010 7192                  SET1      [HL].1             ;; 2 cycles
+    125          }
+   \   000012 D7                    RET                          ;; 6 cycles
+   \   000013                       ; ------------------------------------- Block: 12 cycles
+   \   000013                       ; ------------------------------------- Total: 19 cycles
+   \   000013                       REQUIRE ?CLRL78_V1_0_L00
+   \   000013                       REQUIRE _A_IF0
+   \   000013                       REQUIRE _A_MK0
+   \   000013                       REQUIRE _A_SO1
+   \   000013                       REQUIRE _A_SOE1
+   \   000013                       REQUIRE _A_SS1
+    126          
+    127          /***********************************************************************************************************************
+    128          * Function Name: R_CSI21_Stop
+    129          * Description  : This function stops the CSI21 module operation.
+    130          * Arguments    : None
+    131          * Return Value : None
+    132          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    133          void R_CSI21_Stop(void)
+   \                     R_CSI21_Stop:
+    134          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+    135              ST1 |= _0002_SAU_CH1_STOP_TRG_ON;        /* disable CSI21 */
+   \   000000 366401                MOVW      HL, #0x164         ;; 1 cycle
+   \   000003 7192                  SET1      [HL].1             ;; 2 cycles
+    136              SOE1 &= ~_0002_SAU_CH1_OUTPUT_ENABLE;    /* disable CSI21 output */
+   \   000005 566A                  MOV       L, #0x6A           ;; 1 cycle
+   \   000007 7193                  CLR1      [HL].1             ;; 2 cycles
+    137              CSIMK21 = 1U;    /* disable INTCSI21 interrupt */
+   \   000009 711AE5                SET1      0xFFFE5.1          ;; 2 cycles
+    138              CSIIF21 = 0U;    /* clear INTCSI21 interrupt flag */
+   \   00000C 711BE1                CLR1      0xFFFE1.1          ;; 2 cycles
+    139          }
+   \   00000F D7                    RET                          ;; 6 cycles
+   \   000010                       ; ------------------------------------- Block: 16 cycles
+   \   000010                       ; ------------------------------------- Total: 16 cycles
+   \   000010                       REQUIRE ?CLRL78_V1_0_L00
+   \   000010                       REQUIRE _A_ST1
+   \   000010                       REQUIRE _A_SOE1
+   \   000010                       REQUIRE _A_MK0
+   \   000010                       REQUIRE _A_IF0
+    140          
+    141          /***********************************************************************************************************************
+    142          * Function Name: R_CSI21_Send_Receive
+    143          * Description  : This function sends and receives CSI21 data.
+    144          * Arguments    : tx_buf -
+    145          *                    transfer buffer pointer
+    146          *                tx_num -
+    147          *                    buffer size
+    148          *                rx_buf -
+    149          *                    receive buffer pointer
+    150          * Return Value : status -
+    151          *                    MD_OK or MD_ARGERROR
+    152          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    153          MD_STATUS R_CSI21_Send_Receive(uint8_t * const tx_buf, uint16_t tx_num, uint8_t * const rx_buf)
+   \                     R_CSI21_Send_Receive:
+    154          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C1                    PUSH      AX                 ;; 1 cycle
+   \   000001                       ; Auto size: 2
+   \   000001 13                    MOVW      AX, BC             ;; 1 cycle
+    155              MD_STATUS status = MD_OK;
+   \   000002 360000                MOVW      HL, #0x0           ;; 1 cycle
+    156          
+    157              if (tx_num < 1U)
+   \   000005 F7                    CLRW      BC                 ;; 1 cycle
+   \   000006 43                    CMPW      AX, BC             ;; 1 cycle
+   \   000007 DF04                  BNZ       ??R_CSI31_Send_Receive_0  ;; 4 cycles
+   \   000009                       ; ------------------------------------- Block: 9 cycles
+    158              {
+    159                  status = MD_ARGERROR;
+   \   000009 5681                  MOV       L, #0x81           ;; 1 cycle
+   \   00000B EF1D                  BR        S:??R_CSI31_Send_Receive_1  ;; 3 cycles
+   \   00000D                       ; ------------------------------------- Block: 4 cycles
+    160              }
+    161              else
+    162              {
+    163                  g_csi21_tx_count = tx_num;        /* send data count */
+   \                     ??R_CSI31_Send_Receive_0:
+   \   00000D BF....                MOVW      N:g_csi21_tx_count, AX  ;; 1 cycle
+    164                  gp_csi21_tx_address = tx_buf;     /* send buffer pointer */
+   \   000010 A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000012 BF....                MOVW      N:gp_csi21_tx_address, AX  ;; 1 cycle
+    165                  gp_csi21_rx_address = rx_buf;     /* receive buffer pointer */
+   \   000015 35                    XCHW      AX, DE             ;; 1 cycle
+   \   000016 BF....                MOVW      N:gp_csi21_rx_address, AX  ;; 1 cycle
+    166                  CSIMK21 = 1U;                     /* disable INTCSI21 interrupt */
+   \   000019 711AE5                SET1      0xFFFE5.1          ;; 2 cycles
+    167                  SIO21 = *gp_csi21_tx_address;    /* started by writing data to SDR[7:0] */
+   \   00001C 89                    MOV       A, [DE]            ;; 1 cycle
+   \   00001D 9E4A                  MOV       0xFFF4A, A         ;; 1 cycle
+    168                  gp_csi21_tx_address++;
+   \   00001F 15                    MOVW      AX, DE             ;; 1 cycle
+   \   000020 A1                    INCW      AX                 ;; 1 cycle
+   \   000021 BF....                MOVW      N:gp_csi21_tx_address, AX  ;; 1 cycle
+    169                  g_csi21_tx_count--;
+   \   000024 B2....                DECW      N:g_csi21_tx_count  ;; 2 cycles
+    170                  CSIMK21 = 0U;                     /* enable INTCSI21 interrupt */
+   \   000027 711BE5                CLR1      0xFFFE5.1          ;; 2 cycles
+   \   00002A                       ; ------------------------------------- Block: 16 cycles
+    171              }
+    172          
+    173              return (status);
+   \                     ??R_CSI31_Send_Receive_1:
+   \   00002A 17                    MOVW      AX, HL             ;; 1 cycle
+   \   00002B 1002                  ADDW      SP, #0x2           ;; 1 cycle
+   \   00002D D7                    RET                          ;; 6 cycles
+   \   00002E                       ; ------------------------------------- Block: 8 cycles
+   \   00002E                       ; ------------------------------------- Total: 37 cycles
+   \   00002E                       REQUIRE ?CLRL78_V1_0_L00
+   \   00002E                       REQUIRE _A_MK0
+   \   00002E                       REQUIRE _A_SDR11
+    174          }
+    175          
+    176          /***********************************************************************************************************************
+    177          * Function Name: R_CSI31_Create
+    178          * Description  : This function initializes the CSI31 module.
+    179          * Arguments    : None
+    180          * Return Value : None
+    181          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    182          void R_CSI31_Create(void)
+   \                     R_CSI31_Create:
+    183          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+    184              ST1 |= _0008_SAU_CH3_STOP_TRG_ON;    /* disable CSI31 */
+   \   000000 366401                MOVW      HL, #0x164         ;; 1 cycle
+   \   000003 71B2                  SET1      [HL].3             ;; 2 cycles
+    185              CSIMK31 = 1U;    /* disable INTCSI31 interrupt */
+   \   000005 715AE7                SET1      0xFFFE7.5          ;; 2 cycles
+    186              CSIIF31 = 0U;    /* clear INTCSI31 interrupt flag */
+   \   000008 715BE3                CLR1      0xFFFE3.5          ;; 2 cycles
+    187              /* Set INTCSI31 low priority */
+    188              CSIPR131 = 1U;
+   \   00000B 715AEF                SET1      0xFFFEF.5          ;; 2 cycles
+    189              CSIPR031 = 1U;
+   \   00000E 715AEB                SET1      0xFFFEB.5          ;; 2 cycles
+    190              SIR13 = _0004_SAU_SIRMN_FECTMN | _0002_SAU_SIRMN_PECTMN | _0001_SAU_SIRMN_OVCTMN;    /* clear error flag */
+   \   000011 300700                MOVW      AX, #0x7           ;; 1 cycle
+   \   000014 BF4E01                MOVW      0x14E, AX          ;; 1 cycle
+    191              SMR13 = _0020_SAU_SMRMN_INITIALVALUE | _8000_SAU_CLOCK_SELECT_CK01 | _0000_SAU_CLOCK_MODE_CKS |
+    192                      _0000_SAU_TRIGGER_SOFTWARE | _0000_SAU_MODE_CSI | _0000_SAU_TRANSFER_END;
+   \   000017 302080                MOVW      AX, #0x8020        ;; 1 cycle
+   \   00001A BF5601                MOVW      0x156, AX          ;; 1 cycle
+    193              SCR13 = _C000_SAU_RECEPTION_TRANSMISSION | _3000_SAU_TIMING_4 | _0000_SAU_MSB | _0007_SAU_LENGTH_8;
+   \   00001D 3007F0                MOVW      AX, #0xF007        ;; 1 cycle
+   \   000020 BF5E01                MOVW      0x15E, AX          ;; 1 cycle
+    194              SDR13 = _9A00_CSI31_DIVISOR;
+   \   000023 C916009A              MOVW      S:0xFFF16, #0x9A00  ;; 1 cycle
+    195              SO1 &= ~_0800_SAU_CH3_CLOCK_OUTPUT_1;    /* CSI31 clock initial level */
+   \   000027 FD....                CALL      N:?Subroutine1     ;; 3 cycles
+   \   00002A                       ; ------------------------------------- Block: 21 cycles
+    196              SO1 &= ~_0008_SAU_CH3_DATA_OUTPUT_1;    /* CSI31 SO initial level */
+    197              SOE1 |= _0008_SAU_CH3_OUTPUT_ENABLE;    /* enable CSI31 output */
+   \                     ??CrossCallReturnLabel_0:
+   \   00002A 566A                  MOV       L, #0x6A           ;; 1 cycle
+   \   00002C 71B2                  SET1      [HL].3             ;; 2 cycles
+    198              /* Set SI31 pin */
+    199              PM5 |= 0x08U;
+   \   00002E 713A25                SET1      0xFFF25.3          ;; 2 cycles
+    200              /* Set SO31 pin */
+    201              P5 |= 0x04U;
+   \   000031 712205                SET1      S:0xFFF05.2        ;; 2 cycles
+    202              PM5 &= 0xFBU;
+   \   000034 712B25                CLR1      0xFFF25.2          ;; 2 cycles
+    203              /* Set SCK31 pin */
+    204              P5 |= 0x10U;
+   \   000037 714205                SET1      S:0xFFF05.4        ;; 2 cycles
+    205              PM5 &= 0xEFU;
+   \   00003A 714B25                CLR1      0xFFF25.4          ;; 2 cycles
+    206          }
+   \   00003D D7                    RET                          ;; 6 cycles
+   \   00003E                       ; ------------------------------------- Block: 19 cycles
+   \   00003E                       ; ------------------------------------- Total: 40 cycles
+   \   00003E                       REQUIRE ?CLRL78_V1_0_L00
+   \   00003E                       REQUIRE _A_ST1
+   \   00003E                       REQUIRE _A_MK1
+   \   00003E                       REQUIRE _A_IF1
+   \   00003E                       REQUIRE _A_PR11
+   \   00003E                       REQUIRE _A_PR01
+   \   00003E                       REQUIRE _A_SIR13
+   \   00003E                       REQUIRE _A_SMR13
+   \   00003E                       REQUIRE _A_SCR13
+   \   00003E                       REQUIRE _A_SDR13
+   \   00003E                       REQUIRE _A_SO1
+   \   00003E                       REQUIRE _A_SOE1
+   \   00003E                       REQUIRE _A_PM5
+   \   00003E                       REQUIRE _A_P5
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000 AF6801                MOVW      AX, 0x168          ;; 1 cycle
+   \   000003 5CF7                  AND       A, #0xF7           ;; 1 cycle
+   \   000005 BF6801                MOVW      0x168, AX          ;; 1 cycle
+   \   000008 AF6801                MOVW      AX, 0x168          ;; 1 cycle
+   \   00000B 08                    XCH       A, X               ;; 1 cycle
+   \   00000C 5CF7                  AND       A, #0xF7           ;; 1 cycle
+   \   00000E ED....                BR        N:?Subroutine2     ;; 3 cycles
+   \   000011                       ; ------------------------------------- Block: 9 cycles
+   \   000011                       ; ------------------------------------- Total: 9 cycles
+   \   000011                       REQUIRE ?CLRL78_V1_0_L00
+    207          
+    208          /***********************************************************************************************************************
+    209          * Function Name: R_CSI31_Start
+    210          * Description  : This function starts the CSI31 module operation.
+    211          * Arguments    : None
+    212          * Return Value : None
+    213          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    214          void R_CSI31_Start(void)
+   \                     R_CSI31_Start:
+    215          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+    216              CSIIF31 = 0U;    /* clear INTCSI31 interrupt flag */
+   \   000000 715BE3                CLR1      0xFFFE3.5          ;; 2 cycles
+    217              CSIMK31 = 0U;    /* enable INTCSI31 */
+   \   000003 715BE7                CLR1      0xFFFE7.5          ;; 2 cycles
+    218              SO1 &= ~_0800_SAU_CH3_CLOCK_OUTPUT_1;   /* CSI31 clock initial level */
+   \   000006 FD....                CALL      N:?Subroutine1     ;; 3 cycles
+   \   000009                       ; ------------------------------------- Block: 7 cycles
+    219              SO1 &= ~_0008_SAU_CH3_DATA_OUTPUT_1;           /* CSI31 SO initial level */
+    220              SOE1 |= _0008_SAU_CH3_OUTPUT_ENABLE;           /* enable CSI31 output */
+   \                     ??CrossCallReturnLabel_1:
+   \   000009 366A01                MOVW      HL, #0x16A         ;; 1 cycle
+   \   00000C 71B2                  SET1      [HL].3             ;; 2 cycles
+    221              SS1 |= _0008_SAU_CH3_START_TRG_ON;             /* enable CSI31 */
+   \   00000E 5662                  MOV       L, #0x62           ;; 1 cycle
+   \   000010 71B2                  SET1      [HL].3             ;; 2 cycles
+    222          }
+   \   000012 D7                    RET                          ;; 6 cycles
+   \   000013                       ; ------------------------------------- Block: 12 cycles
+   \   000013                       ; ------------------------------------- Total: 19 cycles
+   \   000013                       REQUIRE ?CLRL78_V1_0_L00
+   \   000013                       REQUIRE _A_IF1
+   \   000013                       REQUIRE _A_MK1
+   \   000013                       REQUIRE _A_SO1
+   \   000013                       REQUIRE _A_SOE1
+   \   000013                       REQUIRE _A_SS1
+    223          
+    224          /***********************************************************************************************************************
+    225          * Function Name: R_CSI31_Stop
+    226          * Description  : This function stops the CSI31 module operation.
+    227          * Arguments    : None
+    228          * Return Value : None
+    229          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    230          void R_CSI31_Stop(void)
+   \                     R_CSI31_Stop:
+    231          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+    232              ST1 |= _0008_SAU_CH3_STOP_TRG_ON;        /* disable CSI31 */
+   \   000000 366401                MOVW      HL, #0x164         ;; 1 cycle
+   \   000003 71B2                  SET1      [HL].3             ;; 2 cycles
+    233              SOE1 &= ~_0008_SAU_CH3_OUTPUT_ENABLE;    /* disable CSI31 output */
+   \   000005 566A                  MOV       L, #0x6A           ;; 1 cycle
+   \   000007 71B3                  CLR1      [HL].3             ;; 2 cycles
+    234              CSIMK31 = 1U;    /* disable INTCSI31 interrupt */
+   \   000009 715AE7                SET1      0xFFFE7.5          ;; 2 cycles
+    235              CSIIF31 = 0U;    /* clear INTCSI31 interrupt flag */
+   \   00000C 715BE3                CLR1      0xFFFE3.5          ;; 2 cycles
+    236          }
+   \   00000F D7                    RET                          ;; 6 cycles
+   \   000010                       ; ------------------------------------- Block: 16 cycles
+   \   000010                       ; ------------------------------------- Total: 16 cycles
+   \   000010                       REQUIRE ?CLRL78_V1_0_L00
+   \   000010                       REQUIRE _A_ST1
+   \   000010                       REQUIRE _A_SOE1
+   \   000010                       REQUIRE _A_MK1
+   \   000010                       REQUIRE _A_IF1
+    237          
+    238          /***********************************************************************************************************************
+    239          * Function Name: R_CSI31_Send_Receive
+    240          * Description  : This function sends and receives CSI31 data.
+    241          * Arguments    : tx_buf -
+    242          *                    transfer buffer pointer
+    243          *                tx_num -
+    244          *                    buffer size
+    245          *                rx_buf -
+    246          *                    receive buffer pointer
+    247          * Return Value : status -
+    248          *                    MD_OK or MD_ARGERROR
+    249          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    250          MD_STATUS R_CSI31_Send_Receive(uint8_t * const tx_buf, uint16_t tx_num, uint8_t * const rx_buf)
+   \                     R_CSI31_Send_Receive:
+    251          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C1                    PUSH      AX                 ;; 1 cycle
+   \   000001                       ; Auto size: 2
+   \   000001 13                    MOVW      AX, BC             ;; 1 cycle
+    252              MD_STATUS status = MD_OK;
+   \   000002 360000                MOVW      HL, #0x0           ;; 1 cycle
+    253          
+    254              if (tx_num < 1U)
+   \   000005 F7                    CLRW      BC                 ;; 1 cycle
+   \   000006 43                    CMPW      AX, BC             ;; 1 cycle
+   \   000007 DF04                  BNZ       ??R_CSI31_Send_Receive_2  ;; 4 cycles
+   \   000009                       ; ------------------------------------- Block: 9 cycles
+    255              {
+    256                  status = MD_ARGERROR;
+   \   000009 5681                  MOV       L, #0x81           ;; 1 cycle
+   \   00000B EF1D                  BR        S:??R_CSI31_Send_Receive_3  ;; 3 cycles
+   \   00000D                       ; ------------------------------------- Block: 4 cycles
+    257              }
+    258              else
+    259              {
+    260                  g_csi31_tx_count = tx_num;        /* send data count */
+   \                     ??R_CSI31_Send_Receive_2:
+   \   00000D BF....                MOVW      N:g_csi31_tx_count, AX  ;; 1 cycle
+    261                  gp_csi31_tx_address = tx_buf;     /* send buffer pointer */
+   \   000010 A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000012 BF....                MOVW      N:gp_csi31_tx_address, AX  ;; 1 cycle
+    262                  gp_csi31_rx_address = rx_buf;     /* receive buffer pointer */
+   \   000015 35                    XCHW      AX, DE             ;; 1 cycle
+   \   000016 BF....                MOVW      N:gp_csi31_rx_address, AX  ;; 1 cycle
+    263                  CSIMK31 = 1U;                     /* disable INTCSI31 interrupt */
+   \   000019 715AE7                SET1      0xFFFE7.5          ;; 2 cycles
+    264                  SIO31 = *gp_csi31_tx_address;    /* started by writing data to SDR[7:0] */
+   \   00001C 89                    MOV       A, [DE]            ;; 1 cycle
+   \   00001D 9D16                  MOV       S:0xFFF16, A       ;; 1 cycle
+    265                  gp_csi31_tx_address++;
+   \   00001F 15                    MOVW      AX, DE             ;; 1 cycle
+   \   000020 A1                    INCW      AX                 ;; 1 cycle
+   \   000021 BF....                MOVW      N:gp_csi31_tx_address, AX  ;; 1 cycle
+    266                  g_csi31_tx_count--;
+   \   000024 B2....                DECW      N:g_csi31_tx_count  ;; 2 cycles
+    267                  CSIMK31 = 0U;                     /* enable INTCSI31 interrupt */
+   \   000027 715BE7                CLR1      0xFFFE7.5          ;; 2 cycles
+   \   00002A                       ; ------------------------------------- Block: 16 cycles
+    268              }
+    269          
+    270              return (status);
+   \                     ??R_CSI31_Send_Receive_3:
+   \   00002A 17                    MOVW      AX, HL             ;; 1 cycle
+   \   00002B 1002                  ADDW      SP, #0x2           ;; 1 cycle
+   \   00002D D7                    RET                          ;; 6 cycles
+   \   00002E                       ; ------------------------------------- Block: 8 cycles
+   \   00002E                       ; ------------------------------------- Total: 37 cycles
+   \   00002E                       REQUIRE ?CLRL78_V1_0_L00
+   \   00002E                       REQUIRE _A_MK1
+   \   00002E                       REQUIRE _A_SDR13
+    271          }
+    272          
+    273          /* Start user code for adding. Do not edit comment generated here */
+    274          /* End user code. Do not edit comment generated here */
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+      0   R_CSI21_Create
+      2   R_CSI21_Send_Receive
+      0   R_CSI21_Start
+      0   R_CSI21_Stop
+      0   R_CSI31_Create
+      2   R_CSI31_Send_Receive
+      0   R_CSI31_Start
+      0   R_CSI31_Stop
+      0   R_SAU1_Create
+        0   -> R_CSI21_Create
+        0   -> R_CSI31_Create
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      14  ?Subroutine0
+      17  ?Subroutine1
+       5  ?Subroutine2
+      61  R_CSI21_Create
+      46  R_CSI21_Send_Receive
+      19  R_CSI21_Start
+      16  R_CSI21_Stop
+      62  R_CSI31_Create
+      46  R_CSI31_Send_Receive
+      19  R_CSI31_Start
+      16  R_CSI31_Stop
+      21  R_SAU1_Create
+       2  _A_IF0
+       2  _A_IF1
+       2  _A_MK0
+       2  _A_MK1
+       1  _A_P5
+       1  _A_P7
+       1  _A_PER0
+       1  _A_PM5
+       1  _A_PM7
+       2  _A_PR00
+       2  _A_PR01
+       2  _A_PR10
+       2  _A_PR11
+       2  _A_SCR11
+       2  _A_SCR13
+       2  _A_SDR11
+       2  _A_SDR13
+       2  _A_SIR11
+       2  _A_SIR13
+       2  _A_SMR11
+       2  _A_SMR13
+       2  _A_SO1
+       2  _A_SOE1
+       2  _A_SPS1
+       2  _A_SS1
+       2  _A_ST1
+       2  g_csi21_rx_count
+       2  g_csi21_rx_length
+       2  g_csi21_send_length
+       2  g_csi21_tx_count
+       2  g_csi31_rx_count
+       2  g_csi31_rx_length
+       2  g_csi31_send_length
+       2  g_csi31_tx_count
+       2  gp_csi21_rx_address
+       2  gp_csi21_tx_address
+       2  gp_csi31_rx_address
+       2  gp_csi31_tx_address
+
+ 
+ 342 bytes in segment CODE
+  43 bytes in segment NEAR_A
+  24 bytes in segment NEAR_Z
+   4 bytes in segment SADDR_A
+ 
+ 342 bytes of CODE memory
+  24 bytes of DATA memory (+ 47 bytes shared)
+
+Errors: none
+Warnings: none

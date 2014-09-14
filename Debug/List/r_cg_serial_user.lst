@@ -1,0 +1,536 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             05/Aug/2014  14:51:25 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Evaluation license - IAR Embedded Workbench for Renesas RL78, Evaluation version 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_cg_serial_user.c           #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_cg_serial_user.c" --core   #
+#                    rl78_2 --code_model near --data_model near               #
+#                    --near_const_location rom0 -o "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy\Debug\Obj\" --dlib_config      #
+#                    "C:\Program Files (x86)\IAR Systems\Embedded Workbench   #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\r_cg_serial_user.lst            #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\r_cg_serial_user.r87             #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\applilet3_src\r_cg_serial_user.c
+      1          /***********************************************************************************************************************
+      2          * DISCLAIMER
+      3          * This software is supplied by Renesas Electronics Corporation and is only 
+      4          * intended for use with Renesas products. No other uses are authorized. This 
+      5          * software is owned by Renesas Electronics Corporation and is protected under 
+      6          * all applicable laws, including copyright laws.
+      7          * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING 
+      8          * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT 
+      9          * LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE 
+     10          * AND NON-INFRINGEMENT.  ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.
+     11          * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS 
+     12          * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE 
+     13          * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR 
+     14          * ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE 
+     15          * BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+     16          * Renesas reserves the right, without notice, to make changes to this software 
+     17          * and to discontinue the availability of this software.  By using this software, 
+     18          * you agree to the additional terms and conditions found by accessing the 
+     19          * following link:
+     20          * http://www.renesas.com/disclaimer
+     21          *
+     22          * Copyright (C) 2011, 2013 Renesas Electronics Corporation. All rights reserved.
+     23          ***********************************************************************************************************************/
+     24          
+     25          /***********************************************************************************************************************
+     26          * File Name    : r_cg_serial_user.c
+     27          * Version      : Applilet3 for RL78/G14 V2.00.00.08 [12 Apr 2013]
+     28          * Device(s)    : R5F104PJ
+     29          * Tool-Chain   : IAR Systems iccrl78
+     30          * Description  : This file implements device driver for Serial module.
+     31          * Creation Date: 8/4/2014
+     32          ***********************************************************************************************************************/
+     33          
+     34          /***********************************************************************************************************************
+     35          Includes
+     36          ***********************************************************************************************************************/
+     37          #include "r_cg_macrodriver.h"
+
+   \                                 In  segment SADDR_A, at 0xfff16
+   \   union <unnamed> volatile __saddr __no_bit_access _A_SDR13
+   \                     _A_SDR13:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfff4a
+   \   union <unnamed> volatile __sfr __no_bit_access _A_SDR11
+   \                     _A_SDR11:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xf0142
+   \   union <unnamed> const volatile __no_bit_access _A_SSR11
+   \                     _A_SSR11:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xf0146
+   \   union <unnamed> const volatile __no_bit_access _A_SSR13
+   \                     _A_SSR13:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xf014a
+   \   union <unnamed> volatile __no_bit_access _A_SIR11
+   \                     _A_SIR11:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xf014e
+   \   union <unnamed> volatile __no_bit_access _A_SIR13
+   \                     _A_SIR13:
+   \   000000                       DS 2
+     38          #include "r_cg_serial.h"
+     39          /* Start user code for include. Do not edit comment generated here */
+     40          /* End user code. Do not edit comment generated here */
+     41          #include "r_cg_userdefine.h"
+     42          
+     43          /***********************************************************************************************************************
+     44          Global variables and functions
+     45          ***********************************************************************************************************************/
+     46          extern uint8_t * gp_csi21_rx_address;         /* csi21 receive buffer address */
+     47          extern uint16_t  g_csi21_rx_length;           /* csi21 receive data length */
+     48          extern uint16_t  g_csi21_rx_count;            /* csi21 receive data count */
+     49          extern uint8_t * gp_csi21_tx_address;         /* csi21 send buffer address */
+     50          extern uint16_t  g_csi21_send_length;         /* csi21 send data length */
+     51          extern uint16_t  g_csi21_tx_count;            /* csi21 send data count */
+     52          extern uint8_t * gp_csi31_rx_address;         /* csi31 receive buffer address */
+     53          extern uint16_t  g_csi31_rx_length;           /* csi31 receive data length */
+     54          extern uint16_t  g_csi31_rx_count;            /* csi31 receive data count */
+     55          extern uint8_t * gp_csi31_tx_address;         /* csi31 send buffer address */
+     56          extern uint16_t  g_csi31_send_length;         /* csi31 send data length */
+     57          extern uint16_t  g_csi31_tx_count;            /* csi31 send data count */
+     58          /* Start user code for global. Do not edit comment generated here */
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+     59          volatile uint8_t G_SPI21_SendingData = 0;
+   \                     G_SPI21_SendingData:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+     60          volatile uint8_t G_SPI21_ReceivingData = 0;
+   \                     G_SPI21_ReceivingData:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+     61          volatile uint8_t G_SPI31_SendingData = 0;
+   \                     G_SPI31_SendingData:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+     62          volatile uint8_t G_SPI31_ReceivingData = 0;
+   \                     G_SPI31_ReceivingData:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+     63          volatile uint8_t G_IIC_SendingData = 0;
+   \                     G_IIC_SendingData:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+     64          volatile uint8_t G_IIC_ReceivingData = 0;
+   \                     G_IIC_ReceivingData:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 1, align-sorted
+     65          uint8_t G_WIFI_ReceiveBuffer;
+   \                     G_WIFI_ReceiveBuffer:
+   \   000000                       DS 1
+   \   000001                       REQUIRE __INIT_NEAR_Z
+
+   \                                 In  segment NEAR_Z, align 2, align-sorted
+     66          uint32_t G_WIFI_BufferIndex = 0;
+   \                     G_WIFI_BufferIndex:
+   \   000000                       DS 4
+   \   000004                       REQUIRE __INIT_NEAR_Z
+     67          /* End user code. Do not edit comment generated here */
+     68          
+     69          /***********************************************************************************************************************
+     70          * Function Name: r_csi21_interrupt
+     71          * Description  : This function is INTCSI21 interrupt service routine.
+     72          * Arguments    : None
+     73          * Return Value : None
+     74          ***********************************************************************************************************************/
+     75          #pragma vector = INTCSI21_vect
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     76          __interrupt static void r_csi21_interrupt(void)
+   \                     r_csi21_interrupt:
+     77          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C1                    PUSH      AX                 ;; 1 cycle
+   \   000001 C7                    PUSH      HL                 ;; 1 cycle
+   \   000002                       ; Auto size: 2
+   \   000002 C1                    PUSH      AX                 ;; 1 cycle
+     78              uint8_t err_type;
+     79          
+     80              err_type = (uint8_t)(SSR11 & _0001_SAU_OVERRUN_ERROR);
+   \   000003 AF4201                MOVW      AX, 0x142          ;; 1 cycle
+   \   000006 60                    MOV       A, X               ;; 1 cycle
+   \   000007 5C01                  AND       A, #0x1            ;; 1 cycle
+   \   000009 9800                  MOV       [SP], A            ;; 1 cycle
+     81              SIR11 = (uint16_t)err_type;
+   \   00000B 70                    MOV       X, A               ;; 1 cycle
+   \   00000C F1                    CLRB      A                  ;; 1 cycle
+   \   00000D BF4A01                MOVW      0x14A, AX          ;; 1 cycle
+     82          
+     83              if (1U == err_type)
+   \   000010 AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000012 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000013 318329                BT        [HL].0, ??r_csi31_interrupt_0  ;; 5 cycles
+   \   000016                       ; ------------------------------------- Block: 17 cycles
+     84              {
+     85                  r_csi21_callback_error(err_type);    /* overrun error occurs */
+     86              }
+     87              else
+     88              {
+     89                  if (g_csi21_tx_count > 0U)
+   \   000016 F6                    CLRW      AX                 ;; 1 cycle
+   \   000017 42....                CMPW      AX, N:g_csi21_tx_count  ;; 1 cycle
+   \   00001A 8E4A                  MOV       A, 0xFFF4A         ;; 1 cycle
+   \   00001C FB....                MOVW      HL, N:gp_csi21_rx_address  ;; 1 cycle
+   \   00001F 9B                    MOV       [HL], A            ;; 1 cycle
+   \   000020 DD17                  BZ        ??r_csi31_interrupt_1  ;; 4 cycles
+   \   000022                       ; ------------------------------------- Block: 9 cycles
+     90                  {
+     91                      *gp_csi21_rx_address = SIO21;
+     92                      gp_csi21_rx_address++;
+   \   000022 AF....                MOVW      AX, N:gp_csi21_rx_address  ;; 1 cycle
+   \   000025 A1                    INCW      AX                 ;; 1 cycle
+   \   000026 BF....                MOVW      N:gp_csi21_rx_address, AX  ;; 1 cycle
+     93                      SIO21 = *gp_csi21_tx_address;
+   \   000029 FB....                MOVW      HL, N:gp_csi21_tx_address  ;; 1 cycle
+   \   00002C 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   00002D 9E4A                  MOV       0xFFF4A, A         ;; 1 cycle
+     94                      gp_csi21_tx_address++;
+   \   00002F 17                    MOVW      AX, HL             ;; 1 cycle
+   \   000030 A1                    INCW      AX                 ;; 1 cycle
+   \   000031 BF....                MOVW      N:gp_csi21_tx_address, AX  ;; 1 cycle
+     95                      g_csi21_tx_count--;
+   \   000034 B2....                DECW      N:g_csi21_tx_count  ;; 2 cycles
+   \   000037 EF06                  BR        S:??r_csi31_interrupt_0  ;; 3 cycles
+   \   000039                       ; ------------------------------------- Block: 14 cycles
+     96                  }
+     97                  else 
+     98                  {
+     99                      if (0U == g_csi21_tx_count)
+    100                      {
+    101                          *gp_csi21_rx_address = SIO21;
+    102                      }
+    103          
+    104                      r_csi21_callback_sendend();    /* complete send */
+   \                     ??r_csi31_interrupt_1:
+   \   000039 F5....                CLRB      N:G_SPI21_SendingData  ;; 1 cycle
+    105                      r_csi21_callback_receiveend();    /* complete receive */
+   \   00003C F5....                CLRB      N:G_SPI21_ReceivingData  ;; 1 cycle
+    106                  }
+    107              }
+   \   00003F                       ; ------------------------------------- Block: 2 cycles
+    108          }
+   \                     ??r_csi31_interrupt_0:
+   \   00003F                       REQUIRE ?CLRL78_V1_0_L00
+   \   00003F                       REQUIRE ?Subroutine0
+   \   00003F                       REQUIRE _A_SSR11
+   \   00003F                       REQUIRE _A_SIR11
+   \   00003F                       REQUIRE _A_SDR11
+   \   00003F                       ; // Fall through to label ?Subroutine0
+
+   \                                 In  segment CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000 1002                  ADDW      SP, #0x2           ;; 1 cycle
+   \   000002 C6                    POP       HL                 ;; 1 cycle
+   \   000003 C0                    POP       AX                 ;; 1 cycle
+   \   000004 61FC                  RETI                         ;; 6 cycles
+   \   000006                       ; ------------------------------------- Block: 9 cycles
+   \   000006                       ; ------------------------------------- Total: 9 cycles
+   \   000006                       REQUIRE ?CLRL78_V1_0_L00
+    109          
+    110          /***********************************************************************************************************************
+    111          * Function Name: r_csi21_callback_receiveend
+    112          * Description  : This function is a callback function when CSI21 finishes reception.
+    113          * Arguments    : None
+    114          * Return Value : None
+    115          ***********************************************************************************************************************/
+    116          static void r_csi21_callback_receiveend(void)
+    117          {
+    118              /* Start user code. Do not edit comment generated here */
+    119          	   G_SPI21_ReceivingData = 0;
+    120              /* End user code. Do not edit comment generated here */
+    121          }
+    122          
+    123          /***********************************************************************************************************************
+    124          * Function Name: r_csi21_callback_error
+    125          * Description  : This function is a callback function when CSI21 reception error occurs.
+    126          * Arguments    : err_type -
+    127          *                    error type value
+    128          * Return Value : None
+    129          ***********************************************************************************************************************/
+    130          static void r_csi21_callback_error(uint8_t err_type)
+    131          {
+    132              /* Start user code. Do not edit comment generated here */
+    133              /* End user code. Do not edit comment generated here */
+    134          }
+    135          
+    136          /***********************************************************************************************************************
+    137          * Function Name: r_csi21_callback_sendend
+    138          * Description  : This function is a callback function when CSI21 finishes transmission.
+    139          * Arguments    : None
+    140          * Return Value : None
+    141          ***********************************************************************************************************************/
+    142          static void r_csi21_callback_sendend(void)
+    143          {
+    144              /* Start user code. Do not edit comment generated here */
+    145          	  G_SPI21_SendingData = 0;
+    146              /* End user code. Do not edit comment generated here */
+    147          }
+    148          
+    149          /***********************************************************************************************************************
+    150          * Function Name: r_csi31_interrupt
+    151          * Description  : This function is INTCSI31 interrupt service routine.
+    152          * Arguments    : None
+    153          * Return Value : None
+    154          ***********************************************************************************************************************/
+    155          #pragma vector = INTCSI31_vect
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    156          __interrupt static void r_csi31_interrupt(void)
+   \                     r_csi31_interrupt:
+    157          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000 C1                    PUSH      AX                 ;; 1 cycle
+   \   000001 C7                    PUSH      HL                 ;; 1 cycle
+   \   000002                       ; Auto size: 2
+   \   000002 C1                    PUSH      AX                 ;; 1 cycle
+    158              uint8_t err_type;
+    159          
+    160              err_type = (uint8_t)(SSR13 & _0001_SAU_OVERRUN_ERROR);
+   \   000003 AF4601                MOVW      AX, 0x146          ;; 1 cycle
+   \   000006 60                    MOV       A, X               ;; 1 cycle
+   \   000007 5C01                  AND       A, #0x1            ;; 1 cycle
+   \   000009 9800                  MOV       [SP], A            ;; 1 cycle
+    161              SIR13 = (uint16_t)err_type;
+   \   00000B 70                    MOV       X, A               ;; 1 cycle
+   \   00000C F1                    CLRB      A                  ;; 1 cycle
+   \   00000D BF4E01                MOVW      0x14E, AX          ;; 1 cycle
+    162          
+    163              if (1U == err_type)
+   \   000010 AEF8                  MOVW      AX, SP             ;; 1 cycle
+   \   000012 16                    MOVW      HL, AX             ;; 1 cycle
+   \   000013 318329                BT        [HL].0, ??r_csi31_interrupt_2  ;; 5 cycles
+   \   000016                       ; ------------------------------------- Block: 17 cycles
+    164              {
+    165                  r_csi31_callback_error(err_type);    /* overrun error occurs */
+    166              }
+    167              else
+    168              {
+    169                  if (g_csi31_tx_count > 0U)
+   \   000016 F6                    CLRW      AX                 ;; 1 cycle
+   \   000017 42....                CMPW      AX, N:g_csi31_tx_count  ;; 1 cycle
+   \   00001A 8D16                  MOV       A, S:0xFFF16       ;; 1 cycle
+   \   00001C FB....                MOVW      HL, N:gp_csi31_rx_address  ;; 1 cycle
+   \   00001F 9B                    MOV       [HL], A            ;; 1 cycle
+   \   000020 DD17                  BZ        ??r_csi31_interrupt_3  ;; 4 cycles
+   \   000022                       ; ------------------------------------- Block: 9 cycles
+    170                  {
+    171                      *gp_csi31_rx_address = SIO31;
+    172                      gp_csi31_rx_address++;
+   \   000022 AF....                MOVW      AX, N:gp_csi31_rx_address  ;; 1 cycle
+   \   000025 A1                    INCW      AX                 ;; 1 cycle
+   \   000026 BF....                MOVW      N:gp_csi31_rx_address, AX  ;; 1 cycle
+    173                      SIO31 = *gp_csi31_tx_address;
+   \   000029 FB....                MOVW      HL, N:gp_csi31_tx_address  ;; 1 cycle
+   \   00002C 8B                    MOV       A, [HL]            ;; 1 cycle
+   \   00002D 9D16                  MOV       S:0xFFF16, A       ;; 1 cycle
+    174                      gp_csi31_tx_address++;
+   \   00002F 17                    MOVW      AX, HL             ;; 1 cycle
+   \   000030 A1                    INCW      AX                 ;; 1 cycle
+   \   000031 BF....                MOVW      N:gp_csi31_tx_address, AX  ;; 1 cycle
+    175                      g_csi31_tx_count--;
+   \   000034 B2....                DECW      N:g_csi31_tx_count  ;; 2 cycles
+   \   000037 EF06                  BR        S:??r_csi31_interrupt_2  ;; 3 cycles
+   \   000039                       ; ------------------------------------- Block: 14 cycles
+    176                  }
+    177                  else 
+    178                  {
+    179                      if (0U == g_csi31_tx_count)
+    180                      {
+    181                          *gp_csi31_rx_address = SIO31;
+    182                      }
+    183          
+    184                      r_csi31_callback_sendend();    /* complete send */
+   \                     ??r_csi31_interrupt_3:
+   \   000039 F5....                CLRB      N:G_SPI31_SendingData  ;; 1 cycle
+    185                      r_csi31_callback_receiveend();    /* complete receive */
+   \   00003C F5....                CLRB      N:G_SPI31_ReceivingData  ;; 1 cycle
+    186                  }
+    187              }
+   \   00003F                       ; ------------------------------------- Block: 2 cycles
+    188          }
+   \                     ??r_csi31_interrupt_2:
+   \   00003F ED....                BR        N:?Subroutine0     ;; 3 cycles
+   \   000042                       ; ------------------------------------- Block: 3 cycles
+   \   000042                       ; ------------------------------------- Total: 45 cycles
+   \   000042                       REQUIRE ?CLRL78_V1_0_L00
+   \   000042                       REQUIRE _A_SSR13
+   \   000042                       REQUIRE _A_SIR13
+   \   000042                       REQUIRE _A_SDR13
+
+   \                                 In  segment INTVEC, offset 0x16, root
+   \   000016 ....                  DW r_csi21_interrupt
+
+   \                                 In  segment INTVEC, offset 0x3e, root
+   \   00003E ....                  DW r_csi31_interrupt
+    189          
+    190          /***********************************************************************************************************************
+    191          * Function Name: r_csi31_callback_receiveend
+    192          * Description  : This function is a callback function when CSI31 finishes reception.
+    193          * Arguments    : None
+    194          * Return Value : None
+    195          ***********************************************************************************************************************/
+    196          static void r_csi31_callback_receiveend(void)
+    197          {
+    198              /* Start user code. Do not edit comment generated here */
+    199                  G_SPI31_ReceivingData = 0;
+    200              /* End user code. Do not edit comment generated here */
+    201          }
+    202          
+    203          /***********************************************************************************************************************
+    204          * Function Name: r_csi31_callback_error
+    205          * Description  : This function is a callback function when CSI31 reception error occurs.
+    206          * Arguments    : err_type -
+    207          *                    error type value
+    208          * Return Value : None
+    209          ***********************************************************************************************************************/
+    210          static void r_csi31_callback_error(uint8_t err_type)
+    211          {
+    212              /* Start user code. Do not edit comment generated here */
+    213              /* End user code. Do not edit comment generated here */
+    214          }
+    215          
+    216          /***********************************************************************************************************************
+    217          * Function Name: r_csi31_callback_sendend
+    218          * Description  : This function is a callback function when CSI31 finishes transmission.
+    219          * Arguments    : None
+    220          * Return Value : None
+    221          ***********************************************************************************************************************/
+    222          static void r_csi31_callback_sendend(void)
+    223          {
+    224              /* Start user code. Do not edit comment generated here */
+    225                   G_SPI31_SendingData = 0;
+    226              /* End user code. Do not edit comment generated here */
+    227          }
+    228          
+    229          /* Start user code for adding. Do not edit comment generated here */
+    230          /*#pragma vector = INTCSI31_vect
+    231          __interrupt static void r_csi31_interrupt(void)
+    232          {
+    233              uint8_t err_type;
+    234          
+    235              err_type = (uint8_t)(SSR13 & _0001_SAU_OVERRUN_ERROR);
+    236              SIR13 = (uint16_t)err_type;
+    237          
+    238              if (1U == err_type)
+    239              {
+    240                  r_csi31_callback_error(err_type);    // overrun error occurs 
+    241              }
+    242              else
+    243              {
+    244                  G_WIFI_ReceiveBuffer[G_WIFI_BufferIndex++] = SIO31;
+    245                  
+    246                  if (g_csi31_tx_count > 0U)
+    247                  {
+    248                      SIO31 = *gp_csi31_tx_address;
+    249                      gp_csi31_tx_address++;
+    250                      g_csi31_tx_count--;
+    251                  }
+    252                  else 
+    253                  {
+    254                      r_csi31_callback_sendend();    // complete send 
+    255                      r_csi31_callback_receiveend();    //complete receive 
+    256                  }
+    257              }
+    258          }*/
+    259          /* End user code. Do not edit comment generated here */
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+      6   r_csi21_interrupt
+      6   r_csi31_interrupt
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       2  ??r_csi21_interrupt??INTVEC 22
+       2  ??r_csi31_interrupt??INTVEC 62
+       6  ?Subroutine0
+       1  G_IIC_ReceivingData
+       1  G_IIC_SendingData
+       1  G_SPI21_ReceivingData
+       1  G_SPI21_SendingData
+       1  G_SPI31_ReceivingData
+       1  G_SPI31_SendingData
+       4  G_WIFI_BufferIndex
+       1  G_WIFI_ReceiveBuffer
+       2  _A_SDR11
+       2  _A_SDR13
+       2  _A_SIR11
+       2  _A_SIR13
+       2  _A_SSR11
+       2  _A_SSR13
+      63  r_csi21_interrupt
+      66  r_csi31_interrupt
+
+ 
+ 135 bytes in segment CODE
+   4 bytes in segment INTVEC
+  10 bytes in segment NEAR_A
+  11 bytes in segment NEAR_Z
+   2 bytes in segment SADDR_A
+ 
+ 135 bytes of CODE memory (+  4 bytes shared)
+  11 bytes of DATA memory (+ 12 bytes shared)
+
+Errors: none
+Warnings: none

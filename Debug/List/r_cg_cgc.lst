@@ -1,0 +1,242 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             05/Aug/2014  14:51:23 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Evaluation license - IAR Embedded Workbench for Renesas RL78, Evaluation version 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_cg_cgc.c                   #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_cg_cgc.c" --core rl78_2    #
+#                    --code_model near --data_model near                      #
+#                    --near_const_location rom0 -o "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy\Debug\Obj\" --dlib_config      #
+#                    "C:\Program Files (x86)\IAR Systems\Embedded Workbench   #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\r_cg_cgc.lst                    #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\r_cg_cgc.r87                     #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\applilet3_src\r_cg_cgc.c
+      1          /***********************************************************************************************************************
+      2          * DISCLAIMER
+      3          * This software is supplied by Renesas Electronics Corporation and is only 
+      4          * intended for use with Renesas products. No other uses are authorized. This 
+      5          * software is owned by Renesas Electronics Corporation and is protected under 
+      6          * all applicable laws, including copyright laws.
+      7          * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING 
+      8          * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT 
+      9          * LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE 
+     10          * AND NON-INFRINGEMENT.  ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.
+     11          * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS 
+     12          * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE 
+     13          * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR 
+     14          * ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE 
+     15          * BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+     16          * Renesas reserves the right, without notice, to make changes to this software 
+     17          * and to discontinue the availability of this software.  By using this software, 
+     18          * you agree to the additional terms and conditions found by accessing the 
+     19          * following link:
+     20          * http://www.renesas.com/disclaimer
+     21          *
+     22          * Copyright (C) 2011, 2013 Renesas Electronics Corporation. All rights reserved.
+     23          ***********************************************************************************************************************/
+     24          
+     25          /***********************************************************************************************************************
+     26          * File Name    : r_cg_cgc.c
+     27          * Version      : Applilet3 for RL78/G14 V2.00.00.08 [12 Apr 2013]
+     28          * Device(s)    : R5F104PJ
+     29          * Tool-Chain   : IAR Systems iccrl78
+     30          * Description  : This file implements device driver for CGC module.
+     31          * Creation Date: 8/4/2014
+     32          ***********************************************************************************************************************/
+     33          
+     34          /***********************************************************************************************************************
+     35          Includes
+     36          ***********************************************************************************************************************/
+     37          #include "r_cg_macrodriver.h"
+
+   \                                 In  segment NEAR_A, at 0xfffa0
+   \   union <unnamed> volatile __sfr __no_bit_access _A_CMC
+   \                     _A_CMC:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfffa1
+   \   union <unnamed> volatile __sfr _A_CSC
+   \                     _A_CSC:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfffa2
+   \   union <unnamed> const volatile __sfr _A_OSTC
+   \                     _A_OSTC:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfffa3
+   \   union <unnamed> volatile __sfr __no_bit_access _A_OSTS
+   \                     _A_OSTS:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfffa4
+   \   union <unnamed> volatile __sfr _A_CKC
+   \                     _A_CKC:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xf00f3
+   \   union <unnamed> volatile __no_bit_access _A_OSMC
+   \                     _A_OSMC:
+   \   000000                       DS 1
+     38          #include "r_cg_cgc.h"
+     39          /* Start user code for include. Do not edit comment generated here */
+     40          /* End user code. Do not edit comment generated here */
+     41          #include "r_cg_userdefine.h"
+     42          
+     43          /***********************************************************************************************************************
+     44          Global variables and functions
+     45          ***********************************************************************************************************************/
+     46          /* Start user code for global. Do not edit comment generated here */
+     47          /* End user code. Do not edit comment generated here */
+     48          
+     49          /***********************************************************************************************************************
+     50          * Function Name: R_CGC_Create
+     51          * Description  : This function initializes the clock generator.
+     52          * Arguments    : None
+     53          * Return Value : None
+     54          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     55          void R_CGC_Create(void)
+   \                     R_CGC_Create:
+     56          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 2
+   \   000000 C1                    PUSH      AX                 ;; 1 cycle
+     57              volatile uint16_t w_count;
+     58              uint8_t           temp_stab_set;
+     59              uint8_t           temp_stab_wait; 
+     60          
+     61              /* Set fMX */
+     62              CMC = _40_CGC_HISYS_OSC | _10_CGC_SUB_OSC | _01_CGC_SYSOSC_OVER10M | _00_CGC_SUBMODE_LOW;
+   \   000001 CEA051                MOV       0xFFFA0, #0x51     ;; 1 cycle
+     63              OSTS = _07_CGC_OSCSTAB_SEL18;
+   \   000004 CEA307                MOV       0xFFFA3, #0x7      ;; 1 cycle
+     64              MSTOP = 0U;
+   \   000007 717BA1                CLR1      0xFFFA1.7          ;; 2 cycles
+     65              temp_stab_set = _FF_CGC_OSCSTAB_STA18;
+   \   00000A                       ; ------------------------------------- Block: 5 cycles
+     66              
+     67              do
+     68              {
+     69                  temp_stab_wait = OSTC;
+     70                  temp_stab_wait &= temp_stab_set;
+     71              }
+     72              while (temp_stab_wait != temp_stab_set);
+   \                     ??R_CGC_Create_0:
+   \   00000A 40A2FFFF              CMP       0xFFFA2, #0xFF     ;; 1 cycle
+   \   00000E DFFA                  BNZ       ??R_CGC_Create_0   ;; 4 cycles
+   \   000010                       ; ------------------------------------- Block: 5 cycles
+     73              
+     74              /* Set fMAIN */
+     75              MCM0 = 0U;
+   \   000010 714BA4                CLR1      0xFFFA4.4          ;; 2 cycles
+     76              /* Set fSUB */
+     77              XTSTOP = 0U;
+   \   000013 716BA1                CLR1      0xFFFA1.6          ;; 2 cycles
+     78          
+     79              /* Change the waiting time according to the system */
+     80              for (w_count = 0U; w_count <= CGC_SUBWAITTIME; w_count++)
+   \   000016 F6                    CLRW      AX                 ;; 1 cycle
+   \   000017 EF04                  BR        S:??R_CGC_Create_1  ;; 3 cycles
+   \   000019                       ; ------------------------------------- Block: 8 cycles
+     81              {
+     82                  NOP();
+   \                     ??R_CGC_Create_2:
+   \   000019 00                    NOP                          ;; 1 cycle
+     83              }
+   \   00001A A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   00001C A1                    INCW      AX                 ;; 1 cycle
+   \   00001D                       ; ------------------------------------- Block: 3 cycles
+   \                     ??R_CGC_Create_1:
+   \   00001D B800                  MOVW      [SP], AX           ;; 1 cycle
+   \   00001F A800                  MOVW      AX, [SP]           ;; 1 cycle
+   \   000021 44A100                CMPW      AX, #0xA1          ;; 1 cycle
+   \   000024 DCF3                  BC        ??R_CGC_Create_2   ;; 4 cycles
+   \   000026                       ; ------------------------------------- Block: 7 cycles
+     84              
+     85              OSMC = _00_CGC_SUBINHALT_ON | _00_CGC_RTC_CLK_FSUB;
+   \   000026 CFF30000              MOV       0xF3, #0x0         ;; 1 cycle
+     86              /* Set fCLK */
+     87              CSS = 0U;
+   \   00002A 716BA4                CLR1      0xFFFA4.6          ;; 2 cycles
+     88              /* Set fIH */
+     89              HIOSTOP = 0U;
+   \   00002D 710BA1                CLR1      0xFFFA1.0          ;; 2 cycles
+     90          }
+   \   000030 1002                  ADDW      SP, #0x2           ;; 1 cycle
+   \   000032 D7                    RET                          ;; 6 cycles
+   \   000033                       ; ------------------------------------- Block: 12 cycles
+   \   000033                       ; ------------------------------------- Total: 40 cycles
+   \   000033                       REQUIRE ?CLRL78_V1_0_L00
+   \   000033                       REQUIRE _A_CMC
+   \   000033                       REQUIRE _A_OSTS
+   \   000033                       REQUIRE _A_CSC
+   \   000033                       REQUIRE _A_OSTC
+   \   000033                       REQUIRE _A_CKC
+   \   000033                       REQUIRE _A_OSMC
+     91          
+     92          /* Start user code for adding. Do not edit comment generated here */
+     93          /* End user code. Do not edit comment generated here */
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+      2   R_CGC_Create
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      51  R_CGC_Create
+       1  _A_CKC
+       1  _A_CMC
+       1  _A_CSC
+       1  _A_OSMC
+       1  _A_OSTC
+       1  _A_OSTS
+
+ 
+ 51 bytes in segment CODE
+  6 bytes in segment NEAR_A
+ 
+ 51 bytes of CODE memory
+  0 bytes of DATA memory (+ 6 bytes shared)
+
+Errors: none
+Warnings: none

@@ -1,0 +1,239 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             05/Aug/2014  14:51:25 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Evaluation license - IAR Embedded Workbench for Renesas RL78, Evaluation version 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_systeminit.c               #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_systeminit.c" --core       #
+#                    rl78_2 --code_model near --data_model near               #
+#                    --near_const_location rom0 -o "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy\Debug\Obj\" --dlib_config      #
+#                    "C:\Program Files (x86)\IAR Systems\Embedded Workbench   #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\r_systeminit.lst                #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\r_systeminit.r87                 #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\applilet3_src\r_systeminit.c
+      1          /***********************************************************************************************************************
+      2          * DISCLAIMER
+      3          * This software is supplied by Renesas Electronics Corporation and is only 
+      4          * intended for use with Renesas products. No other uses are authorized. This 
+      5          * software is owned by Renesas Electronics Corporation and is protected under 
+      6          * all applicable laws, including copyright laws.
+      7          * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING 
+      8          * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT 
+      9          * LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE 
+     10          * AND NON-INFRINGEMENT.  ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.
+     11          * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS 
+     12          * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE 
+     13          * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR 
+     14          * ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE 
+     15          * BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+     16          * Renesas reserves the right, without notice, to make changes to this software 
+     17          * and to discontinue the availability of this software.  By using this software, 
+     18          * you agree to the additional terms and conditions found by accessing the 
+     19          * following link:
+     20          * http://www.renesas.com/disclaimer
+     21          *
+     22          * Copyright (C) 2011, 2013 Renesas Electronics Corporation. All rights reserved.
+     23          ***********************************************************************************************************************/
+     24          
+     25          /***********************************************************************************************************************
+     26          * File Name    : r_systeminit.c
+     27          * Version      : Applilet3 for RL78/G14 V2.00.00.08 [12 Apr 2013]
+     28          * Device(s)    : R5F104PJ
+     29          * Tool-Chain   : IAR Systems iccrl78
+     30          * Description  : This file implements system initializing function.
+     31          * Creation Date: 8/4/2014
+     32          ***********************************************************************************************************************/
+     33          
+     34          /***********************************************************************************************************************
+     35          Includes
+     36          ***********************************************************************************************************************/
+     37          #include "r_cg_macrodriver.h"
+
+   \                                 In  segment NEAR_A, at 0xf0077
+   \   union <unnamed> volatile __no_bit_access _A_PIOR0
+   \                     _A_PIOR0:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xf0078
+   \   union <unnamed> volatile __no_bit_access _A_IAWCTL
+   \                     _A_IAWCTL:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xf0079
+   \   union <unnamed> volatile __no_bit_access _A_PIOR1
+   \                     _A_PIOR1:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xf007b
+   \   union <unnamed> volatile _A_PMS
+   \                     _A_PMS:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xf02f0
+   \   union <unnamed> volatile _A_CRC0CTL
+   \                     _A_CRC0CTL:
+   \   000000                       DS 1
+     38          #include "r_cg_cgc.h"
+     39          #include "r_cg_port.h"
+     40          #include "r_cg_intc.h"
+     41          #include "r_cg_serial.h"
+     42          #include "r_cg_adc.h"
+     43          #include "r_cg_it.h"
+     44          /* Start user code for include. Do not edit comment generated here */
+     45          /* End user code. Do not edit comment generated here */
+     46          #include "r_cg_userdefine.h"
+     47          
+     48          /***********************************************************************************************************************
+     49          Global variables and functions
+     50          ***********************************************************************************************************************/
+     51          /* Start user code for global. Do not edit comment generated here */
+     52          /* End user code. Do not edit comment generated here */
+     53          int __low_level_init(void);
+     54          void R_Systeminit(void);
+     55          
+     56          
+     57          /***********************************************************************************************************************
+     58          * Function Name: R_Systeminit
+     59          * Description  : This function initializes every macro.
+     60          * Arguments    : None
+     61          * Return Value : None
+     62          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     63          void R_Systeminit(void)
+   \                     R_Systeminit:
+     64          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+     65              PIOR0 = 0x00U;
+   \   000000 CF770000              MOV       0x77, #0x0         ;; 1 cycle
+     66              PIOR1 = 0x00U;
+   \   000004 CF790000              MOV       0x79, #0x0         ;; 1 cycle
+     67              R_PORT_Create();
+   \   000008 FD....                CALL      R_PORT_Create      ;; 3 cycles
+     68              R_CGC_Create();
+   \   00000B FD....                CALL      R_CGC_Create       ;; 3 cycles
+     69              R_SAU1_Create();
+   \   00000E FD....                CALL      R_SAU1_Create      ;; 3 cycles
+     70              R_ADC_Create();
+   \   000011 FD....                CALL      R_ADC_Create       ;; 3 cycles
+     71              R_IT_Create();
+   \   000014 FD....                CALL      R_IT_Create        ;; 3 cycles
+     72              R_INTC_Create();
+   \   000017 FD....                CALL      R_INTC_Create      ;; 3 cycles
+     73              CRC0CTL = 0x00U;
+   \   00001A CFF00200              MOV       0x2F0, #0x0        ;; 1 cycle
+     74              IAWCTL = 0x00U;
+   \   00001E CF780000              MOV       0x78, #0x0         ;; 1 cycle
+     75              PMS = 0x00U;
+   \   000022 CF7B0000              MOV       0x7B, #0x0         ;; 1 cycle
+     76          }
+   \   000026 D7                    RET                          ;; 6 cycles
+   \   000027                       ; ------------------------------------- Block: 29 cycles
+   \   000027                       ; ------------------------------------- Total: 29 cycles
+   \   000027                       REQUIRE ?CLRL78_V1_0_L00
+   \   000027                       REQUIRE _A_PIOR0
+   \   000027                       REQUIRE _A_PIOR1
+   \   000027                       REQUIRE _A_CRC0CTL
+   \   000027                       REQUIRE _A_IAWCTL
+   \   000027                       REQUIRE _A_PMS
+     77          
+     78          /***********************************************************************************************************************
+     79          * Function Name: __low_level_init
+     80          * Description  : This function initializes hardware setting.
+     81          * Arguments    : None
+     82          * Return Value : None
+     83          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next, root
+     84          int __low_level_init(void)
+   \                     __low_level_init:
+     85          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+     86              DI();
+   \   000000 717BFA                DI                           ;; 2 cycles
+     87              R_Systeminit();
+   \   000003 FD....                CALL      R_Systeminit       ;; 3 cycles
+     88          
+     89              return (1U);
+   \   000006 E6                    ONEW      AX                 ;; 1 cycle
+   \   000007 D7                    RET                          ;; 6 cycles
+   \   000008                       ; ------------------------------------- Block: 12 cycles
+   \   000008                       ; ------------------------------------- Total: 12 cycles
+   \   000008                       REQUIRE ?CLRL78_V1_0_L00
+     90          }
+     91          
+     92          /* Start user code for adding. Do not edit comment generated here */
+     93          /* End user code. Do not edit comment generated here */
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+      0   R_Systeminit
+        0   -> R_ADC_Create
+        0   -> R_CGC_Create
+        0   -> R_INTC_Create
+        0   -> R_IT_Create
+        0   -> R_PORT_Create
+        0   -> R_SAU1_Create
+      0   __low_level_init
+        0   -> R_Systeminit
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      39  R_Systeminit
+       1  _A_CRC0CTL
+       1  _A_IAWCTL
+       1  _A_PIOR0
+       1  _A_PIOR1
+       1  _A_PMS
+       8  __low_level_init
+
+ 
+ 47 bytes in segment CODE
+  5 bytes in segment NEAR_A
+ 
+ 47 bytes of CODE memory
+  0 bytes of DATA memory (+ 5 bytes shared)
+
+Errors: none
+Warnings: none

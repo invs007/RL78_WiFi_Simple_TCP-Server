@@ -1,0 +1,2749 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             05/Aug/2014  14:51:16 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Evaluation license - IAR Embedded Workbench for Renesas RL78, Evaluation version 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Glyph\Fonts\font_8x8.c                     #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Glyph\Fonts\font_8x8.c" --core rl78_2      #
+#                    --code_model near --data_model near                      #
+#                    --near_const_location rom0 -o "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy\Debug\Obj\" --dlib_config      #
+#                    "C:\Program Files (x86)\IAR Systems\Embedded Workbench   #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\font_8x8.lst                    #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\font_8x8.r87                     #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\Glyph\Fonts\font_8x8.c
+      1          /******************************************************************************
+      2          * DISCLAIMER
+      3          * This software is supplied by Renesas Electronics Corporation and is only
+      4          * intended for use with Renesas products. No other uses are authorized.
+      5          * This software is owned by Renesas Electronics Corporation and is protected under
+      6          * all applicable laws, including copyright laws.
+      7          * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES
+      8          * REGARDING THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY,
+      9          * INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+     10          * PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY
+     11          * DISCLAIMED.
+     12          * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS
+     13          * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE
+     14          * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES
+     15          * FOR ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS
+     16          * AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+     17          * Renesas reserves the right, without notice, to make changes to this
+     18          * software and to discontinue the availability of this software.
+     19          * By using this software, you agree to the additional terms and
+     20          * conditions found by accessing the following link:
+     21          * http://www.renesas.com/disclaimer
+     22          ******************************************************************************/
+     23          /* Copyright (C) 2010 Renesas Electronics Corporation. All rights reserved. */
+     24          /* Code written for Renesas by Future Designs, Inc. www.teamfdi.com */
+     25          
+     26          /******************************************************************************
+     27          * File Name : font_8x8.c
+     28          * Version : 1.00
+     29          * Tool-Chain : Glyph - The Generic API for Graphics LCD API
+     30          * H/W Platform : RX62N Group
+     31          * Description : An 8 x 8 Font.
+     32          ******************************************************************************
+     33          * History :
+     34          * : 21.07.2010 1.00 First Release
+     35          ******************************************************************************/
+     36          
+     37          /******************************************************************************
+     38          Includes “Glyph config Include”
+     39          ******************************************************************************/
+     40          #include "..\glyph_cfg.h"
+     41          
+
+   \                                 In  segment NEAR_CONST, align 2
+     42          const uint8_t Font8x8_char_0[] = {
+   \                     Font8x8_char_0:
+   \   000000 080800000000          DB 8, 8, 0, 0, 0, 0, 0, 0, 0, 0
+     43              0x08, 0x08, // width=8, height=8
+     44              0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+     45          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     46          const uint8_t Font8x8_char_1[] = {
+   \                     Font8x8_char_1:
+   \   000000 08087E8195B1          DB 8, 8, 126, 129, 149, 177, 177, 149, 129, 126
+     47              0x08, 0x08, // width=8, height=8
+     48              0x7E, 0x81, 0x95, 0xB1, 0xB1, 0x95, 0x81, 0x7E, 
+     49          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     50          const uint8_t Font8x8_char_2[] = {
+   \                     Font8x8_char_2:
+   \   000000 08083E776B6F          DB 8, 8, 62, 119, 107, 111, 107, 119, 62, 0
+     51              0x08, 0x08, // width=8, height=8
+     52              0x3E, 0x77, 0x6B, 0x6F, 0x6B, 0x77, 0x3E, 0x00, 
+     53          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     54          const uint8_t Font8x8_char_3[] = {
+   \                     Font8x8_char_3:
+   \   000000 08080F1F3E7C          DB 8, 8, 15, 31, 62, 124, 62, 31, 15, 0
+     55              0x08, 0x08, // width=8, height=8
+     56              0x0F, 0x1F, 0x3E, 0x7C, 0x3E, 0x1F, 0x0F, 0x00, 
+     57          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     58          const uint8_t Font8x8_char_4[] = {
+   \                     Font8x8_char_4:
+   \   000000 0808081C3E7F          DB 8, 8, 8, 28, 62, 127, 62, 28, 8, 0
+     59              0x08, 0x08, // width=8, height=8
+     60              0x08, 0x1C, 0x3E, 0x7F, 0x3E, 0x1C, 0x08, 0x00, 
+     61          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     62          const uint8_t Font8x8_char_5[] = {
+   \                     Font8x8_char_5:
+   \   000000 080818185A67          DB 8, 8, 24, 24, 90, 103, 90, 24, 24, 0
+     63              0x08, 0x08, // width=8, height=8
+     64              0x18, 0x18, 0x5A, 0x67, 0x5A, 0x18, 0x18, 0x00, 
+     65          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     66          const uint8_t Font8x8_char_6[] = {
+   \                     Font8x8_char_6:
+   \   000000 08080C1E5F6F          DB 8, 8, 12, 30, 95, 111, 95, 30, 12, 0
+     67              0x08, 0x08, // width=8, height=8
+     68              0x0C, 0x1E, 0x5F, 0x6F, 0x5F, 0x1E, 0x0C, 0x00, 
+     69          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     70          const uint8_t Font8x8_char_7[] = {
+   \                     Font8x8_char_7:
+   \   000000 080800081C3E          DB 8, 8, 0, 8, 28, 62, 62, 28, 8, 0
+     71              0x08, 0x08, // width=8, height=8
+     72              0x00, 0x08, 0x1C, 0x3E, 0x3E, 0x1C, 0x08, 0x00, 
+     73          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     74          const uint8_t Font8x8_char_8[] = {
+   \                     Font8x8_char_8:
+   \   000000 0808FFF7E3C1          DB 8, 8, 255, 247, 227, 193, 193, 227, 247, 255
+     75              0x08, 0x08, // width=8, height=8
+     76              0xFF, 0xF7, 0xE3, 0xC1, 0xC1, 0xE3, 0xF7, 0xFF, 
+     77          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     78          const uint8_t Font8x8_char_9[] = {
+   \                     Font8x8_char_9:
+   \   000000 080800183C66          DB 8, 8, 0, 24, 60, 102, 102, 60, 24, 0
+     79              0x08, 0x08, // width=8, height=8
+     80              0x00, 0x18, 0x3C, 0x66, 0x66, 0x3C, 0x18, 0x00, 
+     81          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     82          const uint8_t Font8x8_char_10[] = {
+   \                     Font8x8_char_10:
+   \   000000 0808FFE7C399          DB 8, 8, 255, 231, 195, 153, 153, 195, 231, 255
+     83              0x08, 0x08, // width=8, height=8
+     84              0xFF, 0xE7, 0xC3, 0x99, 0x99, 0xC3, 0xE7, 0xFF, 
+     85          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     86          const uint8_t Font8x8_char_11[] = {
+   \                     Font8x8_char_11:
+   \   000000 080860F0989D          DB 8, 8, 96, 240, 152, 157, 247, 111, 15, 0
+     87              0x08, 0x08, // width=8, height=8
+     88              0x60, 0xF0, 0x98, 0x9D, 0xF7, 0x6F, 0x0F, 0x00, 
+     89          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     90          const uint8_t Font8x8_char_12[] = {
+   \                     Font8x8_char_12:
+   \   000000 0808062F29F9          DB 8, 8, 6, 47, 41, 249, 249, 41, 47, 6
+     91              0x08, 0x08, // width=8, height=8
+     92              0x06, 0x2F, 0x29, 0xF9, 0xF9, 0x29, 0x2F, 0x06, 
+     93          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     94          const uint8_t Font8x8_char_13[] = {
+   \                     Font8x8_char_13:
+   \   000000 080840E0E07F          DB 8, 8, 64, 224, 224, 127, 31, 5, 7, 0
+     95              0x08, 0x08, // width=8, height=8
+     96              0x40, 0xE0, 0xE0, 0x7F, 0x1F, 0x05, 0x07, 0x00, 
+     97          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     98          const uint8_t Font8x8_char_14[] = {
+   \                     Font8x8_char_14:
+   \   000000 080810303F5F          DB 8, 8, 16, 48, 63, 95, 195, 255, 127, 0
+     99              0x08, 0x08, // width=8, height=8
+    100              0x10, 0x30, 0x3F, 0x5F, 0xC3, 0xFF, 0x7F, 0x00, 
+    101          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    102          const uint8_t Font8x8_char_15[] = {
+   \                     Font8x8_char_15:
+   \   000000 0808495D3E63          DB 8, 8, 73, 93, 62, 99, 99, 62, 93, 73
+    103              0x08, 0x08, // width=8, height=8
+    104              0x49, 0x5D, 0x3E, 0x63, 0x63, 0x3E, 0x5D, 0x49, 
+    105          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    106          const uint8_t Font8x8_char_16[] = {
+   \                     Font8x8_char_16:
+   \   000000 08087F3E1C1C          DB 8, 8, 127, 62, 28, 28, 8, 0, 0, 0
+    107              0x08, 0x08, // width=8, height=8
+    108              0x7F, 0x3E, 0x1C, 0x1C, 0x08, 0x00, 0x00, 0x00, 
+    109          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    110          const uint8_t Font8x8_char_17[] = {
+   \                     Font8x8_char_17:
+   \   000000 08080000081C          DB 8, 8, 0, 0, 8, 28, 28, 62, 127, 0
+    111              0x08, 0x08, // width=8, height=8
+    112              0x00, 0x00, 0x08, 0x1C, 0x1C, 0x3E, 0x7F, 0x00, 
+    113          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    114          const uint8_t Font8x8_char_18[] = {
+   \                     Font8x8_char_18:
+   \   000000 08080014367F          DB 8, 8, 0, 20, 54, 127, 127, 54, 20, 0
+    115              0x08, 0x08, // width=8, height=8
+    116              0x00, 0x14, 0x36, 0x7F, 0x7F, 0x36, 0x14, 0x00, 
+    117          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    118          const uint8_t Font8x8_char_19[] = {
+   \                     Font8x8_char_19:
+   \   000000 0808005F5F00          DB 8, 8, 0, 95, 95, 0, 0, 95, 95, 0
+    119              0x08, 0x08, // width=8, height=8
+    120              0x00, 0x5F, 0x5F, 0x00, 0x00, 0x5F, 0x5F, 0x00, 
+    121          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    122          const uint8_t Font8x8_char_20[] = {
+   \                     Font8x8_char_20:
+   \   000000 080802070D7F          DB 8, 8, 2, 7, 13, 127, 127, 1, 127, 127
+    123              0x08, 0x08, // width=8, height=8
+    124              0x02, 0x07, 0x0D, 0x7F, 0x7F, 0x01, 0x7F, 0x7F, 
+    125          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    126          const uint8_t Font8x8_char_21[] = {
+   \                     Font8x8_char_21:
+   \   000000 080840DABFA5          DB 8, 8, 64, 218, 191, 165, 253, 91, 2, 0
+    127              0x08, 0x08, // width=8, height=8
+    128              0x40, 0xDA, 0xBF, 0xA5, 0xFD, 0x5B, 0x02, 0x00, 
+    129          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    130          const uint8_t Font8x8_char_22[] = {
+   \                     Font8x8_char_22:
+   \   000000 080870707070          DB 8, 8, 112, 112, 112, 112, 112, 112, 112, 0
+    131              0x08, 0x08, // width=8, height=8
+    132              0x70, 0x70, 0x70, 0x70, 0x70, 0x70, 0x70, 0x00, 
+    133          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    134          const uint8_t Font8x8_char_23[] = {
+   \                     Font8x8_char_23:
+   \   000000 08080094B6FF          DB 8, 8, 0, 148, 182, 255, 255, 182, 148, 0
+    135              0x08, 0x08, // width=8, height=8
+    136              0x00, 0x94, 0xB6, 0xFF, 0xFF, 0xB6, 0x94, 0x00, 
+    137          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    138          const uint8_t Font8x8_char_24[] = {
+   \                     Font8x8_char_24:
+   \   000000 08080004067F          DB 8, 8, 0, 4, 6, 127, 127, 6, 4, 0
+    139              0x08, 0x08, // width=8, height=8
+    140              0x00, 0x04, 0x06, 0x7F, 0x7F, 0x06, 0x04, 0x00, 
+    141          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    142          const uint8_t Font8x8_char_25[] = {
+   \                     Font8x8_char_25:
+   \   000000 08080010307F          DB 8, 8, 0, 16, 48, 127, 127, 48, 16, 0
+    143              0x08, 0x08, // width=8, height=8
+    144              0x00, 0x10, 0x30, 0x7F, 0x7F, 0x30, 0x10, 0x00, 
+    145          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    146          const uint8_t Font8x8_char_26[] = {
+   \                     Font8x8_char_26:
+   \   000000 08080808083E          DB 8, 8, 8, 8, 8, 62, 62, 28, 8, 0
+    147              0x08, 0x08, // width=8, height=8
+    148              0x08, 0x08, 0x08, 0x3E, 0x3E, 0x1C, 0x08, 0x00, 
+    149          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    150          const uint8_t Font8x8_char_27[] = {
+   \                     Font8x8_char_27:
+   \   000000 0808081C3E3E          DB 8, 8, 8, 28, 62, 62, 8, 8, 8, 0
+    151              0x08, 0x08, // width=8, height=8
+    152              0x08, 0x1C, 0x3E, 0x3E, 0x08, 0x08, 0x08, 0x00, 
+    153          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    154          const uint8_t Font8x8_char_28[] = {
+   \                     Font8x8_char_28:
+   \   000000 08083C3C2020          DB 8, 8, 60, 60, 32, 32, 32, 32, 32, 0
+    155              0x08, 0x08, // width=8, height=8
+    156              0x3C, 0x3C, 0x20, 0x20, 0x20, 0x20, 0x20, 0x00, 
+    157          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    158          const uint8_t Font8x8_char_29[] = {
+   \                     Font8x8_char_29:
+   \   000000 0808081C3E08          DB 8, 8, 8, 28, 62, 8, 8, 62, 28, 8
+    159              0x08, 0x08, // width=8, height=8
+    160              0x08, 0x1C, 0x3E, 0x08, 0x08, 0x3E, 0x1C, 0x08, 
+    161          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    162          const uint8_t Font8x8_char_30[] = {
+   \                     Font8x8_char_30:
+   \   000000 080820383C3E          DB 8, 8, 32, 56, 60, 62, 60, 56, 32, 0
+    163              0x08, 0x08, // width=8, height=8
+    164              0x20, 0x38, 0x3C, 0x3E, 0x3C, 0x38, 0x20, 0x00, 
+    165          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    166          const uint8_t Font8x8_char_31[] = {
+   \                     Font8x8_char_31:
+   \   000000 0808020E1E3E          DB 8, 8, 2, 14, 30, 62, 30, 14, 2, 0
+    167              0x08, 0x08, // width=8, height=8
+    168              0x02, 0x0E, 0x1E, 0x3E, 0x1E, 0x0E, 0x02, 0x00, 
+    169          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    170          const uint8_t Font8x8_char_32[] = {
+   \                     Font8x8_char_32:
+   \   000000 080800000000          DB 8, 8, 0, 0, 0, 0, 0, 0, 0, 0
+    171              0x08, 0x08, // width=8, height=8
+    172              0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+    173          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    174          const uint8_t Font8x8_char_33[] = {
+   \                     Font8x8_char_33:
+   \   000000 08080000065F          DB 8, 8, 0, 0, 6, 95, 95, 6, 0, 0
+    175              0x08, 0x08, // width=8, height=8
+    176              0x00, 0x00, 0x06, 0x5F, 0x5F, 0x06, 0x00, 0x00, 
+    177          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    178          const uint8_t Font8x8_char_34[] = {
+   \                     Font8x8_char_34:
+   \   000000 080800070700          DB 8, 8, 0, 7, 7, 0, 7, 7, 0, 0
+    179              0x08, 0x08, // width=8, height=8
+    180              0x00, 0x07, 0x07, 0x00, 0x07, 0x07, 0x00, 0x00, 
+    181          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    182          const uint8_t Font8x8_char_35[] = {
+   \                     Font8x8_char_35:
+   \   000000 0808147F7F14          DB 8, 8, 20, 127, 127, 20, 127, 127, 20, 0
+    183              0x08, 0x08, // width=8, height=8
+    184              0x14, 0x7F, 0x7F, 0x14, 0x7F, 0x7F, 0x14, 0x00, 
+    185          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    186          const uint8_t Font8x8_char_36[] = {
+   \                     Font8x8_char_36:
+   \   000000 0808242E2A6B          DB 8, 8, 36, 46, 42, 107, 107, 58, 18, 0
+    187              0x08, 0x08, // width=8, height=8
+    188              0x24, 0x2E, 0x2A, 0x6B, 0x6B, 0x3A, 0x12, 0x00, 
+    189          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    190          const uint8_t Font8x8_char_37[] = {
+   \                     Font8x8_char_37:
+   \   000000 080842623018          DB 8, 8, 66, 98, 48, 24, 12, 70, 66, 0
+    191              0x08, 0x08, // width=8, height=8
+    192              0x42, 0x62, 0x30, 0x18, 0x0C, 0x46, 0x42, 0x00, 
+    193          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    194          const uint8_t Font8x8_char_38[] = {
+   \                     Font8x8_char_38:
+   \   000000 0808307A4F4D          DB 8, 8, 48, 122, 79, 77, 55, 122, 72, 0
+    195              0x08, 0x08, // width=8, height=8
+    196              0x30, 0x7A, 0x4F, 0x4D, 0x37, 0x7A, 0x48, 0x00, 
+    197          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    198          const uint8_t Font8x8_char_39[] = {
+   \                     Font8x8_char_39:
+   \   000000 080800000407          DB 8, 8, 0, 0, 4, 7, 3, 0, 0, 0
+    199              0x08, 0x08, // width=8, height=8
+    200              0x00, 0x00, 0x04, 0x07, 0x03, 0x00, 0x00, 0x00, 
+    201          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    202          const uint8_t Font8x8_char_40[] = {
+   \                     Font8x8_char_40:
+   \   000000 0808001C3E63          DB 8, 8, 0, 28, 62, 99, 65, 0, 0, 0
+    203              0x08, 0x08, // width=8, height=8
+    204              0x00, 0x1C, 0x3E, 0x63, 0x41, 0x00, 0x00, 0x00, 
+    205          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    206          const uint8_t Font8x8_char_41[] = {
+   \                     Font8x8_char_41:
+   \   000000 08080041633E          DB 8, 8, 0, 65, 99, 62, 28, 0, 0, 0
+    207              0x08, 0x08, // width=8, height=8
+    208              0x00, 0x41, 0x63, 0x3E, 0x1C, 0x00, 0x00, 0x00, 
+    209          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    210          const uint8_t Font8x8_char_42[] = {
+   \                     Font8x8_char_42:
+   \   000000 08082A3E3E1C          DB 8, 8, 42, 62, 62, 28, 62, 62, 42, 0
+    211              0x08, 0x08, // width=8, height=8
+    212              0x2A, 0x3E, 0x3E, 0x1C, 0x3E, 0x3E, 0x2A, 0x00, 
+    213          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    214          const uint8_t Font8x8_char_43[] = {
+   \                     Font8x8_char_43:
+   \   000000 08080008083E          DB 8, 8, 0, 8, 8, 62, 62, 8, 8, 0
+    215              0x08, 0x08, // width=8, height=8
+    216              0x00, 0x08, 0x08, 0x3E, 0x3E, 0x08, 0x08, 0x00, 
+    217          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    218          const uint8_t Font8x8_char_44[] = {
+   \                     Font8x8_char_44:
+   \   000000 080800004070          DB 8, 8, 0, 0, 64, 112, 48, 0, 0, 0
+    219              0x08, 0x08, // width=8, height=8
+    220              0x00, 0x00, 0x40, 0x70, 0x30, 0x00, 0x00, 0x00, 
+    221          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    222          const uint8_t Font8x8_char_45[] = {
+   \                     Font8x8_char_45:
+   \   000000 080808080808          DB 8, 8, 8, 8, 8, 8, 8, 8, 8, 0
+    223              0x08, 0x08, // width=8, height=8
+    224              0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x00, 
+    225          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    226          const uint8_t Font8x8_char_46[] = {
+   \                     Font8x8_char_46:
+   \   000000 080800006060          DB 8, 8, 0, 0, 96, 96, 96, 0, 0, 0
+    227              0x08, 0x08, // width=8, height=8
+    228              0x00, 0x00, 0x60, 0x60, 0x60, 0x00, 0x00, 0x00, 
+    229          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    230          const uint8_t Font8x8_char_47[] = {
+   \                     Font8x8_char_47:
+   \   000000 08086030180C          DB 8, 8, 96, 48, 24, 12, 6, 3, 1, 0
+    231              0x08, 0x08, // width=8, height=8
+    232              0x60, 0x30, 0x18, 0x0C, 0x06, 0x03, 0x01, 0x00, 
+    233          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    234          const uint8_t Font8x8_char_48[] = {
+   \                     Font8x8_char_48:
+   \   000000 08083E7F7159          DB 8, 8, 62, 127, 113, 89, 77, 127, 62, 0
+    235              0x08, 0x08, // width=8, height=8
+    236              0x3E, 0x7F, 0x71, 0x59, 0x4D, 0x7F, 0x3E, 0x00, 
+    237          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    238          const uint8_t Font8x8_char_49[] = {
+   \                     Font8x8_char_49:
+   \   000000 08080042427F          DB 8, 8, 0, 66, 66, 127, 127, 64, 64, 0
+    239              0x08, 0x08, // width=8, height=8
+    240              0x00, 0x42, 0x42, 0x7F, 0x7F, 0x40, 0x40, 0x00, 
+    241          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    242          const uint8_t Font8x8_char_50[] = {
+   \                     Font8x8_char_50:
+   \   000000 080842637159          DB 8, 8, 66, 99, 113, 89, 77, 103, 98, 0
+    243              0x08, 0x08, // width=8, height=8
+    244              0x42, 0x63, 0x71, 0x59, 0x4D, 0x67, 0x62, 0x00, 
+    245          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    246          const uint8_t Font8x8_char_51[] = {
+   \                     Font8x8_char_51:
+   \   000000 080822634949          DB 8, 8, 34, 99, 73, 73, 73, 127, 54, 0
+    247              0x08, 0x08, // width=8, height=8
+    248              0x22, 0x63, 0x49, 0x49, 0x49, 0x7F, 0x36, 0x00, 
+    249          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    250          const uint8_t Font8x8_char_52[] = {
+   \                     Font8x8_char_52:
+   \   000000 080810181C16          DB 8, 8, 16, 24, 28, 22, 127, 127, 16, 0
+    251              0x08, 0x08, // width=8, height=8
+    252              0x10, 0x18, 0x1C, 0x16, 0x7F, 0x7F, 0x10, 0x00, 
+    253          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    254          const uint8_t Font8x8_char_53[] = {
+   \                     Font8x8_char_53:
+   \   000000 080827674545          DB 8, 8, 39, 103, 69, 69, 69, 125, 57, 0
+    255              0x08, 0x08, // width=8, height=8
+    256              0x27, 0x67, 0x45, 0x45, 0x45, 0x7D, 0x39, 0x00, 
+    257          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    258          const uint8_t Font8x8_char_54[] = {
+   \                     Font8x8_char_54:
+   \   000000 08083E7F4949          DB 8, 8, 62, 127, 73, 73, 73, 123, 50, 0
+    259              0x08, 0x08, // width=8, height=8
+    260              0x3E, 0x7F, 0x49, 0x49, 0x49, 0x7B, 0x32, 0x00, 
+    261          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    262          const uint8_t Font8x8_char_55[] = {
+   \                     Font8x8_char_55:
+   \   000000 080803030171          DB 8, 8, 3, 3, 1, 113, 121, 15, 7, 0
+    263              0x08, 0x08, // width=8, height=8
+    264              0x03, 0x03, 0x01, 0x71, 0x79, 0x0F, 0x07, 0x00, 
+    265          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    266          const uint8_t Font8x8_char_56[] = {
+   \                     Font8x8_char_56:
+   \   000000 0808367F4949          DB 8, 8, 54, 127, 73, 73, 73, 127, 54, 0
+    267              0x08, 0x08, // width=8, height=8
+    268              0x36, 0x7F, 0x49, 0x49, 0x49, 0x7F, 0x36, 0x00, 
+    269          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    270          const uint8_t Font8x8_char_57[] = {
+   \                     Font8x8_char_57:
+   \   000000 0808266F4949          DB 8, 8, 38, 111, 73, 73, 73, 127, 62, 0
+    271              0x08, 0x08, // width=8, height=8
+    272              0x26, 0x6F, 0x49, 0x49, 0x49, 0x7F, 0x3E, 0x00, 
+    273          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    274          const uint8_t Font8x8_char_58[] = {
+   \                     Font8x8_char_58:
+   \   000000 080800000066          DB 8, 8, 0, 0, 0, 102, 102, 102, 0, 0
+    275              0x08, 0x08, // width=8, height=8
+    276              0x00, 0x00, 0x00, 0x66, 0x66, 0x66, 0x00, 0x00, 
+    277          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    278          const uint8_t Font8x8_char_59[] = {
+   \                     Font8x8_char_59:
+   \   000000 0808000080E6          DB 8, 8, 0, 0, 128, 230, 102, 0, 0, 0
+    279              0x08, 0x08, // width=8, height=8
+    280              0x00, 0x00, 0x80, 0xE6, 0x66, 0x00, 0x00, 0x00, 
+    281          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    282          const uint8_t Font8x8_char_60[] = {
+   \                     Font8x8_char_60:
+   \   000000 080800081C36          DB 8, 8, 0, 8, 28, 54, 99, 65, 0, 0
+    283              0x08, 0x08, // width=8, height=8
+    284              0x00, 0x08, 0x1C, 0x36, 0x63, 0x41, 0x00, 0x00, 
+    285          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    286          const uint8_t Font8x8_char_61[] = {
+   \                     Font8x8_char_61:
+   \   000000 080824242424          DB 8, 8, 36, 36, 36, 36, 36, 36, 36, 0
+    287              0x08, 0x08, // width=8, height=8
+    288              0x24, 0x24, 0x24, 0x24, 0x24, 0x24, 0x24, 0x00, 
+    289          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    290          const uint8_t Font8x8_char_62[] = {
+   \                     Font8x8_char_62:
+   \   000000 080800416336          DB 8, 8, 0, 65, 99, 54, 28, 8, 0, 0
+    291              0x08, 0x08, // width=8, height=8
+    292              0x00, 0x41, 0x63, 0x36, 0x1C, 0x08, 0x00, 0x00, 
+    293          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    294          const uint8_t Font8x8_char_63[] = {
+   \                     Font8x8_char_63:
+   \   000000 080802030151          DB 8, 8, 2, 3, 1, 81, 89, 15, 6, 0
+    295              0x08, 0x08, // width=8, height=8
+    296              0x02, 0x03, 0x01, 0x51, 0x59, 0x0F, 0x06, 0x00, 
+    297          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    298          const uint8_t Font8x8_char_64[] = {
+   \                     Font8x8_char_64:
+   \   000000 08083E7F4159          DB 8, 8, 62, 127, 65, 89, 89, 95, 78, 0
+    299              0x08, 0x08, // width=8, height=8
+    300              0x3E, 0x7F, 0x41, 0x59, 0x59, 0x5F, 0x4E, 0x00, 
+    301          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    302          const uint8_t Font8x8_char_65[] = {
+   \                     Font8x8_char_65:
+   \   000000 08087C7E1311          DB 8, 8, 124, 126, 19, 17, 19, 126, 124, 0
+    303              0x08, 0x08, // width=8, height=8
+    304              0x7C, 0x7E, 0x13, 0x11, 0x13, 0x7E, 0x7C, 0x00, 
+    305          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    306          const uint8_t Font8x8_char_66[] = {
+   \                     Font8x8_char_66:
+   \   000000 0808417F7F49          DB 8, 8, 65, 127, 127, 73, 73, 127, 54, 0
+    307              0x08, 0x08, // width=8, height=8
+    308              0x41, 0x7F, 0x7F, 0x49, 0x49, 0x7F, 0x36, 0x00, 
+    309          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    310          const uint8_t Font8x8_char_67[] = {
+   \                     Font8x8_char_67:
+   \   000000 08081C3E6341          DB 8, 8, 28, 62, 99, 65, 65, 99, 34, 0
+    311              0x08, 0x08, // width=8, height=8
+    312              0x1C, 0x3E, 0x63, 0x41, 0x41, 0x63, 0x22, 0x00, 
+    313          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    314          const uint8_t Font8x8_char_68[] = {
+   \                     Font8x8_char_68:
+   \   000000 0808417F7F41          DB 8, 8, 65, 127, 127, 65, 99, 62, 28, 0
+    315              0x08, 0x08, // width=8, height=8
+    316              0x41, 0x7F, 0x7F, 0x41, 0x63, 0x3E, 0x1C, 0x00, 
+    317          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    318          const uint8_t Font8x8_char_69[] = {
+   \                     Font8x8_char_69:
+   \   000000 08087F7F4949          DB 8, 8, 127, 127, 73, 73, 73, 65, 99, 0
+    319              0x08, 0x08, // width=8, height=8
+    320              0x7F, 0x7F, 0x49, 0x49, 0x49, 0x41, 0x63, 0x00, 
+    321          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    322          const uint8_t Font8x8_char_70[] = {
+   \                     Font8x8_char_70:
+   \   000000 0808417F7F49          DB 8, 8, 65, 127, 127, 73, 9, 9, 3, 0
+    323              0x08, 0x08, // width=8, height=8
+    324              0x41, 0x7F, 0x7F, 0x49, 0x09, 0x09, 0x03, 0x00, 
+    325          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    326          const uint8_t Font8x8_char_71[] = {
+   \                     Font8x8_char_71:
+   \   000000 08083E7F4151          DB 8, 8, 62, 127, 65, 81, 81, 115, 50, 0
+    327              0x08, 0x08, // width=8, height=8
+    328              0x3E, 0x7F, 0x41, 0x51, 0x51, 0x73, 0x32, 0x00, 
+    329          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    330          const uint8_t Font8x8_char_72[] = {
+   \                     Font8x8_char_72:
+   \   000000 08087F7F0808          DB 8, 8, 127, 127, 8, 8, 8, 127, 127, 0
+    331              0x08, 0x08, // width=8, height=8
+    332              0x7F, 0x7F, 0x08, 0x08, 0x08, 0x7F, 0x7F, 0x00, 
+    333          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    334          const uint8_t Font8x8_char_73[] = {
+   \                     Font8x8_char_73:
+   \   000000 08080000417F          DB 8, 8, 0, 0, 65, 127, 127, 65, 0, 0
+    335              0x08, 0x08, // width=8, height=8
+    336              0x00, 0x00, 0x41, 0x7F, 0x7F, 0x41, 0x00, 0x00, 
+    337          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    338          const uint8_t Font8x8_char_74[] = {
+   \                     Font8x8_char_74:
+   \   000000 08083070417F          DB 8, 8, 48, 112, 65, 127, 63, 1, 0, 0
+    339              0x08, 0x08, // width=8, height=8
+    340              0x30, 0x70, 0x41, 0x7F, 0x3F, 0x01, 0x00, 0x00, 
+    341          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    342          const uint8_t Font8x8_char_75[] = {
+   \                     Font8x8_char_75:
+   \   000000 08087F7F081C          DB 8, 8, 127, 127, 8, 28, 54, 99, 65, 0
+    343              0x08, 0x08, // width=8, height=8
+    344              0x7F, 0x7F, 0x08, 0x1C, 0x36, 0x63, 0x41, 0x00, 
+    345          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    346          const uint8_t Font8x8_char_76[] = {
+   \                     Font8x8_char_76:
+   \   000000 0808417F7F41          DB 8, 8, 65, 127, 127, 65, 64, 64, 96, 0
+    347              0x08, 0x08, // width=8, height=8
+    348              0x41, 0x7F, 0x7F, 0x41, 0x40, 0x40, 0x60, 0x00, 
+    349          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    350          const uint8_t Font8x8_char_77[] = {
+   \                     Font8x8_char_77:
+   \   000000 08087F7F061C          DB 8, 8, 127, 127, 6, 28, 6, 127, 127, 0
+    351              0x08, 0x08, // width=8, height=8
+    352              0x7F, 0x7F, 0x06, 0x1C, 0x06, 0x7F, 0x7F, 0x00, 
+    353          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    354          const uint8_t Font8x8_char_78[] = {
+   \                     Font8x8_char_78:
+   \   000000 08087F7F0E18          DB 8, 8, 127, 127, 14, 24, 48, 127, 127, 0
+    355              0x08, 0x08, // width=8, height=8
+    356              0x7F, 0x7F, 0x0E, 0x18, 0x30, 0x7F, 0x7F, 0x00, 
+    357          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    358          const uint8_t Font8x8_char_79[] = {
+   \                     Font8x8_char_79:
+   \   000000 08083E7F4141          DB 8, 8, 62, 127, 65, 65, 65, 127, 62, 0
+    359              0x08, 0x08, // width=8, height=8
+    360              0x3E, 0x7F, 0x41, 0x41, 0x41, 0x7F, 0x3E, 0x00, 
+    361          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    362          const uint8_t Font8x8_char_80[] = {
+   \                     Font8x8_char_80:
+   \   000000 0808417F7F49          DB 8, 8, 65, 127, 127, 73, 9, 15, 6, 0
+    363              0x08, 0x08, // width=8, height=8
+    364              0x41, 0x7F, 0x7F, 0x49, 0x09, 0x0F, 0x06, 0x00, 
+    365          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    366          const uint8_t Font8x8_char_81[] = {
+   \                     Font8x8_char_81:
+   \   000000 08083E7F4161          DB 8, 8, 62, 127, 65, 97, 65, 255, 190, 0
+    367              0x08, 0x08, // width=8, height=8
+    368              0x3E, 0x7F, 0x41, 0x61, 0x41, 0xFF, 0xBE, 0x00, 
+    369          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    370          const uint8_t Font8x8_char_82[] = {
+   \                     Font8x8_char_82:
+   \   000000 08087F7F0919          DB 8, 8, 127, 127, 9, 25, 57, 111, 70, 0
+    371              0x08, 0x08, // width=8, height=8
+    372              0x7F, 0x7F, 0x09, 0x19, 0x39, 0x6F, 0x46, 0x00, 
+    373          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    374          const uint8_t Font8x8_char_83[] = {
+   \                     Font8x8_char_83:
+   \   000000 0808266F4949          DB 8, 8, 38, 111, 73, 73, 73, 123, 50, 0
+    375              0x08, 0x08, // width=8, height=8
+    376              0x26, 0x6F, 0x49, 0x49, 0x49, 0x7B, 0x32, 0x00, 
+    377          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    378          const uint8_t Font8x8_char_84[] = {
+   \                     Font8x8_char_84:
+   \   000000 08080003417F          DB 8, 8, 0, 3, 65, 127, 127, 65, 3, 0
+    379              0x08, 0x08, // width=8, height=8
+    380              0x00, 0x03, 0x41, 0x7F, 0x7F, 0x41, 0x03, 0x00, 
+    381          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    382          const uint8_t Font8x8_char_85[] = {
+   \                     Font8x8_char_85:
+   \   000000 08083F7F4040          DB 8, 8, 63, 127, 64, 64, 64, 127, 63, 0
+    383              0x08, 0x08, // width=8, height=8
+    384              0x3F, 0x7F, 0x40, 0x40, 0x40, 0x7F, 0x3F, 0x00, 
+    385          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    386          const uint8_t Font8x8_char_86[] = {
+   \                     Font8x8_char_86:
+   \   000000 08080F1F3060          DB 8, 8, 15, 31, 48, 96, 48, 31, 15, 0
+    387              0x08, 0x08, // width=8, height=8
+    388              0x0F, 0x1F, 0x30, 0x60, 0x30, 0x1F, 0x0F, 0x00, 
+    389          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    390          const uint8_t Font8x8_char_87[] = {
+   \                     Font8x8_char_87:
+   \   000000 08087F7F301C          DB 8, 8, 127, 127, 48, 28, 48, 127, 127, 0
+    391              0x08, 0x08, // width=8, height=8
+    392              0x7F, 0x7F, 0x30, 0x1C, 0x30, 0x7F, 0x7F, 0x00, 
+    393          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    394          const uint8_t Font8x8_char_88[] = {
+   \                     Font8x8_char_88:
+   \   000000 080841633E1C          DB 8, 8, 65, 99, 62, 28, 62, 99, 65, 0
+    395              0x08, 0x08, // width=8, height=8
+    396              0x41, 0x63, 0x3E, 0x1C, 0x3E, 0x63, 0x41, 0x00, 
+    397          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    398          const uint8_t Font8x8_char_89[] = {
+   \                     Font8x8_char_89:
+   \   000000 080800074F78          DB 8, 8, 0, 7, 79, 120, 120, 79, 7, 0
+    399              0x08, 0x08, // width=8, height=8
+    400              0x00, 0x07, 0x4F, 0x78, 0x78, 0x4F, 0x07, 0x00, 
+    401          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    402          const uint8_t Font8x8_char_90[] = {
+   \                     Font8x8_char_90:
+   \   000000 080843617159          DB 8, 8, 67, 97, 113, 89, 77, 71, 99, 0
+    403              0x08, 0x08, // width=8, height=8
+    404              0x43, 0x61, 0x71, 0x59, 0x4D, 0x47, 0x63, 0x00, 
+    405          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    406          const uint8_t Font8x8_char_91[] = {
+   \                     Font8x8_char_91:
+   \   000000 0808007F7F41          DB 8, 8, 0, 127, 127, 65, 65, 65, 0, 0
+    407              0x08, 0x08, // width=8, height=8
+    408              0x00, 0x7F, 0x7F, 0x41, 0x41, 0x41, 0x00, 0x00, 
+    409          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    410          const uint8_t Font8x8_char_92[] = {
+   \                     Font8x8_char_92:
+   \   000000 08080103060C          DB 8, 8, 1, 3, 6, 12, 24, 48, 96, 0
+    411              0x08, 0x08, // width=8, height=8
+    412              0x01, 0x03, 0x06, 0x0C, 0x18, 0x30, 0x60, 0x00, 
+    413          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    414          const uint8_t Font8x8_char_93[] = {
+   \                     Font8x8_char_93:
+   \   000000 080800414141          DB 8, 8, 0, 65, 65, 65, 127, 127, 0, 0
+    415              0x08, 0x08, // width=8, height=8
+    416              0x00, 0x41, 0x41, 0x41, 0x7F, 0x7F, 0x00, 0x00, 
+    417          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    418          const uint8_t Font8x8_char_94[] = {
+   \                     Font8x8_char_94:
+   \   000000 0808080C0603          DB 8, 8, 8, 12, 6, 3, 6, 12, 8, 0
+    419              0x08, 0x08, // width=8, height=8
+    420              0x08, 0x0C, 0x06, 0x03, 0x06, 0x0C, 0x08, 0x00, 
+    421          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    422          const uint8_t Font8x8_char_95[] = {
+   \                     Font8x8_char_95:
+   \   000000 080880808080          DB 8, 8, 128, 128, 128, 128, 128, 128, 128, 128
+    423              0x08, 0x08, // width=8, height=8
+    424              0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 
+    425          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    426          const uint8_t Font8x8_char_96[] = {
+   \                     Font8x8_char_96:
+   \   000000 080800000307          DB 8, 8, 0, 0, 3, 7, 4, 0, 0, 0
+    427              0x08, 0x08, // width=8, height=8
+    428              0x00, 0x00, 0x03, 0x07, 0x04, 0x00, 0x00, 0x00, 
+    429          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    430          const uint8_t Font8x8_char_97[] = {
+   \                     Font8x8_char_97:
+   \   000000 080820745454          DB 8, 8, 32, 116, 84, 84, 124, 120, 64, 0
+    431              0x08, 0x08, // width=8, height=8
+    432              0x20, 0x74, 0x54, 0x54, 0x7C, 0x78, 0x40, 0x00, 
+    433          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    434          const uint8_t Font8x8_char_98[] = {
+   \                     Font8x8_char_98:
+   \   000000 0808417F7F44          DB 8, 8, 65, 127, 127, 68, 68, 124, 56, 0
+    435              0x08, 0x08, // width=8, height=8
+    436              0x41, 0x7F, 0x7F, 0x44, 0x44, 0x7C, 0x38, 0x00, 
+    437          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    438          const uint8_t Font8x8_char_99[] = {
+   \                     Font8x8_char_99:
+   \   000000 0808387C4444          DB 8, 8, 56, 124, 68, 68, 68, 108, 40, 0
+    439              0x08, 0x08, // width=8, height=8
+    440              0x38, 0x7C, 0x44, 0x44, 0x44, 0x6C, 0x28, 0x00, 
+    441          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    442          const uint8_t Font8x8_char_100[] = {
+   \                     Font8x8_char_100:
+   \   000000 0808387C4445          DB 8, 8, 56, 124, 68, 69, 127, 127, 64, 0
+    443              0x08, 0x08, // width=8, height=8
+    444              0x38, 0x7C, 0x44, 0x45, 0x7F, 0x7F, 0x40, 0x00, 
+    445          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    446          const uint8_t Font8x8_char_101[] = {
+   \                     Font8x8_char_101:
+   \   000000 0808387C5454          DB 8, 8, 56, 124, 84, 84, 84, 92, 24, 0
+    447              0x08, 0x08, // width=8, height=8
+    448              0x38, 0x7C, 0x54, 0x54, 0x54, 0x5C, 0x18, 0x00, 
+    449          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    450          const uint8_t Font8x8_char_102[] = {
+   \                     Font8x8_char_102:
+   \   000000 080808487E7F          DB 8, 8, 8, 72, 126, 127, 73, 11, 2, 0
+    451              0x08, 0x08, // width=8, height=8
+    452              0x08, 0x48, 0x7E, 0x7F, 0x49, 0x0B, 0x02, 0x00, 
+    453          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    454          const uint8_t Font8x8_char_103[] = {
+   \                     Font8x8_char_103:
+   \   000000 080818BCA4A4          DB 8, 8, 24, 188, 164, 164, 168, 252, 124, 0
+    455              0x08, 0x08, // width=8, height=8
+    456              0x18, 0xBC, 0xA4, 0xA4, 0xA8, 0xFC, 0x7C, 0x00, 
+    457          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    458          const uint8_t Font8x8_char_104[] = {
+   \                     Font8x8_char_104:
+   \   000000 0808417F7F04          DB 8, 8, 65, 127, 127, 4, 4, 124, 120, 0
+    459              0x08, 0x08, // width=8, height=8
+    460              0x41, 0x7F, 0x7F, 0x04, 0x04, 0x7C, 0x78, 0x00, 
+    461          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    462          const uint8_t Font8x8_char_105[] = {
+   \                     Font8x8_char_105:
+   \   000000 08080000447D          DB 8, 8, 0, 0, 68, 125, 125, 64, 0, 0
+    463              0x08, 0x08, // width=8, height=8
+    464              0x00, 0x00, 0x44, 0x7D, 0x7D, 0x40, 0x00, 0x00, 
+    465          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    466          const uint8_t Font8x8_char_106[] = {
+   \                     Font8x8_char_106:
+   \   000000 080840C08084          DB 8, 8, 64, 192, 128, 132, 253, 125, 0, 0
+    467              0x08, 0x08, // width=8, height=8
+    468              0x40, 0xC0, 0x80, 0x84, 0xFD, 0x7D, 0x00, 0x00, 
+    469          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    470          const uint8_t Font8x8_char_107[] = {
+   \                     Font8x8_char_107:
+   \   000000 0808417F7F10          DB 8, 8, 65, 127, 127, 16, 56, 108, 68, 0
+    471              0x08, 0x08, // width=8, height=8
+    472              0x41, 0x7F, 0x7F, 0x10, 0x38, 0x6C, 0x44, 0x00, 
+    473          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    474          const uint8_t Font8x8_char_108[] = {
+   \                     Font8x8_char_108:
+   \   000000 08080000007F          DB 8, 8, 0, 0, 0, 127, 127, 64, 0, 0
+    475              0x08, 0x08, // width=8, height=8
+    476              0x00, 0x00, 0x00, 0x7F, 0x7F, 0x40, 0x00, 0x00, 
+    477          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    478          const uint8_t Font8x8_char_109[] = {
+   \                     Font8x8_char_109:
+   \   000000 0808787C0C38          DB 8, 8, 120, 124, 12, 56, 12, 124, 120, 0
+    479              0x08, 0x08, // width=8, height=8
+    480              0x78, 0x7C, 0x0C, 0x38, 0x0C, 0x7C, 0x78, 0x00, 
+    481          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    482          const uint8_t Font8x8_char_110[] = {
+   \                     Font8x8_char_110:
+   \   000000 0808047C7804          DB 8, 8, 4, 124, 120, 4, 4, 124, 120, 0
+    483              0x08, 0x08, // width=8, height=8
+    484              0x04, 0x7C, 0x78, 0x04, 0x04, 0x7C, 0x78, 0x00, 
+    485          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    486          const uint8_t Font8x8_char_111[] = {
+   \                     Font8x8_char_111:
+   \   000000 0808387C4444          DB 8, 8, 56, 124, 68, 68, 68, 124, 56, 0
+    487              0x08, 0x08, // width=8, height=8
+    488              0x38, 0x7C, 0x44, 0x44, 0x44, 0x7C, 0x38, 0x00, 
+    489          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    490          const uint8_t Font8x8_char_112[] = {
+   \                     Font8x8_char_112:
+   \   000000 080884FCF8A4          DB 8, 8, 132, 252, 248, 164, 36, 60, 24, 0
+    491              0x08, 0x08, // width=8, height=8
+    492              0x84, 0xFC, 0xF8, 0xA4, 0x24, 0x3C, 0x18, 0x00, 
+    493          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    494          const uint8_t Font8x8_char_113[] = {
+   \                     Font8x8_char_113:
+   \   000000 0808183C24A4          DB 8, 8, 24, 60, 36, 164, 248, 252, 132, 0
+    495              0x08, 0x08, // width=8, height=8
+    496              0x18, 0x3C, 0x24, 0xA4, 0xF8, 0xFC, 0x84, 0x00, 
+    497          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    498          const uint8_t Font8x8_char_114[] = {
+   \                     Font8x8_char_114:
+   \   000000 0808447C7844          DB 8, 8, 68, 124, 120, 68, 4, 12, 8, 0
+    499              0x08, 0x08, // width=8, height=8
+    500              0x44, 0x7C, 0x78, 0x44, 0x04, 0x0C, 0x08, 0x00, 
+    501          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    502          const uint8_t Font8x8_char_115[] = {
+   \                     Font8x8_char_115:
+   \   000000 0808085C5454          DB 8, 8, 8, 92, 84, 84, 84, 116, 32, 0
+    503              0x08, 0x08, // width=8, height=8
+    504              0x08, 0x5C, 0x54, 0x54, 0x54, 0x74, 0x20, 0x00, 
+    505          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    506          const uint8_t Font8x8_char_116[] = {
+   \                     Font8x8_char_116:
+   \   000000 080804043F7F          DB 8, 8, 4, 4, 63, 127, 68, 100, 32, 0
+    507              0x08, 0x08, // width=8, height=8
+    508              0x04, 0x04, 0x3F, 0x7F, 0x44, 0x64, 0x20, 0x00, 
+    509          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    510          const uint8_t Font8x8_char_117[] = {
+   \                     Font8x8_char_117:
+   \   000000 08083C7C4040          DB 8, 8, 60, 124, 64, 64, 60, 124, 64, 0
+    511              0x08, 0x08, // width=8, height=8
+    512              0x3C, 0x7C, 0x40, 0x40, 0x3C, 0x7C, 0x40, 0x00, 
+    513          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    514          const uint8_t Font8x8_char_118[] = {
+   \                     Font8x8_char_118:
+   \   000000 08080C1C3060          DB 8, 8, 12, 28, 48, 96, 48, 28, 12, 0
+    515              0x08, 0x08, // width=8, height=8
+    516              0x0C, 0x1C, 0x30, 0x60, 0x30, 0x1C, 0x0C, 0x00, 
+    517          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    518          const uint8_t Font8x8_char_119[] = {
+   \                     Font8x8_char_119:
+   \   000000 08083C7C6030          DB 8, 8, 60, 124, 96, 48, 96, 124, 60, 0
+    519              0x08, 0x08, // width=8, height=8
+    520              0x3C, 0x7C, 0x60, 0x30, 0x60, 0x7C, 0x3C, 0x00, 
+    521          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    522          const uint8_t Font8x8_char_120[] = {
+   \                     Font8x8_char_120:
+   \   000000 0808446C3810          DB 8, 8, 68, 108, 56, 16, 56, 108, 68, 0
+    523              0x08, 0x08, // width=8, height=8
+    524              0x44, 0x6C, 0x38, 0x10, 0x38, 0x6C, 0x44, 0x00, 
+    525          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    526          const uint8_t Font8x8_char_121[] = {
+   \                     Font8x8_char_121:
+   \   000000 08081CBCA0A0          DB 8, 8, 28, 188, 160, 160, 144, 252, 124, 0
+    527              0x08, 0x08, // width=8, height=8
+    528              0x1C, 0xBC, 0xA0, 0xA0, 0x90, 0xFC, 0x7C, 0x00, 
+    529          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    530          const uint8_t Font8x8_char_122[] = {
+   \                     Font8x8_char_122:
+   \   000000 08084C64745C          DB 8, 8, 76, 100, 116, 92, 76, 100, 0, 0
+    531              0x08, 0x08, // width=8, height=8
+    532              0x4C, 0x64, 0x74, 0x5C, 0x4C, 0x64, 0x00, 0x00, 
+    533          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    534          const uint8_t Font8x8_char_123[] = {
+   \                     Font8x8_char_123:
+   \   000000 08080008083E          DB 8, 8, 0, 8, 8, 62, 119, 65, 65, 0
+    535              0x08, 0x08, // width=8, height=8
+    536              0x00, 0x08, 0x08, 0x3E, 0x77, 0x41, 0x41, 0x00, 
+    537          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    538          const uint8_t Font8x8_char_124[] = {
+   \                     Font8x8_char_124:
+   \   000000 080800000077          DB 8, 8, 0, 0, 0, 119, 119, 0, 0, 0
+    539              0x08, 0x08, // width=8, height=8
+    540              0x00, 0x00, 0x00, 0x77, 0x77, 0x00, 0x00, 0x00, 
+    541          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    542          const uint8_t Font8x8_char_125[] = {
+   \                     Font8x8_char_125:
+   \   000000 080800414177          DB 8, 8, 0, 65, 65, 119, 62, 8, 8, 0
+    543              0x08, 0x08, // width=8, height=8
+    544              0x00, 0x41, 0x41, 0x77, 0x3E, 0x08, 0x08, 0x00, 
+    545          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    546          const uint8_t Font8x8_char_126[] = {
+   \                     Font8x8_char_126:
+   \   000000 080802030103          DB 8, 8, 2, 3, 1, 3, 2, 3, 1, 0
+    547              0x08, 0x08, // width=8, height=8
+    548              0x02, 0x03, 0x01, 0x03, 0x02, 0x03, 0x01, 0x00, 
+    549          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    550          const uint8_t Font8x8_char_127[] = {
+   \                     Font8x8_char_127:
+   \   000000 080840707C4E          DB 8, 8, 64, 112, 124, 78, 124, 112, 64, 0
+    551              0x08, 0x08, // width=8, height=8
+    552              0x40, 0x70, 0x7C, 0x4E, 0x7C, 0x70, 0x40, 0x00, 
+    553          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    554          const uint8_t Font8x8_char_128[] = {
+   \                     Font8x8_char_128:
+   \   000000 080844CE9BB1          DB 8, 8, 68, 206, 155, 177, 241, 91, 10, 0
+    555              0x08, 0x08, // width=8, height=8
+    556              0x44, 0xCE, 0x9B, 0xB1, 0xF1, 0x5B, 0x0A, 0x00, 
+    557          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    558          const uint8_t Font8x8_char_129[] = {
+   \                     Font8x8_char_129:
+   \   000000 08083A7A4040          DB 8, 8, 58, 122, 64, 64, 32, 122, 122, 0
+    559              0x08, 0x08, // width=8, height=8
+    560              0x3A, 0x7A, 0x40, 0x40, 0x20, 0x7A, 0x7A, 0x00, 
+    561          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    562          const uint8_t Font8x8_char_130[] = {
+   \                     Font8x8_char_130:
+   \   000000 0808387C5454          DB 8, 8, 56, 124, 84, 84, 85, 93, 25, 0
+    563              0x08, 0x08, // width=8, height=8
+    564              0x38, 0x7C, 0x54, 0x54, 0x55, 0x5D, 0x19, 0x00, 
+    565          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    566          const uint8_t Font8x8_char_131[] = {
+   \                     Font8x8_char_131:
+   \   000000 080822775555          DB 8, 8, 34, 119, 85, 85, 125, 123, 66, 0
+    567              0x08, 0x08, // width=8, height=8
+    568              0x22, 0x77, 0x55, 0x55, 0x7D, 0x7B, 0x42, 0x00, 
+    569          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    570          const uint8_t Font8x8_char_132[] = {
+   \                     Font8x8_char_132:
+   \   000000 080821755454          DB 8, 8, 33, 117, 84, 84, 124, 121, 65, 0
+    571              0x08, 0x08, // width=8, height=8
+    572              0x21, 0x75, 0x54, 0x54, 0x7C, 0x79, 0x41, 0x00, 
+    573          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    574          const uint8_t Font8x8_char_133[] = {
+   \                     Font8x8_char_133:
+   \   000000 080821755554          DB 8, 8, 33, 117, 85, 84, 124, 120, 64, 0
+    575              0x08, 0x08, // width=8, height=8
+    576              0x21, 0x75, 0x55, 0x54, 0x7C, 0x78, 0x40, 0x00, 
+    577          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    578          const uint8_t Font8x8_char_134[] = {
+   \                     Font8x8_char_134:
+   \   000000 080820745757          DB 8, 8, 32, 116, 87, 87, 127, 120, 64, 0
+    579              0x08, 0x08, // width=8, height=8
+    580              0x20, 0x74, 0x57, 0x57, 0x7F, 0x78, 0x40, 0x00, 
+    581          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    582          const uint8_t Font8x8_char_135[] = {
+   \                     Font8x8_char_135:
+   \   000000 0808085CD4B4          DB 8, 8, 8, 92, 212, 180, 244, 84, 0, 0
+    583              0x08, 0x08, // width=8, height=8
+    584              0x08, 0x5C, 0xD4, 0xB4, 0xF4, 0x54, 0x00, 0x00, 
+    585          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    586          const uint8_t Font8x8_char_136[] = {
+   \                     Font8x8_char_136:
+   \   000000 08083A7F5555          DB 8, 8, 58, 127, 85, 85, 85, 95, 26, 0
+    587              0x08, 0x08, // width=8, height=8
+    588              0x3A, 0x7F, 0x55, 0x55, 0x55, 0x5F, 0x1A, 0x00, 
+    589          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    590          const uint8_t Font8x8_char_137[] = {
+   \                     Font8x8_char_137:
+   \   000000 0808397D5454          DB 8, 8, 57, 125, 84, 84, 84, 93, 25, 0
+    591              0x08, 0x08, // width=8, height=8
+    592              0x39, 0x7D, 0x54, 0x54, 0x54, 0x5D, 0x19, 0x00, 
+    593          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    594          const uint8_t Font8x8_char_138[] = {
+   \                     Font8x8_char_138:
+   \   000000 0808397D5554          DB 8, 8, 57, 125, 85, 84, 84, 92, 24, 0
+    595              0x08, 0x08, // width=8, height=8
+    596              0x39, 0x7D, 0x55, 0x54, 0x54, 0x5C, 0x18, 0x00, 
+    597          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    598          const uint8_t Font8x8_char_139[] = {
+   \                     Font8x8_char_139:
+   \   000000 08080001457C          DB 8, 8, 0, 1, 69, 124, 124, 65, 1, 0
+    599              0x08, 0x08, // width=8, height=8
+    600              0x00, 0x01, 0x45, 0x7C, 0x7C, 0x41, 0x01, 0x00, 
+    601          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    602          const uint8_t Font8x8_char_140[] = {
+   \                     Font8x8_char_140:
+   \   000000 08080203457D          DB 8, 8, 2, 3, 69, 125, 125, 67, 2, 0
+    603              0x08, 0x08, // width=8, height=8
+    604              0x02, 0x03, 0x45, 0x7D, 0x7D, 0x43, 0x02, 0x00, 
+    605          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    606          const uint8_t Font8x8_char_141[] = {
+   \                     Font8x8_char_141:
+   \   000000 08080101457C          DB 8, 8, 1, 1, 69, 124, 124, 64, 0, 0
+    607              0x08, 0x08, // width=8, height=8
+    608              0x01, 0x01, 0x45, 0x7C, 0x7C, 0x40, 0x00, 0x00, 
+    609          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    610          const uint8_t Font8x8_char_142[] = {
+   \                     Font8x8_char_142:
+   \   000000 0808797D1612          DB 8, 8, 121, 125, 22, 18, 22, 125, 121, 0
+    611              0x08, 0x08, // width=8, height=8
+    612              0x79, 0x7D, 0x16, 0x12, 0x16, 0x7D, 0x79, 0x00, 
+    613          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    614          const uint8_t Font8x8_char_143[] = {
+   \                     Font8x8_char_143:
+   \   000000 080870782B2B          DB 8, 8, 112, 120, 43, 43, 43, 120, 112, 0
+    615              0x08, 0x08, // width=8, height=8
+    616              0x70, 0x78, 0x2B, 0x2B, 0x2B, 0x78, 0x70, 0x00, 
+    617          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    618          const uint8_t Font8x8_char_144[] = {
+   \                     Font8x8_char_144:
+   \   000000 08087C7C5454          DB 8, 8, 124, 124, 84, 84, 85, 69, 69, 0
+    619              0x08, 0x08, // width=8, height=8
+    620              0x7C, 0x7C, 0x54, 0x54, 0x55, 0x45, 0x45, 0x00, 
+    621          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    622          const uint8_t Font8x8_char_145[] = {
+   \                     Font8x8_char_145:
+   \   000000 080828745438          DB 8, 8, 40, 116, 84, 56, 124, 84, 88, 0
+    623              0x08, 0x08, // width=8, height=8
+    624              0x28, 0x74, 0x54, 0x38, 0x7C, 0x54, 0x58, 0x00, 
+    625          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    626          const uint8_t Font8x8_char_146[] = {
+   \                     Font8x8_char_146:
+   \   000000 08087E7F097F          DB 8, 8, 126, 127, 9, 127, 127, 73, 73, 0
+    627              0x08, 0x08, // width=8, height=8
+    628              0x7E, 0x7F, 0x09, 0x7F, 0x7F, 0x49, 0x49, 0x00, 
+    629          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    630          const uint8_t Font8x8_char_147[] = {
+   \                     Font8x8_char_147:
+   \   000000 0808327B4949          DB 8, 8, 50, 123, 73, 73, 73, 123, 50, 0
+    631              0x08, 0x08, // width=8, height=8
+    632              0x32, 0x7B, 0x49, 0x49, 0x49, 0x7B, 0x32, 0x00, 
+    633          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    634          const uint8_t Font8x8_char_148[] = {
+   \                     Font8x8_char_148:
+   \   000000 0808327A4848          DB 8, 8, 50, 122, 72, 72, 72, 122, 50, 0
+    635              0x08, 0x08, // width=8, height=8
+    636              0x32, 0x7A, 0x48, 0x48, 0x48, 0x7A, 0x32, 0x00, 
+    637          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    638          const uint8_t Font8x8_char_149[] = {
+   \                     Font8x8_char_149:
+   \   000000 0808327A4A48          DB 8, 8, 50, 122, 74, 72, 72, 120, 48, 0
+    639              0x08, 0x08, // width=8, height=8
+    640              0x32, 0x7A, 0x4A, 0x48, 0x48, 0x78, 0x30, 0x00, 
+    641          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    642          const uint8_t Font8x8_char_150[] = {
+   \                     Font8x8_char_150:
+   \   000000 08083A7B4141          DB 8, 8, 58, 123, 65, 65, 33, 123, 122, 0
+    643              0x08, 0x08, // width=8, height=8
+    644              0x3A, 0x7B, 0x41, 0x41, 0x21, 0x7B, 0x7A, 0x00, 
+    645          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    646          const uint8_t Font8x8_char_151[] = {
+   \                     Font8x8_char_151:
+   \   000000 08083A7A4240          DB 8, 8, 58, 122, 66, 64, 32, 120, 120, 0
+    647              0x08, 0x08, // width=8, height=8
+    648              0x3A, 0x7A, 0x42, 0x40, 0x20, 0x78, 0x78, 0x00, 
+    649          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    650          const uint8_t Font8x8_char_152[] = {
+   \                     Font8x8_char_152:
+   \   000000 08081ABAA0A0          DB 8, 8, 26, 186, 160, 160, 144, 250, 122, 0
+    651              0x08, 0x08, // width=8, height=8
+    652              0x1A, 0xBA, 0xA0, 0xA0, 0x90, 0xFA, 0x7A, 0x00, 
+    653          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    654          const uint8_t Font8x8_char_153[] = {
+   \                     Font8x8_char_153:
+   \   000000 0808193D6642          DB 8, 8, 25, 61, 102, 66, 102, 61, 25, 0
+    655              0x08, 0x08, // width=8, height=8
+    656              0x19, 0x3D, 0x66, 0x42, 0x66, 0x3D, 0x19, 0x00, 
+    657          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    658          const uint8_t Font8x8_char_154[] = {
+   \                     Font8x8_char_154:
+   \   000000 08083D7D4040          DB 8, 8, 61, 125, 64, 64, 64, 125, 61, 0
+    659              0x08, 0x08, // width=8, height=8
+    660              0x3D, 0x7D, 0x40, 0x40, 0x40, 0x7D, 0x3D, 0x00, 
+    661          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    662          const uint8_t Font8x8_char_155[] = {
+   \                     Font8x8_char_155:
+   \   000000 0808183C247E          DB 8, 8, 24, 60, 36, 126, 126, 36, 36, 0
+    663              0x08, 0x08, // width=8, height=8
+    664              0x18, 0x3C, 0x24, 0x7E, 0x7E, 0x24, 0x24, 0x00, 
+    665          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    666          const uint8_t Font8x8_char_156[] = {
+   \                     Font8x8_char_156:
+   \   000000 0808287E7F29          DB 8, 8, 40, 126, 127, 41, 67, 114, 48, 0
+    667              0x08, 0x08, // width=8, height=8
+    668              0x28, 0x7E, 0x7F, 0x29, 0x43, 0x72, 0x30, 0x00, 
+    669          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    670          const uint8_t Font8x8_char_157[] = {
+   \                     Font8x8_char_157:
+   \   000000 0808010B2E7C          DB 8, 8, 1, 11, 46, 124, 124, 46, 11, 1
+    671              0x08, 0x08, // width=8, height=8
+    672              0x01, 0x0B, 0x2E, 0x7C, 0x7C, 0x2E, 0x0B, 0x01, 
+    673          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    674          const uint8_t Font8x8_char_158[] = {
+   \                     Font8x8_char_158:
+   \   000000 08087F7F0515          DB 8, 8, 127, 127, 5, 21, 125, 127, 82, 0
+    675              0x08, 0x08, // width=8, height=8
+    676              0x7F, 0x7F, 0x05, 0x15, 0x7D, 0x7F, 0x52, 0x00, 
+    677          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    678          const uint8_t Font8x8_char_159[] = {
+   \                     Font8x8_char_159:
+   \   000000 080840C888FE          DB 8, 8, 64, 200, 136, 254, 127, 11, 10, 0
+    679              0x08, 0x08, // width=8, height=8
+    680              0x40, 0xC8, 0x88, 0xFE, 0x7F, 0x0B, 0x0A, 0x00, 
+    681          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    682          const uint8_t Font8x8_char_160[] = {
+   \                     Font8x8_char_160:
+   \   000000 080820745454          DB 8, 8, 32, 116, 84, 84, 125, 121, 65, 0
+    683              0x08, 0x08, // width=8, height=8
+    684              0x20, 0x74, 0x54, 0x54, 0x7D, 0x79, 0x41, 0x00, 
+    685          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    686          const uint8_t Font8x8_char_161[] = {
+   \                     Font8x8_char_161:
+   \   000000 08080000447D          DB 8, 8, 0, 0, 68, 125, 125, 65, 0, 0
+    687              0x08, 0x08, // width=8, height=8
+    688              0x00, 0x00, 0x44, 0x7D, 0x7D, 0x41, 0x00, 0x00, 
+    689          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    690          const uint8_t Font8x8_char_162[] = {
+   \                     Font8x8_char_162:
+   \   000000 080830784848          DB 8, 8, 48, 120, 72, 72, 74, 122, 50, 0
+    691              0x08, 0x08, // width=8, height=8
+    692              0x30, 0x78, 0x48, 0x48, 0x4A, 0x7A, 0x32, 0x00, 
+    693          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    694          const uint8_t Font8x8_char_163[] = {
+   \                     Font8x8_char_163:
+   \   000000 080838784060          DB 8, 8, 56, 120, 64, 96, 58, 122, 66, 0
+    695              0x08, 0x08, // width=8, height=8
+    696              0x38, 0x78, 0x40, 0x60, 0x3A, 0x7A, 0x42, 0x00, 
+    697          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    698          const uint8_t Font8x8_char_164[] = {
+   \                     Font8x8_char_164:
+   \   000000 08084A727A0A          DB 8, 8, 74, 114, 122, 10, 10, 122, 112, 0
+    699              0x08, 0x08, // width=8, height=8
+    700              0x4A, 0x72, 0x7A, 0x0A, 0x0A, 0x7A, 0x70, 0x00, 
+    701          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    702          const uint8_t Font8x8_char_165[] = {
+   \                     Font8x8_char_165:
+   \   000000 08087D7D1911          DB 8, 8, 125, 125, 25, 17, 33, 125, 125, 0
+    703              0x08, 0x08, // width=8, height=8
+    704              0x7D, 0x7D, 0x19, 0x11, 0x21, 0x7D, 0x7D, 0x00, 
+    705          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    706          const uint8_t Font8x8_char_166[] = {
+   \                     Font8x8_char_166:
+   \   000000 080800121715          DB 8, 8, 0, 18, 23, 21, 23, 22, 20, 0
+    707              0x08, 0x08, // width=8, height=8
+    708              0x00, 0x12, 0x17, 0x15, 0x17, 0x16, 0x14, 0x00, 
+    709          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    710          const uint8_t Font8x8_char_167[] = {
+   \                     Font8x8_char_167:
+   \   000000 080802171515          DB 8, 8, 2, 23, 21, 21, 21, 23, 2, 0
+    711              0x08, 0x08, // width=8, height=8
+    712              0x02, 0x17, 0x15, 0x15, 0x15, 0x17, 0x02, 0x00, 
+    713          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    714          const uint8_t Font8x8_char_168[] = {
+   \                     Font8x8_char_168:
+   \   000000 08080030784D          DB 8, 8, 0, 48, 120, 77, 69, 96, 32, 0
+    715              0x08, 0x08, // width=8, height=8
+    716              0x00, 0x30, 0x78, 0x4D, 0x45, 0x60, 0x20, 0x00, 
+    717          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    718          const uint8_t Font8x8_char_169[] = {
+   \                     Font8x8_char_169:
+   \   000000 080800383808          DB 8, 8, 0, 56, 56, 8, 8, 8, 0, 0
+    719              0x08, 0x08, // width=8, height=8
+    720              0x00, 0x38, 0x38, 0x08, 0x08, 0x08, 0x00, 0x00, 
+    721          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    722          const uint8_t Font8x8_char_170[] = {
+   \                     Font8x8_char_170:
+   \   000000 080800080808          DB 8, 8, 0, 8, 8, 8, 56, 56, 0, 0
+    723              0x08, 0x08, // width=8, height=8
+    724              0x00, 0x08, 0x08, 0x08, 0x38, 0x38, 0x00, 0x00, 
+    725          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    726          const uint8_t Font8x8_char_171[] = {
+   \                     Font8x8_char_171:
+   \   000000 08080717B8BC          DB 8, 8, 7, 23, 184, 188, 214, 242, 160, 0
+    727              0x08, 0x08, // width=8, height=8
+    728              0x07, 0x17, 0xB8, 0xBC, 0xD6, 0xF2, 0xA0, 0x00, 
+    729          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    730          const uint8_t Font8x8_char_172[] = {
+   \                     Font8x8_char_172:
+   \   000000 08080757786C          DB 8, 8, 7, 87, 120, 108, 246, 242, 64, 0
+    731              0x08, 0x08, // width=8, height=8
+    732              0x07, 0x57, 0x78, 0x6C, 0xF6, 0xF2, 0x40, 0x00, 
+    733          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    734          const uint8_t Font8x8_char_173[] = {
+   \                     Font8x8_char_173:
+   \   000000 08080000307D          DB 8, 8, 0, 0, 48, 125, 125, 48, 0, 0
+    735              0x08, 0x08, // width=8, height=8
+    736              0x00, 0x00, 0x30, 0x7D, 0x7D, 0x30, 0x00, 0x00, 
+    737          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    738          const uint8_t Font8x8_char_174[] = {
+   \                     Font8x8_char_174:
+   \   000000 0808081C362A          DB 8, 8, 8, 28, 54, 42, 28, 54, 34, 0
+    739              0x08, 0x08, // width=8, height=8
+    740              0x08, 0x1C, 0x36, 0x2A, 0x1C, 0x36, 0x22, 0x00, 
+    741          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    742          const uint8_t Font8x8_char_175[] = {
+   \                     Font8x8_char_175:
+   \   000000 080822361C2A          DB 8, 8, 34, 54, 28, 42, 54, 28, 8, 0
+    743              0x08, 0x08, // width=8, height=8
+    744              0x22, 0x36, 0x1C, 0x2A, 0x36, 0x1C, 0x08, 0x00, 
+    745          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    746          const uint8_t Font8x8_char_176[] = {
+   \                     Font8x8_char_176:
+   \   000000 0808AA005500          DB 8, 8, 170, 0, 85, 0, 170, 0, 85, 0
+    747              0x08, 0x08, // width=8, height=8
+    748              0xAA, 0x00, 0x55, 0x00, 0xAA, 0x00, 0x55, 0x00, 
+    749          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    750          const uint8_t Font8x8_char_177[] = {
+   \                     Font8x8_char_177:
+   \   000000 0808AA55AA55          DB 8, 8, 170, 85, 170, 85, 170, 85, 170, 85
+    751              0x08, 0x08, // width=8, height=8
+    752              0xAA, 0x55, 0xAA, 0x55, 0xAA, 0x55, 0xAA, 0x55, 
+    753          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    754          const uint8_t Font8x8_char_178[] = {
+   \                     Font8x8_char_178:
+   \   000000 080855FFAAFF          DB 8, 8, 85, 255, 170, 255, 85, 255, 170, 255
+    755              0x08, 0x08, // width=8, height=8
+    756              0x55, 0xFF, 0xAA, 0xFF, 0x55, 0xFF, 0xAA, 0xFF, 
+    757          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    758          const uint8_t Font8x8_char_179[] = {
+   \                     Font8x8_char_179:
+   \   000000 0808000000FF          DB 8, 8, 0, 0, 0, 255, 255, 0, 0, 0
+    759              0x08, 0x08, // width=8, height=8
+    760              0x00, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0x00, 
+    761          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    762          const uint8_t Font8x8_char_180[] = {
+   \                     Font8x8_char_180:
+   \   000000 0808101010FF          DB 8, 8, 16, 16, 16, 255, 255, 0, 0, 0
+    763              0x08, 0x08, // width=8, height=8
+    764              0x10, 0x10, 0x10, 0xFF, 0xFF, 0x00, 0x00, 0x00, 
+    765          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    766          const uint8_t Font8x8_char_181[] = {
+   \                     Font8x8_char_181:
+   \   000000 0808141414FF          DB 8, 8, 20, 20, 20, 255, 255, 0, 0, 0
+    767              0x08, 0x08, // width=8, height=8
+    768              0x14, 0x14, 0x14, 0xFF, 0xFF, 0x00, 0x00, 0x00, 
+    769          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    770          const uint8_t Font8x8_char_182[] = {
+   \                     Font8x8_char_182:
+   \   000000 08081010FFFF          DB 8, 8, 16, 16, 255, 255, 0, 255, 255, 0
+    771              0x08, 0x08, // width=8, height=8
+    772              0x10, 0x10, 0xFF, 0xFF, 0x00, 0xFF, 0xFF, 0x00, 
+    773          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    774          const uint8_t Font8x8_char_183[] = {
+   \                     Font8x8_char_183:
+   \   000000 08081010F0F0          DB 8, 8, 16, 16, 240, 240, 16, 240, 240, 0
+    775              0x08, 0x08, // width=8, height=8
+    776              0x10, 0x10, 0xF0, 0xF0, 0x10, 0xF0, 0xF0, 0x00, 
+    777          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    778          const uint8_t Font8x8_char_184[] = {
+   \                     Font8x8_char_184:
+   \   000000 0808141414FC          DB 8, 8, 20, 20, 20, 252, 252, 0, 0, 0
+    779              0x08, 0x08, // width=8, height=8
+    780              0x14, 0x14, 0x14, 0xFC, 0xFC, 0x00, 0x00, 0x00, 
+    781          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    782          const uint8_t Font8x8_char_185[] = {
+   \                     Font8x8_char_185:
+   \   000000 08081414F7F7          DB 8, 8, 20, 20, 247, 247, 0, 255, 255, 0
+    783              0x08, 0x08, // width=8, height=8
+    784              0x14, 0x14, 0xF7, 0xF7, 0x00, 0xFF, 0xFF, 0x00, 
+    785          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    786          const uint8_t Font8x8_char_186[] = {
+   \                     Font8x8_char_186:
+   \   000000 08080000FFFF          DB 8, 8, 0, 0, 255, 255, 0, 255, 255, 0
+    787              0x08, 0x08, // width=8, height=8
+    788              0x00, 0x00, 0xFF, 0xFF, 0x00, 0xFF, 0xFF, 0x00, 
+    789          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    790          const uint8_t Font8x8_char_187[] = {
+   \                     Font8x8_char_187:
+   \   000000 08081414F4F4          DB 8, 8, 20, 20, 244, 244, 4, 252, 252, 0
+    791              0x08, 0x08, // width=8, height=8
+    792              0x14, 0x14, 0xF4, 0xF4, 0x04, 0xFC, 0xFC, 0x00, 
+    793          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    794          const uint8_t Font8x8_char_188[] = {
+   \                     Font8x8_char_188:
+   \   000000 080814141717          DB 8, 8, 20, 20, 23, 23, 16, 31, 31, 0
+    795              0x08, 0x08, // width=8, height=8
+    796              0x14, 0x14, 0x17, 0x17, 0x10, 0x1F, 0x1F, 0x00, 
+    797          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    798          const uint8_t Font8x8_char_189[] = {
+   \                     Font8x8_char_189:
+   \   000000 080810101F1F          DB 8, 8, 16, 16, 31, 31, 16, 31, 31, 0
+    799              0x08, 0x08, // width=8, height=8
+    800              0x10, 0x10, 0x1F, 0x1F, 0x10, 0x1F, 0x1F, 0x00, 
+    801          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    802          const uint8_t Font8x8_char_190[] = {
+   \                     Font8x8_char_190:
+   \   000000 08081414141F          DB 8, 8, 20, 20, 20, 31, 31, 0, 0, 0
+    803              0x08, 0x08, // width=8, height=8
+    804              0x14, 0x14, 0x14, 0x1F, 0x1F, 0x00, 0x00, 0x00, 
+    805          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    806          const uint8_t Font8x8_char_191[] = {
+   \                     Font8x8_char_191:
+   \   000000 0808101010F0          DB 8, 8, 16, 16, 16, 240, 240, 0, 0, 0
+    807              0x08, 0x08, // width=8, height=8
+    808              0x10, 0x10, 0x10, 0xF0, 0xF0, 0x00, 0x00, 0x00, 
+    809          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    810          const uint8_t Font8x8_char_192[] = {
+   \                     Font8x8_char_192:
+   \   000000 08080000001F          DB 8, 8, 0, 0, 0, 31, 31, 16, 16, 16
+    811              0x08, 0x08, // width=8, height=8
+    812              0x00, 0x00, 0x00, 0x1F, 0x1F, 0x10, 0x10, 0x10, 
+    813          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    814          const uint8_t Font8x8_char_193[] = {
+   \                     Font8x8_char_193:
+   \   000000 08081010101F          DB 8, 8, 16, 16, 16, 31, 31, 16, 16, 16
+    815              0x08, 0x08, // width=8, height=8
+    816              0x10, 0x10, 0x10, 0x1F, 0x1F, 0x10, 0x10, 0x10, 
+    817          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    818          const uint8_t Font8x8_char_194[] = {
+   \                     Font8x8_char_194:
+   \   000000 0808101010F0          DB 8, 8, 16, 16, 16, 240, 240, 16, 16, 16
+    819              0x08, 0x08, // width=8, height=8
+    820              0x10, 0x10, 0x10, 0xF0, 0xF0, 0x10, 0x10, 0x10, 
+    821          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    822          const uint8_t Font8x8_char_195[] = {
+   \                     Font8x8_char_195:
+   \   000000 0808000000FF          DB 8, 8, 0, 0, 0, 255, 255, 16, 16, 16
+    823              0x08, 0x08, // width=8, height=8
+    824              0x00, 0x00, 0x00, 0xFF, 0xFF, 0x10, 0x10, 0x10, 
+    825          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    826          const uint8_t Font8x8_char_196[] = {
+   \                     Font8x8_char_196:
+   \   000000 080810101010          DB 8, 8, 16, 16, 16, 16, 16, 16, 16, 16
+    827              0x08, 0x08, // width=8, height=8
+    828              0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 
+    829          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    830          const uint8_t Font8x8_char_197[] = {
+   \                     Font8x8_char_197:
+   \   000000 0808101010FF          DB 8, 8, 16, 16, 16, 255, 255, 16, 16, 16
+    831              0x08, 0x08, // width=8, height=8
+    832              0x10, 0x10, 0x10, 0xFF, 0xFF, 0x10, 0x10, 0x10, 
+    833          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    834          const uint8_t Font8x8_char_198[] = {
+   \                     Font8x8_char_198:
+   \   000000 0808000000FF          DB 8, 8, 0, 0, 0, 255, 255, 20, 20, 20
+    835              0x08, 0x08, // width=8, height=8
+    836              0x00, 0x00, 0x00, 0xFF, 0xFF, 0x14, 0x14, 0x14, 
+    837          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    838          const uint8_t Font8x8_char_199[] = {
+   \                     Font8x8_char_199:
+   \   000000 08080000FFFF          DB 8, 8, 0, 0, 255, 255, 0, 255, 255, 16
+    839              0x08, 0x08, // width=8, height=8
+    840              0x00, 0x00, 0xFF, 0xFF, 0x00, 0xFF, 0xFF, 0x10, 
+    841          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    842          const uint8_t Font8x8_char_200[] = {
+   \                     Font8x8_char_200:
+   \   000000 080800001F1F          DB 8, 8, 0, 0, 31, 31, 16, 23, 23, 20
+    843              0x08, 0x08, // width=8, height=8
+    844              0x00, 0x00, 0x1F, 0x1F, 0x10, 0x17, 0x17, 0x14, 
+    845          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    846          const uint8_t Font8x8_char_201[] = {
+   \                     Font8x8_char_201:
+   \   000000 08080000FCFC          DB 8, 8, 0, 0, 252, 252, 4, 244, 244, 20
+    847              0x08, 0x08, // width=8, height=8
+    848              0x00, 0x00, 0xFC, 0xFC, 0x04, 0xF4, 0xF4, 0x14, 
+    849          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    850          const uint8_t Font8x8_char_202[] = {
+   \                     Font8x8_char_202:
+   \   000000 080814141717          DB 8, 8, 20, 20, 23, 23, 16, 23, 23, 20
+    851              0x08, 0x08, // width=8, height=8
+    852              0x14, 0x14, 0x17, 0x17, 0x10, 0x17, 0x17, 0x14, 
+    853          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    854          const uint8_t Font8x8_char_203[] = {
+   \                     Font8x8_char_203:
+   \   000000 08081414F4F4          DB 8, 8, 20, 20, 244, 244, 4, 244, 244, 20
+    855              0x08, 0x08, // width=8, height=8
+    856              0x14, 0x14, 0xF4, 0xF4, 0x04, 0xF4, 0xF4, 0x14, 
+    857          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    858          const uint8_t Font8x8_char_204[] = {
+   \                     Font8x8_char_204:
+   \   000000 08080000FFFF          DB 8, 8, 0, 0, 255, 255, 0, 247, 247, 20
+    859              0x08, 0x08, // width=8, height=8
+    860              0x00, 0x00, 0xFF, 0xFF, 0x00, 0xF7, 0xF7, 0x14, 
+    861          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    862          const uint8_t Font8x8_char_205[] = {
+   \                     Font8x8_char_205:
+   \   000000 080814141414          DB 8, 8, 20, 20, 20, 20, 20, 20, 20, 20
+    863              0x08, 0x08, // width=8, height=8
+    864              0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 
+    865          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    866          const uint8_t Font8x8_char_206[] = {
+   \                     Font8x8_char_206:
+   \   000000 08081414F7F7          DB 8, 8, 20, 20, 247, 247, 0, 247, 247, 20
+    867              0x08, 0x08, // width=8, height=8
+    868              0x14, 0x14, 0xF7, 0xF7, 0x00, 0xF7, 0xF7, 0x14, 
+    869          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    870          const uint8_t Font8x8_char_207[] = {
+   \                     Font8x8_char_207:
+   \   000000 080814141417          DB 8, 8, 20, 20, 20, 23, 23, 20, 20, 20
+    871              0x08, 0x08, // width=8, height=8
+    872              0x14, 0x14, 0x14, 0x17, 0x17, 0x14, 0x14, 0x14, 
+    873          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    874          const uint8_t Font8x8_char_208[] = {
+   \                     Font8x8_char_208:
+   \   000000 080810101F1F          DB 8, 8, 16, 16, 31, 31, 16, 31, 31, 16
+    875              0x08, 0x08, // width=8, height=8
+    876              0x10, 0x10, 0x1F, 0x1F, 0x10, 0x1F, 0x1F, 0x10, 
+    877          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    878          const uint8_t Font8x8_char_209[] = {
+   \                     Font8x8_char_209:
+   \   000000 0808141414F4          DB 8, 8, 20, 20, 20, 244, 244, 20, 20, 20
+    879              0x08, 0x08, // width=8, height=8
+    880              0x14, 0x14, 0x14, 0xF4, 0xF4, 0x14, 0x14, 0x14, 
+    881          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    882          const uint8_t Font8x8_char_210[] = {
+   \                     Font8x8_char_210:
+   \   000000 08081010F0F0          DB 8, 8, 16, 16, 240, 240, 16, 240, 240, 16
+    883              0x08, 0x08, // width=8, height=8
+    884              0x10, 0x10, 0xF0, 0xF0, 0x10, 0xF0, 0xF0, 0x10, 
+    885          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    886          const uint8_t Font8x8_char_211[] = {
+   \                     Font8x8_char_211:
+   \   000000 080800001F1F          DB 8, 8, 0, 0, 31, 31, 16, 31, 31, 16
+    887              0x08, 0x08, // width=8, height=8
+    888              0x00, 0x00, 0x1F, 0x1F, 0x10, 0x1F, 0x1F, 0x10, 
+    889          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    890          const uint8_t Font8x8_char_212[] = {
+   \                     Font8x8_char_212:
+   \   000000 08080000001F          DB 8, 8, 0, 0, 0, 31, 31, 20, 20, 20
+    891              0x08, 0x08, // width=8, height=8
+    892              0x00, 0x00, 0x00, 0x1F, 0x1F, 0x14, 0x14, 0x14, 
+    893          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    894          const uint8_t Font8x8_char_213[] = {
+   \                     Font8x8_char_213:
+   \   000000 0808000000FC          DB 8, 8, 0, 0, 0, 252, 252, 20, 20, 20
+    895              0x08, 0x08, // width=8, height=8
+    896              0x00, 0x00, 0x00, 0xFC, 0xFC, 0x14, 0x14, 0x14, 
+    897          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    898          const uint8_t Font8x8_char_214[] = {
+   \                     Font8x8_char_214:
+   \   000000 08080000F0F0          DB 8, 8, 0, 0, 240, 240, 16, 240, 240, 16
+    899              0x08, 0x08, // width=8, height=8
+    900              0x00, 0x00, 0xF0, 0xF0, 0x10, 0xF0, 0xF0, 0x10, 
+    901          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    902          const uint8_t Font8x8_char_215[] = {
+   \                     Font8x8_char_215:
+   \   000000 08081010FFFF          DB 8, 8, 16, 16, 255, 255, 16, 255, 255, 16
+    903              0x08, 0x08, // width=8, height=8
+    904              0x10, 0x10, 0xFF, 0xFF, 0x10, 0xFF, 0xFF, 0x10, 
+    905          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    906          const uint8_t Font8x8_char_216[] = {
+   \                     Font8x8_char_216:
+   \   000000 0808141414FF          DB 8, 8, 20, 20, 20, 255, 255, 20, 20, 20
+    907              0x08, 0x08, // width=8, height=8
+    908              0x14, 0x14, 0x14, 0xFF, 0xFF, 0x14, 0x14, 0x14, 
+    909          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    910          const uint8_t Font8x8_char_217[] = {
+   \                     Font8x8_char_217:
+   \   000000 08081010101F          DB 8, 8, 16, 16, 16, 31, 31, 0, 0, 0
+    911              0x08, 0x08, // width=8, height=8
+    912              0x10, 0x10, 0x10, 0x1F, 0x1F, 0x00, 0x00, 0x00, 
+    913          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    914          const uint8_t Font8x8_char_218[] = {
+   \                     Font8x8_char_218:
+   \   000000 0808000000F0          DB 8, 8, 0, 0, 0, 240, 240, 16, 16, 16
+    915              0x08, 0x08, // width=8, height=8
+    916              0x00, 0x00, 0x00, 0xF0, 0xF0, 0x10, 0x10, 0x10, 
+    917          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    918          const uint8_t Font8x8_char_219[] = {
+   \                     Font8x8_char_219:
+   \   000000 0808FFFFFFFF          DB 8, 8, 255, 255, 255, 255, 255, 255, 255, 255
+    919              0x08, 0x08, // width=8, height=8
+    920              0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 
+    921          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    922          const uint8_t Font8x8_char_220[] = {
+   \                     Font8x8_char_220:
+   \   000000 0808F0F0F0F0          DB 8, 8, 240, 240, 240, 240, 240, 240, 240, 240
+    923              0x08, 0x08, // width=8, height=8
+    924              0xF0, 0xF0, 0xF0, 0xF0, 0xF0, 0xF0, 0xF0, 0xF0, 
+    925          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    926          const uint8_t Font8x8_char_221[] = {
+   \                     Font8x8_char_221:
+   \   000000 0808FFFFFFFF          DB 8, 8, 255, 255, 255, 255, 0, 0, 0, 0
+    927              0x08, 0x08, // width=8, height=8
+    928              0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 
+    929          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    930          const uint8_t Font8x8_char_222[] = {
+   \                     Font8x8_char_222:
+   \   000000 080800000000          DB 8, 8, 0, 0, 0, 0, 255, 255, 255, 255
+    931              0x08, 0x08, // width=8, height=8
+    932              0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 
+    933          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    934          const uint8_t Font8x8_char_223[] = {
+   \                     Font8x8_char_223:
+   \   000000 08080F0F0F0F          DB 8, 8, 15, 15, 15, 15, 15, 15, 15, 15
+    935              0x08, 0x08, // width=8, height=8
+    936              0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 
+    937          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    938          const uint8_t Font8x8_char_224[] = {
+   \                     Font8x8_char_224:
+   \   000000 0808387C4438          DB 8, 8, 56, 124, 68, 56, 56, 108, 68, 0
+    939              0x08, 0x08, // width=8, height=8
+    940              0x38, 0x7C, 0x44, 0x38, 0x38, 0x6C, 0x44, 0x00, 
+    941          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    942          const uint8_t Font8x8_char_225[] = {
+   \                     Font8x8_char_225:
+   \   000000 08087C7E0A0A          DB 8, 8, 124, 126, 10, 10, 94, 116, 32, 0
+    943              0x08, 0x08, // width=8, height=8
+    944              0x7C, 0x7E, 0x0A, 0x0A, 0x5E, 0x74, 0x20, 0x00, 
+    945          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    946          const uint8_t Font8x8_char_226[] = {
+   \                     Font8x8_char_226:
+   \   000000 0808427E7E02          DB 8, 8, 66, 126, 126, 2, 2, 2, 6, 0
+    947              0x08, 0x08, // width=8, height=8
+    948              0x42, 0x7E, 0x7E, 0x02, 0x02, 0x02, 0x06, 0x00, 
+    949          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    950          const uint8_t Font8x8_char_227[] = {
+   \                     Font8x8_char_227:
+   \   000000 0808027E7E02          DB 8, 8, 2, 126, 126, 2, 126, 126, 2, 0
+    951              0x08, 0x08, // width=8, height=8
+    952              0x02, 0x7E, 0x7E, 0x02, 0x7E, 0x7E, 0x02, 0x00, 
+    953          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    954          const uint8_t Font8x8_char_228[] = {
+   \                     Font8x8_char_228:
+   \   000000 080863775D49          DB 8, 8, 99, 119, 93, 73, 65, 99, 99, 0
+    955              0x08, 0x08, // width=8, height=8
+    956              0x63, 0x77, 0x5D, 0x49, 0x41, 0x63, 0x63, 0x00, 
+    957          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    958          const uint8_t Font8x8_char_229[] = {
+   \                     Font8x8_char_229:
+   \   000000 08083C7E4266          DB 8, 8, 60, 126, 66, 102, 62, 26, 2, 0
+    959              0x08, 0x08, // width=8, height=8
+    960              0x3C, 0x7E, 0x42, 0x66, 0x3E, 0x1A, 0x02, 0x00, 
+    961          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    962          const uint8_t Font8x8_char_230[] = {
+   \                     Font8x8_char_230:
+   \   000000 0808407E3E20          DB 8, 8, 64, 126, 62, 32, 32, 62, 30, 0
+    963              0x08, 0x08, // width=8, height=8
+    964              0x40, 0x7E, 0x3E, 0x20, 0x20, 0x3E, 0x1E, 0x00, 
+    965          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    966          const uint8_t Font8x8_char_231[] = {
+   \                     Font8x8_char_231:
+   \   000000 08080406427E          DB 8, 8, 4, 6, 66, 126, 124, 6, 2, 0
+    967              0x08, 0x08, // width=8, height=8
+    968              0x04, 0x06, 0x42, 0x7E, 0x7C, 0x06, 0x02, 0x00, 
+    969          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    970          const uint8_t Font8x8_char_232[] = {
+   \                     Font8x8_char_232:
+   \   000000 0808495D7763          DB 8, 8, 73, 93, 119, 99, 119, 93, 73, 0
+    971              0x08, 0x08, // width=8, height=8
+    972              0x49, 0x5D, 0x77, 0x63, 0x77, 0x5D, 0x49, 0x00, 
+    973          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    974          const uint8_t Font8x8_char_233[] = {
+   \                     Font8x8_char_233:
+   \   000000 08081C3E6B49          DB 8, 8, 28, 62, 107, 73, 107, 62, 28, 0
+    975              0x08, 0x08, // width=8, height=8
+    976              0x1C, 0x3E, 0x6B, 0x49, 0x6B, 0x3E, 0x1C, 0x00, 
+    977          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    978          const uint8_t Font8x8_char_234[] = {
+   \                     Font8x8_char_234:
+   \   000000 08084C7E7301          DB 8, 8, 76, 126, 115, 1, 115, 126, 76, 0
+    979              0x08, 0x08, // width=8, height=8
+    980              0x4C, 0x7E, 0x73, 0x01, 0x73, 0x7E, 0x4C, 0x00, 
+    981          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    982          const uint8_t Font8x8_char_235[] = {
+   \                     Font8x8_char_235:
+   \   000000 0808307A4F45          DB 8, 8, 48, 122, 79, 69, 101, 57, 25, 0
+    983              0x08, 0x08, // width=8, height=8
+    984              0x30, 0x7A, 0x4F, 0x45, 0x65, 0x39, 0x19, 0x00, 
+    985          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    986          const uint8_t Font8x8_char_236[] = {
+   \                     Font8x8_char_236:
+   \   000000 0808183C243C          DB 8, 8, 24, 60, 36, 60, 60, 36, 60, 24
+    987              0x08, 0x08, // width=8, height=8
+    988              0x18, 0x3C, 0x24, 0x3C, 0x3C, 0x24, 0x3C, 0x18, 
+    989          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    990          const uint8_t Font8x8_char_237[] = {
+   \                     Font8x8_char_237:
+   \   000000 08085C7E3A2E          DB 8, 8, 92, 126, 58, 46, 38, 63, 29, 0
+    991              0x08, 0x08, // width=8, height=8
+    992              0x5C, 0x7E, 0x3A, 0x2E, 0x26, 0x3F, 0x1D, 0x00, 
+    993          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    994          const uint8_t Font8x8_char_238[] = {
+   \                     Font8x8_char_238:
+   \   000000 08081C3E6B49          DB 8, 8, 28, 62, 107, 73, 73, 0, 0, 0
+    995              0x08, 0x08, // width=8, height=8
+    996              0x1C, 0x3E, 0x6B, 0x49, 0x49, 0x00, 0x00, 0x00, 
+    997          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    998          const uint8_t Font8x8_char_239[] = {
+   \                     Font8x8_char_239:
+   \   000000 08087E7F0101          DB 8, 8, 126, 127, 1, 1, 1, 127, 126, 0
+    999              0x08, 0x08, // width=8, height=8
+   1000              0x7E, 0x7F, 0x01, 0x01, 0x01, 0x7F, 0x7E, 0x00, 
+   1001          };
+
+   \                                 In  segment NEAR_CONST, align 2
+   1002          const uint8_t Font8x8_char_240[] = {
+   \                     Font8x8_char_240:
+   \   000000 08082A2A2A2A          DB 8, 8, 42, 42, 42, 42, 42, 42, 42, 0
+   1003              0x08, 0x08, // width=8, height=8
+   1004              0x2A, 0x2A, 0x2A, 0x2A, 0x2A, 0x2A, 0x2A, 0x00, 
+   1005          };
+
+   \                                 In  segment NEAR_CONST, align 2
+   1006          const uint8_t Font8x8_char_241[] = {
+   \                     Font8x8_char_241:
+   \   000000 08080044445F          DB 8, 8, 0, 68, 68, 95, 95, 68, 68, 0
+   1007              0x08, 0x08, // width=8, height=8
+   1008              0x00, 0x44, 0x44, 0x5F, 0x5F, 0x44, 0x44, 0x00, 
+   1009          };
+
+   \                                 In  segment NEAR_CONST, align 2
+   1010          const uint8_t Font8x8_char_242[] = {
+   \                     Font8x8_char_242:
+   \   000000 08080040515B          DB 8, 8, 0, 64, 81, 91, 78, 68, 64, 0
+   1011              0x08, 0x08, // width=8, height=8
+   1012              0x00, 0x40, 0x51, 0x5B, 0x4E, 0x44, 0x40, 0x00, 
+   1013          };
+
+   \                                 In  segment NEAR_CONST, align 2
+   1014          const uint8_t Font8x8_char_243[] = {
+   \                     Font8x8_char_243:
+   \   000000 08080040444E          DB 8, 8, 0, 64, 68, 78, 91, 81, 64, 0
+   1015              0x08, 0x08, // width=8, height=8
+   1016              0x00, 0x40, 0x44, 0x4E, 0x5B, 0x51, 0x40, 0x00, 
+   1017          };
+
+   \                                 In  segment NEAR_CONST, align 2
+   1018          const uint8_t Font8x8_char_244[] = {
+   \                     Font8x8_char_244:
+   \   000000 0808000000FE          DB 8, 8, 0, 0, 0, 254, 255, 3, 2, 0
+   1019              0x08, 0x08, // width=8, height=8
+   1020              0x00, 0x00, 0x00, 0xFE, 0xFF, 0x03, 0x02, 0x00, 
+   1021          };
+
+   \                                 In  segment NEAR_CONST, align 2
+   1022          const uint8_t Font8x8_char_245[] = {
+   \                     Font8x8_char_245:
+   \   000000 08080020607F          DB 8, 8, 0, 32, 96, 127, 63, 0, 0, 0
+   1023              0x08, 0x08, // width=8, height=8
+   1024              0x00, 0x20, 0x60, 0x7F, 0x3F, 0x00, 0x00, 0x00, 
+   1025          };
+
+   \                                 In  segment NEAR_CONST, align 2
+   1026          const uint8_t Font8x8_char_246[] = {
+   \                     Font8x8_char_246:
+   \   000000 080800101054          DB 8, 8, 0, 16, 16, 84, 84, 16, 16, 0
+   1027              0x08, 0x08, // width=8, height=8
+   1028              0x00, 0x10, 0x10, 0x54, 0x54, 0x10, 0x10, 0x00, 
+   1029          };
+
+   \                                 In  segment NEAR_CONST, align 2
+   1030          const uint8_t Font8x8_char_247[] = {
+   \                     Font8x8_char_247:
+   \   000000 080824361236          DB 8, 8, 36, 54, 18, 54, 36, 54, 18, 0
+   1031              0x08, 0x08, // width=8, height=8
+   1032              0x24, 0x36, 0x12, 0x36, 0x24, 0x36, 0x12, 0x00, 
+   1033          };
+
+   \                                 In  segment NEAR_CONST, align 2
+   1034          const uint8_t Font8x8_char_248[] = {
+   \                     Font8x8_char_248:
+   \   000000 0808060F0909          DB 8, 8, 6, 15, 9, 9, 9, 15, 6, 0
+   1035              0x08, 0x08, // width=8, height=8
+   1036              0x06, 0x0F, 0x09, 0x09, 0x09, 0x0F, 0x06, 0x00, 
+   1037          };
+
+   \                                 In  segment NEAR_CONST, align 2
+   1038          const uint8_t Font8x8_char_249[] = {
+   \                     Font8x8_char_249:
+   \   000000 080800000018          DB 8, 8, 0, 0, 0, 24, 24, 0, 0, 0
+   1039              0x08, 0x08, // width=8, height=8
+   1040              0x00, 0x00, 0x00, 0x18, 0x18, 0x00, 0x00, 0x00, 
+   1041          };
+
+   \                                 In  segment NEAR_CONST, align 2
+   1042          const uint8_t Font8x8_char_250[] = {
+   \                     Font8x8_char_250:
+   \   000000 080800000010          DB 8, 8, 0, 0, 0, 16, 16, 0, 0, 0
+   1043              0x08, 0x08, // width=8, height=8
+   1044              0x00, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x00, 
+   1045          };
+
+   \                                 In  segment NEAR_CONST, align 2
+   1046          const uint8_t Font8x8_char_251[] = {
+   \                     Font8x8_char_251:
+   \   000000 08081010307F          DB 8, 8, 16, 16, 48, 127, 127, 1, 1, 1
+   1047              0x08, 0x08, // width=8, height=8
+   1048              0x10, 0x10, 0x30, 0x7F, 0x7F, 0x01, 0x01, 0x01, 
+   1049          };
+
+   \                                 In  segment NEAR_CONST, align 2
+   1050          const uint8_t Font8x8_char_252[] = {
+   \                     Font8x8_char_252:
+   \   000000 0808010F0E01          DB 8, 8, 1, 15, 14, 1, 15, 14, 0, 0
+   1051              0x08, 0x08, // width=8, height=8
+   1052              0x01, 0x0F, 0x0E, 0x01, 0x0F, 0x0E, 0x00, 0x00, 
+   1053          };
+
+   \                                 In  segment NEAR_CONST, align 2
+   1054          const uint8_t Font8x8_char_253[] = {
+   \                     Font8x8_char_253:
+   \   000000 08080A0B0D0F          DB 8, 8, 10, 11, 13, 15, 10, 0, 0, 0
+   1055              0x08, 0x08, // width=8, height=8
+   1056              0x0A, 0x0B, 0x0D, 0x0F, 0x0A, 0x00, 0x00, 0x00, 
+   1057          };
+
+   \                                 In  segment NEAR_CONST, align 2
+   1058          const uint8_t Font8x8_char_254[] = {
+   \                     Font8x8_char_254:
+   \   000000 0808003C3C3C          DB 8, 8, 0, 60, 60, 60, 60, 60, 0, 0
+   1059              0x08, 0x08, // width=8, height=8
+   1060              0x00, 0x3C, 0x3C, 0x3C, 0x3C, 0x3C, 0x00, 0x00, 
+   1061          };
+
+   \                                 In  segment NEAR_CONST, align 2
+   1062          const uint8_t Font8x8_char_255[] = {
+   \                     Font8x8_char_255:
+   \   000000 080800000000          DB 8, 8, 0, 0, 0, 0, 0, 0, 0, 0
+   1063              0x08, 0x08, // width=8, height=8
+   1064              0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+   1065          };
+   1066          
+
+   \                                 In  segment NEAR_CONST, align 2
+   1067          const uint8_t * const Font8x8_table[256] = {
+   \                     Font8x8_table:
+   \   000000 ............          DW Font8x8_char_0, Font8x8_char_1, Font8x8_char_2, Font8x8_char_3
+   \   000008 ............          DW Font8x8_char_4, Font8x8_char_5, Font8x8_char_6, Font8x8_char_7
+   \   000010 ............          DW Font8x8_char_8, Font8x8_char_9, Font8x8_char_10, Font8x8_char_11
+   \   000018 ............          DW Font8x8_char_12, Font8x8_char_13, Font8x8_char_14, Font8x8_char_15
+   \   000020 ............          DW Font8x8_char_16, Font8x8_char_17, Font8x8_char_18, Font8x8_char_19
+   \   000028 ............          DW Font8x8_char_20, Font8x8_char_21, Font8x8_char_22, Font8x8_char_23
+   \   000030 ............          DW Font8x8_char_24, Font8x8_char_25, Font8x8_char_26, Font8x8_char_27
+   \   000038 ............          DW Font8x8_char_28, Font8x8_char_29, Font8x8_char_30, Font8x8_char_31
+   \   000040 ............          DW Font8x8_char_32, Font8x8_char_33, Font8x8_char_34, Font8x8_char_35
+   \   000048 ............          DW Font8x8_char_36, Font8x8_char_37, Font8x8_char_38, Font8x8_char_39
+   \   000050 ............          DW Font8x8_char_40, Font8x8_char_41, Font8x8_char_42, Font8x8_char_43
+   \   000058 ............          DW Font8x8_char_44, Font8x8_char_45, Font8x8_char_46, Font8x8_char_47
+   \   000060 ............          DW Font8x8_char_48, Font8x8_char_49, Font8x8_char_50, Font8x8_char_51
+   \   000068 ............          DW Font8x8_char_52, Font8x8_char_53, Font8x8_char_54, Font8x8_char_55
+   \   000070 ............          DW Font8x8_char_56, Font8x8_char_57, Font8x8_char_58, Font8x8_char_59
+   \   000078 ............          DW Font8x8_char_60, Font8x8_char_61, Font8x8_char_62, Font8x8_char_63
+   \   000080 ............          DW Font8x8_char_64, Font8x8_char_65, Font8x8_char_66, Font8x8_char_67
+   \   000088 ............          DW Font8x8_char_68, Font8x8_char_69, Font8x8_char_70, Font8x8_char_71
+   \   000090 ............          DW Font8x8_char_72, Font8x8_char_73, Font8x8_char_74, Font8x8_char_75
+   \   000098 ............          DW Font8x8_char_76, Font8x8_char_77, Font8x8_char_78, Font8x8_char_79
+   \   0000A0 ............          DW Font8x8_char_80, Font8x8_char_81, Font8x8_char_82, Font8x8_char_83
+   \   0000A8 ............          DW Font8x8_char_84, Font8x8_char_85, Font8x8_char_86, Font8x8_char_87
+   \   0000B0 ............          DW Font8x8_char_88, Font8x8_char_89, Font8x8_char_90, Font8x8_char_91
+   \   0000B8 ............          DW Font8x8_char_92, Font8x8_char_93, Font8x8_char_94, Font8x8_char_95
+   \   0000C0 ............          DW Font8x8_char_96, Font8x8_char_97, Font8x8_char_98, Font8x8_char_99
+   \   0000C8 ............          DW Font8x8_char_100, Font8x8_char_101, Font8x8_char_102
+   \   0000CE ............          DW Font8x8_char_103, Font8x8_char_104, Font8x8_char_105
+   \   0000D4 ............          DW Font8x8_char_106, Font8x8_char_107, Font8x8_char_108
+   \   0000DA ............          DW Font8x8_char_109, Font8x8_char_110, Font8x8_char_111
+   \   0000E0 ............          DW Font8x8_char_112, Font8x8_char_113, Font8x8_char_114
+   \   0000E6 ............          DW Font8x8_char_115, Font8x8_char_116, Font8x8_char_117
+   \   0000EC ............          DW Font8x8_char_118, Font8x8_char_119, Font8x8_char_120
+   \   0000F2 ............          DW Font8x8_char_121, Font8x8_char_122, Font8x8_char_123
+   \   0000F8 ............          DW Font8x8_char_124, Font8x8_char_125, Font8x8_char_126
+   \   0000FE ............          DW Font8x8_char_127, Font8x8_char_128, Font8x8_char_129
+   \   000104 ............          DW Font8x8_char_130, Font8x8_char_131, Font8x8_char_132
+   \   00010A ............          DW Font8x8_char_133, Font8x8_char_134, Font8x8_char_135
+   \   000110 ............          DW Font8x8_char_136, Font8x8_char_137, Font8x8_char_138
+   \   000116 ............          DW Font8x8_char_139, Font8x8_char_140, Font8x8_char_141
+   \   00011C ............          DW Font8x8_char_142, Font8x8_char_143, Font8x8_char_144
+   \   000122 ............          DW Font8x8_char_145, Font8x8_char_146, Font8x8_char_147
+   \   000128 ............          DW Font8x8_char_148, Font8x8_char_149, Font8x8_char_150
+   \   00012E ............          DW Font8x8_char_151, Font8x8_char_152, Font8x8_char_153
+   \   000134 ............          DW Font8x8_char_154, Font8x8_char_155, Font8x8_char_156
+   \   00013A ............          DW Font8x8_char_157, Font8x8_char_158, Font8x8_char_159
+   \   000140 ............          DW Font8x8_char_160, Font8x8_char_161, Font8x8_char_162
+   \   000146 ............          DW Font8x8_char_163, Font8x8_char_164, Font8x8_char_165
+   \   00014C ............          DW Font8x8_char_166, Font8x8_char_167, Font8x8_char_168
+   \   000152 ............          DW Font8x8_char_169, Font8x8_char_170, Font8x8_char_171
+   \   000158 ............          DW Font8x8_char_172, Font8x8_char_173, Font8x8_char_174
+   \   00015E ............          DW Font8x8_char_175, Font8x8_char_176, Font8x8_char_177
+   \   000164 ............          DW Font8x8_char_178, Font8x8_char_179, Font8x8_char_180
+   \   00016A ............          DW Font8x8_char_181, Font8x8_char_182, Font8x8_char_183
+   \   000170 ............          DW Font8x8_char_184, Font8x8_char_185, Font8x8_char_186
+   \   000176 ............          DW Font8x8_char_187, Font8x8_char_188, Font8x8_char_189
+   \   00017C ............          DW Font8x8_char_190, Font8x8_char_191, Font8x8_char_192
+   \   000182 ............          DW Font8x8_char_193, Font8x8_char_194, Font8x8_char_195
+   \   000188 ............          DW Font8x8_char_196, Font8x8_char_197, Font8x8_char_198
+   \   00018E ............          DW Font8x8_char_199, Font8x8_char_200, Font8x8_char_201
+   \   000194 ............          DW Font8x8_char_202, Font8x8_char_203, Font8x8_char_204
+   \   00019A ............          DW Font8x8_char_205, Font8x8_char_206, Font8x8_char_207
+   \   0001A0 ............          DW Font8x8_char_208, Font8x8_char_209, Font8x8_char_210
+   \   0001A6 ............          DW Font8x8_char_211, Font8x8_char_212, Font8x8_char_213
+   \   0001AC ............          DW Font8x8_char_214, Font8x8_char_215, Font8x8_char_216
+   \   0001B2 ............          DW Font8x8_char_217, Font8x8_char_218, Font8x8_char_219
+   \   0001B8 ............          DW Font8x8_char_220, Font8x8_char_221, Font8x8_char_222
+   \   0001BE ............          DW Font8x8_char_223, Font8x8_char_224, Font8x8_char_225
+   \   0001C4 ............          DW Font8x8_char_226, Font8x8_char_227, Font8x8_char_228
+   \   0001CA ............          DW Font8x8_char_229, Font8x8_char_230, Font8x8_char_231
+   \   0001D0 ............          DW Font8x8_char_232, Font8x8_char_233, Font8x8_char_234
+   \   0001D6 ............          DW Font8x8_char_235, Font8x8_char_236, Font8x8_char_237
+   \   0001DC ............          DW Font8x8_char_238, Font8x8_char_239, Font8x8_char_240
+   \   0001E2 ............          DW Font8x8_char_241, Font8x8_char_242, Font8x8_char_243
+   \   0001E8 ............          DW Font8x8_char_244, Font8x8_char_245, Font8x8_char_246
+   \   0001EE ............          DW Font8x8_char_247, Font8x8_char_248, Font8x8_char_249
+   \   0001F4 ............          DW Font8x8_char_250, Font8x8_char_251, Font8x8_char_252
+   \   0001FA ............          DW Font8x8_char_253, Font8x8_char_254, Font8x8_char_255
+   1068              Font8x8_char_0,
+   1069              Font8x8_char_1,
+   1070              Font8x8_char_2,
+   1071              Font8x8_char_3,
+   1072              Font8x8_char_4,
+   1073              Font8x8_char_5,
+   1074              Font8x8_char_6,
+   1075              Font8x8_char_7,
+   1076              Font8x8_char_8,
+   1077              Font8x8_char_9,
+   1078              Font8x8_char_10,
+   1079              Font8x8_char_11,
+   1080              Font8x8_char_12,
+   1081              Font8x8_char_13,
+   1082              Font8x8_char_14,
+   1083              Font8x8_char_15,
+   1084              Font8x8_char_16,
+   1085              Font8x8_char_17,
+   1086              Font8x8_char_18,
+   1087              Font8x8_char_19,
+   1088              Font8x8_char_20,
+   1089              Font8x8_char_21,
+   1090              Font8x8_char_22,
+   1091              Font8x8_char_23,
+   1092              Font8x8_char_24,
+   1093              Font8x8_char_25,
+   1094              Font8x8_char_26,
+   1095              Font8x8_char_27,
+   1096              Font8x8_char_28,
+   1097              Font8x8_char_29,
+   1098              Font8x8_char_30,
+   1099              Font8x8_char_31,
+   1100              Font8x8_char_32,
+   1101              Font8x8_char_33,
+   1102              Font8x8_char_34,
+   1103              Font8x8_char_35,
+   1104              Font8x8_char_36,
+   1105              Font8x8_char_37,
+   1106              Font8x8_char_38,
+   1107              Font8x8_char_39,
+   1108              Font8x8_char_40,
+   1109              Font8x8_char_41,
+   1110              Font8x8_char_42,
+   1111              Font8x8_char_43,
+   1112              Font8x8_char_44,
+   1113              Font8x8_char_45,
+   1114              Font8x8_char_46,
+   1115              Font8x8_char_47,
+   1116              Font8x8_char_48,
+   1117              Font8x8_char_49,
+   1118              Font8x8_char_50,
+   1119              Font8x8_char_51,
+   1120              Font8x8_char_52,
+   1121              Font8x8_char_53,
+   1122              Font8x8_char_54,
+   1123              Font8x8_char_55,
+   1124              Font8x8_char_56,
+   1125              Font8x8_char_57,
+   1126              Font8x8_char_58,
+   1127              Font8x8_char_59,
+   1128              Font8x8_char_60,
+   1129              Font8x8_char_61,
+   1130              Font8x8_char_62,
+   1131              Font8x8_char_63,
+   1132              Font8x8_char_64,
+   1133              Font8x8_char_65,
+   1134              Font8x8_char_66,
+   1135              Font8x8_char_67,
+   1136              Font8x8_char_68,
+   1137              Font8x8_char_69,
+   1138              Font8x8_char_70,
+   1139              Font8x8_char_71,
+   1140              Font8x8_char_72,
+   1141              Font8x8_char_73,
+   1142              Font8x8_char_74,
+   1143              Font8x8_char_75,
+   1144              Font8x8_char_76,
+   1145              Font8x8_char_77,
+   1146              Font8x8_char_78,
+   1147              Font8x8_char_79,
+   1148              Font8x8_char_80,
+   1149              Font8x8_char_81,
+   1150              Font8x8_char_82,
+   1151              Font8x8_char_83,
+   1152              Font8x8_char_84,
+   1153              Font8x8_char_85,
+   1154              Font8x8_char_86,
+   1155              Font8x8_char_87,
+   1156              Font8x8_char_88,
+   1157              Font8x8_char_89,
+   1158              Font8x8_char_90,
+   1159              Font8x8_char_91,
+   1160              Font8x8_char_92,
+   1161              Font8x8_char_93,
+   1162              Font8x8_char_94,
+   1163              Font8x8_char_95,
+   1164              Font8x8_char_96,
+   1165              Font8x8_char_97,
+   1166              Font8x8_char_98,
+   1167              Font8x8_char_99,
+   1168              Font8x8_char_100,
+   1169              Font8x8_char_101,
+   1170              Font8x8_char_102,
+   1171              Font8x8_char_103,
+   1172              Font8x8_char_104,
+   1173              Font8x8_char_105,
+   1174              Font8x8_char_106,
+   1175              Font8x8_char_107,
+   1176              Font8x8_char_108,
+   1177              Font8x8_char_109,
+   1178              Font8x8_char_110,
+   1179              Font8x8_char_111,
+   1180              Font8x8_char_112,
+   1181              Font8x8_char_113,
+   1182              Font8x8_char_114,
+   1183              Font8x8_char_115,
+   1184              Font8x8_char_116,
+   1185              Font8x8_char_117,
+   1186              Font8x8_char_118,
+   1187              Font8x8_char_119,
+   1188              Font8x8_char_120,
+   1189              Font8x8_char_121,
+   1190              Font8x8_char_122,
+   1191              Font8x8_char_123,
+   1192              Font8x8_char_124,
+   1193              Font8x8_char_125,
+   1194              Font8x8_char_126,
+   1195              Font8x8_char_127,
+   1196              Font8x8_char_128,
+   1197              Font8x8_char_129,
+   1198              Font8x8_char_130,
+   1199              Font8x8_char_131,
+   1200              Font8x8_char_132,
+   1201              Font8x8_char_133,
+   1202              Font8x8_char_134,
+   1203              Font8x8_char_135,
+   1204              Font8x8_char_136,
+   1205              Font8x8_char_137,
+   1206              Font8x8_char_138,
+   1207              Font8x8_char_139,
+   1208              Font8x8_char_140,
+   1209              Font8x8_char_141,
+   1210              Font8x8_char_142,
+   1211              Font8x8_char_143,
+   1212              Font8x8_char_144,
+   1213              Font8x8_char_145,
+   1214              Font8x8_char_146,
+   1215              Font8x8_char_147,
+   1216              Font8x8_char_148,
+   1217              Font8x8_char_149,
+   1218              Font8x8_char_150,
+   1219              Font8x8_char_151,
+   1220              Font8x8_char_152,
+   1221              Font8x8_char_153,
+   1222              Font8x8_char_154,
+   1223              Font8x8_char_155,
+   1224              Font8x8_char_156,
+   1225              Font8x8_char_157,
+   1226              Font8x8_char_158,
+   1227              Font8x8_char_159,
+   1228              Font8x8_char_160,
+   1229              Font8x8_char_161,
+   1230              Font8x8_char_162,
+   1231              Font8x8_char_163,
+   1232              Font8x8_char_164,
+   1233              Font8x8_char_165,
+   1234              Font8x8_char_166,
+   1235              Font8x8_char_167,
+   1236              Font8x8_char_168,
+   1237              Font8x8_char_169,
+   1238              Font8x8_char_170,
+   1239              Font8x8_char_171,
+   1240              Font8x8_char_172,
+   1241              Font8x8_char_173,
+   1242              Font8x8_char_174,
+   1243              Font8x8_char_175,
+   1244              Font8x8_char_176,
+   1245              Font8x8_char_177,
+   1246              Font8x8_char_178,
+   1247              Font8x8_char_179,
+   1248              Font8x8_char_180,
+   1249              Font8x8_char_181,
+   1250              Font8x8_char_182,
+   1251              Font8x8_char_183,
+   1252              Font8x8_char_184,
+   1253              Font8x8_char_185,
+   1254              Font8x8_char_186,
+   1255              Font8x8_char_187,
+   1256              Font8x8_char_188,
+   1257              Font8x8_char_189,
+   1258              Font8x8_char_190,
+   1259              Font8x8_char_191,
+   1260              Font8x8_char_192,
+   1261              Font8x8_char_193,
+   1262              Font8x8_char_194,
+   1263              Font8x8_char_195,
+   1264              Font8x8_char_196,
+   1265              Font8x8_char_197,
+   1266              Font8x8_char_198,
+   1267              Font8x8_char_199,
+   1268              Font8x8_char_200,
+   1269              Font8x8_char_201,
+   1270              Font8x8_char_202,
+   1271              Font8x8_char_203,
+   1272              Font8x8_char_204,
+   1273              Font8x8_char_205,
+   1274              Font8x8_char_206,
+   1275              Font8x8_char_207,
+   1276              Font8x8_char_208,
+   1277              Font8x8_char_209,
+   1278              Font8x8_char_210,
+   1279              Font8x8_char_211,
+   1280              Font8x8_char_212,
+   1281              Font8x8_char_213,
+   1282              Font8x8_char_214,
+   1283              Font8x8_char_215,
+   1284              Font8x8_char_216,
+   1285              Font8x8_char_217,
+   1286              Font8x8_char_218,
+   1287              Font8x8_char_219,
+   1288              Font8x8_char_220,
+   1289              Font8x8_char_221,
+   1290              Font8x8_char_222,
+   1291              Font8x8_char_223,
+   1292              Font8x8_char_224,
+   1293              Font8x8_char_225,
+   1294              Font8x8_char_226,
+   1295              Font8x8_char_227,
+   1296              Font8x8_char_228,
+   1297              Font8x8_char_229,
+   1298              Font8x8_char_230,
+   1299              Font8x8_char_231,
+   1300              Font8x8_char_232,
+   1301              Font8x8_char_233,
+   1302              Font8x8_char_234,
+   1303              Font8x8_char_235,
+   1304              Font8x8_char_236,
+   1305              Font8x8_char_237,
+   1306              Font8x8_char_238,
+   1307              Font8x8_char_239,
+   1308              Font8x8_char_240,
+   1309              Font8x8_char_241,
+   1310              Font8x8_char_242,
+   1311              Font8x8_char_243,
+   1312              Font8x8_char_244,
+   1313              Font8x8_char_245,
+   1314              Font8x8_char_246,
+   1315              Font8x8_char_247,
+   1316              Font8x8_char_248,
+   1317              Font8x8_char_249,
+   1318              Font8x8_char_250,
+   1319              Font8x8_char_251,
+   1320              Font8x8_char_252,
+   1321              Font8x8_char_253,
+   1322              Font8x8_char_254,
+   1323              Font8x8_char_255,
+   1324          };
+   1325          
+   1326          
+   1327          
+   1328          
+   1329          
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      10  Font8x8_char_0
+      10  Font8x8_char_1
+      10  Font8x8_char_10
+      10  Font8x8_char_100
+      10  Font8x8_char_101
+      10  Font8x8_char_102
+      10  Font8x8_char_103
+      10  Font8x8_char_104
+      10  Font8x8_char_105
+      10  Font8x8_char_106
+      10  Font8x8_char_107
+      10  Font8x8_char_108
+      10  Font8x8_char_109
+      10  Font8x8_char_11
+      10  Font8x8_char_110
+      10  Font8x8_char_111
+      10  Font8x8_char_112
+      10  Font8x8_char_113
+      10  Font8x8_char_114
+      10  Font8x8_char_115
+      10  Font8x8_char_116
+      10  Font8x8_char_117
+      10  Font8x8_char_118
+      10  Font8x8_char_119
+      10  Font8x8_char_12
+      10  Font8x8_char_120
+      10  Font8x8_char_121
+      10  Font8x8_char_122
+      10  Font8x8_char_123
+      10  Font8x8_char_124
+      10  Font8x8_char_125
+      10  Font8x8_char_126
+      10  Font8x8_char_127
+      10  Font8x8_char_128
+      10  Font8x8_char_129
+      10  Font8x8_char_13
+      10  Font8x8_char_130
+      10  Font8x8_char_131
+      10  Font8x8_char_132
+      10  Font8x8_char_133
+      10  Font8x8_char_134
+      10  Font8x8_char_135
+      10  Font8x8_char_136
+      10  Font8x8_char_137
+      10  Font8x8_char_138
+      10  Font8x8_char_139
+      10  Font8x8_char_14
+      10  Font8x8_char_140
+      10  Font8x8_char_141
+      10  Font8x8_char_142
+      10  Font8x8_char_143
+      10  Font8x8_char_144
+      10  Font8x8_char_145
+      10  Font8x8_char_146
+      10  Font8x8_char_147
+      10  Font8x8_char_148
+      10  Font8x8_char_149
+      10  Font8x8_char_15
+      10  Font8x8_char_150
+      10  Font8x8_char_151
+      10  Font8x8_char_152
+      10  Font8x8_char_153
+      10  Font8x8_char_154
+      10  Font8x8_char_155
+      10  Font8x8_char_156
+      10  Font8x8_char_157
+      10  Font8x8_char_158
+      10  Font8x8_char_159
+      10  Font8x8_char_16
+      10  Font8x8_char_160
+      10  Font8x8_char_161
+      10  Font8x8_char_162
+      10  Font8x8_char_163
+      10  Font8x8_char_164
+      10  Font8x8_char_165
+      10  Font8x8_char_166
+      10  Font8x8_char_167
+      10  Font8x8_char_168
+      10  Font8x8_char_169
+      10  Font8x8_char_17
+      10  Font8x8_char_170
+      10  Font8x8_char_171
+      10  Font8x8_char_172
+      10  Font8x8_char_173
+      10  Font8x8_char_174
+      10  Font8x8_char_175
+      10  Font8x8_char_176
+      10  Font8x8_char_177
+      10  Font8x8_char_178
+      10  Font8x8_char_179
+      10  Font8x8_char_18
+      10  Font8x8_char_180
+      10  Font8x8_char_181
+      10  Font8x8_char_182
+      10  Font8x8_char_183
+      10  Font8x8_char_184
+      10  Font8x8_char_185
+      10  Font8x8_char_186
+      10  Font8x8_char_187
+      10  Font8x8_char_188
+      10  Font8x8_char_189
+      10  Font8x8_char_19
+      10  Font8x8_char_190
+      10  Font8x8_char_191
+      10  Font8x8_char_192
+      10  Font8x8_char_193
+      10  Font8x8_char_194
+      10  Font8x8_char_195
+      10  Font8x8_char_196
+      10  Font8x8_char_197
+      10  Font8x8_char_198
+      10  Font8x8_char_199
+      10  Font8x8_char_2
+      10  Font8x8_char_20
+      10  Font8x8_char_200
+      10  Font8x8_char_201
+      10  Font8x8_char_202
+      10  Font8x8_char_203
+      10  Font8x8_char_204
+      10  Font8x8_char_205
+      10  Font8x8_char_206
+      10  Font8x8_char_207
+      10  Font8x8_char_208
+      10  Font8x8_char_209
+      10  Font8x8_char_21
+      10  Font8x8_char_210
+      10  Font8x8_char_211
+      10  Font8x8_char_212
+      10  Font8x8_char_213
+      10  Font8x8_char_214
+      10  Font8x8_char_215
+      10  Font8x8_char_216
+      10  Font8x8_char_217
+      10  Font8x8_char_218
+      10  Font8x8_char_219
+      10  Font8x8_char_22
+      10  Font8x8_char_220
+      10  Font8x8_char_221
+      10  Font8x8_char_222
+      10  Font8x8_char_223
+      10  Font8x8_char_224
+      10  Font8x8_char_225
+      10  Font8x8_char_226
+      10  Font8x8_char_227
+      10  Font8x8_char_228
+      10  Font8x8_char_229
+      10  Font8x8_char_23
+      10  Font8x8_char_230
+      10  Font8x8_char_231
+      10  Font8x8_char_232
+      10  Font8x8_char_233
+      10  Font8x8_char_234
+      10  Font8x8_char_235
+      10  Font8x8_char_236
+      10  Font8x8_char_237
+      10  Font8x8_char_238
+      10  Font8x8_char_239
+      10  Font8x8_char_24
+      10  Font8x8_char_240
+      10  Font8x8_char_241
+      10  Font8x8_char_242
+      10  Font8x8_char_243
+      10  Font8x8_char_244
+      10  Font8x8_char_245
+      10  Font8x8_char_246
+      10  Font8x8_char_247
+      10  Font8x8_char_248
+      10  Font8x8_char_249
+      10  Font8x8_char_25
+      10  Font8x8_char_250
+      10  Font8x8_char_251
+      10  Font8x8_char_252
+      10  Font8x8_char_253
+      10  Font8x8_char_254
+      10  Font8x8_char_255
+      10  Font8x8_char_26
+      10  Font8x8_char_27
+      10  Font8x8_char_28
+      10  Font8x8_char_29
+      10  Font8x8_char_3
+      10  Font8x8_char_30
+      10  Font8x8_char_31
+      10  Font8x8_char_32
+      10  Font8x8_char_33
+      10  Font8x8_char_34
+      10  Font8x8_char_35
+      10  Font8x8_char_36
+      10  Font8x8_char_37
+      10  Font8x8_char_38
+      10  Font8x8_char_39
+      10  Font8x8_char_4
+      10  Font8x8_char_40
+      10  Font8x8_char_41
+      10  Font8x8_char_42
+      10  Font8x8_char_43
+      10  Font8x8_char_44
+      10  Font8x8_char_45
+      10  Font8x8_char_46
+      10  Font8x8_char_47
+      10  Font8x8_char_48
+      10  Font8x8_char_49
+      10  Font8x8_char_5
+      10  Font8x8_char_50
+      10  Font8x8_char_51
+      10  Font8x8_char_52
+      10  Font8x8_char_53
+      10  Font8x8_char_54
+      10  Font8x8_char_55
+      10  Font8x8_char_56
+      10  Font8x8_char_57
+      10  Font8x8_char_58
+      10  Font8x8_char_59
+      10  Font8x8_char_6
+      10  Font8x8_char_60
+      10  Font8x8_char_61
+      10  Font8x8_char_62
+      10  Font8x8_char_63
+      10  Font8x8_char_64
+      10  Font8x8_char_65
+      10  Font8x8_char_66
+      10  Font8x8_char_67
+      10  Font8x8_char_68
+      10  Font8x8_char_69
+      10  Font8x8_char_7
+      10  Font8x8_char_70
+      10  Font8x8_char_71
+      10  Font8x8_char_72
+      10  Font8x8_char_73
+      10  Font8x8_char_74
+      10  Font8x8_char_75
+      10  Font8x8_char_76
+      10  Font8x8_char_77
+      10  Font8x8_char_78
+      10  Font8x8_char_79
+      10  Font8x8_char_8
+      10  Font8x8_char_80
+      10  Font8x8_char_81
+      10  Font8x8_char_82
+      10  Font8x8_char_83
+      10  Font8x8_char_84
+      10  Font8x8_char_85
+      10  Font8x8_char_86
+      10  Font8x8_char_87
+      10  Font8x8_char_88
+      10  Font8x8_char_89
+      10  Font8x8_char_9
+      10  Font8x8_char_90
+      10  Font8x8_char_91
+      10  Font8x8_char_92
+      10  Font8x8_char_93
+      10  Font8x8_char_94
+      10  Font8x8_char_95
+      10  Font8x8_char_96
+      10  Font8x8_char_97
+      10  Font8x8_char_98
+      10  Font8x8_char_99
+     512  Font8x8_table
+
+ 
+ 3 072 bytes in segment NEAR_CONST
+ 
+ 3 072 bytes of CONST memory
+
+Errors: none
+Warnings: none

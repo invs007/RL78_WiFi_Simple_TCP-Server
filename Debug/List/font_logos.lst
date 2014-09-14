@@ -1,0 +1,389 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             05/Aug/2014  14:51:16 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Evaluation license - IAR Embedded Workbench for Renesas RL78, Evaluation version 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Glyph\Fonts\font_logos.c                   #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Glyph\Fonts\font_logos.c" --core rl78_2    #
+#                    --code_model near --data_model near                      #
+#                    --near_const_location rom0 -o "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy\Debug\Obj\" --dlib_config      #
+#                    "C:\Program Files (x86)\IAR Systems\Embedded Workbench   #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\font_logos.lst                  #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\font_logos.r87                   #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\Glyph\Fonts\font_logos.c
+      1          /*-------------------------------------------------------------------------*
+      2           * File:  font_bitmap.c
+      3           *-------------------------------------------------------------------------*
+      4           * Description:
+      5           *      Overrides the glyph library bitmap font for custom use
+      6           *-------------------------------------------------------------------------*/
+      7          
+      8          /*--------------------------------------------------------------------------
+      9           * Copyright (C) 2011 Future Designs, Inc.
+     10           *--------------------------------------------------------------------------
+     11           *
+     12           *    *===============================================================*
+     13           *    |  Future Designs, Inc. can port uEZ(tm) to your own hardware!  |
+     14           *    |             We can get you up and running fast!               |
+     15           *    |      See http://www.teamfdi.com/uez for more details.         |
+     16           *    *===============================================================*
+     17           *
+     18           *-------------------------------------------------------------------------*/
+     19          #include "..\glyph_cfg.h"
+     20          
+     21          
+
+   \                                 In  segment NEAR_CONST, align 2
+     22          const uint8_t Renesas_Logo[] = {
+   \                     Renesas_Logo:
+   \   000000 5010080C0406          DB 80, 16, 8, 12, 4, 6, 2, 2, 130, 130, 198, 254, 254, 254, 124, 56, 0
+   \   000011 00E0F0301010          DB 0, 224, 240, 48, 16, 16, 16, 16, 16, 16, 0, 240, 240, 96, 224, 192
+   \   000021 800000F0F000          DB 128, 0, 0, 240, 240, 0, 0, 224, 240, 48, 16, 16, 16, 16, 16, 16, 0
+   \   000032 60F0F0909090          DB 96, 240, 240, 144, 144, 144, 16, 16, 16, 0, 0, 0, 0, 192, 224, 48
+   \   000042 70F0C0000000          DB 112, 240, 192, 0, 0, 0, 96, 240, 240, 144, 144, 144, 16, 16, 16, 0
+   \   000052 0F0F0F0F0000          DB 15, 15, 15, 15, 0, 0, 1, 1, 7, 15, 31, 28, 48, 32, 64, 64, 15, 15, 9
+   \   000065 090909090908          DB 9, 9, 9, 9, 9, 8, 0, 15, 15, 0, 0, 1, 3, 7, 14, 15, 15, 0, 0, 15, 15
+   \   00007A 090909090909          DB 9, 9, 9, 9, 9, 9, 8, 0, 8, 8, 9, 9, 9, 11, 11, 15, 15, 6, 8, 12, 15
+   \   00008F 03000808090F          DB 3, 0, 8, 8, 9, 15, 15, 14, 8, 8, 8, 9, 9, 9, 11, 11, 15, 15, 6
+     23              80, 16, // width=80, height=16
+     24          	0x08, 0x0c, 0x04, 0x06, 0x02, 0x02, 0x82, 0x82, 0xC6, 0xFE, 0xFE, 0xFE, 0x7C, 0x38, 0x00, 0x00,
+     25          	0xE0, 0xF0, 0x30, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x00,
+     26          	0xF0, 0xF0, 0x60, 0xE0, 0xC0, 0x80, 0x00, 0x00, 0xF0, 0xF0, 0x00, 0x00,
+     27          	0xE0, 0xF0, 0x30, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x00,
+     28          	0x60, 0xF0, 0xF0, 0x90, 0x90, 0x90, 0x10, 0x10, 0x10, 0x00,
+     29          	0x00, 0x00, 0x00, 0xC0, 0xE0, 0x30, 0x70, 0xF0, 0xC0, 0x00, 0x00, 0x00,
+     30          	0x60, 0xF0, 0xF0, 0x90, 0x90, 0x90, 0x10, 0x10, 0x10, 0x00,
+     31          	
+     32          	0x0F, 0x0F,	0x0F, 0x0F, 0x00, 0x00, 0x01, 0x01, 0x07, 0x0F, 0x1F, 0x1C, 0x30, 0x20, 0x40, 0x40,
+     33          	0x0F, 0x0F, 0x09, 0x09, 0x09, 0x09, 0x09, 0x09, 0x08, 0x00,
+     34          	0x0F, 0x0F, 0x00, 0x00, 0x01, 0x03, 0x07, 0x0E, 0x0F, 0x0F, 0x00, 0x00,
+     35          	0x0F, 0x0F, 0x09, 0x09, 0x09, 0x09, 0x09, 0x09, 0x08, 0x00,
+     36          	0x08, 0x08, 0x09, 0x09, 0x09, 0x0B, 0x0B, 0x0F, 0x0F, 0x06,
+     37          	0x08, 0x0C, 0x0F, 0x03, 0x00, 0x08, 0x08, 0x09, 0x0F, 0x0F, 0x0E, 0x08,
+     38          	0x08, 0x08, 0x09, 0x09, 0x09, 0x0B, 0x0B, 0x0F, 0x0F, 0x06,
+     39          };
+     40          
+
+   \                                 In  segment NEAR_CONST, align 2
+     41          const uint8_t * const Logos_table[256] = {
+   \                     Logos_table:
+   \   000000 ....00000000          DW Renesas_Logo, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   00001E 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000040 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000062 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000084 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   0000A6 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   0000C8 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   0000EA 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   00010C 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   00012E 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000150 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000172 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000194 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   0001B6 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   0001D8 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   0001FA 0000                  DW 0H
+   \   0001FC 00000000              DB 0, 0, 0, 0
+     42          	Renesas_Logo,
+     43          	0,
+     44          	0,
+     45          	0,
+     46          	0,
+     47          	0,
+     48          	0,
+     49              0,
+     50              0,
+     51              0,
+     52              0,
+     53              0,
+     54          	0,
+     55              0,
+     56              0,
+     57              0,
+     58              0,
+     59              0,
+     60              0,
+     61              0,
+     62              0,
+     63              0,
+     64              0,
+     65              0,
+     66              0,
+     67              0,
+     68              0,
+     69              0,
+     70              0,
+     71              0,
+     72              0,
+     73              0,
+     74              0,
+     75              0,
+     76              0,
+     77              0,
+     78              0,
+     79              0,
+     80              0,
+     81              0,
+     82              0,
+     83              0,
+     84              0,
+     85              0,
+     86              0,
+     87              0,
+     88              0,
+     89              0,
+     90              0,
+     91              0,
+     92              0,
+     93              0,
+     94              0,
+     95              0,
+     96              0,
+     97              0,
+     98              0,
+     99              0,
+    100              0,
+    101              0,
+    102              0,
+    103              0,
+    104              0,
+    105              0,
+    106              0,
+    107              0,
+    108              0,
+    109              0,
+    110              0,
+    111              0,
+    112              0,
+    113              0,
+    114              0,
+    115              0,
+    116              0,
+    117              0,
+    118              0,
+    119              0,
+    120              0,
+    121              0,
+    122              0,
+    123              0,
+    124              0,
+    125              0,
+    126              0,
+    127              0,
+    128              0,
+    129              0,
+    130              0,
+    131              0,
+    132              0,
+    133              0,
+    134              0,
+    135              0,
+    136              0,
+    137              0,
+    138              0,
+    139              0,
+    140              0,
+    141              0,
+    142              0,
+    143              0,
+    144              0,
+    145              0,
+    146              0,
+    147              0,
+    148              0,
+    149              0,
+    150              0,
+    151              0,
+    152              0,
+    153              0,
+    154              0,
+    155              0,
+    156              0,
+    157              0,
+    158              0,
+    159              0,
+    160              0,
+    161              0,
+    162              0,
+    163              0,
+    164              0,
+    165              0,
+    166              0,
+    167              0,
+    168              0,
+    169              0,
+    170              0,
+    171              0,
+    172              0,
+    173              0,
+    174              0,
+    175              0,
+    176              0,
+    177              0,
+    178              0,
+    179              0,
+    180              0,
+    181              0,
+    182              0,
+    183              0,
+    184              0,
+    185              0,
+    186              0,
+    187              0,
+    188              0,
+    189              0,
+    190              0,
+    191              0,
+    192              0,
+    193              0,
+    194              0,
+    195              0,
+    196              0,
+    197              0,
+    198              0,
+    199              0,
+    200              0,
+    201              0,
+    202              0,
+    203              0,
+    204              0,
+    205              0,
+    206              0,
+    207              0,
+    208              0,
+    209              0,
+    210              0,
+    211              0,
+    212              0,
+    213              0,
+    214              0,
+    215              0,
+    216              0,
+    217              0,
+    218              0,
+    219              0,
+    220              0,
+    221              0,
+    222              0,
+    223              0,
+    224              0,
+    225              0,
+    226              0,
+    227              0,
+    228              0,
+    229              0,
+    230              0,
+    231              0,
+    232              0,
+    233              0,
+    234              0,
+    235              0,
+    236              0,
+    237              0,
+    238              0,
+    239              0,
+    240              0,
+    241              0,
+    242              0,
+    243              0,
+    244              0,
+    245              0,
+    246              0,
+    247              0,
+    248              0,
+    249              0,
+    250              0,
+    251              0,
+    252              0,
+    253              0,
+    254              0,
+    255              0,
+    256              0,
+    257              0,
+    258              0,
+    259              0,
+    260              0,
+    261              0,
+    262              0,
+    263              0,
+    264              0,
+    265              0,
+    266              0,
+    267              0,
+    268              0,
+    269              0,
+    270              0,
+    271              0,
+    272              0,
+    273              0,
+    274              0,
+    275              0,
+    276              0,
+    277              0,
+    278              0,
+    279              0,
+    280              0,
+    281              0,
+    282              0,
+    283              0,
+    284              0,
+    285              0,
+    286              0,
+    287              0,
+    288              0,
+    289              0,
+    290              0,
+    291              0,
+    292              0,
+    293              0,
+    294              0,
+    295              0,
+    296          };
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+     512  Logos_table
+     162  Renesas_Logo
+
+ 
+ 674 bytes in segment NEAR_CONST
+ 
+ 674 bytes of CONST memory
+
+Errors: none
+Warnings: none

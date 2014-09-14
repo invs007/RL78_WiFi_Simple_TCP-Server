@@ -1,0 +1,1520 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             05/Aug/2014  14:51:16 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Evaluation license - IAR Embedded Workbench for Renesas RL78, Evaluation version 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Glyph\Fonts\font_helvr10.c                 #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Glyph\Fonts\font_helvr10.c" --core rl78_2  #
+#                    --code_model near --data_model near                      #
+#                    --near_const_location rom0 -o "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy\Debug\Obj\" --dlib_config      #
+#                    "C:\Program Files (x86)\IAR Systems\Embedded Workbench   #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\font_helvr10.lst                #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\font_helvr10.r87                 #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\Glyph\Fonts\font_helvr10.c
+      1          /******************************************************************************
+      2          * DISCLAIMER
+      3          * This software is supplied by Renesas Electronics Corporation and is only
+      4          * intended for use with Renesas products. No other uses are authorized.
+      5          * This software is owned by Renesas Electronics Corporation and is protected under
+      6          * all applicable laws, including copyright laws.
+      7          * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES
+      8          * REGARDING THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY,
+      9          * INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+     10          * PARTICULAR PURPOSE AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY
+     11          * DISCLAIMED.
+     12          * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS
+     13          * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE
+     14          * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES
+     15          * FOR ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS
+     16          * AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+     17          * Renesas reserves the right, without notice, to make changes to this
+     18          * software and to discontinue the availability of this software.
+     19          * By using this software, you agree to the additional terms and
+     20          * conditions found by accessing the following link:
+     21          * http://www.renesas.com/disclaimer
+     22          ******************************************************************************/
+     23          /* Copyright (C) 2010 Renesas Electronics Corporation. All rights reserved. */
+     24          /* Code written for Renesas by Future Designs, Inc. www.teamfdi.com */
+     25          
+     26          /******************************************************************************
+     27          * File Name : font_helvr10.c
+     28          * Version : 1.00
+     29          * Tool-Chain : Glyph - The Generic API for Graphics LCD API
+     30          * H/W Platform : RX62N Group
+     31          * Description : An 10 point Font.
+     32          ******************************************************************************
+     33          * History :
+     34          * : 21.07.2010 1.00 First Release
+     35          ******************************************************************************/
+     36          
+     37          /******************************************************************************
+     38          Includes “Glyph config Include”
+     39          ******************************************************************************/
+     40          #include "..\glyph_cfg.h"
+     41          
+     42          // const uint8_t FontHelvr10_char_0[] = {};
+     43          // const uint8_t FontHelvr10_char_1[] = {};
+     44          // const uint8_t FontHelvr10_char_2[] = {};
+     45          // const uint8_t FontHelvr10_char_3[] = {};
+     46          // const uint8_t FontHelvr10_char_4[] = {};
+     47          // const uint8_t FontHelvr10_char_5[] = {};
+     48          // const uint8_t FontHelvr10_char_6[] = {};
+     49          // const uint8_t FontHelvr10_char_7[] = {};
+     50          // const uint8_t FontHelvr10_char_8[] = {};
+     51          // const uint8_t FontHelvr10_char_9[] = {};
+     52          // const uint8_t FontHelvr10_char_10[] = {};
+     53          // const uint8_t FontHelvr10_char_11[] = {};
+     54          // const uint8_t FontHelvr10_char_12[] = {};
+     55          // const uint8_t FontHelvr10_char_13[] = {};
+     56          // const uint8_t FontHelvr10_char_14[] = {};
+     57          // const uint8_t FontHelvr10_char_15[] = {};
+     58          // const uint8_t FontHelvr10_char_16[] = {};
+     59          // const uint8_t FontHelvr10_char_17[] = {};
+     60          // const uint8_t FontHelvr10_char_18[] = {};
+     61          // const uint8_t FontHelvr10_char_19[] = {};
+     62          // const uint8_t FontHelvr10_char_20[] = {};
+     63          // const uint8_t FontHelvr10_char_21[] = {};
+     64          // const uint8_t FontHelvr10_char_22[] = {};
+     65          // const uint8_t FontHelvr10_char_23[] = {};
+     66          // const uint8_t FontHelvr10_char_24[] = {};
+     67          // const uint8_t FontHelvr10_char_25[] = {};
+     68          // const uint8_t FontHelvr10_char_26[] = {};
+     69          // const uint8_t FontHelvr10_char_27[] = {};
+     70          // const uint8_t FontHelvr10_char_28[] = {};
+     71          // const uint8_t FontHelvr10_char_29[] = {};
+     72          // const uint8_t FontHelvr10_char_30[] = {};
+     73          // const uint8_t FontHelvr10_char_31[] = {};
+
+   \                                 In  segment NEAR_CONST, align 2
+     74          const uint8_t FontHelvr10_char_32[] = {
+   \                     FontHelvr10_char_32:
+   \   000000 030E00000000          DB 3, 14, 0, 0, 0, 0, 0, 0
+     75              0x03, 0x0E, // width=3, height=14
+     76              0x00, 0x00, 0x00, 
+     77              0x00, 0x00, 0x00, 
+     78          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     79          const uint8_t FontHelvr10_char_33[] = {
+   \                     FontHelvr10_char_33:
+   \   000000 030E00F00000          DB 3, 14, 0, 240, 0, 0, 11, 0
+     80              0x03, 0x0E, // width=3, height=14
+     81              0x00, 0xF0, 0x00, 
+     82              0x00, 0x0B, 0x00, 
+     83          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     84          const uint8_t FontHelvr10_char_34[] = {
+   \                     FontHelvr10_char_34:
+   \   000000 040E00300030          DB 4, 14, 0, 48, 0, 48, 0, 0, 0, 0
+     85              0x04, 0x0E, // width=4, height=14
+     86              0x00, 0x30, 0x00, 0x30, 
+     87              0x00, 0x00, 0x00, 0x00, 
+     88          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     89          const uint8_t FontHelvr10_char_35[] = {
+   \                     FontHelvr10_char_35:
+   \   000000 060E0080E080          DB 6, 14, 0, 128, 224, 128, 224, 128, 2, 14, 3, 14, 3, 0
+     90              0x06, 0x0E, // width=6, height=14
+     91              0x00, 0x80, 0xE0, 0x80, 0xE0, 0x80, 
+     92              0x02, 0x0E, 0x03, 0x0E, 0x03, 0x00, 
+     93          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     94          const uint8_t FontHelvr10_char_36[] = {
+   \                     FontHelvr10_char_36:
+   \   000000 060EC020F020          DB 6, 14, 192, 32, 240, 32, 64, 0, 4, 9, 31, 9, 6, 0
+     95              0x06, 0x0E, // width=6, height=14
+     96              0xC0, 0x20, 0xF0, 0x20, 0x40, 0x00, 
+     97              0x04, 0x09, 0x1F, 0x09, 0x06, 0x00, 
+     98          };
+
+   \                                 In  segment NEAR_CONST, align 2
+     99          const uint8_t FontHelvr10_char_37[] = {
+   \                     FontHelvr10_char_37:
+   \   000000 090E20505020          DB 9, 14, 32, 80, 80, 32, 192, 48, 0, 0, 0, 0, 0, 12, 3, 4, 10, 10, 4
+   \   000013 00                    DB 0
+    100              0x09, 0x0E, // width=9, height=14
+    101              0x20, 0x50, 0x50, 0x20, 0xC0, 0x30, 0x00, 0x00, 0x00, 
+    102              0x00, 0x00, 0x0C, 0x03, 0x04, 0x0A, 0x0A, 0x04, 0x00, 
+    103          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    104          const uint8_t FontHelvr10_char_38[] = {
+   \                     FontHelvr10_char_38:
+   \   000000 080E0000E090          DB 8, 14, 0, 0, 224, 144, 96, 0, 0, 0, 0, 7, 8, 9, 6, 6, 9, 0
+    105              0x08, 0x0E, // width=8, height=14
+    106              0x00, 0x00, 0xE0, 0x90, 0x60, 0x00, 0x00, 0x00, 
+    107              0x00, 0x07, 0x08, 0x09, 0x06, 0x06, 0x09, 0x00, 
+    108          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    109          const uint8_t FontHelvr10_char_39[] = {
+   \                     FontHelvr10_char_39:
+   \   000000 030E00403000          DB 3, 14, 0, 64, 48, 0, 0, 0
+    110              0x03, 0x0E, // width=3, height=14
+    111              0x00, 0x40, 0x30, 
+    112              0x00, 0x00, 0x00, 
+    113          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    114          const uint8_t FontHelvr10_char_40[] = {
+   \                     FontHelvr10_char_40:
+   \   000000 040E80601000          DB 4, 14, 128, 96, 16, 0, 7, 24, 32, 0
+    115              0x04, 0x0E, // width=4, height=14
+    116              0x80, 0x60, 0x10, 0x00, 
+    117              0x07, 0x18, 0x20, 0x00, 
+    118          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    119          const uint8_t FontHelvr10_char_41[] = {
+   \                     FontHelvr10_char_41:
+   \   000000 040E00106080          DB 4, 14, 0, 16, 96, 128, 0, 32, 24, 7
+    120              0x04, 0x0E, // width=4, height=14
+    121              0x00, 0x10, 0x60, 0x80, 
+    122              0x00, 0x20, 0x18, 0x07, 
+    123          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    124          const uint8_t FontHelvr10_char_42[] = {
+   \                     FontHelvr10_char_42:
+   \   000000 040E50205000          DB 4, 14, 80, 32, 80, 0, 0, 0, 0, 0
+    125              0x04, 0x0E, // width=4, height=14
+    126              0x50, 0x20, 0x50, 0x00, 
+    127              0x00, 0x00, 0x00, 0x00, 
+    128          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    129          const uint8_t FontHelvr10_char_43[] = {
+   \                     FontHelvr10_char_43:
+   \   000000 060E0000C000          DB 6, 14, 0, 0, 192, 0, 0, 0, 1, 1, 7, 1, 1, 0
+    130              0x06, 0x0E, // width=6, height=14
+    131              0x00, 0x00, 0xC0, 0x00, 0x00, 0x00, 
+    132              0x01, 0x01, 0x07, 0x01, 0x01, 0x00, 
+    133          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    134          const uint8_t FontHelvr10_char_44[] = {
+   \                     FontHelvr10_char_44:
+   \   000000 030E00000020          DB 3, 14, 0, 0, 0, 32, 24, 0
+    135              0x03, 0x0E, // width=3, height=14
+    136              0x00, 0x00, 0x00, 
+    137              0x20, 0x18, 0x00, 
+    138          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    139          const uint8_t FontHelvr10_char_45[] = {
+   \                     FontHelvr10_char_45:
+   \   000000 070E00000000          DB 7, 14, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0
+    140              0x07, 0x0E, // width=7, height=14
+    141              0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+    142              0x00, 0x01, 0x01, 0x01, 0x01, 0x01, 0x00, 
+    143          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    144          const uint8_t FontHelvr10_char_46[] = {
+   \                     FontHelvr10_char_46:
+   \   000000 030E00000000          DB 3, 14, 0, 0, 0, 0, 8, 0
+    145              0x03, 0x0E, // width=3, height=14
+    146              0x00, 0x00, 0x00, 
+    147              0x00, 0x08, 0x00, 
+    148          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    149          const uint8_t FontHelvr10_char_47[] = {
+   \                     FontHelvr10_char_47:
+   \   000000 030E00C0300C          DB 3, 14, 0, 192, 48, 12, 3, 0
+    150              0x03, 0x0E, // width=3, height=14
+    151              0x00, 0xC0, 0x30, 
+    152              0x0C, 0x03, 0x00, 
+    153          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    154          const uint8_t FontHelvr10_char_48[] = {
+   \                     FontHelvr10_char_48:
+   \   000000 060EE0101010          DB 6, 14, 224, 16, 16, 16, 224, 0, 7, 8, 8, 8, 7, 0
+    155              0x06, 0x0E, // width=6, height=14
+    156              0xE0, 0x10, 0x10, 0x10, 0xE0, 0x00, 
+    157              0x07, 0x08, 0x08, 0x08, 0x07, 0x00, 
+    158          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    159          const uint8_t FontHelvr10_char_49[] = {
+   \                     FontHelvr10_char_49:
+   \   000000 060E0020F000          DB 6, 14, 0, 32, 240, 0, 0, 0, 0, 0, 15, 0, 0, 0
+    160              0x06, 0x0E, // width=6, height=14
+    161              0x00, 0x20, 0xF0, 0x00, 0x00, 0x00, 
+    162              0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 
+    163          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    164          const uint8_t FontHelvr10_char_50[] = {
+   \                     FontHelvr10_char_50:
+   \   000000 060E20101010          DB 6, 14, 32, 16, 16, 16, 224, 0, 12, 10, 9, 9, 8, 0
+    165              0x06, 0x0E, // width=6, height=14
+    166              0x20, 0x10, 0x10, 0x10, 0xE0, 0x00, 
+    167              0x0C, 0x0A, 0x09, 0x09, 0x08, 0x00, 
+    168          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    169          const uint8_t FontHelvr10_char_51[] = {
+   \                     FontHelvr10_char_51:
+   \   000000 060E20109090          DB 6, 14, 32, 16, 144, 144, 96, 0, 4, 8, 8, 8, 7, 0
+    170              0x06, 0x0E, // width=6, height=14
+    171              0x20, 0x10, 0x90, 0x90, 0x60, 0x00, 
+    172              0x04, 0x08, 0x08, 0x08, 0x07, 0x00, 
+    173          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    174          const uint8_t FontHelvr10_char_52[] = {
+   \                     FontHelvr10_char_52:
+   \   000000 060E00C020F0          DB 6, 14, 0, 192, 32, 240, 0, 0, 3, 2, 2, 15, 2, 0
+    175              0x06, 0x0E, // width=6, height=14
+    176              0x00, 0xC0, 0x20, 0xF0, 0x00, 0x00, 
+    177              0x03, 0x02, 0x02, 0x0F, 0x02, 0x00, 
+    178          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    179          const uint8_t FontHelvr10_char_53[] = {
+   \                     FontHelvr10_char_53:
+   \   000000 060EF0909090          DB 6, 14, 240, 144, 144, 144, 16, 0, 4, 8, 8, 8, 7, 0
+    180              0x06, 0x0E, // width=6, height=14
+    181              0xF0, 0x90, 0x90, 0x90, 0x10, 0x00, 
+    182              0x04, 0x08, 0x08, 0x08, 0x07, 0x00, 
+    183          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    184          const uint8_t FontHelvr10_char_54[] = {
+   \                     FontHelvr10_char_54:
+   \   000000 060EE0109090          DB 6, 14, 224, 16, 144, 144, 32, 0, 7, 9, 8, 8, 7, 0
+    185              0x06, 0x0E, // width=6, height=14
+    186              0xE0, 0x10, 0x90, 0x90, 0x20, 0x00, 
+    187              0x07, 0x09, 0x08, 0x08, 0x07, 0x00, 
+    188          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    189          const uint8_t FontHelvr10_char_55[] = {
+   \                     FontHelvr10_char_55:
+   \   000000 060E101010D0          DB 6, 14, 16, 16, 16, 208, 48, 0, 0, 12, 3, 0, 0, 0
+    190              0x06, 0x0E, // width=6, height=14
+    191              0x10, 0x10, 0x10, 0xD0, 0x30, 0x00, 
+    192              0x00, 0x0C, 0x03, 0x00, 0x00, 0x00, 
+    193          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    194          const uint8_t FontHelvr10_char_56[] = {
+   \                     FontHelvr10_char_56:
+   \   000000 060E60909090          DB 6, 14, 96, 144, 144, 144, 96, 0, 7, 8, 8, 8, 7, 0
+    195              0x06, 0x0E, // width=6, height=14
+    196              0x60, 0x90, 0x90, 0x90, 0x60, 0x00, 
+    197              0x07, 0x08, 0x08, 0x08, 0x07, 0x00, 
+    198          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    199          const uint8_t FontHelvr10_char_57[] = {
+   \                     FontHelvr10_char_57:
+   \   000000 060EE0101090          DB 6, 14, 224, 16, 16, 144, 224, 0, 4, 9, 9, 8, 7, 0
+    200              0x06, 0x0E, // width=6, height=14
+    201              0xE0, 0x10, 0x10, 0x90, 0xE0, 0x00, 
+    202              0x04, 0x09, 0x09, 0x08, 0x07, 0x00, 
+    203          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    204          const uint8_t FontHelvr10_char_58[] = {
+   \                     FontHelvr10_char_58:
+   \   000000 030E00400000          DB 3, 14, 0, 64, 0, 0, 8, 0
+    205              0x03, 0x0E, // width=3, height=14
+    206              0x00, 0x40, 0x00, 
+    207              0x00, 0x08, 0x00, 
+    208          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    209          const uint8_t FontHelvr10_char_59[] = {
+   \                     FontHelvr10_char_59:
+   \   000000 030E00400020          DB 3, 14, 0, 64, 0, 32, 24, 0
+    210              0x03, 0x0E, // width=3, height=14
+    211              0x00, 0x40, 0x00, 
+    212              0x20, 0x18, 0x00, 
+    213          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    214          const uint8_t FontHelvr10_char_60[] = {
+   \                     FontHelvr10_char_60:
+   \   000000 060E00008040          DB 6, 14, 0, 0, 128, 64, 0, 0, 0, 1, 2, 4, 0, 0
+    215              0x06, 0x0E, // width=6, height=14
+    216              0x00, 0x00, 0x80, 0x40, 0x00, 0x00, 
+    217              0x00, 0x01, 0x02, 0x04, 0x00, 0x00, 
+    218          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    219          const uint8_t FontHelvr10_char_61[] = {
+   \                     FontHelvr10_char_61:
+   \   000000 050E80808080          DB 5, 14, 128, 128, 128, 128, 0, 2, 2, 2, 2, 0
+    220              0x05, 0x0E, // width=5, height=14
+    221              0x80, 0x80, 0x80, 0x80, 0x00, 
+    222              0x02, 0x02, 0x02, 0x02, 0x00, 
+    223          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    224          const uint8_t FontHelvr10_char_62[] = {
+   \                     FontHelvr10_char_62:
+   \   000000 060E00408000          DB 6, 14, 0, 64, 128, 0, 0, 0, 0, 4, 2, 1, 0, 0
+    225              0x06, 0x0E, // width=6, height=14
+    226              0x00, 0x40, 0x80, 0x00, 0x00, 0x00, 
+    227              0x00, 0x04, 0x02, 0x01, 0x00, 0x00, 
+    228          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    229          const uint8_t FontHelvr10_char_63[] = {
+   \                     FontHelvr10_char_63:
+   \   000000 060E00201090          DB 6, 14, 0, 32, 16, 144, 96, 0, 0, 0, 11, 0, 0, 0
+    230              0x06, 0x0E, // width=6, height=14
+    231              0x00, 0x20, 0x10, 0x90, 0x60, 0x00, 
+    232              0x00, 0x00, 0x0B, 0x00, 0x00, 0x00, 
+    233          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    234          const uint8_t FontHelvr10_char_64[] = {
+   \                     FontHelvr10_char_64:
+   \   000000 0B0E80402090          DB 11, 14, 128, 64, 32, 144, 80, 80, 144, 80, 32, 192, 0, 15, 16, 39
+   \   000010 282826290806          DB 40, 40, 38, 41, 8, 6, 1, 0
+    235              0x0B, 0x0E, // width=11, height=14
+    236              0x80, 0x40, 0x20, 0x90, 0x50, 0x50, 0x90, 0x50, 0x20, 0xC0, 0x00, 
+    237              0x0F, 0x10, 0x27, 0x28, 0x28, 0x26, 0x29, 0x08, 0x06, 0x01, 0x00, 
+    238          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    239          const uint8_t FontHelvr10_char_65[] = {
+   \                     FontHelvr10_char_65:
+   \   000000 070E0000C030          DB 7, 14, 0, 0, 192, 48, 192, 0, 0, 12, 3, 2, 2, 2, 3, 12
+    240              0x07, 0x0E, // width=7, height=14
+    241              0x00, 0x00, 0xC0, 0x30, 0xC0, 0x00, 0x00, 
+    242              0x0C, 0x03, 0x02, 0x02, 0x02, 0x03, 0x0C, 
+    243          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    244          const uint8_t FontHelvr10_char_66[] = {
+   \                     FontHelvr10_char_66:
+   \   000000 070E00F09090          DB 7, 14, 0, 240, 144, 144, 144, 96, 0, 0, 15, 8, 8, 8, 7, 0
+    245              0x07, 0x0E, // width=7, height=14
+    246              0x00, 0xF0, 0x90, 0x90, 0x90, 0x60, 0x00, 
+    247              0x00, 0x0F, 0x08, 0x08, 0x08, 0x07, 0x00, 
+    248          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    249          const uint8_t FontHelvr10_char_67[] = {
+   \                     FontHelvr10_char_67:
+   \   000000 080E00E01010          DB 8, 14, 0, 224, 16, 16, 16, 16, 32, 0, 0, 7, 8, 8, 8, 8, 4, 0
+    250              0x08, 0x0E, // width=8, height=14
+    251              0x00, 0xE0, 0x10, 0x10, 0x10, 0x10, 0x20, 0x00, 
+    252              0x00, 0x07, 0x08, 0x08, 0x08, 0x08, 0x04, 0x00, 
+    253          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    254          const uint8_t FontHelvr10_char_68[] = {
+   \                     FontHelvr10_char_68:
+   \   000000 080E00F01010          DB 8, 14, 0, 240, 16, 16, 16, 32, 192, 0, 0, 15, 8, 8, 8, 4, 3, 0
+    255              0x08, 0x0E, // width=8, height=14
+    256              0x00, 0xF0, 0x10, 0x10, 0x10, 0x20, 0xC0, 0x00, 
+    257              0x00, 0x0F, 0x08, 0x08, 0x08, 0x04, 0x03, 0x00, 
+    258          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    259          const uint8_t FontHelvr10_char_69[] = {
+   \                     FontHelvr10_char_69:
+   \   000000 070E00F09090          DB 7, 14, 0, 240, 144, 144, 144, 144, 0, 0, 15, 8, 8, 8, 8, 0
+    260              0x07, 0x0E, // width=7, height=14
+    261              0x00, 0xF0, 0x90, 0x90, 0x90, 0x90, 0x00, 
+    262              0x00, 0x0F, 0x08, 0x08, 0x08, 0x08, 0x00, 
+    263          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    264          const uint8_t FontHelvr10_char_70[] = {
+   \                     FontHelvr10_char_70:
+   \   000000 060E00F09090          DB 6, 14, 0, 240, 144, 144, 144, 16, 0, 15, 0, 0, 0, 0
+    265              0x06, 0x0E, // width=6, height=14
+    266              0x00, 0xF0, 0x90, 0x90, 0x90, 0x10, 
+    267              0x00, 0x0F, 0x00, 0x00, 0x00, 0x00, 
+    268          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    269          const uint8_t FontHelvr10_char_71[] = {
+   \                     FontHelvr10_char_71:
+   \   000000 080E00E01010          DB 8, 14, 0, 224, 16, 16, 16, 16, 32, 0, 0, 7, 8, 8, 8, 5, 15, 0
+    270              0x08, 0x0E, // width=8, height=14
+    271              0x00, 0xE0, 0x10, 0x10, 0x10, 0x10, 0x20, 0x00, 
+    272              0x00, 0x07, 0x08, 0x08, 0x08, 0x05, 0x0F, 0x00, 
+    273          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    274          const uint8_t FontHelvr10_char_72[] = {
+   \                     FontHelvr10_char_72:
+   \   000000 080E00F08080          DB 8, 14, 0, 240, 128, 128, 128, 128, 240, 0, 0, 15, 0, 0, 0, 0, 15, 0
+    275              0x08, 0x0E, // width=8, height=14
+    276              0x00, 0xF0, 0x80, 0x80, 0x80, 0x80, 0xF0, 0x00, 
+    277              0x00, 0x0F, 0x00, 0x00, 0x00, 0x00, 0x0F, 0x00, 
+    278          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    279          const uint8_t FontHelvr10_char_73[] = {
+   \                     FontHelvr10_char_73:
+   \   000000 030E00F00000          DB 3, 14, 0, 240, 0, 0, 15, 0
+    280              0x03, 0x0E, // width=3, height=14
+    281              0x00, 0xF0, 0x00, 
+    282              0x00, 0x0F, 0x00, 
+    283          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    284          const uint8_t FontHelvr10_char_74[] = {
+   \                     FontHelvr10_char_74:
+   \   000000 050E000000F0          DB 5, 14, 0, 0, 0, 240, 0, 4, 8, 8, 7, 0
+    285              0x05, 0x0E, // width=5, height=14
+    286              0x00, 0x00, 0x00, 0xF0, 0x00, 
+    287              0x04, 0x08, 0x08, 0x07, 0x00, 
+    288          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    289          const uint8_t FontHelvr10_char_75[] = {
+   \                     FontHelvr10_char_75:
+   \   000000 070E00F080C0          DB 7, 14, 0, 240, 128, 192, 32, 16, 0, 0, 15, 0, 0, 3, 12, 0
+    290              0x07, 0x0E, // width=7, height=14
+    291              0x00, 0xF0, 0x80, 0xC0, 0x20, 0x10, 0x00, 
+    292              0x00, 0x0F, 0x00, 0x00, 0x03, 0x0C, 0x00, 
+    293          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    294          const uint8_t FontHelvr10_char_76[] = {
+   \                     FontHelvr10_char_76:
+   \   000000 060E00F00000          DB 6, 14, 0, 240, 0, 0, 0, 0, 0, 15, 8, 8, 8, 0
+    295              0x06, 0x0E, // width=6, height=14
+    296              0x00, 0xF0, 0x00, 0x00, 0x00, 0x00, 
+    297              0x00, 0x0F, 0x08, 0x08, 0x08, 0x00, 
+    298          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    299          const uint8_t FontHelvr10_char_77[] = {
+   \                     FontHelvr10_char_77:
+   \   000000 090E00F06080          DB 9, 14, 0, 240, 96, 128, 0, 128, 96, 240, 0, 0, 15, 0, 1, 14, 1, 0
+   \   000012 0F00                  DB 15, 0
+    300              0x09, 0x0E, // width=9, height=14
+    301              0x00, 0xF0, 0x60, 0x80, 0x00, 0x80, 0x60, 0xF0, 0x00, 
+    302              0x00, 0x0F, 0x00, 0x01, 0x0E, 0x01, 0x00, 0x0F, 0x00, 
+    303          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    304          const uint8_t FontHelvr10_char_78[] = {
+   \                     FontHelvr10_char_78:
+   \   000000 080E00F030C0          DB 8, 14, 0, 240, 48, 192, 0, 0, 240, 0, 0, 15, 0, 0, 3, 12, 15, 0
+    305              0x08, 0x0E, // width=8, height=14
+    306              0x00, 0xF0, 0x30, 0xC0, 0x00, 0x00, 0xF0, 0x00, 
+    307              0x00, 0x0F, 0x00, 0x00, 0x03, 0x0C, 0x0F, 0x00, 
+    308          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    309          const uint8_t FontHelvr10_char_79[] = {
+   \                     FontHelvr10_char_79:
+   \   000000 080E00E01010          DB 8, 14, 0, 224, 16, 16, 16, 16, 224, 0, 0, 7, 8, 8, 8, 8, 7, 0
+    310              0x08, 0x0E, // width=8, height=14
+    311              0x00, 0xE0, 0x10, 0x10, 0x10, 0x10, 0xE0, 0x00, 
+    312              0x00, 0x07, 0x08, 0x08, 0x08, 0x08, 0x07, 0x00, 
+    313          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    314          const uint8_t FontHelvr10_char_80[] = {
+   \                     FontHelvr10_char_80:
+   \   000000 070E00F09090          DB 7, 14, 0, 240, 144, 144, 144, 96, 0, 0, 15, 0, 0, 0, 0, 0
+    315              0x07, 0x0E, // width=7, height=14
+    316              0x00, 0xF0, 0x90, 0x90, 0x90, 0x60, 0x00, 
+    317              0x00, 0x0F, 0x00, 0x00, 0x00, 0x00, 0x00, 
+    318          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    319          const uint8_t FontHelvr10_char_81[] = {
+   \                     FontHelvr10_char_81:
+   \   000000 080E00E01010          DB 8, 14, 0, 224, 16, 16, 16, 16, 224, 0, 0, 7, 8, 8, 10, 12, 15, 16
+    320              0x08, 0x0E, // width=8, height=14
+    321              0x00, 0xE0, 0x10, 0x10, 0x10, 0x10, 0xE0, 0x00, 
+    322              0x00, 0x07, 0x08, 0x08, 0x0A, 0x0C, 0x0F, 0x10, 
+    323          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    324          const uint8_t FontHelvr10_char_82[] = {
+   \                     FontHelvr10_char_82:
+   \   000000 070E00F09090          DB 7, 14, 0, 240, 144, 144, 144, 96, 0, 0, 15, 0, 0, 0, 15, 0
+    325              0x07, 0x0E, // width=7, height=14
+    326              0x00, 0xF0, 0x90, 0x90, 0x90, 0x60, 0x00, 
+    327              0x00, 0x0F, 0x00, 0x00, 0x00, 0x0F, 0x00, 
+    328          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    329          const uint8_t FontHelvr10_char_83[] = {
+   \                     FontHelvr10_char_83:
+   \   000000 070E00609090          DB 7, 14, 0, 96, 144, 144, 144, 32, 0, 0, 6, 8, 8, 8, 7, 0
+    330              0x07, 0x0E, // width=7, height=14
+    331              0x00, 0x60, 0x90, 0x90, 0x90, 0x20, 0x00, 
+    332              0x00, 0x06, 0x08, 0x08, 0x08, 0x07, 0x00, 
+    333          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    334          const uint8_t FontHelvr10_char_84[] = {
+   \                     FontHelvr10_char_84:
+   \   000000 050E1010F010          DB 5, 14, 16, 16, 240, 16, 16, 0, 0, 15, 0, 0
+    335              0x05, 0x0E, // width=5, height=14
+    336              0x10, 0x10, 0xF0, 0x10, 0x10, 
+    337              0x00, 0x00, 0x0F, 0x00, 0x00, 
+    338          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    339          const uint8_t FontHelvr10_char_85[] = {
+   \                     FontHelvr10_char_85:
+   \   000000 080E00F00000          DB 8, 14, 0, 240, 0, 0, 0, 0, 240, 0, 0, 7, 8, 8, 8, 8, 7, 0
+    340              0x08, 0x0E, // width=8, height=14
+    341              0x00, 0xF0, 0x00, 0x00, 0x00, 0x00, 0xF0, 0x00, 
+    342              0x00, 0x07, 0x08, 0x08, 0x08, 0x08, 0x07, 0x00, 
+    343          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    344          const uint8_t FontHelvr10_char_86[] = {
+   \                     FontHelvr10_char_86:
+   \   000000 070E30C00000          DB 7, 14, 48, 192, 0, 0, 0, 192, 48, 0, 1, 6, 8, 6, 1, 0
+    345              0x07, 0x0E, // width=7, height=14
+    346              0x30, 0xC0, 0x00, 0x00, 0x00, 0xC0, 0x30, 
+    347              0x00, 0x01, 0x06, 0x08, 0x06, 0x01, 0x00, 
+    348          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    349          const uint8_t FontHelvr10_char_87[] = {
+   \                     FontHelvr10_char_87:
+   \   000000 090E30C00000          DB 9, 14, 48, 192, 0, 0, 240, 0, 0, 192, 48, 0, 1, 14, 1, 0, 1, 14, 1
+   \   000013 00                    DB 0
+    350              0x09, 0x0E, // width=9, height=14
+    351              0x30, 0xC0, 0x00, 0x00, 0xF0, 0x00, 0x00, 0xC0, 0x30, 
+    352              0x00, 0x01, 0x0E, 0x01, 0x00, 0x01, 0x0E, 0x01, 0x00, 
+    353          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    354          const uint8_t FontHelvr10_char_88[] = {
+   \                     FontHelvr10_char_88:
+   \   000000 070E00304080          DB 7, 14, 0, 48, 64, 128, 64, 48, 0, 0, 12, 3, 0, 3, 12, 0
+    355              0x07, 0x0E, // width=7, height=14
+    356              0x00, 0x30, 0x40, 0x80, 0x40, 0x30, 0x00, 
+    357              0x00, 0x0C, 0x03, 0x00, 0x03, 0x0C, 0x00, 
+    358          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    359          const uint8_t FontHelvr10_char_89[] = {
+   \                     FontHelvr10_char_89:
+   \   000000 070E10608000          DB 7, 14, 16, 96, 128, 0, 128, 96, 16, 0, 0, 1, 14, 1, 0, 0
+    360              0x07, 0x0E, // width=7, height=14
+    361              0x10, 0x60, 0x80, 0x00, 0x80, 0x60, 0x10, 
+    362              0x00, 0x00, 0x01, 0x0E, 0x01, 0x00, 0x00, 
+    363          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    364          const uint8_t FontHelvr10_char_90[] = {
+   \                     FontHelvr10_char_90:
+   \   000000 070E00101090          DB 7, 14, 0, 16, 16, 144, 80, 48, 0, 0, 12, 10, 9, 8, 8, 0
+    365              0x07, 0x0E, // width=7, height=14
+    366              0x00, 0x10, 0x10, 0x90, 0x50, 0x30, 0x00, 
+    367              0x00, 0x0C, 0x0A, 0x09, 0x08, 0x08, 0x00, 
+    368          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    369          const uint8_t FontHelvr10_char_91[] = {
+   \                     FontHelvr10_char_91:
+   \   000000 030E00F01000          DB 3, 14, 0, 240, 16, 0, 63, 32
+    370              0x03, 0x0E, // width=3, height=14
+    371              0x00, 0xF0, 0x10, 
+    372              0x00, 0x3F, 0x20, 
+    373          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    374          const uint8_t FontHelvr10_char_92[] = {
+   \                     FontHelvr10_char_92:
+   \   000000 030E30C00000          DB 3, 14, 48, 192, 0, 0, 3, 12
+    375              0x03, 0x0E, // width=3, height=14
+    376              0x30, 0xC0, 0x00, 
+    377              0x00, 0x03, 0x0C, 
+    378          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    379          const uint8_t FontHelvr10_char_93[] = {
+   \                     FontHelvr10_char_93:
+   \   000000 030E10F00020          DB 3, 14, 16, 240, 0, 32, 63, 0
+    380              0x03, 0x0E, // width=3, height=14
+    381              0x10, 0xF0, 0x00, 
+    382              0x20, 0x3F, 0x00, 
+    383          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    384          const uint8_t FontHelvr10_char_94[] = {
+   \                     FontHelvr10_char_94:
+   \   000000 060E00C030C0          DB 6, 14, 0, 192, 48, 192, 0, 0, 1, 0, 0, 0, 1, 0
+    385              0x06, 0x0E, // width=6, height=14
+    386              0x00, 0xC0, 0x30, 0xC0, 0x00, 0x00, 
+    387              0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 
+    388          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    389          const uint8_t FontHelvr10_char_95[] = {
+   \                     FontHelvr10_char_95:
+   \   000000 060E00000000          DB 6, 14, 0, 0, 0, 0, 0, 0, 32, 32, 32, 32, 32, 32
+    390              0x06, 0x0E, // width=6, height=14
+    391              0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+    392              0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 
+    393          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    394          const uint8_t FontHelvr10_char_96[] = {
+   \                     FontHelvr10_char_96:
+   \   000000 030E60100000          DB 3, 14, 96, 16, 0, 0, 0, 0
+    395              0x03, 0x0E, // width=3, height=14
+    396              0x60, 0x10, 0x00, 
+    397              0x00, 0x00, 0x00, 
+    398          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    399          const uint8_t FontHelvr10_char_97[] = {
+   \                     FontHelvr10_char_97:
+   \   000000 050E40404080          DB 5, 14, 64, 64, 64, 128, 0, 6, 9, 9, 7, 8
+    400              0x05, 0x0E, // width=5, height=14
+    401              0x40, 0x40, 0x40, 0x80, 0x00, 
+    402              0x06, 0x09, 0x09, 0x07, 0x08, 
+    403          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    404          const uint8_t FontHelvr10_char_98[] = {
+   \                     FontHelvr10_char_98:
+   \   000000 060EF0804040          DB 6, 14, 240, 128, 64, 64, 128, 0, 15, 4, 8, 8, 7, 0
+    405              0x06, 0x0E, // width=6, height=14
+    406              0xF0, 0x80, 0x40, 0x40, 0x80, 0x00, 
+    407              0x0F, 0x04, 0x08, 0x08, 0x07, 0x00, 
+    408          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    409          const uint8_t FontHelvr10_char_99[] = {
+   \                     FontHelvr10_char_99:
+   \   000000 050E80404080          DB 5, 14, 128, 64, 64, 128, 0, 7, 8, 8, 4, 0
+    410              0x05, 0x0E, // width=5, height=14
+    411              0x80, 0x40, 0x40, 0x80, 0x00, 
+    412              0x07, 0x08, 0x08, 0x04, 0x00, 
+    413          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    414          const uint8_t FontHelvr10_char_100[] = {
+   \                     FontHelvr10_char_100:
+   \   000000 060E80404080          DB 6, 14, 128, 64, 64, 128, 240, 0, 7, 8, 8, 4, 15, 0
+    415              0x06, 0x0E, // width=6, height=14
+    416              0x80, 0x40, 0x40, 0x80, 0xF0, 0x00, 
+    417              0x07, 0x08, 0x08, 0x04, 0x0F, 0x00, 
+    418          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    419          const uint8_t FontHelvr10_char_101[] = {
+   \                     FontHelvr10_char_101:
+   \   000000 050E80404080          DB 5, 14, 128, 64, 64, 128, 0, 7, 9, 9, 5, 0
+    420              0x05, 0x0E, // width=5, height=14
+    421              0x80, 0x40, 0x40, 0x80, 0x00, 
+    422              0x07, 0x09, 0x09, 0x05, 0x00, 
+    423          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    424          const uint8_t FontHelvr10_char_102[] = {
+   \                     FontHelvr10_char_102:
+   \   000000 040E40E05010          DB 4, 14, 64, 224, 80, 16, 0, 15, 0, 0
+    425              0x04, 0x0E, // width=4, height=14
+    426              0x40, 0xE0, 0x50, 0x10, 
+    427              0x00, 0x0F, 0x00, 0x00, 
+    428          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    429          const uint8_t FontHelvr10_char_103[] = {
+   \                     FontHelvr10_char_103:
+   \   000000 060E80404080          DB 6, 14, 128, 64, 64, 128, 192, 0, 7, 40, 40, 36, 31, 0
+    430              0x06, 0x0E, // width=6, height=14
+    431              0x80, 0x40, 0x40, 0x80, 0xC0, 0x00, 
+    432              0x07, 0x28, 0x28, 0x24, 0x1F, 0x00, 
+    433          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    434          const uint8_t FontHelvr10_char_104[] = {
+   \                     FontHelvr10_char_104:
+   \   000000 060EF0804040          DB 6, 14, 240, 128, 64, 64, 128, 0, 15, 0, 0, 0, 15, 0
+    435              0x06, 0x0E, // width=6, height=14
+    436              0xF0, 0x80, 0x40, 0x40, 0x80, 0x00, 
+    437              0x0F, 0x00, 0x00, 0x00, 0x0F, 0x00, 
+    438          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    439          const uint8_t FontHelvr10_char_105[] = {
+   \                     FontHelvr10_char_105:
+   \   000000 020ED0000F00          DB 2, 14, 208, 0, 15, 0
+    440              0x02, 0x0E, // width=2, height=14
+    441              0xD0, 0x00, 
+    442              0x0F, 0x00, 
+    443          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    444          const uint8_t FontHelvr10_char_106[] = {
+   \                     FontHelvr10_char_106:
+   \   000000 020ED0001F00          DB 2, 14, 208, 0, 31, 0
+    445              0x02, 0x0E, // width=2, height=14
+    446              0xD0, 0x00, 
+    447              0x1F, 0x00, 
+    448          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    449          const uint8_t FontHelvr10_char_107[] = {
+   \                     FontHelvr10_char_107:
+   \   000000 050EF0008040          DB 5, 14, 240, 0, 128, 64, 0, 15, 1, 2, 12, 0
+    450              0x05, 0x0E, // width=5, height=14
+    451              0xF0, 0x00, 0x80, 0x40, 0x00, 
+    452              0x0F, 0x01, 0x02, 0x0C, 0x00, 
+    453          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    454          const uint8_t FontHelvr10_char_108[] = {
+   \                     FontHelvr10_char_108:
+   \   000000 020EF0000F00          DB 2, 14, 240, 0, 15, 0
+    455              0x02, 0x0E, // width=2, height=14
+    456              0xF0, 0x00, 
+    457              0x0F, 0x00, 
+    458          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    459          const uint8_t FontHelvr10_char_109[] = {
+   \                     FontHelvr10_char_109:
+   \   000000 080EC0404080          DB 8, 14, 192, 64, 64, 128, 64, 64, 128, 0, 15, 0, 0, 15, 0, 0, 15, 0
+    460              0x08, 0x0E, // width=8, height=14
+    461              0xC0, 0x40, 0x40, 0x80, 0x40, 0x40, 0x80, 0x00, 
+    462              0x0F, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x0F, 0x00, 
+    463          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    464          const uint8_t FontHelvr10_char_110[] = {
+   \                     FontHelvr10_char_110:
+   \   000000 060EC0804040          DB 6, 14, 192, 128, 64, 64, 128, 0, 15, 0, 0, 0, 15, 0
+    465              0x06, 0x0E, // width=6, height=14
+    466              0xC0, 0x80, 0x40, 0x40, 0x80, 0x00, 
+    467              0x0F, 0x00, 0x00, 0x00, 0x0F, 0x00, 
+    468          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    469          const uint8_t FontHelvr10_char_111[] = {
+   \                     FontHelvr10_char_111:
+   \   000000 060E80404040          DB 6, 14, 128, 64, 64, 64, 128, 0, 7, 8, 8, 8, 7, 0
+    470              0x06, 0x0E, // width=6, height=14
+    471              0x80, 0x40, 0x40, 0x40, 0x80, 0x00, 
+    472              0x07, 0x08, 0x08, 0x08, 0x07, 0x00, 
+    473          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    474          const uint8_t FontHelvr10_char_112[] = {
+   \                     FontHelvr10_char_112:
+   \   000000 060EC0804040          DB 6, 14, 192, 128, 64, 64, 128, 0, 63, 4, 8, 8, 7, 0
+    475              0x06, 0x0E, // width=6, height=14
+    476              0xC0, 0x80, 0x40, 0x40, 0x80, 0x00, 
+    477              0x3F, 0x04, 0x08, 0x08, 0x07, 0x00, 
+    478          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    479          const uint8_t FontHelvr10_char_113[] = {
+   \                     FontHelvr10_char_113:
+   \   000000 060E80404080          DB 6, 14, 128, 64, 64, 128, 192, 0, 7, 8, 8, 4, 63, 0
+    480              0x06, 0x0E, // width=6, height=14
+    481              0x80, 0x40, 0x40, 0x80, 0xC0, 0x00, 
+    482              0x07, 0x08, 0x08, 0x04, 0x3F, 0x00, 
+    483          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    484          const uint8_t FontHelvr10_char_114[] = {
+   \                     FontHelvr10_char_114:
+   \   000000 040EC0804000          DB 4, 14, 192, 128, 64, 0, 15, 0, 0, 0
+    485              0x04, 0x0E, // width=4, height=14
+    486              0xC0, 0x80, 0x40, 0x00, 
+    487              0x0F, 0x00, 0x00, 0x00, 
+    488          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    489          const uint8_t FontHelvr10_char_115[] = {
+   \                     FontHelvr10_char_115:
+   \   000000 050E80404080          DB 5, 14, 128, 64, 64, 128, 0, 4, 9, 9, 6, 0
+    490              0x05, 0x0E, // width=5, height=14
+    491              0x80, 0x40, 0x40, 0x80, 0x00, 
+    492              0x04, 0x09, 0x09, 0x06, 0x00, 
+    493          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    494          const uint8_t FontHelvr10_char_116[] = {
+   \                     FontHelvr10_char_116:
+   \   000000 040E40F04000          DB 4, 14, 64, 240, 64, 0, 0, 15, 8, 0
+    495              0x04, 0x0E, // width=4, height=14
+    496              0x40, 0xF0, 0x40, 0x00, 
+    497              0x00, 0x0F, 0x08, 0x00, 
+    498          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    499          const uint8_t FontHelvr10_char_117[] = {
+   \                     FontHelvr10_char_117:
+   \   000000 050EC00000C0          DB 5, 14, 192, 0, 0, 192, 0, 7, 8, 8, 15, 0
+    500              0x05, 0x0E, // width=5, height=14
+    501              0xC0, 0x00, 0x00, 0xC0, 0x00, 
+    502              0x07, 0x08, 0x08, 0x0F, 0x00, 
+    503          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    504          const uint8_t FontHelvr10_char_118[] = {
+   \                     FontHelvr10_char_118:
+   \   000000 060EC0000000          DB 6, 14, 192, 0, 0, 0, 192, 0, 0, 3, 12, 3, 0, 0
+    505              0x06, 0x0E, // width=6, height=14
+    506              0xC0, 0x00, 0x00, 0x00, 0xC0, 0x00, 
+    507              0x00, 0x03, 0x0C, 0x03, 0x00, 0x00, 
+    508          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    509          const uint8_t FontHelvr10_char_119[] = {
+   \                     FontHelvr10_char_119:
+   \   000000 080EC00000C0          DB 8, 14, 192, 0, 0, 192, 0, 0, 192, 0, 0, 3, 12, 3, 12, 3, 0, 0
+    510              0x08, 0x0E, // width=8, height=14
+    511              0xC0, 0x00, 0x00, 0xC0, 0x00, 0x00, 0xC0, 0x00, 
+    512              0x00, 0x03, 0x0C, 0x03, 0x0C, 0x03, 0x00, 0x00, 
+    513          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    514          const uint8_t FontHelvr10_char_120[] = {
+   \                     FontHelvr10_char_120:
+   \   000000 060E40800080          DB 6, 14, 64, 128, 0, 128, 64, 0, 12, 2, 1, 2, 12, 0
+    515              0x06, 0x0E, // width=6, height=14
+    516              0x40, 0x80, 0x00, 0x80, 0x40, 0x00, 
+    517              0x0C, 0x02, 0x01, 0x02, 0x0C, 0x00, 
+    518          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    519          const uint8_t FontHelvr10_char_121[] = {
+   \                     FontHelvr10_char_121:
+   \   000000 050EC00000C0          DB 5, 14, 192, 0, 0, 192, 0, 35, 28, 7, 0, 0
+    520              0x05, 0x0E, // width=5, height=14
+    521              0xC0, 0x00, 0x00, 0xC0, 0x00, 
+    522              0x23, 0x1C, 0x07, 0x00, 0x00, 
+    523          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    524          const uint8_t FontHelvr10_char_122[] = {
+   \                     FontHelvr10_char_122:
+   \   000000 050E404040C0          DB 5, 14, 64, 64, 64, 192, 0, 12, 10, 9, 8, 0
+    525              0x05, 0x0E, // width=5, height=14
+    526              0x40, 0x40, 0x40, 0xC0, 0x00, 
+    527              0x0C, 0x0A, 0x09, 0x08, 0x00, 
+    528          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    529          const uint8_t FontHelvr10_char_123[] = {
+   \                     FontHelvr10_char_123:
+   \   000000 030E00E01001          DB 3, 14, 0, 224, 16, 1, 30, 32
+    530              0x03, 0x0E, // width=3, height=14
+    531              0x00, 0xE0, 0x10, 
+    532              0x01, 0x1E, 0x20, 
+    533          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    534          const uint8_t FontHelvr10_char_124[] = {
+   \                     FontHelvr10_char_124:
+   \   000000 030E00F00000          DB 3, 14, 0, 240, 0, 0, 63, 0
+    535              0x03, 0x0E, // width=3, height=14
+    536              0x00, 0xF0, 0x00, 
+    537              0x00, 0x3F, 0x00, 
+    538          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    539          const uint8_t FontHelvr10_char_125[] = {
+   \                     FontHelvr10_char_125:
+   \   000000 030E10E00020          DB 3, 14, 16, 224, 0, 32, 30, 1
+    540              0x03, 0x0E, // width=3, height=14
+    541              0x10, 0xE0, 0x00, 
+    542              0x20, 0x1E, 0x01, 
+    543          };
+
+   \                                 In  segment NEAR_CONST, align 2
+    544          const uint8_t FontHelvr10_char_126[] = {
+   \                     FontHelvr10_char_126:
+   \   000000 070E00808000          DB 7, 14, 0, 128, 128, 0, 0, 128, 0, 1, 0, 0, 1, 1, 0, 0
+    545              0x07, 0x0E, // width=7, height=14
+    546              0x00, 0x80, 0x80, 0x00, 0x00, 0x80, 0x00, 
+    547              0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 
+    548          };
+    549          // const uint8_t FontHelvr10_char_127[] = {};
+    550          // const uint8_t FontHelvr10_char_128[] = {};
+    551          // const uint8_t FontHelvr10_char_129[] = {};
+    552          // const uint8_t FontHelvr10_char_130[] = {};
+    553          // const uint8_t FontHelvr10_char_131[] = {};
+    554          // const uint8_t FontHelvr10_char_132[] = {};
+    555          // const uint8_t FontHelvr10_char_133[] = {};
+    556          // const uint8_t FontHelvr10_char_134[] = {};
+    557          // const uint8_t FontHelvr10_char_135[] = {};
+    558          // const uint8_t FontHelvr10_char_136[] = {};
+    559          // const uint8_t FontHelvr10_char_137[] = {};
+    560          // const uint8_t FontHelvr10_char_138[] = {};
+    561          // const uint8_t FontHelvr10_char_139[] = {};
+    562          // const uint8_t FontHelvr10_char_140[] = {};
+    563          // const uint8_t FontHelvr10_char_141[] = {};
+    564          // const uint8_t FontHelvr10_char_142[] = {};
+    565          // const uint8_t FontHelvr10_char_143[] = {};
+    566          // const uint8_t FontHelvr10_char_144[] = {};
+    567          // const uint8_t FontHelvr10_char_145[] = {};
+    568          // const uint8_t FontHelvr10_char_146[] = {};
+    569          // const uint8_t FontHelvr10_char_147[] = {};
+    570          // const uint8_t FontHelvr10_char_148[] = {};
+    571          // const uint8_t FontHelvr10_char_149[] = {};
+    572          // const uint8_t FontHelvr10_char_150[] = {};
+    573          // const uint8_t FontHelvr10_char_151[] = {};
+    574          // const uint8_t FontHelvr10_char_152[] = {};
+    575          // const uint8_t FontHelvr10_char_153[] = {};
+    576          // const uint8_t FontHelvr10_char_154[] = {};
+    577          // const uint8_t FontHelvr10_char_155[] = {};
+    578          // const uint8_t FontHelvr10_char_156[] = {};
+    579          // const uint8_t FontHelvr10_char_157[] = {};
+    580          // const uint8_t FontHelvr10_char_158[] = {};
+    581          // const uint8_t FontHelvr10_char_159[] = {};
+    582          // const uint8_t FontHelvr10_char_160[] = {};
+    583          // const uint8_t FontHelvr10_char_161[] = {};
+    584          // const uint8_t FontHelvr10_char_162[] = {};
+    585          // const uint8_t FontHelvr10_char_163[] = {};
+    586          // const uint8_t FontHelvr10_char_164[] = {};
+    587          // const uint8_t FontHelvr10_char_165[] = {};
+    588          // const uint8_t FontHelvr10_char_166[] = {};
+    589          // const uint8_t FontHelvr10_char_167[] = {};
+    590          // const uint8_t FontHelvr10_char_168[] = {};
+    591          // const uint8_t FontHelvr10_char_169[] = {};
+    592          // const uint8_t FontHelvr10_char_170[] = {};
+    593          // const uint8_t FontHelvr10_char_171[] = {};
+    594          // const uint8_t FontHelvr10_char_172[] = {};
+    595          // const uint8_t FontHelvr10_char_173[] = {};
+    596          // const uint8_t FontHelvr10_char_174[] = {};
+    597          // const uint8_t FontHelvr10_char_175[] = {};
+    598          // const uint8_t FontHelvr10_char_176[] = {};
+    599          // const uint8_t FontHelvr10_char_177[] = {};
+    600          // const uint8_t FontHelvr10_char_178[] = {};
+    601          // const uint8_t FontHelvr10_char_179[] = {};
+    602          // const uint8_t FontHelvr10_char_180[] = {};
+    603          // const uint8_t FontHelvr10_char_181[] = {};
+    604          // const uint8_t FontHelvr10_char_182[] = {};
+    605          // const uint8_t FontHelvr10_char_183[] = {};
+    606          // const uint8_t FontHelvr10_char_184[] = {};
+    607          // const uint8_t FontHelvr10_char_185[] = {};
+    608          // const uint8_t FontHelvr10_char_186[] = {};
+    609          // const uint8_t FontHelvr10_char_187[] = {};
+    610          // const uint8_t FontHelvr10_char_188[] = {};
+    611          // const uint8_t FontHelvr10_char_189[] = {};
+    612          // const uint8_t FontHelvr10_char_190[] = {};
+    613          // const uint8_t FontHelvr10_char_191[] = {};
+    614          // const uint8_t FontHelvr10_char_192[] = {};
+    615          // const uint8_t FontHelvr10_char_193[] = {};
+    616          // const uint8_t FontHelvr10_char_194[] = {};
+    617          // const uint8_t FontHelvr10_char_195[] = {};
+    618          // const uint8_t FontHelvr10_char_196[] = {};
+    619          // const uint8_t FontHelvr10_char_197[] = {};
+    620          // const uint8_t FontHelvr10_char_198[] = {};
+    621          // const uint8_t FontHelvr10_char_199[] = {};
+    622          // const uint8_t FontHelvr10_char_200[] = {};
+    623          // const uint8_t FontHelvr10_char_201[] = {};
+    624          // const uint8_t FontHelvr10_char_202[] = {};
+    625          // const uint8_t FontHelvr10_char_203[] = {};
+    626          // const uint8_t FontHelvr10_char_204[] = {};
+    627          // const uint8_t FontHelvr10_char_205[] = {};
+    628          // const uint8_t FontHelvr10_char_206[] = {};
+    629          // const uint8_t FontHelvr10_char_207[] = {};
+    630          // const uint8_t FontHelvr10_char_208[] = {};
+    631          // const uint8_t FontHelvr10_char_209[] = {};
+    632          // const uint8_t FontHelvr10_char_210[] = {};
+    633          // const uint8_t FontHelvr10_char_211[] = {};
+    634          // const uint8_t FontHelvr10_char_212[] = {};
+    635          // const uint8_t FontHelvr10_char_213[] = {};
+    636          // const uint8_t FontHelvr10_char_214[] = {};
+    637          // const uint8_t FontHelvr10_char_215[] = {};
+    638          // const uint8_t FontHelvr10_char_216[] = {};
+    639          // const uint8_t FontHelvr10_char_217[] = {};
+    640          // const uint8_t FontHelvr10_char_218[] = {};
+    641          // const uint8_t FontHelvr10_char_219[] = {};
+    642          // const uint8_t FontHelvr10_char_220[] = {};
+    643          // const uint8_t FontHelvr10_char_221[] = {};
+    644          // const uint8_t FontHelvr10_char_222[] = {};
+    645          // const uint8_t FontHelvr10_char_223[] = {};
+    646          // const uint8_t FontHelvr10_char_224[] = {};
+    647          // const uint8_t FontHelvr10_char_225[] = {};
+    648          // const uint8_t FontHelvr10_char_226[] = {};
+    649          // const uint8_t FontHelvr10_char_227[] = {};
+    650          // const uint8_t FontHelvr10_char_228[] = {};
+    651          // const uint8_t FontHelvr10_char_229[] = {};
+    652          // const uint8_t FontHelvr10_char_230[] = {};
+    653          // const uint8_t FontHelvr10_char_231[] = {};
+    654          // const uint8_t FontHelvr10_char_232[] = {};
+    655          // const uint8_t FontHelvr10_char_233[] = {};
+    656          // const uint8_t FontHelvr10_char_234[] = {};
+    657          // const uint8_t FontHelvr10_char_235[] = {};
+    658          // const uint8_t FontHelvr10_char_236[] = {};
+    659          // const uint8_t FontHelvr10_char_237[] = {};
+    660          // const uint8_t FontHelvr10_char_238[] = {};
+    661          // const uint8_t FontHelvr10_char_239[] = {};
+    662          // const uint8_t FontHelvr10_char_240[] = {};
+    663          // const uint8_t FontHelvr10_char_241[] = {};
+    664          // const uint8_t FontHelvr10_char_242[] = {};
+    665          // const uint8_t FontHelvr10_char_243[] = {};
+    666          // const uint8_t FontHelvr10_char_244[] = {};
+    667          // const uint8_t FontHelvr10_char_245[] = {};
+    668          // const uint8_t FontHelvr10_char_246[] = {};
+    669          // const uint8_t FontHelvr10_char_247[] = {};
+    670          // const uint8_t FontHelvr10_char_248[] = {};
+    671          // const uint8_t FontHelvr10_char_249[] = {};
+    672          // const uint8_t FontHelvr10_char_250[] = {};
+    673          // const uint8_t FontHelvr10_char_251[] = {};
+    674          // const uint8_t FontHelvr10_char_252[] = {};
+    675          // const uint8_t FontHelvr10_char_253[] = {};
+    676          // const uint8_t FontHelvr10_char_254[] = {};
+    677          // const uint8_t FontHelvr10_char_255[] = {};
+    678          
+
+   \                                 In  segment NEAR_CONST, align 2
+    679          const uint8_t * const FontHelvr10_table[256] = {
+   \                     FontHelvr10_table:
+   \   000000 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000022 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000040 ............          DW FontHelvr10_char_32, FontHelvr10_char_33, FontHelvr10_char_34
+   \   000046 ............          DW FontHelvr10_char_35, FontHelvr10_char_36, FontHelvr10_char_37
+   \   00004C ............          DW FontHelvr10_char_38, FontHelvr10_char_39, FontHelvr10_char_40
+   \   000052 ............          DW FontHelvr10_char_41, FontHelvr10_char_42, FontHelvr10_char_43
+   \   000058 ............          DW FontHelvr10_char_44, FontHelvr10_char_45, FontHelvr10_char_46
+   \   00005E ............          DW FontHelvr10_char_47, FontHelvr10_char_48, FontHelvr10_char_49
+   \   000064 ............          DW FontHelvr10_char_50, FontHelvr10_char_51, FontHelvr10_char_52
+   \   00006A ............          DW FontHelvr10_char_53, FontHelvr10_char_54, FontHelvr10_char_55
+   \   000070 ............          DW FontHelvr10_char_56, FontHelvr10_char_57, FontHelvr10_char_58
+   \   000076 ............          DW FontHelvr10_char_59, FontHelvr10_char_60, FontHelvr10_char_61
+   \   00007C ............          DW FontHelvr10_char_62, FontHelvr10_char_63, FontHelvr10_char_64
+   \   000082 ............          DW FontHelvr10_char_65, FontHelvr10_char_66, FontHelvr10_char_67
+   \   000088 ............          DW FontHelvr10_char_68, FontHelvr10_char_69, FontHelvr10_char_70
+   \   00008E ............          DW FontHelvr10_char_71, FontHelvr10_char_72, FontHelvr10_char_73
+   \   000094 ............          DW FontHelvr10_char_74, FontHelvr10_char_75, FontHelvr10_char_76
+   \   00009A ............          DW FontHelvr10_char_77, FontHelvr10_char_78, FontHelvr10_char_79
+   \   0000A0 ............          DW FontHelvr10_char_80, FontHelvr10_char_81, FontHelvr10_char_82
+   \   0000A6 ............          DW FontHelvr10_char_83, FontHelvr10_char_84, FontHelvr10_char_85
+   \   0000AC ............          DW FontHelvr10_char_86, FontHelvr10_char_87, FontHelvr10_char_88
+   \   0000B2 ............          DW FontHelvr10_char_89, FontHelvr10_char_90, FontHelvr10_char_91
+   \   0000B8 ............          DW FontHelvr10_char_92, FontHelvr10_char_93, FontHelvr10_char_94
+   \   0000BE ............          DW FontHelvr10_char_95, FontHelvr10_char_96, FontHelvr10_char_97
+   \   0000C4 ............          DW FontHelvr10_char_98, FontHelvr10_char_99, FontHelvr10_char_100
+   \   0000CA ............          DW FontHelvr10_char_101, FontHelvr10_char_102, FontHelvr10_char_103
+   \   0000D0 ............          DW FontHelvr10_char_104, FontHelvr10_char_105, FontHelvr10_char_106
+   \   0000D6 ............          DW FontHelvr10_char_107, FontHelvr10_char_108, FontHelvr10_char_109
+   \   0000DC ............          DW FontHelvr10_char_110, FontHelvr10_char_111, FontHelvr10_char_112
+   \   0000E2 ............          DW FontHelvr10_char_113, FontHelvr10_char_114, FontHelvr10_char_115
+   \   0000E8 ............          DW FontHelvr10_char_116, FontHelvr10_char_117, FontHelvr10_char_118
+   \   0000EE ............          DW FontHelvr10_char_119, FontHelvr10_char_120, FontHelvr10_char_121
+   \   0000F4 ............          DW FontHelvr10_char_122, FontHelvr10_char_123, FontHelvr10_char_124
+   \   0000FA ........0000          DW FontHelvr10_char_125, FontHelvr10_char_126, 0H, 0H, 0H, 0H, 0H, 0H
+   \   00010A 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   00012C 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   00014E 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000170 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   000192 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   0001B4 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   0001D6 000000000000          DW 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H, 0H
+   \   0001F8 000000000000          DW 0H, 0H, 0H, 0H
+    680              0,
+    681              0,
+    682              0,
+    683              0,
+    684              0,
+    685              0,
+    686              0,
+    687              0,
+    688              0,
+    689              0,
+    690              0,
+    691              0,
+    692              0,
+    693              0,
+    694              0,
+    695              0,
+    696              0,
+    697              0,
+    698              0,
+    699              0,
+    700              0,
+    701              0,
+    702              0,
+    703              0,
+    704              0,
+    705              0,
+    706              0,
+    707              0,
+    708              0,
+    709              0,
+    710              0,
+    711              0,
+    712              FontHelvr10_char_32,
+    713              FontHelvr10_char_33,
+    714              FontHelvr10_char_34,
+    715              FontHelvr10_char_35,
+    716              FontHelvr10_char_36,
+    717              FontHelvr10_char_37,
+    718              FontHelvr10_char_38,
+    719              FontHelvr10_char_39,
+    720              FontHelvr10_char_40,
+    721              FontHelvr10_char_41,
+    722              FontHelvr10_char_42,
+    723              FontHelvr10_char_43,
+    724              FontHelvr10_char_44,
+    725              FontHelvr10_char_45,
+    726              FontHelvr10_char_46,
+    727              FontHelvr10_char_47,
+    728              FontHelvr10_char_48,
+    729              FontHelvr10_char_49,
+    730              FontHelvr10_char_50,
+    731              FontHelvr10_char_51,
+    732              FontHelvr10_char_52,
+    733              FontHelvr10_char_53,
+    734              FontHelvr10_char_54,
+    735              FontHelvr10_char_55,
+    736              FontHelvr10_char_56,
+    737              FontHelvr10_char_57,
+    738              FontHelvr10_char_58,
+    739              FontHelvr10_char_59,
+    740              FontHelvr10_char_60,
+    741              FontHelvr10_char_61,
+    742              FontHelvr10_char_62,
+    743              FontHelvr10_char_63,
+    744              FontHelvr10_char_64,
+    745              FontHelvr10_char_65,
+    746              FontHelvr10_char_66,
+    747              FontHelvr10_char_67,
+    748              FontHelvr10_char_68,
+    749              FontHelvr10_char_69,
+    750              FontHelvr10_char_70,
+    751              FontHelvr10_char_71,
+    752              FontHelvr10_char_72,
+    753              FontHelvr10_char_73,
+    754              FontHelvr10_char_74,
+    755              FontHelvr10_char_75,
+    756              FontHelvr10_char_76,
+    757              FontHelvr10_char_77,
+    758              FontHelvr10_char_78,
+    759              FontHelvr10_char_79,
+    760              FontHelvr10_char_80,
+    761              FontHelvr10_char_81,
+    762              FontHelvr10_char_82,
+    763              FontHelvr10_char_83,
+    764              FontHelvr10_char_84,
+    765              FontHelvr10_char_85,
+    766              FontHelvr10_char_86,
+    767              FontHelvr10_char_87,
+    768              FontHelvr10_char_88,
+    769              FontHelvr10_char_89,
+    770              FontHelvr10_char_90,
+    771              FontHelvr10_char_91,
+    772              FontHelvr10_char_92,
+    773              FontHelvr10_char_93,
+    774              FontHelvr10_char_94,
+    775              FontHelvr10_char_95,
+    776              FontHelvr10_char_96,
+    777              FontHelvr10_char_97,
+    778              FontHelvr10_char_98,
+    779              FontHelvr10_char_99,
+    780              FontHelvr10_char_100,
+    781              FontHelvr10_char_101,
+    782              FontHelvr10_char_102,
+    783              FontHelvr10_char_103,
+    784              FontHelvr10_char_104,
+    785              FontHelvr10_char_105,
+    786              FontHelvr10_char_106,
+    787              FontHelvr10_char_107,
+    788              FontHelvr10_char_108,
+    789              FontHelvr10_char_109,
+    790              FontHelvr10_char_110,
+    791              FontHelvr10_char_111,
+    792              FontHelvr10_char_112,
+    793              FontHelvr10_char_113,
+    794              FontHelvr10_char_114,
+    795              FontHelvr10_char_115,
+    796              FontHelvr10_char_116,
+    797              FontHelvr10_char_117,
+    798              FontHelvr10_char_118,
+    799              FontHelvr10_char_119,
+    800              FontHelvr10_char_120,
+    801              FontHelvr10_char_121,
+    802              FontHelvr10_char_122,
+    803              FontHelvr10_char_123,
+    804              FontHelvr10_char_124,
+    805              FontHelvr10_char_125,
+    806              FontHelvr10_char_126,
+    807              0,
+    808              0,
+    809              0,
+    810              0,
+    811              0,
+    812              0,
+    813              0,
+    814              0,
+    815              0,
+    816              0,
+    817              0,
+    818              0,
+    819              0,
+    820              0,
+    821              0,
+    822              0,
+    823              0,
+    824              0,
+    825              0,
+    826              0,
+    827              0,
+    828              0,
+    829              0,
+    830              0,
+    831              0,
+    832              0,
+    833              0,
+    834              0,
+    835              0,
+    836              0,
+    837              0,
+    838              0,
+    839              0,
+    840              0,
+    841              0,
+    842              0,
+    843              0,
+    844              0,
+    845              0,
+    846              0,
+    847              0,
+    848              0,
+    849              0,
+    850              0,
+    851              0,
+    852              0,
+    853              0,
+    854              0,
+    855              0,
+    856              0,
+    857              0,
+    858              0,
+    859              0,
+    860              0,
+    861              0,
+    862              0,
+    863              0,
+    864              0,
+    865              0,
+    866              0,
+    867              0,
+    868              0,
+    869              0,
+    870              0,
+    871              0,
+    872              0,
+    873              0,
+    874              0,
+    875              0,
+    876              0,
+    877              0,
+    878              0,
+    879              0,
+    880              0,
+    881              0,
+    882              0,
+    883              0,
+    884              0,
+    885              0,
+    886              0,
+    887              0,
+    888              0,
+    889              0,
+    890              0,
+    891              0,
+    892              0,
+    893              0,
+    894              0,
+    895              0,
+    896              0,
+    897              0,
+    898              0,
+    899              0,
+    900              0,
+    901              0,
+    902              0,
+    903              0,
+    904              0,
+    905              0,
+    906              0,
+    907              0,
+    908              0,
+    909              0,
+    910              0,
+    911              0,
+    912              0,
+    913              0,
+    914              0,
+    915              0,
+    916              0,
+    917              0,
+    918              0,
+    919              0,
+    920              0,
+    921              0,
+    922              0,
+    923              0,
+    924              0,
+    925              0,
+    926              0,
+    927              0,
+    928              0,
+    929              0,
+    930              0,
+    931              0,
+    932              0,
+    933              0,
+    934              0,
+    935              0,
+    936          };
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      14  FontHelvr10_char_100
+      12  FontHelvr10_char_101
+      10  FontHelvr10_char_102
+      14  FontHelvr10_char_103
+      14  FontHelvr10_char_104
+       6  FontHelvr10_char_105
+       6  FontHelvr10_char_106
+      12  FontHelvr10_char_107
+       6  FontHelvr10_char_108
+      18  FontHelvr10_char_109
+      14  FontHelvr10_char_110
+      14  FontHelvr10_char_111
+      14  FontHelvr10_char_112
+      14  FontHelvr10_char_113
+      10  FontHelvr10_char_114
+      12  FontHelvr10_char_115
+      10  FontHelvr10_char_116
+      12  FontHelvr10_char_117
+      14  FontHelvr10_char_118
+      18  FontHelvr10_char_119
+      14  FontHelvr10_char_120
+      12  FontHelvr10_char_121
+      12  FontHelvr10_char_122
+       8  FontHelvr10_char_123
+       8  FontHelvr10_char_124
+       8  FontHelvr10_char_125
+      16  FontHelvr10_char_126
+       8  FontHelvr10_char_32
+       8  FontHelvr10_char_33
+      10  FontHelvr10_char_34
+      14  FontHelvr10_char_35
+      14  FontHelvr10_char_36
+      20  FontHelvr10_char_37
+      18  FontHelvr10_char_38
+       8  FontHelvr10_char_39
+      10  FontHelvr10_char_40
+      10  FontHelvr10_char_41
+      10  FontHelvr10_char_42
+      14  FontHelvr10_char_43
+       8  FontHelvr10_char_44
+      16  FontHelvr10_char_45
+       8  FontHelvr10_char_46
+       8  FontHelvr10_char_47
+      14  FontHelvr10_char_48
+      14  FontHelvr10_char_49
+      14  FontHelvr10_char_50
+      14  FontHelvr10_char_51
+      14  FontHelvr10_char_52
+      14  FontHelvr10_char_53
+      14  FontHelvr10_char_54
+      14  FontHelvr10_char_55
+      14  FontHelvr10_char_56
+      14  FontHelvr10_char_57
+       8  FontHelvr10_char_58
+       8  FontHelvr10_char_59
+      14  FontHelvr10_char_60
+      12  FontHelvr10_char_61
+      14  FontHelvr10_char_62
+      14  FontHelvr10_char_63
+      24  FontHelvr10_char_64
+      16  FontHelvr10_char_65
+      16  FontHelvr10_char_66
+      18  FontHelvr10_char_67
+      18  FontHelvr10_char_68
+      16  FontHelvr10_char_69
+      14  FontHelvr10_char_70
+      18  FontHelvr10_char_71
+      18  FontHelvr10_char_72
+       8  FontHelvr10_char_73
+      12  FontHelvr10_char_74
+      16  FontHelvr10_char_75
+      14  FontHelvr10_char_76
+      20  FontHelvr10_char_77
+      18  FontHelvr10_char_78
+      18  FontHelvr10_char_79
+      16  FontHelvr10_char_80
+      18  FontHelvr10_char_81
+      16  FontHelvr10_char_82
+      16  FontHelvr10_char_83
+      12  FontHelvr10_char_84
+      18  FontHelvr10_char_85
+      16  FontHelvr10_char_86
+      20  FontHelvr10_char_87
+      16  FontHelvr10_char_88
+      16  FontHelvr10_char_89
+      16  FontHelvr10_char_90
+       8  FontHelvr10_char_91
+       8  FontHelvr10_char_92
+       8  FontHelvr10_char_93
+      14  FontHelvr10_char_94
+      14  FontHelvr10_char_95
+       8  FontHelvr10_char_96
+      12  FontHelvr10_char_97
+      14  FontHelvr10_char_98
+      12  FontHelvr10_char_99
+     512  FontHelvr10_table
+
+ 
+ 1 770 bytes in segment NEAR_CONST
+ 
+ 1 770 bytes of CONST memory
+
+Errors: none
+Warnings: none

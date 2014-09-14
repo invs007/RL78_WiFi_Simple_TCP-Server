@@ -1,0 +1,436 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V1.30.5.50715 for RL78             05/Aug/2014  14:51:23 #
+# Copyright 2011-2013 IAR Systems AB.                                         #
+# Evaluation license - IAR Embedded Workbench for Renesas RL78, Evaluation version 1.30 #
+#                                                                             #
+#    Core         =  rl78_2                                                   #
+#    Code model   =  Near                                                     #
+#    Data model   =  Near                                                     #
+#                 =                                                           #
+#    Source file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_cg_intc.c                  #
+#    Command line =  "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\applilet3_src\r_cg_intc.c" --core rl78_2   #
+#                    --code_model near --data_model near                      #
+#                    --near_const_location rom0 -o "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy\Debug\Obj\" --dlib_config      #
+#                    "C:\Program Files (x86)\IAR Systems\Embedded Workbench   #
+#                    6.5\rl78\LIB\dlrl78nn2n.h" -e -Ohz --no_scheduling       #
+#                    --debug -lCN "D:\NCSU\Research Work\Summer               #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\" -I "D:\NCSU\Research          #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/applilet3_src/\" -I            #
+#                    "D:\NCSU\Research Work\Summer                            #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/\" -I "D:\NCSU\Research Work\Summer  #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy/Glyph/Drivers/\" -I "D:\NCSU\Research      #
+#                    Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_ #
+#                    SPI\SerialDemo-G14 - Copy/user_include/\"                #
+#    List file    =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\List\r_cg_intc.lst                   #
+#    Object file  =  D:\NCSU\Research Work\Summer                             #
+#                    2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDe #
+#                    mo-G14 - Copy\Debug\Obj\r_cg_intc.r87                    #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\NCSU\Research Work\Summer 2014\GainSpan-WiFi\WiFi_Demo\SerialDemo-G14_SPI\SerialDemo-G14 - Copy\applilet3_src\r_cg_intc.c
+      1          /***********************************************************************************************************************
+      2          * DISCLAIMER
+      3          * This software is supplied by Renesas Electronics Corporation and is only 
+      4          * intended for use with Renesas products. No other uses are authorized. This 
+      5          * software is owned by Renesas Electronics Corporation and is protected under 
+      6          * all applicable laws, including copyright laws.
+      7          * THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING 
+      8          * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT 
+      9          * LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE 
+     10          * AND NON-INFRINGEMENT.  ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.
+     11          * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS 
+     12          * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE 
+     13          * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR 
+     14          * ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE 
+     15          * BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+     16          * Renesas reserves the right, without notice, to make changes to this software 
+     17          * and to discontinue the availability of this software.  By using this software, 
+     18          * you agree to the additional terms and conditions found by accessing the 
+     19          * following link:
+     20          * http://www.renesas.com/disclaimer
+     21          *
+     22          * Copyright (C) 2011, 2013 Renesas Electronics Corporation. All rights reserved.
+     23          ***********************************************************************************************************************/
+     24          
+     25          /***********************************************************************************************************************
+     26          * File Name    : r_cg_intc.c
+     27          * Version      : Applilet3 for RL78/G14 V2.00.00.08 [12 Apr 2013]
+     28          * Device(s)    : R5F104PJ
+     29          * Tool-Chain   : IAR Systems iccrl78
+     30          * Description  : This file implements device driver for INTC module.
+     31          * Creation Date: 8/4/2014
+     32          ***********************************************************************************************************************/
+     33          
+     34          /***********************************************************************************************************************
+     35          Includes
+     36          ***********************************************************************************************************************/
+     37          #include "r_cg_macrodriver.h"
+
+   \                                 In  segment NEAR_A, at 0xfff27
+   \   union <unnamed> volatile __sfr _A_PM7
+   \                     _A_PM7:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfff3b
+   \   union <unnamed> volatile __sfr _A_EGN1
+   \                     _A_EGN1:
+   \   000000                       DS 1
+
+   \                                 In  segment NEAR_A, at 0xfffd0
+   \   union <unnamed> volatile __sfr _A_IF2
+   \                     _A_IF2:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffd4
+   \   union <unnamed> volatile __sfr _A_MK2
+   \                     _A_MK2:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffd8
+   \   union <unnamed> volatile __sfr _A_PR02
+   \                     _A_PR02:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffdc
+   \   union <unnamed> volatile __sfr _A_PR12
+   \                     _A_PR12:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffe0
+   \   union <unnamed> volatile __sfr _A_IF0
+   \                     _A_IF0:
+   \   000000                       DS 2
+
+   \                                 In  segment NEAR_A, at 0xfffe4
+   \   union <unnamed> volatile __sfr _A_MK0
+   \                     _A_MK0:
+   \   000000                       DS 2
+     38          #include "r_cg_intc.h"
+     39          /* Start user code for include. Do not edit comment generated here */
+     40          /* End user code. Do not edit comment generated here */
+     41          #include "r_cg_userdefine.h"
+     42          
+     43          /***********************************************************************************************************************
+     44          Global variables and functions
+     45          ***********************************************************************************************************************/
+     46          /* Start user code for global. Do not edit comment generated here */
+     47          /* End user code. Do not edit comment generated here */
+     48          
+     49          /***********************************************************************************************************************
+     50          * Function Name: R_INTC_Create
+     51          * Description  : This function initializes INTP module.
+     52          * Arguments    : None
+     53          * Return Value : None
+     54          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+     55          void R_INTC_Create(void)
+   \                     R_INTC_Create:
+     56          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+     57              PMK0 = 1U;    /* disable INTP0 operation */
+   \   000000 712AE4                SET1      0xFFFE4.2          ;; 2 cycles
+     58              PIF0 = 0U;    /* clear INTP0 interrupt flag */
+   \   000003 712BE0                CLR1      0xFFFE0.2          ;; 2 cycles
+     59              PMK1 = 1U;    /* disable INTP1 operation */
+   \   000006 713AE4                SET1      0xFFFE4.3          ;; 2 cycles
+     60              PIF1 = 0U;    /* clear INTP1 interrupt flag */
+   \   000009 713BE0                CLR1      0xFFFE0.3          ;; 2 cycles
+     61              PMK2 = 1U;    /* disable INTP2 operation */
+   \   00000C 714AE4                SET1      0xFFFE4.4          ;; 2 cycles
+     62              PIF2 = 0U;    /* clear INTP2 interrupt flag */
+   \   00000F 714BE0                CLR1      0xFFFE0.4          ;; 2 cycles
+     63              PMK3 = 1U;    /* disable INTP3 operation */
+   \   000012 715AE4                SET1      0xFFFE4.5          ;; 2 cycles
+     64              PIF3 = 0U;    /* clear INTP3 interrupt flag */
+   \   000015 715BE0                CLR1      0xFFFE0.5          ;; 2 cycles
+     65              PMK4 = 1U;    /* disable INTP4 operation */
+   \   000018 716AE4                SET1      0xFFFE4.6          ;; 2 cycles
+     66              PIF4 = 0U;    /* clear INTP4 interrupt flag */
+   \   00001B 716BE0                CLR1      0xFFFE0.6          ;; 2 cycles
+     67              PMK5 = 1U;    /* disable INTP5 operation */
+   \   00001E 717AE4                SET1      0xFFFE4.7          ;; 2 cycles
+     68              PIF5 = 0U;    /* clear INTP5 interrupt flag */
+   \   000021 717BE0                CLR1      0xFFFE0.7          ;; 2 cycles
+     69              PMK6 = 1U;    /* disable INTP6 operation */
+   \   000024 713AD4                SET1      0xFFFD4.3          ;; 2 cycles
+     70              PIF6 = 0U;    /* clear INTP6 interrupt flag */
+   \   000027 713BD0                CLR1      0xFFFD0.3          ;; 2 cycles
+     71              PMK7 = 1U;    /* disable INTP7 operation */
+   \   00002A 714AD4                SET1      0xFFFD4.4          ;; 2 cycles
+     72              PIF7 = 0U;    /* clear INTP7 interrupt flag */
+   \   00002D 714BD0                CLR1      0xFFFD0.4          ;; 2 cycles
+     73              PMK8 = 1U;    /* disable INTP8 operation */
+   \   000030 715AD4                SET1      0xFFFD4.5          ;; 2 cycles
+     74              PIF8 = 0U;    /* clear INTP8 interrupt flag */
+   \   000033 715BD0                CLR1      0xFFFD0.5          ;; 2 cycles
+     75              PMK9 = 1U;    /* disable INTP9 operation */
+   \   000036 716AD4                SET1      0xFFFD4.6          ;; 2 cycles
+     76              PIF9 = 0U;    /* clear INTP9 interrupt flag */
+   \   000039 716BD0                CLR1      0xFFFD0.6          ;; 2 cycles
+     77              PMK10 = 1U;    /* disable INTP10 operation */
+   \   00003C 717AD4                SET1      0xFFFD4.7          ;; 2 cycles
+     78              PIF10 = 0U;    /* clear INTP10 interrupt flag */
+   \   00003F 717BD0                CLR1      0xFFFD0.7          ;; 2 cycles
+     79              PMK11 = 1U;    /* disable INTP11 operation */
+   \   000042 710AD5                SET1      0xFFFD5.0          ;; 2 cycles
+     80              PIF11 = 0U;    /* clear INTP11 interrupt flag */
+   \   000045 710BD1                CLR1      0xFFFD1.0          ;; 2 cycles
+     81              /* Set INTP8 low priority */
+     82              PPR18 = 1U;
+   \   000048 715ADC                SET1      0xFFFDC.5          ;; 2 cycles
+     83              PPR08 = 1U;
+   \   00004B 715AD8                SET1      0xFFFD8.5          ;; 2 cycles
+     84              /* Set INTP9 low priority */
+     85              PPR19 = 1U;
+   \   00004E 716ADC                SET1      0xFFFDC.6          ;; 2 cycles
+     86              PPR09 = 1U;
+   \   000051 716AD8                SET1      0xFFFD8.6          ;; 2 cycles
+     87              /* Set INTP10 low priority */
+     88              PPR110 = 1U;
+   \   000054 717ADC                SET1      0xFFFDC.7          ;; 2 cycles
+     89              PPR010 = 1U;
+   \   000057 717AD8                SET1      0xFFFD8.7          ;; 2 cycles
+     90              EGN1 = _01_INTP8_EDGE_FALLING_SEL | _02_INTP9_EDGE_FALLING_SEL | _04_INTP10_EDGE_FALLING_SEL;
+   \   00005A CE3B07                MOV       0xFFF3B, #0x7      ;; 1 cycle
+     91              /* Set INTP8 pin */
+     92              PM7 |= 0x10U;
+   \   00005D 714A27                SET1      0xFFF27.4          ;; 2 cycles
+     93              /* Set INTP9 pin */
+     94              PM7 |= 0x20U;
+   \   000060 715A27                SET1      0xFFF27.5          ;; 2 cycles
+     95              /* Set INTP10 pin */
+     96              PM7 |= 0x40U;
+   \   000063 716A27                SET1      0xFFF27.6          ;; 2 cycles
+     97          }
+   \   000066 D7                    RET                          ;; 6 cycles
+   \   000067                       ; ------------------------------------- Block: 73 cycles
+   \   000067                       ; ------------------------------------- Total: 73 cycles
+   \   000067                       REQUIRE ?CLRL78_V1_0_L00
+   \   000067                       REQUIRE _A_MK0
+   \   000067                       REQUIRE _A_IF0
+   \   000067                       REQUIRE _A_MK2
+   \   000067                       REQUIRE _A_IF2
+   \   000067                       REQUIRE _A_PR12
+   \   000067                       REQUIRE _A_PR02
+   \   000067                       REQUIRE _A_EGN1
+   \   000067                       REQUIRE _A_PM7
+     98          
+     99          /***********************************************************************************************************************
+    100          * Function Name: R_INTC8_Start
+    101          * Description  : This function clears INTP8 interrupt flag and enables interrupt.
+    102          * Arguments    : None
+    103          * Return Value : None
+    104          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    105          void R_INTC8_Start(void)
+   \                     R_INTC8_Start:
+    106          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+    107              PIF8 = 0U;    /* clear INTP8 interrupt flag */
+   \   000000 715BD0                CLR1      0xFFFD0.5          ;; 2 cycles
+    108              PMK8 = 0U;    /* enable INTP8 interrupt */
+   \   000003 715BD4                CLR1      0xFFFD4.5          ;; 2 cycles
+    109          }
+   \   000006 D7                    RET                          ;; 6 cycles
+   \   000007                       ; ------------------------------------- Block: 10 cycles
+   \   000007                       ; ------------------------------------- Total: 10 cycles
+   \   000007                       REQUIRE ?CLRL78_V1_0_L00
+   \   000007                       REQUIRE _A_IF2
+   \   000007                       REQUIRE _A_MK2
+    110          
+    111          /***********************************************************************************************************************
+    112          * Function Name: R_INTC8_Stop
+    113          * Description  : This function disables INTP8 interrupt and clears interrupt flag.
+    114          * Arguments    : None
+    115          * Return Value : None
+    116          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    117          void R_INTC8_Stop(void)
+   \                     R_INTC8_Stop:
+    118          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+    119              PMK8 = 1U;    /* disable INTP8 interrupt */
+   \   000000 715AD4                SET1      0xFFFD4.5          ;; 2 cycles
+    120              PIF8 = 0U;    /* clear INTP8 interrupt flag */
+   \   000003 715BD0                CLR1      0xFFFD0.5          ;; 2 cycles
+    121          }
+   \   000006 D7                    RET                          ;; 6 cycles
+   \   000007                       ; ------------------------------------- Block: 10 cycles
+   \   000007                       ; ------------------------------------- Total: 10 cycles
+   \   000007                       REQUIRE ?CLRL78_V1_0_L00
+   \   000007                       REQUIRE _A_MK2
+   \   000007                       REQUIRE _A_IF2
+    122          
+    123          /***********************************************************************************************************************
+    124          * Function Name: R_INTC9_Start
+    125          * Description  : This function clears INTP9 interrupt flag and enables interrupt.
+    126          * Arguments    : None
+    127          * Return Value : None
+    128          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    129          void R_INTC9_Start(void)
+   \                     R_INTC9_Start:
+    130          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+    131              PIF9 = 0U;    /* clear INTP9 interrupt flag */
+   \   000000 716BD0                CLR1      0xFFFD0.6          ;; 2 cycles
+    132              PMK9 = 0U;    /* enable INTP9 interrupt */
+   \   000003 716BD4                CLR1      0xFFFD4.6          ;; 2 cycles
+    133          }
+   \   000006 D7                    RET                          ;; 6 cycles
+   \   000007                       ; ------------------------------------- Block: 10 cycles
+   \   000007                       ; ------------------------------------- Total: 10 cycles
+   \   000007                       REQUIRE ?CLRL78_V1_0_L00
+   \   000007                       REQUIRE _A_IF2
+   \   000007                       REQUIRE _A_MK2
+    134          
+    135          /***********************************************************************************************************************
+    136          * Function Name: R_INTC9_Stop
+    137          * Description  : This function disables INTP9 interrupt and clears interrupt flag.
+    138          * Arguments    : None
+    139          * Return Value : None
+    140          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    141          void R_INTC9_Stop(void)
+   \                     R_INTC9_Stop:
+    142          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+    143              PMK9 = 1U;    /* disable INTP9 interrupt */
+   \   000000 716AD4                SET1      0xFFFD4.6          ;; 2 cycles
+    144              PIF9 = 0U;    /* clear INTP9 interrupt flag */
+   \   000003 716BD0                CLR1      0xFFFD0.6          ;; 2 cycles
+    145          }
+   \   000006 D7                    RET                          ;; 6 cycles
+   \   000007                       ; ------------------------------------- Block: 10 cycles
+   \   000007                       ; ------------------------------------- Total: 10 cycles
+   \   000007                       REQUIRE ?CLRL78_V1_0_L00
+   \   000007                       REQUIRE _A_MK2
+   \   000007                       REQUIRE _A_IF2
+    146          
+    147          /***********************************************************************************************************************
+    148          * Function Name: R_INTC10_Start
+    149          * Description  : This function clears INTP10 interrupt flag and enables interrupt.
+    150          * Arguments    : None
+    151          * Return Value : None
+    152          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    153          void R_INTC10_Start(void)
+   \                     R_INTC10_Start:
+    154          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+    155              PIF10 = 0U;    /* clear INTP10 interrupt flag */
+   \   000000 717BD0                CLR1      0xFFFD0.7          ;; 2 cycles
+    156              PMK10 = 0U;    /* enable INTP10 interrupt */
+   \   000003 717BD4                CLR1      0xFFFD4.7          ;; 2 cycles
+    157          }
+   \   000006 D7                    RET                          ;; 6 cycles
+   \   000007                       ; ------------------------------------- Block: 10 cycles
+   \   000007                       ; ------------------------------------- Total: 10 cycles
+   \   000007                       REQUIRE ?CLRL78_V1_0_L00
+   \   000007                       REQUIRE _A_IF2
+   \   000007                       REQUIRE _A_MK2
+    158          
+    159          /***********************************************************************************************************************
+    160          * Function Name: R_INTC10_Stop
+    161          * Description  : This function disables INTP10 interrupt and clears interrupt flag.
+    162          * Arguments    : None
+    163          * Return Value : None
+    164          ***********************************************************************************************************************/
+
+   \                                 In  segment CODE, align 1, keep-with-next
+    165          void R_INTC10_Stop(void)
+   \                     R_INTC10_Stop:
+    166          {
+   \   000000                       ; * Stack frame (at entry) *
+   \   000000                       ; Param size: 0
+   \   000000                       ; Auto size: 0
+    167              PMK10 = 1U;    /* disable INTP10 interrupt */
+   \   000000 717AD4                SET1      0xFFFD4.7          ;; 2 cycles
+    168              PIF10 = 0U;    /* clear INTP10 interrupt flag */
+   \   000003 717BD0                CLR1      0xFFFD0.7          ;; 2 cycles
+    169          }
+   \   000006 D7                    RET                          ;; 6 cycles
+   \   000007                       ; ------------------------------------- Block: 10 cycles
+   \   000007                       ; ------------------------------------- Total: 10 cycles
+   \   000007                       REQUIRE ?CLRL78_V1_0_L00
+   \   000007                       REQUIRE _A_MK2
+   \   000007                       REQUIRE _A_IF2
+    170          
+    171          /* Start user code for adding. Do not edit comment generated here */
+    172          /* End user code. Do not edit comment generated here */
+
+   Maximum stack usage in bytes:
+
+   CSTACK Function
+   ------ --------
+      0   R_INTC10_Start
+      0   R_INTC10_Stop
+      0   R_INTC8_Start
+      0   R_INTC8_Stop
+      0   R_INTC9_Start
+      0   R_INTC9_Stop
+      0   R_INTC_Create
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       7  R_INTC10_Start
+       7  R_INTC10_Stop
+       7  R_INTC8_Start
+       7  R_INTC8_Stop
+       7  R_INTC9_Start
+       7  R_INTC9_Stop
+     103  R_INTC_Create
+       1  _A_EGN1
+       2  _A_IF0
+       2  _A_IF2
+       2  _A_MK0
+       2  _A_MK2
+       1  _A_PM7
+       2  _A_PR02
+       2  _A_PR12
+
+ 
+ 145 bytes in segment CODE
+  14 bytes in segment NEAR_A
+ 
+ 145 bytes of CODE memory
+   0 bytes of DATA memory (+ 14 bytes shared)
+
+Errors: none
+Warnings: none
